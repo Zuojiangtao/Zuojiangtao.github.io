@@ -16,25 +16,25 @@
     
   
   <!-- Icon -->
-  <link rel="apple-touch-icon" sizes="57x57" href="/dev-spec/icon/apple-touch-icon-57x57.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="/dev-spec/icon/apple-touch-icon-114x114.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="/dev-spec/icon/apple-touch-icon-72x72.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="/dev-spec/icon/apple-touch-icon-144x144.png">
-  <link rel="apple-touch-icon" sizes="60x60" href="/dev-spec/icon/apple-touch-icon-60x60.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="/dev-spec/icon/apple-touch-icon-120x120.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="/dev-spec/icon/apple-touch-icon-76x76.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="/dev-spec/icon/apple-touch-icon-152x152.png">
-  <link rel="icon" type="image/png" href="/dev-spec/icon/favicon-196x196.png" sizes="196x196">
-  <link rel="icon" type="image/png" href="/dev-spec/icon/favicon-160x160.png" sizes="160x160">
-  <link rel="icon" type="image/png" href="/dev-spec/icon/favicon-96x96.png" sizes="96x96">
-  <link rel="icon" type="image/png" href="/dev-spec/icon/favicon-16x16.png" sizes="16x16">
-  <link rel="icon" type="image/png" href="/dev-spec/icon/favicon-32x32.png" sizes="32x32">
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
   <meta name="msapplication-TileColor" content="#2f83cd">
-  <meta name="msapplication-TileImage" content="/dev-spec/icon/mstile-144x144.png">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
   <!-- CSS -->
   <!-- build:css build/css/navy.css -->
   
-<link rel="stylesheet" href="/dev-spec/css/navy.css">
+<link rel="stylesheet" href="/css/navy.css">
 
   <!-- endbuild -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
@@ -45,10 +45,10 @@
     <header id="header" class="wrapper">
   <div id="header-inner" class="inner">
     <h1 id="logo-wrap">
-      <a href="/dev-spec/" id="logo">H3C</a>
+      <a href="/" id="logo">H3C</a>
     </h1>
     <nav id="main-nav">
-      <a href="/dev-spec/standard" class="main-nav-link">开发规范</a>
+      <a href="/standard" class="main-nav-link">开发规范</a>
     </nav>
     <div id="lang-select-wrap">
       <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
@@ -236,19 +236,19 @@ code snippet
 <p>默认对文章的标题和自定义标题里的特殊字符进行转义。可以使用<code>escape</code>选项，禁止对特殊字符进行转义。</p>
 <p><strong>链接使用文章的标题</strong></p>
 <p><code>{% post_link hexo-3-8-released %}</code></p>
-<a href="/dev-spec/news/2018/10/19/hexo-3-8-released/" title="Hexo 3.8.0 Released">Hexo 3.8.0 Released</a>
+<a href="/news/2018/10/19/hexo-3-8-released/" title="Hexo 3.8.0 Released">Hexo 3.8.0 Released</a>
 
 <p><strong>链接使用自定义文字</strong></p>
 <p><code>{% post_link hexo-3-8-released '通往文章的链接' %}</code></p>
-<a href="/dev-spec/news/2018/10/19/hexo-3-8-released/" title="通往文章的链接">通往文章的链接</a>
+<a href="/news/2018/10/19/hexo-3-8-released/" title="通往文章的链接">通往文章的链接</a>
 
 <p><strong>对标题的特殊字符进行转义</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% post_link hexo-4-released &#x27;How to use &lt;b&gt; tag in title&#x27; %&#125;</span><br></pre></td></tr></table></figure>
-<a href="/dev-spec/news/2019/10/14/hexo-4-released/" title="How to use &lt;b&gt; tag in title">How to use &lt;b&gt; tag in title</a>
+<a href="/news/2019/10/14/hexo-4-released/" title="How to use &lt;b&gt; tag in title">How to use &lt;b&gt; tag in title</a>
 
 <p><strong>禁止对标题的特殊字符进行转义</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% post_link hexo-4-released &#x27;&lt;b&gt;bold&lt;/b&gt; custom title&#x27; false %&#125;</span><br></pre></td></tr></table></figure>
-<a href="/dev-spec/news/2019/10/14/hexo-4-released/" title="&lt;b&gt;bold&lt;&#x2F;b&gt; custom title"><b>bold</b> custom title</a>
+<a href="/news/2019/10/14/hexo-4-released/" title="&lt;b&gt;bold&lt;&#x2F;b&gt; custom title"><b>bold</b> custom title</a>
 
 <h2 id="引用资源" class="article-heading"><a href="#引用资源" class="headerlink" title="引用资源"></a>引用资源<a class="article-anchor" href="#引用资源" aria-hidden="true"></a></h2><p>引用文章的资源。</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% asset_path filename %&#125;</span><br><span class="line">&#123;% asset_img [class names] slug [width] [height] [title text [alt text]] %&#125;</span><br><span class="line">&#123;% asset_link filename [title] [escape] %&#125;</span><br></pre></td></tr></table></figure>
@@ -328,7 +328,7 @@ code snippet
   <nav id="mobile-nav">
   <div id="mobile-nav-inner">
     <ul id="mobile-nav-list">
-      <a href="/dev-spec/standard" class="mobile-nav-link">开发规范</a>
+      <a href="/standard" class="mobile-nav-link">开发规范</a>
       <li class="mobile-nav-item">
         <a href="https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
       </li>
