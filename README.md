@@ -11,16 +11,27 @@ $ cd it-dev-spec-frontend
 $ npm install
 ```
 
-Generate:
-
-``` bash
-$ hexo generate
-```
-
 Run server:
 
-``` bash
-$ hexo server
+```markdown
+npm run serve
+```
+
+Run build:
+
+```markdown
+npm run build
+```
+
+Run clean:
+
+```markdown
+npm run clean
+```
+
+Run deploy:
+```markdown
+npm run deploy
 ```
 
 ## License
