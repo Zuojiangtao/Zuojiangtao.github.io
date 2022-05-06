@@ -9,7 +9,7 @@
     "serve": "hexo server",
     "build": "hexo generate",
     "clean": "hexo clean",
-    "deploy": "hexo deploy",
+    "deploy": "hexo clean && hexo deploy",
     "eslint": "eslint .",
     "prepare": "husky install"
   },

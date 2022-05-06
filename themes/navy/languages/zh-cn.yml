@@ -110,3 +110,5 @@ sidebar:
     react: react开发规范
     structure: 代码结构
     rule: 项目开发约定
+    CI/CD: 持续集成
+    template: 模板工程

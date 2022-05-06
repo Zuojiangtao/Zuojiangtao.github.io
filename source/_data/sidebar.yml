@@ -86,3 +86,5 @@ standard:
     react: project/react.html
     structure: project/structure.html
     rule: project/rule.html
+    CI/CD: project/ci_cd.html
+    template: project/template.html

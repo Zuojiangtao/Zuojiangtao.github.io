@@ -7,7 +7,7 @@ title: 开发公约
 - LESS文件内用单引号'，不用双引号"
 - 比较时只能用===作比较，不用==
 - 不能用var申明变量，改用let，能用const不用let
-- import组件时名称为大驼峰：CompoentImportedName
+- import组件时名称为大驼峰：ComponentImportedName
 - *.vue文件中name用大驼峰命名
 - template模板内所有组件标签、元素标签名全部小写+连字符分隔
 - 组件属性一般不用每个都换行定义，除非太多太长需要换行显示或系统已经配置了eslint
@@ -25,9 +25,9 @@ title: 开发公约
 
 
 ### 二、http请求约定
-- 目前项目都采用post提交请求， token放header，其余参数放requestBody中发送请求。
-- 项目已经封装了默认的post/get方法供其它模块使用。
-
+- 目前项目都采用token放header。
+- 项目已经封装了集成请求/响应拦截器的方法，import request from '@/utils/request'使用。
+- 项目已经做了请求/响应拦截器
 
 ### 三、API定义
 - API定义引用已经统一定义的函数：`import { post, get } from '@/api'`
@@ -50,11 +50,7 @@ title: 开发公约
 * chore：不属于以上类型的其他类型，比如构建流程, 依赖管理
 * revert：回滚某个更早之前的提交
 
-
-
 **_注：不能一次提交过多的文件，且文件包含各种修改内容。尽量多commit集中push。每天尽量多次push，不能长时间不提交代码，之后一次提交，这样会造成更多的冲突，也不便于代码跟进。_**
 
-
-
-
-
+### 六、UI库使用
+暂定使用ant-design-vue作为小组业务开发的通用UI库。目前版本为vue2版本ant-design-vue@1.7.8.
