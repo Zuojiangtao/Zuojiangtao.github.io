@@ -3,11 +3,11 @@
   <title>开发规范</title>
   
   <subtitle>A fast, simple &amp; powerful blog framework powered by Node.js.</subtitle>
-  <link href="https://hexo.io/atom.xml" rel="self"/>
+  <link href="http://static.eos-ts.h3c.com/dev-spec/index.html/atom.xml" rel="self"/>
   
-  <link href="https://hexo.io/"/>
+  <link href="http://static.eos-ts.h3c.com/dev-spec/index.html/"/>
   <updated>2022-05-05T02:50:05.014Z</updated>
-  <id>https://hexo.io/</id>
+  <id>http://static.eos-ts.h3c.com/dev-spec/index.html/</id>
   
   <author>
     <name>zuo.jiangtao@h3c.com/ZuoJiangtao</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hexo 6.1.0 Released</title>
-    <link href="https://hexo.io/news/2022/03/12/hexo-6-1-0-released/"/>
-    <id>https://hexo.io/news/2022/03/12/hexo-6-1-0-released/</id>
+    <link href="http://static.eos-ts.h3c.com/dev-spec/index.html/news/2022/03/12/hexo-6-1-0-released/"/>
+    <id>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2022/03/12/hexo-6-1-0-released/</id>
     <published>2022-03-12T00:00:00.000Z</published>
     <updated>2022-05-05T02:50:05.014Z</updated>
     
@@ -39,8 +39,8 @@
   
   <entry>
     <title>Official plugins hexo-renderer-marked 5.0.0 and hexo-renderer-markdown-it 6.0.0 released</title>
-    <link href="https://hexo.io/news/2022/01/29/hexo-renderer-marked-5-0-0-and-hexo-renderer-markdown-it-6-0-0/"/>
-    <id>https://hexo.io/news/2022/01/29/hexo-renderer-marked-5-0-0-and-hexo-renderer-markdown-it-6-0-0/</id>
+    <link href="http://static.eos-ts.h3c.com/dev-spec/index.html/news/2022/01/29/hexo-renderer-marked-5-0-0-and-hexo-renderer-markdown-it-6-0-0/"/>
+    <id>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2022/01/29/hexo-renderer-marked-5-0-0-and-hexo-renderer-markdown-it-6-0-0/</id>
     <published>2022-01-29T00:00:00.000Z</published>
     <updated>2022-05-05T02:50:05.014Z</updated>
     
@@ -60,8 +60,8 @@
   
   <entry>
     <title>Official plugins hexo-front-matter 3.0.0, hexo-server 3.0.0, hexo-renderer-less-4.0.0 released</title>
-    <link href="https://hexo.io/news/2022/01/03/hexo-front-matter-3-0-0-hexo-server-3-0-0-hexo-renderer-less-4-0-0-released/"/>
-    <id>https://hexo.io/news/2022/01/03/hexo-front-matter-3-0-0-hexo-server-3-0-0-hexo-renderer-less-4-0-0-released/</id>
+    <link href="http://static.eos-ts.h3c.com/dev-spec/index.html/news/2022/01/03/hexo-front-matter-3-0-0-hexo-server-3-0-0-hexo-renderer-less-4-0-0-released/"/>
+    <id>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2022/01/03/hexo-front-matter-3-0-0-hexo-server-3-0-0-hexo-renderer-less-4-0-0-released/</id>
     <published>2022-01-03T00:00:00.000Z</published>
     <updated>2022-05-05T02:50:05.014Z</updated>
     
@@ -80,8 +80,8 @@
   
   <entry>
     <title>Hexo 6.0.0 Released</title>
-    <link href="https://hexo.io/news/2021/12/26/hexo-6-0-0-released/"/>
-    <id>https://hexo.io/news/2021/12/26/hexo-6-0-0-released/</id>
+    <link href="http://static.eos-ts.h3c.com/dev-spec/index.html/news/2021/12/26/hexo-6-0-0-released/"/>
+    <id>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2021/12/26/hexo-6-0-0-released/</id>
     <published>2021-12-26T00:00:00.000Z</published>
     <updated>2022-05-05T02:50:05.014Z</updated>
     
@@ -101,8 +101,8 @@
   
   <entry>
     <title>Official plugins hexo-renderer-ejs 2.0.0, hexo-generator-sitemap 2.2.0 released</title>
-    <link href="https://hexo.io/news/2021/11/26/hexo-renderer-ejs-2-0-0-and-hexo-generator-sitemap-2-2-0-released/"/>
-    <id>https://hexo.io/news/2021/11/26/hexo-renderer-ejs-2-0-0-and-hexo-generator-sitemap-2-2-0-released/</id>
+    <link href="http://static.eos-ts.h3c.com/dev-spec/index.html/news/2021/11/26/hexo-renderer-ejs-2-0-0-and-hexo-generator-sitemap-2-2-0-released/"/>
+    <id>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2021/11/26/hexo-renderer-ejs-2-0-0-and-hexo-generator-sitemap-2-2-0-released/</id>
     <published>2021-11-26T00:00:00.000Z</published>
     <updated>2022-05-05T02:50:05.014Z</updated>
     
@@ -121,8 +121,8 @@
   
   <entry>
     <title>Official plugins hexo-cli 4.3.0, hexo-renderer-pug 2.0.0, hexo-paginaiton 2.0.0, hexo-clean-css 2.0.0</title>
-    <link href="https://hexo.io/news/2021/07/09/hexo-renderer-pug-2-0-0-hexo-cli-4-3-0-hexo-paginaiton-2-0-0-hexo-clean-css-2-0-0/"/>
-    <id>https://hexo.io/news/2021/07/09/hexo-renderer-pug-2-0-0-hexo-cli-4-3-0-hexo-paginaiton-2-0-0-hexo-clean-css-2-0-0/</id>
+    <link href="http://static.eos-ts.h3c.com/dev-spec/index.html/news/2021/07/09/hexo-renderer-pug-2-0-0-hexo-cli-4-3-0-hexo-paginaiton-2-0-0-hexo-clean-css-2-0-0/"/>
+    <id>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2021/07/09/hexo-renderer-pug-2-0-0-hexo-cli-4-3-0-hexo-paginaiton-2-0-0-hexo-clean-css-2-0-0/</id>
     <published>2021-07-09T00:00:00.000Z</published>
     <updated>2022-05-05T02:50:05.014Z</updated>
     
@@ -142,8 +142,8 @@
   
   <entry>
     <title>hexo-util 2.5.0 released</title>
-    <link href="https://hexo.io/news/2021/05/05/hexo-util-2-5-0-released/"/>
-    <id>https://hexo.io/news/2021/05/05/hexo-util-2-5-0-released/</id>
+    <link href="http://static.eos-ts.h3c.com/dev-spec/index.html/news/2021/05/05/hexo-util-2-5-0-released/"/>
+    <id>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2021/05/05/hexo-util-2-5-0-released/</id>
     <published>2021-05-05T00:00:00.000Z</published>
     <updated>2022-05-05T02:50:05.014Z</updated>
     
@@ -163,8 +163,8 @@
   
   <entry>
     <title>hexo 5.4.0 released</title>
-    <link href="https://hexo.io/news/2021/02/21/hexo-5-4-0-released/"/>
-    <id>https://hexo.io/news/2021/02/21/hexo-5-4-0-released/</id>
+    <link href="http://static.eos-ts.h3c.com/dev-spec/index.html/news/2021/02/21/hexo-5-4-0-released/"/>
+    <id>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2021/02/21/hexo-5-4-0-released/</id>
     <published>2021-02-21T00:00:00.000Z</published>
     <updated>2022-05-05T02:50:05.014Z</updated>
     
@@ -183,8 +183,8 @@
   
   <entry>
     <title>hexo-deployer-git 3.0.0, hexo-renderer-marked 4.0.0 released</title>
-    <link href="https://hexo.io/news/2021/02/11/hexo-deployer-git-3-0-0-hexo-renderer-marked-4-0-0-released/"/>
-    <id>https://hexo.io/news/2021/02/11/hexo-deployer-git-3-0-0-hexo-renderer-marked-4-0-0-released/</id>
+    <link href="http://static.eos-ts.h3c.com/dev-spec/index.html/news/2021/02/11/hexo-deployer-git-3-0-0-hexo-renderer-marked-4-0-0-released/"/>
+    <id>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2021/02/11/hexo-deployer-git-3-0-0-hexo-renderer-marked-4-0-0-released/</id>
     <published>2021-02-11T00:00:00.000Z</published>
     <updated>2022-05-05T02:50:05.014Z</updated>
     
@@ -203,8 +203,8 @@
   
   <entry>
     <title>Hexo 5.3.0 released</title>
-    <link href="https://hexo.io/news/2020/12/17/hexo-5-3-released/"/>
-    <id>https://hexo.io/news/2020/12/17/hexo-5-3-released/</id>
+    <link href="http://static.eos-ts.h3c.com/dev-spec/index.html/news/2020/12/17/hexo-5-3-released/"/>
+    <id>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2020/12/17/hexo-5-3-released/</id>
     <published>2020-12-17T00:00:00.000Z</published>
     <updated>2022-05-05T02:50:05.014Z</updated>
     
@@ -223,8 +223,8 @@
   
   <entry>
     <title>Hexo 5.2.0, hexo-migrator-wordpress 2.1.2, hexo-renderer-marked 3.2.0, hexo-renderer-stylus 2.0.1 &amp; hexo-renderer-less 2.0.2 released</title>
-    <link href="https://hexo.io/news/2020/09/17/hexo-5-2_wordpress-2-1-2_marked-3-2_stylus-2_less-2/"/>
-    <id>https://hexo.io/news/2020/09/17/hexo-5-2_wordpress-2-1-2_marked-3-2_stylus-2_less-2/</id>
+    <link href="http://static.eos-ts.h3c.com/dev-spec/index.html/news/2020/09/17/hexo-5-2_wordpress-2-1-2_marked-3-2_stylus-2_less-2/"/>
+    <id>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2020/09/17/hexo-5-2_wordpress-2-1-2_marked-3-2_stylus-2_less-2/</id>
     <published>2020-09-17T00:00:00.000Z</published>
     <updated>2022-05-05T02:50:05.014Z</updated>
     
@@ -243,8 +243,8 @@
   
   <entry>
     <title>Official plugins hexo-generator-alias 1.0.0, hexo-cli 4.2.0, hexo-front-matter 2.0.0 &amp; hexo-generator-feed 3.0.0 released</title>
-    <link href="https://hexo.io/news/2020/09/04/alias-1_cli-4-2_front-matter-2_feed-3/"/>
-    <id>https://hexo.io/news/2020/09/04/alias-1_cli-4-2_front-matter-2_feed-3/</id>
+    <link href="http://static.eos-ts.h3c.com/dev-spec/index.html/news/2020/09/04/alias-1_cli-4-2_front-matter-2_feed-3/"/>
+    <id>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2020/09/04/alias-1_cli-4-2_front-matter-2_feed-3/</id>
     <published>2020-09-04T00:00:00.000Z</published>
     <updated>2022-05-05T02:50:05.014Z</updated>
     
@@ -263,8 +263,8 @@
   
   <entry>
     <title>Hexo 5.1.0, hexo-renderer-marked 3.1.0, hexo-math 4.0.0 &amp; hexo-util 2.4.0 released</title>
-    <link href="https://hexo.io/news/2020/08/22/hexo-5-1_marked-3-1_math-4_util-2-4/"/>
-    <id>https://hexo.io/news/2020/08/22/hexo-5-1_marked-3-1_math-4_util-2-4/</id>
+    <link href="http://static.eos-ts.h3c.com/dev-spec/index.html/news/2020/08/22/hexo-5-1_marked-3-1_math-4_util-2-4/"/>
+    <id>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2020/08/22/hexo-5-1_marked-3-1_math-4_util-2-4/</id>
     <published>2020-08-22T00:00:00.000Z</published>
     <updated>2022-05-05T02:50:05.014Z</updated>
     
@@ -283,8 +283,8 @@
   
   <entry>
     <title>Official plugins hexo-cli 4.1.0, hexo-migrator-wordpress 2.1.0, hexo-migrator-rss 1.1.0 &amp; hexo-generator-sitemap 2.1.0 released</title>
-    <link href="https://hexo.io/news/2020/08/02/cli-4_wordpress-2-1_sitemap-2-1/"/>
-    <id>https://hexo.io/news/2020/08/02/cli-4_wordpress-2-1_sitemap-2-1/</id>
+    <link href="http://static.eos-ts.h3c.com/dev-spec/index.html/news/2020/08/02/cli-4_wordpress-2-1_sitemap-2-1/"/>
+    <id>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2020/08/02/cli-4_wordpress-2-1_sitemap-2-1/</id>
     <published>2020-08-02T00:00:00.000Z</published>
     <updated>2022-05-05T02:50:05.014Z</updated>
     
@@ -303,8 +303,8 @@
   
   <entry>
     <title>Hexo 5.0.0 Released</title>
-    <link href="https://hexo.io/news/2020/07/29/hexo-5-released/"/>
-    <id>https://hexo.io/news/2020/07/29/hexo-5-released/</id>
+    <link href="http://static.eos-ts.h3c.com/dev-spec/index.html/news/2020/07/29/hexo-5-released/"/>
+    <id>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2020/07/29/hexo-5-released/</id>
     <published>2020-07-29T00:00:00.000Z</published>
     <updated>2022-05-05T02:50:05.014Z</updated>
     
@@ -323,8 +323,8 @@
   
   <entry>
     <title>Official plugins hexo-renderer-marked 3.0.0, hexo-migrator-wordpress 2.0.0 &amp; hexo-migrator-rss 1.0.0 released</title>
-    <link href="https://hexo.io/news/2020/06/27/hexo-marked-3_migrator-wordpress-2_migrator-rss-1/"/>
-    <id>https://hexo.io/news/2020/06/27/hexo-marked-3_migrator-wordpress-2_migrator-rss-1/</id>
+    <link href="http://static.eos-ts.h3c.com/dev-spec/index.html/news/2020/06/27/hexo-marked-3_migrator-wordpress-2_migrator-rss-1/"/>
+    <id>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2020/06/27/hexo-marked-3_migrator-wordpress-2_migrator-rss-1/</id>
     <published>2020-06-27T00:00:00.000Z</published>
     <updated>2022-05-05T02:50:05.014Z</updated>
     
@@ -343,8 +343,8 @@
   
   <entry>
     <title>Hexo 4.2.1 &amp; official plugin hexo-fs 2.0.1 &amp; hexo-util 1.9.1 released</title>
-    <link href="https://hexo.io/news/2020/05/14/hexo-4-2-1-hexo-fs-2-0-1-hexo-util-1-9-1/"/>
-    <id>https://hexo.io/news/2020/05/14/hexo-4-2-1-hexo-fs-2-0-1-hexo-util-1-9-1/</id>
+    <link href="http://static.eos-ts.h3c.com/dev-spec/index.html/news/2020/05/14/hexo-4-2-1-hexo-fs-2-0-1-hexo-util-1-9-1/"/>
+    <id>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2020/05/14/hexo-4-2-1-hexo-fs-2-0-1-hexo-util-1-9-1/</id>
     <published>2020-05-14T00:00:00.000Z</published>
     <updated>2022-05-05T02:50:05.014Z</updated>
     
@@ -363,8 +363,8 @@
   
   <entry>
     <title>Official plugins hexo-util 2.1.0 and hexo-fs 3.0.1 released</title>
-    <link href="https://hexo.io/news/2020/04/30/hexo-util-2_hexo-fs-3/"/>
-    <id>https://hexo.io/news/2020/04/30/hexo-util-2_hexo-fs-3/</id>
+    <link href="http://static.eos-ts.h3c.com/dev-spec/index.html/news/2020/04/30/hexo-util-2_hexo-fs-3/"/>
+    <id>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2020/04/30/hexo-util-2_hexo-fs-3/</id>
     <published>2020-04-30T00:00:00.000Z</published>
     <updated>2022-05-05T02:50:05.014Z</updated>
     
@@ -383,8 +383,8 @@
   
   <entry>
     <title>hexo-renderer-markdown-it 4.1.0 &amp; hexo-util 1.9.0 released</title>
-    <link href="https://hexo.io/news/2020/03/08/hexo-renderer-markdown-it-4-1-0-hexo-util-1-9-0-released/"/>
-    <id>https://hexo.io/news/2020/03/08/hexo-renderer-markdown-it-4-1-0-hexo-util-1-9-0-released/</id>
+    <link href="http://static.eos-ts.h3c.com/dev-spec/index.html/news/2020/03/08/hexo-renderer-markdown-it-4-1-0-hexo-util-1-9-0-released/"/>
+    <id>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2020/03/08/hexo-renderer-markdown-it-4-1-0-hexo-util-1-9-0-released/</id>
     <published>2020-03-08T00:00:00.000Z</published>
     <updated>2022-05-05T02:50:05.014Z</updated>
     
@@ -403,8 +403,8 @@
   
   <entry>
     <title>Speed is the Key - How We Make Hexo 30% Faster</title>
-    <link href="https://hexo.io/news/2019/12/24/how-we-make-hexo-30-percent-faster/"/>
-    <id>https://hexo.io/news/2019/12/24/how-we-make-hexo-30-percent-faster/</id>
+    <link href="http://static.eos-ts.h3c.com/dev-spec/index.html/news/2019/12/24/how-we-make-hexo-30-percent-faster/"/>
+    <id>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2019/12/24/how-we-make-hexo-30-percent-faster/</id>
     <published>2019-12-24T00:00:00.000Z</published>
     <updated>2022-05-05T02:50:05.014Z</updated>
     
