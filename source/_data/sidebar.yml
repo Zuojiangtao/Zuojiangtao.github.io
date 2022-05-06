@@ -1,0 +1,88 @@
+docs:
+  getting_started:
+    overview: index.html
+    setup: setup.html
+    configuration: configuration.html
+    commands: commands.html
+    migration: migration.html
+  basic_usage:
+    writing: writing.html
+    front_matter: front-matter.html
+    tag_plugins: tag-plugins.html
+    asset_folders: asset-folders.html
+    data_files: data-files.html
+    server: server.html
+    generating: generating.html
+  deployment:
+    github_pages: github-pages.html
+    gitlab_pages: gitlab-pages.html
+    one_command_deployment: one-command-deployment.html
+  customization:
+    permalinks: permalinks.html
+    themes: themes.html
+    templates: templates.html
+    variables: variables.html
+    helpers: helpers.html
+    internationalization: internationalization.html
+    syntax_highlight: syntax-highlight.html
+    plugins: plugins.html
+  miscellaneous:
+    troubleshooting: troubleshooting.html
+    contributing: contributing.html
+
+api:
+  core:
+    overview: index.html
+    events: events.html
+    locals: locals.html
+    router: router.html
+    box: box.html
+    rendering: rendering.html
+    posts: posts.html
+    scaffolds: scaffolds.html
+    themes: themes.html
+  extensions:
+    console: console.html
+    deployer: deployer.html
+    filter: filter.html
+    generator: generator.html
+    helper: helper.html
+    injector: injector.html
+    migrator: migrator.html
+    processor: processor.html
+    renderer: renderer.html
+    tag: tag.html
+
+standard:
+  getting_started:
+    overview: index.html
+  html:
+    html_code: html/code.html
+    html_note: html/note.html
+    html_webapp: html/webapp.html
+    html_template: html/template.html
+  css:
+    css_code: css/code.html
+    css_note: css/note.html
+    css_less: css/less.html
+    css_reset: css/reset.html
+    css_query: css/query.html
+    css_webkit: css/webkit.html
+  javascript:
+    js_code: js/code.html
+    js_language: js/language.html
+  image:
+    image_format: image/format.html
+    image_size: image/size.html
+    image_quality: image/quality.html
+    image_import: image/import.html
+  name:
+    name_dir: name/dir.html
+    name_image: name/image.html
+    name_htmlcss: name/htmlcss.html
+    name_class: name/classname.html
+  project:
+    vue: project/vue.html
+    react: project/react.html
+    structure: project/structure.html
+    rule: project/rule.html
