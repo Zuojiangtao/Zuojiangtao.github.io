@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Official plugins warehouse 3.0.0 & hexo-util 1.2.0, 1.3.0, 1.3.1 released | 开发规范</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://hexo.io/news/2019/09/27/warehouse-3_hexo-util-1-3-1/index.html">
+  <!-- Alternative links -->
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard" class="main-nav-link">开发规范</a>
+    </nav>
+    <div id="lang-select-wrap">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div class="wrapper">
+    <div class="inner">
+      <article class="article post" itemscope itemtype="http://schema.org/Article">
+  <header class="article-header">
+    
+      <h1 class="article-title" itemprop="name">Official plugins warehouse 3.0.0 & hexo-util 1.2.0, 1.3.0, 1.3.1 released</h1>
+    
+    <a href="/news/2019/09/27/warehouse-3_hexo-util-1-3-1/" class="article-date"><time datetime="2019-09-27T00:00:00.000Z">2019-09-27</time></a>
+  </header>
+  <div class="article-content" itemprop="articleBody">
+    <p>We released a new version of the official plugins <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/warehouse">warehouse</a> &amp; <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util">hexo-util</a>.</p>
+<h2 id="warehouse-3-0-0" class="article-heading"><a href="#warehouse-3-0-0" class="headerlink" title="warehouse 3.0.0"></a>warehouse 3.0.0<a class="article-anchor" href="#warehouse-3-0-0" aria-hidden="true"></a></h2><h3 id="Breaking-change" class="article-heading"><a href="#Breaking-change" class="headerlink" title="Breaking change"></a>Breaking change<a class="article-anchor" href="#Breaking-change" aria-hidden="true"></a></h3><ul>
+<li>Replace constructor function to class declaration <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/warehouse/pull/30">#30</a>, refer to <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/warehouse#30-breaking-change">the docs</a> for more info on updating to the new syntax.</li>
+<li>chore: drop node 6 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/warehouse/pull/49">#49</a></li>
+</ul>
+<h3 id="Refactor" class="article-heading"><a href="#Refactor" class="headerlink" title="Refactor"></a>Refactor<a class="article-anchor" href="#Refactor" aria-hidden="true"></a></h3><ul>
+<li>Remove old compatibility code <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/warehouse/pull/57">#57</a></li>
+<li>Convert method definitions <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/warehouse/pull/52">#52</a></li>
+<li>Split Schema class <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/warehouse/pull/58">#58</a></li>
+<li>refactor: use instanceof Date instead of util.isDate <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/warehouse/pull/37">#37</a></li>
+</ul>
+<h2 id="hexo-util-1-3-1" class="article-heading"><a href="#hexo-util-1-3-1" class="headerlink" title="hexo-util 1.3.1"></a>hexo-util 1.3.1<a class="article-anchor" href="#hexo-util-1-3-1" aria-hidden="true"></a></h2><h3 id="Fix" class="article-heading"><a href="#Fix" class="headerlink" title="Fix"></a>Fix<a class="article-anchor" href="#Fix" aria-hidden="true"></a></h3><ul>
+<li>fix(encode_url): skip encode non-urls <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/102">#102</a></li>
+</ul>
+<h2 id="hexo-util-1-3-0" class="article-heading"><a href="#hexo-util-1-3-0" class="headerlink" title="hexo-util 1.3.0"></a>hexo-util 1.3.0<a class="article-anchor" href="#hexo-util-1-3-0" aria-hidden="true"></a></h2><h3 id="Breaking-change-1" class="article-heading"><a href="#Breaking-change-1" class="headerlink" title="Breaking change"></a>Breaking change<a class="article-anchor" href="#Breaking-change-1" aria-hidden="true"></a></h3><ul>
+<li>fix(html_tag): escape html and encode url by default <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/93">#93</a><ul>
+<li>insert <code>false</code> to the 4th argument to disable escape</li>
+<li>e.g. <code>htmlTag(&#39;a&#39;, &#123;href: &#39;http://foo.com/&#39;&#125;, &#39;&lt;b&gt;bold&lt;/b&gt;&#39;, false)</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="Feature" class="article-heading"><a href="#Feature" class="headerlink" title="Feature"></a>Feature<a class="article-anchor" href="#Feature" aria-hidden="true"></a></h3><ul>
+<li>feat: decodeURL() <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/97">#97</a></li>
+</ul>
+<h3 id="Fix-1" class="article-heading"><a href="#Fix-1" class="headerlink" title="Fix"></a>Fix<a class="article-anchor" href="#Fix-1" aria-hidden="true"></a></h3><ul>
+<li>fix(encodeURL): encode path once only <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/92">#92</a></li>
+<li>fix(html_tag): encode url value of url-related attributes and skip escape&#x2F;encode <code>&lt;style&gt;</code> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/96">#96</a></li>
+<li>fix(html_tag): encode url() in style tag <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/101">#101</a></li>
+</ul>
+<h2 id="hexo-util-1-2-0" class="article-heading"><a href="#hexo-util-1-2-0" class="headerlink" title="hexo-util 1.2.0"></a>hexo-util 1.2.0<a class="article-anchor" href="#hexo-util-1-2-0" aria-hidden="true"></a></h2><h3 id="Feature-1" class="article-heading"><a href="#Feature-1" class="headerlink" title="Feature"></a>Feature<a class="article-anchor" href="#Feature-1" aria-hidden="true"></a></h3><ul>
+<li>add gravatar() <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/81">#81</a></li>
+<li>add url_for() &amp; relative_url() <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/82">#82</a></li>
+<li>add full_url_for() <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/84">#84</a></li>
+</ul>
+<h3 id="Fix-2" class="article-heading"><a href="#Fix-2" class="headerlink" title="Fix"></a>Fix<a class="article-anchor" href="#Fix-2" aria-hidden="true"></a></h3><ul>
+<li>fix(encodeURL): support hash&#x2F;anchor, auth and port number <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/85">#85</a></li>
+</ul>
+
+  </div>
+  
+<section id="comments">
+  <div id="disqus_thread"></div>
+</section>
+<script>
+  var disqus_shortname = 'hexojs';
+  var disqus_url = 'https://hexo.io/news/2019/09/27/warehouse-3_hexo-util-1-3-1/index.html';
+  var disqus_title = "Official plugins warehouse 3.0.0 & hexo-util 1.2.0, 1.3.0, 1.3.1 released";
+  var disqus_config = function(){
+    this.language = 'zh';
+  };
+  (function(){
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'https://go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+</article>
+
+    </div>
+  </div>
+</div>
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2022 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuo.jiangtao@h3c.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard" class="mobile-nav-link">开发规范</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></span>
+    <select id="mobile-lang-select" data-canonical="">
+      
+        <option value="zh-cn" selected>简体中文</option>
+      
+        <option value="en">English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>

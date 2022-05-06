@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>News | 开发规范</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://hexo.io/news/2020/06/index.html">
+  <!-- Alternative links -->
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard" class="main-nav-link">开发规范</a>
+    </nav>
+    <div id="lang-select-wrap">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div class="wrapper">
+    <div class="inner">
+      
+        
+          <article class="article post" itemscope itemtype="http://schema.org/Article">
+  <header class="article-header">
+    
+      <h1>
+        <a href="/news/2020/06/27/hexo-marked-3_migrator-wordpress-2_migrator-rss-1/" class="article-title" itemprop="name">Official plugins hexo-renderer-marked 3.0.0, hexo-migrator-wordpress 2.0.0 & hexo-migrator-rss 1.0.0 released</a>
+      </h1>
+    
+    <a href="/news/2020/06/27/hexo-marked-3_migrator-wordpress-2_migrator-rss-1/" class="article-date"><time datetime="2020-06-27T00:00:00.000Z">2020-06-27</time></a>
+  </header>
+  <div class="article-content" itemprop="articleBody">
+    <h2 id="hexo-renderer-marked-3-0-0" class="article-heading"><a href="#hexo-renderer-marked-3-0-0" class="headerlink" title="hexo-renderer-marked 3.0.0"></a>hexo-renderer-marked 3.0.0<a class="article-anchor" href="#hexo-renderer-marked-3-0-0" aria-hidden="true"></a></h2><h3 id="Breaking-change" class="article-heading"><a href="#Breaking-change" class="headerlink" title="Breaking change"></a>Breaking change<a class="article-anchor" href="#Breaking-change" aria-hidden="true"></a></h3><ul>
+<li>Remove codeblock highlight. <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked/pull/134">#134</a><ul>
+<li>This plugin is now neutral to the code highlight library used</li>
+</ul>
+</li>
+<li>Drop support of Node 8 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked/pull/155">#155</a></li>
+</ul>
+<h3 id="Feature" class="article-heading"><a href="#Feature" class="headerlink" title="Feature"></a>Feature<a class="article-anchor" href="#Feature" aria-hidden="true"></a></h3><ul>
+<li><p><code>prependRoot</code> option to prepend <code>root:</code> value to image path. <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked/pull/111">#111</a></p>
+<ul>
+<li>This is useful when you have custom <code>root:</code> value.</li>
+<li>Example:</li>
+</ul>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">root:</span> <span class="string">/blog/</span></span><br><span class="line"><span class="attr">marked:</span></span><br><span class="line">  <span class="attr">prependRoot:</span> <span class="literal">true</span> <span class="comment"># disabled by default</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>When embedding an internal image, instead of using <code>![image-title](/blog/foo/bar.jpg)</code>, you can save some typing by using <code>![image-title](/foo/bar.jpg)</code> instead. When this feature is enabled, <code>/blog</code> will be automatically prepended to <code>/foo/bar.jpg</code>.</li>
+</ul>
+</li>
+<li><p><code>external_link</code> option to open links in new tab. <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked/pull/116">#116</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked/pull/119">#119</a></p>
+<ul>
+<li>Usage:</li>
+</ul>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">external_link:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">exclude:</span> []</span><br><span class="line">  <span class="attr">nofollow:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>exclude: [&#39;foo.com&#39;, &#39;bar.net&#39;]</code> skips over links that start with <code>foo.com</code> or <code>bar.net</code>, e.g. <code>https://foo.com/post-a/</code> &amp; <code>https://bar.net/post-b/</code>. Subdomains need to be specified when applicable, including “www”; the example given here doesn’t apply to <code>http://www.bar.com/post-c</code>.</li>
+<li><code>nofollow: true</code> adds <code>rel=&quot;noopener external nofollow noreferrer&quot;</code> for <a target="_blank" rel="noopener external nofollow noreferrer" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Link_types">SEO</a>, otherwise it’s just <code>rel=&quot;noopener&quot;</code> if <code>external_link:</code> is enabled.</li>
+</ul>
+</li>
+<li><p>Support title attribute in image link <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked/pull/122">#122</a></p>
+<ul>
+<li><code>![caption](http://bar.com/b.jpg &quot;a-title&quot;)</code> -&gt; <code>&lt;img src=&quot;http://bar.com/b.jpg&quot; alt=&quot;caption&quot; title=&quot;a-title&quot;&gt;</code></li>
+</ul>
+</li>
+<li><p>Ability to override the default rendering functions. Refer to the <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked#extensibility">docs</a> for instruction. <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked/pull/129">#129</a></p>
+<ul>
+<li>Example usage include adding a custom class name to a link or an image embed.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Fix" class="article-heading"><a href="#Fix" class="headerlink" title="Fix"></a>Fix<a class="article-anchor" href="#Fix" aria-hidden="true"></a></h3><ul>
+<li>For safety, all links and image links are now encoded by default. <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked/pull/112">#112</a><ul>
+<li>Example: <code>/foo/bár.jpg</code> -&gt; <code>/foo/b%C3%A1r.jpg</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="Refactor" class="article-heading"><a href="#Refactor" class="headerlink" title="Refactor"></a>Refactor<a class="article-anchor" href="#Refactor" aria-hidden="true"></a></h3><ul>
+<li>Utilize existing <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util#isexternallinkurl-sitehost-exclude"><code>isExternalLink</code></a> of hexo-util to simplify codebase. <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked/pull/124">#124</a></li>
+</ul>
+<h3 id="Dependency" class="article-heading"><a href="#Dependency" class="headerlink" title="Dependency"></a>Dependency<a class="article-anchor" href="#Dependency" aria-hidden="true"></a></h3><ul>
+<li>Upgrade marked from 0.7.0 to 1.0.0 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked/pull/128">#128</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked/pull/144">#144</a></li>
+</ul>
+<hr>
+<h2 id="hexo-migrator-wordpress-2-0-0" class="article-heading"><a href="#hexo-migrator-wordpress-2-0-0" class="headerlink" title="hexo-migrator-wordpress 2.0.0"></a>hexo-migrator-wordpress 2.0.0<a class="article-anchor" href="#hexo-migrator-wordpress-2-0-0" aria-hidden="true"></a></h2><p>v2 is a complete rewrite to utilize modern APIs. By no means it is feature-complete, please test it on your wordpress.xml and report any item that did not get imported.</p>
+<h3 id="Breaking-change-1" class="article-heading"><a href="#Breaking-change-1" class="headerlink" title="Breaking change"></a>Breaking change<a class="article-anchor" href="#Breaking-change-1" aria-hidden="true"></a></h3><ul>
+<li>Requires Node 12+, drop support &lt; Node 12 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-wordpress/pull/61">#61</a><ul>
+<li>A requirement of camaro v6 which utilizes <a target="_blank" rel="noopener external nofollow noreferrer" href="https://nodejs.org/api/worker_threads.html"><code>worker_threads</code></a>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Feature-1" class="article-heading"><a href="#Feature-1" class="headerlink" title="Feature"></a>Feature<a class="article-anchor" href="#Feature-1" aria-hidden="true"></a></h3><ul>
+<li><code>--skipduplicate</code> option to skip importing posts which have similar title as existing ones. <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-wordpress/pull/57">#57</a><ul>
+<li>Disabled by default</li>
+<li>Usage: <code>hexo migrate wordpress /path/to/wordpress.xml --skipduplicate</code></li>
+</ul>
+</li>
+<li><code>--limit [number]</code> option to set the maximum number of posts to import. <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-wordpress/pull/57">#57</a><ul>
+<li>Default to importing all posts.</li>
+<li>Usage: <code>hexo migrate wordpress /path/to/wordpress.xml --limit 3</code></li>
+</ul>
+</li>
+<li><code>--alias</code> option to redirect post to wordpress-hosted post. <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-wordpress/pull/57">#57</a><ul>
+<li>Requires <a target="_blank" rel="noopener external nofollow noreferrer" href="http://github.com/hexojs/hexo-generator-alias">hexo-generator-alias</a></li>
+<li>Usage: <code>hexo migrate wordpress /path/to/wordpress.xml --alias</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="Refactor-1" class="article-heading"><a href="#Refactor-1" class="headerlink" title="Refactor"></a>Refactor<a class="article-anchor" href="#Refactor-1" aria-hidden="true"></a></h3><ul>
+<li>Complete rewrite to utilize modern API&#x2F;library. It enables more flexible parsing of input xml with the ability to support custom elements and future formats. <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-wordpress/pull/57">#57</a></li>
+</ul>
+<h3 id="Dependency-1" class="article-heading"><a href="#Dependency-1" class="headerlink" title="Dependency"></a>Dependency<a class="article-anchor" href="#Dependency-1" aria-hidden="true"></a></h3><ul>
+<li>Upgrade turndown from 4.0.2 to 6.0.0 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-wordpress/pull/41">#41</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-wordpress/pull/58">#58</a></li>
+</ul>
+<hr>
+<h2 id="hexo-migrator-rss-1-0-0" class="article-heading"><a href="#hexo-migrator-rss-1-0-0" class="headerlink" title="hexo-migrator-rss 1.0.0"></a>hexo-migrator-rss 1.0.0<a class="article-anchor" href="#hexo-migrator-rss-1-0-0" aria-hidden="true"></a></h2><p>v1 is a complete rewrite to utilize modern APIs. By no means it is feature-complete, please test it on your atom.xml&#x2F;rss.xml and report any item that did not get imported.</p>
+<h3 id="Breaking-change-2" class="article-heading"><a href="#Breaking-change-2" class="headerlink" title="Breaking change"></a>Breaking change<a class="article-anchor" href="#Breaking-change-2" aria-hidden="true"></a></h3><ul>
+<li>Requires Node 12+, drop support &lt; Node 12 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-rss/pull/60">#60</a><ul>
+<li>A requirement of <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-rss/pull/58">camaro@6</a> which utilizes <a target="_blank" rel="noopener external nofollow noreferrer" href="https://nodejs.org/api/worker_threads.html"><code>worker_threads</code></a>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Feature-2" class="article-heading"><a href="#Feature-2" class="headerlink" title="Feature"></a>Feature<a class="article-anchor" href="#Feature-2" aria-hidden="true"></a></h3><ul>
+<li><code>--skipduplicate</code> option to skip importing posts which have similar title as existing ones. <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-rss/pull/44">#44</a><ul>
+<li>Disabled by default</li>
+<li>Usage: <code>hexo migrate rss /path/to/feed.xml --skipduplicate</code></li>
+</ul>
+</li>
+<li><code>--limit [number]</code> option to set the maximum number of posts to import. <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-rss/pull/37">#37</a><ul>
+<li>Default to importing all posts.</li>
+<li>Usage: <code>hexo migrate rss /path/to/feed.xml --limit 3</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="Refactor-2" class="article-heading"><a href="#Refactor-2" class="headerlink" title="Refactor"></a>Refactor<a class="article-anchor" href="#Refactor-2" aria-hidden="true"></a></h3><ul>
+<li>Complete rewrite to utilize modern API&#x2F;library. It enables more flexible parsing of input feed with the ability to support custom elements and future formats. <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-rss/pull/34">#34</a></li>
+</ul>
+<h3 id="Dependencies" class="article-heading"><a href="#Dependencies" class="headerlink" title="Dependencies"></a>Dependencies<a class="article-anchor" href="#Dependencies" aria-hidden="true"></a></h3><ul>
+<li>Upgrade camaro from 4.2.0 to 6.0.2 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-rss/pull/58">#58</a></li>
+<li>Upgrade turndown from 5.0.3 to 6.0.0 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-rss/pull/47">#47</a></li>
+<li>Upgrade got from 10.7.0 to 11.0.1 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-rss/pull/49">#49</a></li>
+<li>Upgrade hexo-util from 1.9.0 to 2.1.0 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-rss/pull/53">#53</a></li>
+<li>Upgrade hexo-fs from 2.0.0 to 3.0.1 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-rss/pull/50">#50</a></li>
+</ul>
+
+  </div>
+  
+</article>
+
+        
+      
+    </div>
+  </div>
+</div>
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2022 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuo.jiangtao@h3c.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard" class="mobile-nav-link">开发规范</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></span>
+    <select id="mobile-lang-select" data-canonical="">
+      
+        <option value="zh-cn" selected>简体中文</option>
+      
+        <option value="en">English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>

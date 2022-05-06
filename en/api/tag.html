@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Tag | 开发规范</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://hexo.io/en/api/tag.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="zh-cn" href="https://hexo.io/en/api/tag">
+    
+      <link rel="alternative" hreflang="en" href="https://hexo.io/en/en/api/tag">
+    
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/en/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard" class="main-nav-link">standard</a>
+    </nav>
+    <div id="lang-select-wrap">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">Tag</h1>
+                <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/site/edit/master/source/en/api/tag.md" class="article-edit-link" title="Improve this doc"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <p>A tag allows users to quickly and easily insert snippets into their posts.</p>
+<h2 id="Synopsis" class="article-heading"><a href="#Synopsis" class="headerlink" title="Synopsis"></a>Synopsis<a class="article-anchor" href="#Synopsis" aria-hidden="true"></a></h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">hexo.<span class="property">extend</span>.<span class="property">tag</span>.<span class="title function_">register</span>(name, <span class="keyword">function</span>(<span class="params">args, content</span>)&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;, options);</span><br></pre></td></tr></table></figure>
+
+<p>Two arguments will be passed into the tag function: <code>args</code> and <code>content</code>. <code>args</code> contains the arguments passed into the tag plugin and <code>content</code> is the wrapped content from the tag plugin.</p>
+<p>Since the introduction of asynchronous rendering in Hexo 3, we are using <a target="_blank" rel="noopener external nofollow noreferrer" href="https://mozilla.github.io/nunjucks/">Nunjucks</a> for rendering. The behavior may be somewhat different from that in <a target="_blank" rel="noopener external nofollow noreferrer" href="http://paularmstrong.github.io/swig/">Swig</a>.</p>
+<h2 id="Unregister-Tags" class="article-heading"><a href="#Unregister-Tags" class="headerlink" title="Unregister Tags"></a>Unregister Tags<a class="article-anchor" href="#Unregister-Tags" aria-hidden="true"></a></h2><p>Use <code>unregister()</code> to replace existing <a href="/docs/tag-plugins">tag plugins</a> with custom functions.</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">hexo.<span class="property">extend</span>.<span class="property">tag</span>.<span class="title function_">unregister</span>(name);</span><br></pre></td></tr></table></figure>
+
+<p><strong>Example</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">tagFn</span> = (<span class="params">args, content</span>) =&gt; &#123;</span><br><span class="line">  content = <span class="string">&#x27;something&#x27;</span>;</span><br><span class="line">  <span class="keyword">return</span> content;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// https://hexo.io/docs/tag-plugins#YouTube</span></span><br><span class="line">hexo.<span class="property">extend</span>.<span class="property">tag</span>.<span class="title function_">unregister</span>(<span class="string">&#x27;youtube&#x27;</span>);</span><br><span class="line"></span><br><span class="line">hexo.<span class="property">extend</span>.<span class="property">tag</span>.<span class="title function_">register</span>(<span class="string">&#x27;youtube&#x27;</span>, tagFn);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Options" class="article-heading"><a href="#Options" class="headerlink" title="Options"></a>Options<a class="article-anchor" href="#Options" aria-hidden="true"></a></h2><h3 id="ends" class="article-heading"><a href="#ends" class="headerlink" title="ends"></a>ends<a class="article-anchor" href="#ends" aria-hidden="true"></a></h3><p>Use end tags. This option is <code>false</code> by default.</p>
+<h3 id="async" class="article-heading"><a href="#async" class="headerlink" title="async"></a>async<a class="article-anchor" href="#async" aria-hidden="true"></a></h3><p>Enable async mode. This option is <code>false</code> by default.</p>
+<h2 id="Examples" class="article-heading"><a href="#Examples" class="headerlink" title="Examples"></a>Examples<a class="article-anchor" href="#Examples" aria-hidden="true"></a></h2><h3 id="Without-End-Tags" class="article-heading"><a href="#Without-End-Tags" class="headerlink" title="Without End Tags"></a>Without End Tags<a class="article-anchor" href="#Without-End-Tags" aria-hidden="true"></a></h3><p>Insert a Youtube video.</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">hexo.<span class="property">extend</span>.<span class="property">tag</span>.<span class="title function_">register</span>(<span class="string">&#x27;youtube&#x27;</span>, <span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">  <span class="keyword">var</span> id = args[<span class="number">0</span>];</span><br><span class="line">  <span class="keyword">return</span> <span class="string">&#x27;&lt;div class=&quot;video-container&quot;&gt;&lt;iframe width=&quot;560&quot; height=&quot;315&quot; src=&quot;http://www.youtube.com/embed/&#x27;</span> + id + <span class="string">&#x27;&quot; frameborder=&quot;0&quot; allowfullscreen&gt;&lt;/iframe&gt;&lt;/div&gt;&#x27;</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="With-End-Tags" class="article-heading"><a href="#With-End-Tags" class="headerlink" title="With End Tags"></a>With End Tags<a class="article-anchor" href="#With-End-Tags" aria-hidden="true"></a></h3><p>Insert a pull quote.</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">hexo.<span class="property">extend</span>.<span class="property">tag</span>.<span class="title function_">register</span>(<span class="string">&#x27;pullquote&#x27;</span>, <span class="keyword">function</span>(<span class="params">args, content</span>)&#123;</span><br><span class="line">  <span class="keyword">var</span> className =  args.<span class="title function_">join</span>(<span class="string">&#x27; &#x27;</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="string">&#x27;&lt;blockquote class=&quot;pullquote&#x27;</span> + className + <span class="string">&#x27;&quot;&gt;&#x27;</span> + content + <span class="string">&#x27;&lt;/blockquote&gt;&#x27;</span>;</span><br><span class="line">&#125;, &#123;<span class="attr">ends</span>: <span class="literal">true</span>&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Async-Rendering" class="article-heading"><a href="#Async-Rendering" class="headerlink" title="Async Rendering"></a>Async Rendering<a class="article-anchor" href="#Async-Rendering" aria-hidden="true"></a></h3><p>Insert a file.</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;hexo-fs&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> pathFn = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"></span><br><span class="line">hexo.<span class="property">extend</span>.<span class="property">tag</span>.<span class="title function_">register</span>(<span class="string">&#x27;include_code&#x27;</span>, <span class="keyword">function</span>(<span class="params">args</span>)&#123;</span><br><span class="line">  <span class="keyword">var</span> filename = args[<span class="number">0</span>];</span><br><span class="line">  <span class="keyword">var</span> path = pathFn.<span class="title function_">join</span>(hexo.<span class="property">source_dir</span>, filename);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> fs.<span class="title function_">readFile</span>(path).<span class="title function_">then</span>(<span class="keyword">function</span>(<span class="params">content</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;&lt;pre&gt;&lt;code&gt;&#x27;</span> + content + <span class="string">&#x27;&lt;/code&gt;&lt;/pre&gt;&#x27;</span>;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;, &#123;<span class="attr">async</span>: <span class="literal">true</span>&#125;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Front-matter-and-user-configuration" class="article-heading"><a href="#Front-matter-and-user-configuration" class="headerlink" title="Front-matter and user configuration"></a>Front-matter and user configuration<a class="article-anchor" href="#Front-matter-and-user-configuration" aria-hidden="true"></a></h2><p>Any of the following options is valid:</p>
+<ol>
+<li></li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">hexo.<span class="property">extend</span>.<span class="property">tag</span>.<span class="title function_">register</span>(<span class="string">&#x27;foo&#x27;</span>, <span class="keyword">function</span> (<span class="params">args</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> [firstArg] = args;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// User config</span></span><br><span class="line">  <span class="keyword">const</span> &#123; config &#125; = hexo;</span><br><span class="line">  <span class="keyword">const</span> editor = config.<span class="property">author</span> + firstArg;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Theme config</span></span><br><span class="line">  <span class="keyword">const</span> &#123; <span class="attr">config</span>: themeCfg &#125; = hexo.<span class="property">theme</span>;</span><br><span class="line">  <span class="keyword">if</span> (themeCfg.<span class="property">fancybox</span>) <span class="comment">// do something...</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// Front-matter</span></span><br><span class="line">  <span class="keyword">const</span> &#123; title &#125; = <span class="variable language_">this</span>; <span class="comment">// article&#x27;s (post/page) title</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// Article&#x27;s content</span></span><br><span class="line">  <span class="keyword">const</span> &#123; _content &#125; = <span class="variable language_">this</span>; <span class="comment">// original content</span></span><br><span class="line">  <span class="keyword">const</span> &#123; content &#125; = <span class="variable language_">this</span>; <span class="comment">// HTML-rendered content</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="string">&#x27;foo&#x27;</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li></li>
+</ol>
+<figure class="highlight js"><figcaption><span>index.js</span></figcaption><table><tr><td class="code"><pre><span class="line">hexo.<span class="property">extend</span>.<span class="property">tag</span>.<span class="title function_">register</span>(<span class="string">&#x27;foo&#x27;</span>, <span class="built_in">require</span>(<span class="string">&#x27;./lib/foo&#x27;</span>)(hexo));</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><figcaption><span>lib/foo.js</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="function"><span class="params">hexo</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">function</span> <span class="title function_">fooFn</span>(<span class="params">args</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> [firstArg] = args;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> &#123; config &#125; = hexo;</span><br><span class="line">    <span class="keyword">const</span> editor = config.<span class="property">author</span> + firstArg;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> &#123; <span class="attr">config</span>: themeCfg &#125; = hexo.<span class="property">theme</span>;</span><br><span class="line">    <span class="keyword">if</span> (themeCfg.<span class="property">fancybox</span>) <span class="comment">// do something...</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> &#123; title, _content, content &#125; = <span class="variable language_">this</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;foo&#x27;</span>;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2022-05-05T02:50:05.014Z" itemprop="dateModified">Last updated: 2022-05-05</time>
+                <a href="renderer.html" class="article-footer-prev" title="Renderer"><i class="fa fa-chevron-left"></i><span>Prev</span></a>
+              </footer>
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">Contents</strong>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Synopsis"><span class="toc-text">Synopsis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Unregister-Tags"><span class="toc-text">Unregister Tags</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Options"><span class="toc-text">Options</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ends"><span class="toc-text">ends</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#async"><span class="toc-text">async</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Examples"><span class="toc-text">Examples</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Without-End-Tags"><span class="toc-text">Without End Tags</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#With-End-Tags"><span class="toc-text">With End Tags</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Async-Rendering"><span class="toc-text">Async Rendering</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Front-matter-and-user-configuration"><span class="toc-text">Front-matter and user configuration</span></a></li></ol>
+              <a href="#" id="article-toc-top">Back to Top</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">Core</strong><a href="/standard/index.html" class="sidebar-link">Overview</a><a href="/standard/events.html" class="sidebar-link">Events</a><a href="/standard/locals.html" class="sidebar-link">Locals</a><a href="/standard/router.html" class="sidebar-link">Router</a><a href="/standard/box.html" class="sidebar-link">Box</a><a href="/standard/rendering.html" class="sidebar-link">Rendering</a><a href="/standard/posts.html" class="sidebar-link">Posts</a><a href="/standard/scaffolds.html" class="sidebar-link">Scaffolds</a><a href="/standard/themes.html" class="sidebar-link">Themes</a><strong class="sidebar-title">Extensions</strong><a href="/standard/console.html" class="sidebar-link">Console</a><a href="/standard/deployer.html" class="sidebar-link">Deployer</a><a href="/standard/filter.html" class="sidebar-link">Filter</a><a href="/standard/generator.html" class="sidebar-link">Generator</a><a href="/standard/helper.html" class="sidebar-link">Helper</a><a href="/standard/injector.html" class="sidebar-link">Injector</a><a href="/standard/migrator.html" class="sidebar-link">Migrator</a><a href="/standard/processor.html" class="sidebar-link">Processor</a><a href="/standard/renderer.html" class="sidebar-link">Renderer</a><a href="/standard/tag.html" class="sidebar-link">Tag</a>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2022 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuo.jiangtao@h3c.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard" class="mobile-nav-link">standard</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">Core</strong><a href="/standard/index.html" class="mobile-nav-link">Overview</a><a href="/standard/events.html" class="mobile-nav-link">Events</a><a href="/standard/locals.html" class="mobile-nav-link">Locals</a><a href="/standard/router.html" class="mobile-nav-link">Router</a><a href="/standard/box.html" class="mobile-nav-link">Box</a><a href="/standard/rendering.html" class="mobile-nav-link">Rendering</a><a href="/standard/posts.html" class="mobile-nav-link">Posts</a><a href="/standard/scaffolds.html" class="mobile-nav-link">Scaffolds</a><a href="/standard/themes.html" class="mobile-nav-link">Themes</a><strong class="mobile-nav-title">Extensions</strong><a href="/standard/console.html" class="mobile-nav-link">Console</a><a href="/standard/deployer.html" class="mobile-nav-link">Deployer</a><a href="/standard/filter.html" class="mobile-nav-link">Filter</a><a href="/standard/generator.html" class="mobile-nav-link">Generator</a><a href="/standard/helper.html" class="mobile-nav-link">Helper</a><a href="/standard/injector.html" class="mobile-nav-link">Injector</a><a href="/standard/migrator.html" class="mobile-nav-link">Migrator</a><a href="/standard/processor.html" class="mobile-nav-link">Processor</a><a href="/standard/renderer.html" class="mobile-nav-link">Renderer</a><a href="/standard/tag.html" class="mobile-nav-link">Tag</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>English</span></span>
+    <select id="mobile-lang-select" data-canonical="api/tag.html">
+      
+        <option value="zh-cn">简体中文</option>
+      
+        <option value="en" selected>English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Renderer | 开发规范</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://hexo.io/en/api/renderer.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="zh-cn" href="https://hexo.io/en/api/renderer">
+    
+      <link rel="alternative" hreflang="en" href="https://hexo.io/en/en/api/renderer">
+    
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/en/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard" class="main-nav-link">standard</a>
+    </nav>
+    <div id="lang-select-wrap">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">Renderer</h1>
+                <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/site/edit/master/source/en/api/renderer.md" class="article-edit-link" title="Improve this doc"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <p>A renderer is used to render content.</p>
+<h2 id="Synopsis" class="article-heading"><a href="#Synopsis" class="headerlink" title="Synopsis"></a>Synopsis<a class="article-anchor" href="#Synopsis" aria-hidden="true"></a></h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">hexo.<span class="property">extend</span>.<span class="property">renderer</span>.<span class="title function_">register</span>(name, output, <span class="keyword">function</span>(<span class="params">data, options</span>)&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;, sync);</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>name</code></td>
+<td>Input filename extension (lower case, without leading <code>.</code>)</td>
+</tr>
+<tr>
+<td><code>output</code></td>
+<td>Output filename extension (lower case, without leading <code>.</code>)</td>
+</tr>
+<tr>
+<td><code>sync</code></td>
+<td>Sync mode</td>
+</tr>
+</tbody></table>
+<p>Three arguments will be passed into the render function:</p>
+<table>
+<thead>
+<tr>
+<th>Argument</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>data</code></td>
+<td>Include two attributes: file path <code>path</code> and file content <code>text</code>. <code>path</code> won’t necessarily exist.</td>
+</tr>
+<tr>
+<td><code>option</code></td>
+<td>Options</td>
+</tr>
+<tr>
+<td><code>callback</code></td>
+<td>Callback function of two parameters <code>err</code>, <code>value</code>.</td>
+</tr>
+</tbody></table>
+<h2 id="Example" class="article-heading"><a href="#Example" class="headerlink" title="Example"></a>Example<a class="article-anchor" href="#Example" aria-hidden="true"></a></h2><h3 id="Async-Mode" class="article-heading"><a href="#Async-Mode" class="headerlink" title="Async Mode"></a>Async Mode<a class="article-anchor" href="#Async-Mode" aria-hidden="true"></a></h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> stylus = <span class="built_in">require</span>(<span class="string">&#x27;stylus&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Callback</span></span><br><span class="line">hexo.<span class="property">extend</span>.<span class="property">renderer</span>.<span class="title function_">register</span>(<span class="string">&#x27;styl&#x27;</span>, <span class="string">&#x27;css&#x27;</span>, <span class="keyword">function</span>(<span class="params">data, options, callback</span>)&#123;</span><br><span class="line">  <span class="title function_">stylus</span>(data.<span class="property">text</span>).<span class="title function_">set</span>(<span class="string">&#x27;filename&#x27;</span>, data.<span class="property">path</span>).<span class="title function_">render</span>(callback);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Promise</span></span><br><span class="line">hexo.<span class="property">extend</span>.<span class="property">renderer</span>.<span class="title function_">register</span>(<span class="string">&#x27;styl&#x27;</span>, <span class="string">&#x27;css&#x27;</span>, <span class="keyword">function</span>(<span class="params">data, options</span>)&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="keyword">function</span>(<span class="params">resolve, reject</span>)&#123;</span><br><span class="line">    <span class="title function_">resolve</span>(<span class="string">&#x27;test&#x27;</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Sync-Mode" class="article-heading"><a href="#Sync-Mode" class="headerlink" title="Sync Mode"></a>Sync Mode<a class="article-anchor" href="#Sync-Mode" aria-hidden="true"></a></h3><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> ejs = <span class="built_in">require</span>(<span class="string">&#x27;ejs&#x27;</span>);</span><br><span class="line"></span><br><span class="line">hexo.<span class="property">extend</span>.<span class="property">renderer</span>.<span class="title function_">register</span>(<span class="string">&#x27;ejs&#x27;</span>, <span class="string">&#x27;html&#x27;</span>, <span class="keyword">function</span>(<span class="params">data, options</span>)&#123;</span><br><span class="line">  options.<span class="property">filename</span> = data.<span class="property">path</span>;</span><br><span class="line">  <span class="keyword">return</span> ejs.<span class="title function_">render</span>(data.<span class="property">text</span>, options);</span><br><span class="line">&#125;, <span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+
+<h3 id="Disable-Nunjucks-tags" class="article-heading"><a href="#Disable-Nunjucks-tags" class="headerlink" title="Disable Nunjucks tags"></a>Disable Nunjucks tags<a class="article-anchor" href="#Disable-Nunjucks-tags" aria-hidden="true"></a></h3><p>Nunjucks tags <code>&#123;&#123; &#125;&#125;</code> or <code>&#123;% %&#125;</code> (utilized by <a href="/docs/tag-plugins">tag plugin</a>) are processed by default, to disable:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">lessFn</span>(<span class="params">data, options</span>) &#123;</span><br><span class="line">  <span class="comment">// do something</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">lessFn.<span class="property">disableNunjucks</span> = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">hexo.<span class="property">extend</span>.<span class="property">renderer</span>.<span class="title function_">register</span>(<span class="string">&#x27;less&#x27;</span>, <span class="string">&#x27;css&#x27;</span>, lessFn);</span><br></pre></td></tr></table></figure>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2022-05-05T02:50:05.014Z" itemprop="dateModified">Last updated: 2022-05-05</time>
+                <a href="processor.html" class="article-footer-prev" title="Processor"><i class="fa fa-chevron-left"></i><span>Prev</span></a><a href="tag.html" class="article-footer-next" title="Tag"><span>Next</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">Contents</strong>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Synopsis"><span class="toc-text">Synopsis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Example"><span class="toc-text">Example</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Async-Mode"><span class="toc-text">Async Mode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sync-Mode"><span class="toc-text">Sync Mode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Disable-Nunjucks-tags"><span class="toc-text">Disable Nunjucks tags</span></a></li></ol></li></ol>
+              <a href="#" id="article-toc-top">Back to Top</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">Core</strong><a href="/standard/index.html" class="sidebar-link">Overview</a><a href="/standard/events.html" class="sidebar-link">Events</a><a href="/standard/locals.html" class="sidebar-link">Locals</a><a href="/standard/router.html" class="sidebar-link">Router</a><a href="/standard/box.html" class="sidebar-link">Box</a><a href="/standard/rendering.html" class="sidebar-link">Rendering</a><a href="/standard/posts.html" class="sidebar-link">Posts</a><a href="/standard/scaffolds.html" class="sidebar-link">Scaffolds</a><a href="/standard/themes.html" class="sidebar-link">Themes</a><strong class="sidebar-title">Extensions</strong><a href="/standard/console.html" class="sidebar-link">Console</a><a href="/standard/deployer.html" class="sidebar-link">Deployer</a><a href="/standard/filter.html" class="sidebar-link">Filter</a><a href="/standard/generator.html" class="sidebar-link">Generator</a><a href="/standard/helper.html" class="sidebar-link">Helper</a><a href="/standard/injector.html" class="sidebar-link">Injector</a><a href="/standard/migrator.html" class="sidebar-link">Migrator</a><a href="/standard/processor.html" class="sidebar-link">Processor</a><a href="/standard/renderer.html" class="sidebar-link">Renderer</a><a href="/standard/tag.html" class="sidebar-link">Tag</a>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2022 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuo.jiangtao@h3c.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard" class="mobile-nav-link">standard</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">Core</strong><a href="/standard/index.html" class="mobile-nav-link">Overview</a><a href="/standard/events.html" class="mobile-nav-link">Events</a><a href="/standard/locals.html" class="mobile-nav-link">Locals</a><a href="/standard/router.html" class="mobile-nav-link">Router</a><a href="/standard/box.html" class="mobile-nav-link">Box</a><a href="/standard/rendering.html" class="mobile-nav-link">Rendering</a><a href="/standard/posts.html" class="mobile-nav-link">Posts</a><a href="/standard/scaffolds.html" class="mobile-nav-link">Scaffolds</a><a href="/standard/themes.html" class="mobile-nav-link">Themes</a><strong class="mobile-nav-title">Extensions</strong><a href="/standard/console.html" class="mobile-nav-link">Console</a><a href="/standard/deployer.html" class="mobile-nav-link">Deployer</a><a href="/standard/filter.html" class="mobile-nav-link">Filter</a><a href="/standard/generator.html" class="mobile-nav-link">Generator</a><a href="/standard/helper.html" class="mobile-nav-link">Helper</a><a href="/standard/injector.html" class="mobile-nav-link">Injector</a><a href="/standard/migrator.html" class="mobile-nav-link">Migrator</a><a href="/standard/processor.html" class="mobile-nav-link">Processor</a><a href="/standard/renderer.html" class="mobile-nav-link">Renderer</a><a href="/standard/tag.html" class="mobile-nav-link">Tag</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>English</span></span>
+    <select id="mobile-lang-select" data-canonical="api/renderer.html">
+      
+        <option value="zh-cn">简体中文</option>
+      
+        <option value="en" selected>English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>

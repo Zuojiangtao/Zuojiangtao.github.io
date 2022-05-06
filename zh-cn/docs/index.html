@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>文档 | 开发规范</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://hexo.io/zh-cn/docs/index.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="zh-cn" href="https://hexo.io/zh-cn/docs/">
+    
+      <link rel="alternative" hreflang="en" href="https://hexo.io/en/zh-cn/docs/">
+    
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard" class="main-nav-link">开发规范</a>
+    </nav>
+    <div id="lang-select-wrap">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">文档</h1>
+                <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/site/edit/master/source/zh-cn/docs/index.md" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <p>欢迎使用 Hexo，本文档将帮助您快速上手。如果您在使用过程中遇到问题，请查看 <a href="troubleshooting.html">问题解答</a> 中的解答，或者在 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/issues">GitHub</a>、<a target="_blank" rel="noopener external nofollow noreferrer" href="https://groups.google.com/group/hexo">Google Group</a> 上提问。</p>
+<h2 id="什么是-Hexo？" class="article-heading"><a href="#什么是-Hexo？" class="headerlink" title="什么是 Hexo？"></a>什么是 Hexo？<a class="article-anchor" href="#什么是-Hexo？" aria-hidden="true"></a></h2><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 <a target="_blank" rel="noopener external nofollow noreferrer" href="http://daringfireball.net/projects/markdown/">Markdown</a>（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
+<div class="video-container"><iframe src="https://www.youtube.com/embed/PsXWbI2Mqu0" frameborder="0" loading="lazy" allowfullscreen></iframe></div>
+
+<h2 id="安装" class="article-heading"><a href="#安装" class="headerlink" title="安装"></a>安装<a class="article-anchor" href="#安装" aria-hidden="true"></a></h2><p>安装 Hexo 只需几分钟时间，若您在安装过程中遇到问题或无法找到解决方式，请 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/issues">提交问题</a>，我们会尽力解决您的问题。</p>
+<h3 id="安装前提" class="article-heading"><a href="#安装前提" class="headerlink" title="安装前提"></a>安装前提<a class="article-anchor" href="#安装前提" aria-hidden="true"></a></h3><p>安装 Hexo 相当简单，只需要先安装下列应用程序即可：</p>
+<ul>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="http://nodejs.org/">Node.js</a> (Node.js 版本需不低于 10.13，建议使用 Node.js 12.0 及以上版本)</li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="http://git-scm.com/">Git</a></li>
+</ul>
+<p>如果您的电脑中已经安装上述必备程序，那么恭喜您！你可以直接前往 <a href="#%E5%AE%89%E8%A3%85-Hexo">安装 Hexo</a> 步骤。</p>
+<p>如果您的电脑中尚未安装所需要的程序，请根据以下安装指示完成安装。</p>
+<h3 id="安装-Git" class="article-heading"><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 Git<a class="article-anchor" href="#安装-Git" aria-hidden="true"></a></h3><ul>
+<li>Windows：下载并安装 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://git-scm.com/download/win">git</a>.</li>
+<li>Mac：使用 <a target="_blank" rel="noopener external nofollow noreferrer" href="http://mxcl.github.com/homebrew/">Homebrew</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="http://www.macports.org/">MacPorts</a> 或者下载 <a target="_blank" rel="noopener external nofollow noreferrer" href="http://sourceforge.net/projects/git-osx-installer/">安装程序</a>。</li>
+<li>Linux (Ubuntu, Debian)：<code>sudo apt-get install git-core</code></li>
+<li>Linux (Fedora, Red Hat, CentOS)：<code>sudo yum install git-core</code></li>
+</ul>
+<blockquote class="note warn"><strong class="note-title">Mac 用户</strong><p>如果在编译时可能会遇到问题，请先到 App Store 安装 Xcode，Xcode 完成后，启动并进入 <strong>Preferences -&gt; Download -&gt; Command Line Tools -&gt; Install</strong> 安装命令行工具。</p>
+</blockquote>
+
+<blockquote class="note info"><strong class="note-title">Windows 用户</strong><p>对于中国大陆地区用户，可以前往 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://npm.taobao.org/mirrors/git-for-windows/">淘宝 Git for Windows 镜像</a> 下载 git 安装包。</p>
+</blockquote>
+
+<h3 id="安装-Node-js" class="article-heading"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 Node.js<a class="article-anchor" href="#安装-Node-js" aria-hidden="true"></a></h3><p>Node.js 为大多数平台提供了官方的 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://nodejs.org/en/download/">安装程序</a>。对于中国大陆地区用户，可以前往 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://npm.taobao.org/mirrors/node">淘宝 Node.js 镜像</a> 下载。</p>
+<p>其它的安装方法：</p>
+<ul>
+<li>Windows：通过 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jasongin/nvs/">nvs</a>（推荐）或者 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/nvm-sh/nvm">nvm</a> 安装。</li>
+<li>Mac：使用 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://brew.sh/">Homebrew</a> 或 <a target="_blank" rel="noopener external nofollow noreferrer" href="http://www.macports.org/">MacPorts</a> 安装。</li>
+<li>Linux（DEB&#x2F;RPM-based）：从 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/nodesource/distributions">NodeSource</a> 安装。</li>
+<li>其它：使用相应的软件包管理器进行安装，可以参考由 Node.js 提供的 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://nodejs.org/en/download/package-manager/">指导</a>。</li>
+</ul>
+<p>对于 Mac 和 Linux 同样建议使用 nvs 或者 nvm，以避免可能会出现的权限问题。</p>
+<blockquote class="note info"><strong class="note-title">Windows 用户</strong><p>使用 Node.js 官方安装程序时，请确保勾选 <strong>Add to PATH</strong> 选项（默认已勾选）</p>
+</blockquote>
+
+<blockquote class="note warn"><strong class="note-title">For Mac / Linux 用户</strong><p>如果在尝试安装 Hexo 的过程中出现 <code>EACCES</code> 权限错误，请遵循 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally">由 npmjs 发布的指导</a> 修复该问题。强烈建议 <strong>不要</strong> 使用 root、sudo 等方法覆盖权限</p>
+</blockquote>
+
+<blockquote class="note info"><strong class="note-title">Linux</strong><p>如果您使用 Snap 来安装 Node.js，在 <a href="/zh-cn/docs/commands#init">初始化</a> 博客时您可能需要手动在目标文件夹中执行 <code>npm install</code>。</p>
+</blockquote>
+
+<h3 id="安装-Hexo" class="article-heading"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo<a class="article-anchor" href="#安装-Hexo" aria-hidden="true"></a></h3><p>所有必备的应用程序安装完成后，即可使用 npm 安装 Hexo。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<h3 id="进阶安装和使用" class="article-heading"><a href="#进阶安装和使用" class="headerlink" title="进阶安装和使用"></a>进阶安装和使用<a class="article-anchor" href="#进阶安装和使用" aria-hidden="true"></a></h3><p>对于熟悉 npm 的进阶用户，可以仅局部安装 <code>hexo</code> 包。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install hexo</span><br></pre></td></tr></table></figure>
+
+<p>安装以后，可以使用以下两种方式执行 Hexo：</p>
+<ol>
+<li><code>npx hexo &lt;command&gt;</code></li>
+<li>将 Hexo 所在的目录下的 <code>node_modules</code> 添加到环境变量之中即可直接使用 <code>hexo &lt;command&gt;</code>：</li>
+</ol>
+  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;PATH=&quot;$PATH:./node_modules/.bin&quot;&#x27;</span> &gt;&gt; ~/.profile</span><br></pre></td></tr></table></figure>
+
+<h3 id="Node-js-版本限制" class="article-heading"><a href="#Node-js-版本限制" class="headerlink" title="Node.js 版本限制"></a>Node.js 版本限制<a class="article-anchor" href="#Node-js-版本限制" aria-hidden="true"></a></h3><p>我们强烈建议永远安装最新版本的 Hexo，以及 <a href="#%E5%AE%89%E8%A3%85%E5%89%8D%E6%8F%90">推荐的 Node.js 版本</a>。</p>
+<table>
+<thead>
+<tr>
+<th>Hexo 版本</th>
+<th>最低兼容 Node.js 版本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>6.0+</td>
+<td>12.13.0</td>
+</tr>
+<tr>
+<td>5.0+</td>
+<td>10.13.0</td>
+</tr>
+<tr>
+<td>4.1 - 4.2</td>
+<td>8.10</td>
+</tr>
+<tr>
+<td>4.0</td>
+<td>8.6</td>
+</tr>
+<tr>
+<td>3.3 - 3.9</td>
+<td>6.9</td>
+</tr>
+<tr>
+<td>3.2 - 3.3</td>
+<td>0.12</td>
+</tr>
+<tr>
+<td>3.0 - 3.1</td>
+<td>0.10 or iojs</td>
+</tr>
+<tr>
+<td>0.0.1 - 2.8</td>
+<td>0.10</td>
+</tr>
+</tbody></table>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2022-05-05T02:50:05.302Z" itemprop="dateModified">上次更新：2022-05-05</time>
+                <a href="setup.html" class="article-footer-next" title="建站"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Hexo%EF%BC%9F"><span class="toc-text">什么是 Hexo？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%89%8D%E6%8F%90"><span class="toc-text">安装前提</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-Git"><span class="toc-text">安装 Git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-Node-js"><span class="toc-text">安装 Node.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-Hexo"><span class="toc-text">安装 Hexo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E9%98%B6%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8"><span class="toc-text">进阶安装和使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Node-js-%E7%89%88%E6%9C%AC%E9%99%90%E5%88%B6"><span class="toc-text">Node.js 版本限制</span></a></li></ol></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">开始使用</strong><a href="/standard/index.html" class="sidebar-link">概述</a><a href="/standard/setup.html" class="sidebar-link">建站</a><a href="/standard/configuration.html" class="sidebar-link">配置</a><a href="/standard/commands.html" class="sidebar-link">命令</a><a href="/standard/migration.html" class="sidebar-link">迁移</a><strong class="sidebar-title">基本操作</strong><a href="/standard/writing.html" class="sidebar-link">写作</a><a href="/standard/front-matter.html" class="sidebar-link">Front-matter</a><a href="/standard/tag-plugins.html" class="sidebar-link">标签插件</a><a href="/standard/asset-folders.html" class="sidebar-link">资源文件夹</a><a href="/standard/data-files.html" class="sidebar-link">数据文件夹</a><a href="/standard/server.html" class="sidebar-link">服务器</a><a href="/standard/generating.html" class="sidebar-link">生成器</a><strong class="sidebar-title">部署</strong><a href="/standard/github-pages.html" class="sidebar-link">GitHub Pages</a><a href="/standard/gitlab-pages.html" class="sidebar-link">GitLab Pages</a><a href="/standard/one-command-deployment.html" class="sidebar-link">一键部署</a><strong class="sidebar-title">自定义</strong><a href="/standard/permalinks.html" class="sidebar-link">永久链接</a><a href="/standard/themes.html" class="sidebar-link">主题</a><a href="/standard/templates.html" class="sidebar-link">模版</a><a href="/standard/variables.html" class="sidebar-link">变量</a><a href="/standard/helpers.html" class="sidebar-link">辅助函数</a><a href="/standard/internationalization.html" class="sidebar-link">国际化 (i18n)</a><a href="/standard/syntax-highlight.html" class="sidebar-link">代码高亮</a><a href="/standard/plugins.html" class="sidebar-link">插件</a><strong class="sidebar-title">其他</strong><a href="/standard/troubleshooting.html" class="sidebar-link">问题解答</a><a href="/standard/contributing.html" class="sidebar-link">贡献</a>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2022 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuo.jiangtao@h3c.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard" class="mobile-nav-link">开发规范</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">开始使用</strong><a href="/standard/index.html" class="mobile-nav-link">概述</a><a href="/standard/setup.html" class="mobile-nav-link">建站</a><a href="/standard/configuration.html" class="mobile-nav-link">配置</a><a href="/standard/commands.html" class="mobile-nav-link">命令</a><a href="/standard/migration.html" class="mobile-nav-link">迁移</a><strong class="mobile-nav-title">基本操作</strong><a href="/standard/writing.html" class="mobile-nav-link">写作</a><a href="/standard/front-matter.html" class="mobile-nav-link">Front-matter</a><a href="/standard/tag-plugins.html" class="mobile-nav-link">标签插件</a><a href="/standard/asset-folders.html" class="mobile-nav-link">资源文件夹</a><a href="/standard/data-files.html" class="mobile-nav-link">数据文件夹</a><a href="/standard/server.html" class="mobile-nav-link">服务器</a><a href="/standard/generating.html" class="mobile-nav-link">生成器</a><strong class="mobile-nav-title">部署</strong><a href="/standard/github-pages.html" class="mobile-nav-link">GitHub Pages</a><a href="/standard/gitlab-pages.html" class="mobile-nav-link">GitLab Pages</a><a href="/standard/one-command-deployment.html" class="mobile-nav-link">一键部署</a><strong class="mobile-nav-title">自定义</strong><a href="/standard/permalinks.html" class="mobile-nav-link">永久链接</a><a href="/standard/themes.html" class="mobile-nav-link">主题</a><a href="/standard/templates.html" class="mobile-nav-link">模版</a><a href="/standard/variables.html" class="mobile-nav-link">变量</a><a href="/standard/helpers.html" class="mobile-nav-link">辅助函数</a><a href="/standard/internationalization.html" class="mobile-nav-link">国际化 (i18n)</a><a href="/standard/syntax-highlight.html" class="mobile-nav-link">代码高亮</a><a href="/standard/plugins.html" class="mobile-nav-link">插件</a><strong class="mobile-nav-title">其他</strong><a href="/standard/troubleshooting.html" class="mobile-nav-link">问题解答</a><a href="/standard/contributing.html" class="mobile-nav-link">贡献</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></span>
+    <select id="mobile-lang-select" data-canonical="docs/index.html">
+      
+        <option value="zh-cn" selected>简体中文</option>
+      
+        <option value="en">English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>

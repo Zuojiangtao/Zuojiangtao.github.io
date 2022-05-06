@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Tag Plugins | 开发规范</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://hexo.io/en/docs/tag-plugins.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="zh-cn" href="https://hexo.io/en/docs/tag-plugins">
+    
+      <link rel="alternative" hreflang="en" href="https://hexo.io/en/en/docs/tag-plugins">
+    
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/en/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard" class="main-nav-link">standard</a>
+    </nav>
+    <div id="lang-select-wrap">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">Tag Plugins</h1>
+                <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/site/edit/master/source/en/docs/tag-plugins.md" class="article-edit-link" title="Improve this doc"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <p>Tag plugins are different from post tags. They are ported from Octopress and provide a useful way for you to quickly add specific content to your posts.</p>
+<p>Although you can write your posts in any formats, but the tag plugins will always be available and syntax remains the same.</p>
+<div class="video-container"><iframe src="https://www.youtube.com/embed/I07XMi7MHd4" frameborder="0" loading="lazy" allowfullscreen></iframe></div>
+
+<p><em>Tag plugins should not be wrapped inside Markdown syntax, e.g. <code>[](&#123;% post_path lorem-ipsum %&#125;)</code> is not supported.</em></p>
+<h2 id="Block-Quote" class="article-heading"><a href="#Block-Quote" class="headerlink" title="Block Quote"></a>Block Quote<a class="article-anchor" href="#Block-Quote" aria-hidden="true"></a></h2><p>Perfect for adding quotes to your post, with optional author, source and title information.</p>
+<p><strong>Alias:</strong> quote</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% blockquote [author[, source]] [link] [source_link_title] %&#125;</span><br><span class="line">content</span><br><span class="line">&#123;% endblockquote %&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Examples" class="article-heading"><a href="#Examples" class="headerlink" title="Examples"></a>Examples<a class="article-anchor" href="#Examples" aria-hidden="true"></a></h3><p><strong>No arguments. Plain blockquote.</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% blockquote %&#125;</span><br><span class="line">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque hendrerit lacus ut purus iaculis feugiat. Sed nec tempor elit, quis aliquam neque. Curabitur sed diam eget dolor fermentum semper at eu lorem.</span><br><span class="line">&#123;% endblockquote %&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque hendrerit lacus ut purus iaculis feugiat. Sed nec tempor elit, quis aliquam neque. Curabitur sed diam eget dolor fermentum semper at eu lorem.</p>
+</blockquote>
+
+<p><strong>Quote from a book</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% blockquote David Levithan, Wide Awake %&#125;</span><br><span class="line">Do not just seek happiness for yourself. Seek happiness for all. Through kindness. Through mercy.</span><br><span class="line">&#123;% endblockquote %&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote><p>Do not just seek happiness for yourself. Seek happiness for all. Through kindness. Through mercy.</p>
+<footer><strong>David Levithan</strong><cite>Wide Awake</cite></footer></blockquote>
+
+<p><strong>Quote from Twitter</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% blockquote @DevDocs https://twitter.com/devdocs/status/356095192085962752 %&#125;</span><br><span class="line">NEW: DevDocs now comes with syntax highlighting. http://devdocs.io</span><br><span class="line">&#123;% endblockquote %&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote><p>NEW: DevDocs now comes with syntax highlighting. <a target="_blank" rel="noopener external nofollow noreferrer" href="http://devdocs.io/">http://devdocs.io</a></p>
+<footer><strong>@DevDocs</strong><cite><a target="_blank" rel="noopener external nofollow noreferrer" href="https://twitter.com/devdocs/status/356095192085962752">twitter.com/devdocs/status/356095192085962752</a></cite></footer></blockquote>
+
+<p><strong>Quote from an article on the web</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% blockquote Seth Godin http://sethgodin.typepad.com/seths_blog/2009/07/welcome-to-island-marketing.html Welcome to Island Marketing %&#125;</span><br><span class="line">Every interaction is both precious and an opportunity to delight.</span><br><span class="line">&#123;% endblockquote %&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote><p>Every interaction is both precious and an opportunity to delight.</p>
+<footer><strong>Seth Godin</strong><cite><a target="_blank" rel="noopener external nofollow noreferrer" href="http://sethgodin.typepad.com/seths_blog/2009/07/welcome-to-island-marketing.html">Welcome to Island Marketing</a></cite></footer></blockquote>
+
+<h2 id="Code-Block" class="article-heading"><a href="#Code-Block" class="headerlink" title="Code Block"></a>Code Block<a class="article-anchor" href="#Code-Block" aria-hidden="true"></a></h2><p>Useful feature for adding code snippets to your post.</p>
+<p><strong>Alias:</strong> code</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% codeblock [title] [lang:language] [url] [link text] [additional options] %&#125;</span><br><span class="line">code snippet</span><br><span class="line">&#123;% endcodeblock %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Specify additional options in <code>option:value</code> format, e.g. <code>line_number:false first_line:5</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Extra Options</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>line_number</code></td>
+<td>Show line number</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>line_threshold</code></td>
+<td>Only show line numbers as long as the numbers of lines of the code block exceed such threshold.</td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td><code>highlight</code></td>
+<td>Enable code highlighting</td>
+<td><code>true</code></td>
+</tr>
+<tr>
+<td><code>first_line</code></td>
+<td>Specify the first line number</td>
+<td><code>1</code></td>
+</tr>
+<tr>
+<td><code>mark</code></td>
+<td>Line highlight specific line(s), each value separated by a comma. Specify number range using a dash<br>Example: <code>mark:1,4-7,10</code> will mark line 1, 4 to 7 and 10.</td>
+<td></td>
+</tr>
+<tr>
+<td><code>wrap</code></td>
+<td>Wrap the code block in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/table"><code>&lt;table&gt;</code></a></td>
+<td><code>true</code></td>
+</tr>
+</tbody></table>
+<h3 id="Examples-1" class="article-heading"><a href="#Examples-1" class="headerlink" title="Examples"></a>Examples<a class="article-anchor" href="#Examples-1" aria-hidden="true"></a></h3><p><strong>A plain code block</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% codeblock %&#125;</span><br><span class="line">alert(&#x27;Hello World!&#x27;);</span><br><span class="line">&#123;% endcodeblock %&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">alert(&#x27;Hello World!&#x27;);</span><br></pre></td></tr></table></figure>
+
+<p><strong>Specifying the language</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% codeblock lang:objc %&#125;</span><br><span class="line">[rectangle setX: 10 y: 10 width: 20 height: 20];</span><br><span class="line">&#123;% endcodeblock %&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight objc"><table><tr><td class="code"><pre><span class="line">[rectangle setX: <span class="number">10</span> y: <span class="number">10</span> width: <span class="number">20</span> height: <span class="number">20</span>];</span><br></pre></td></tr></table></figure>
+
+<p><strong>Adding a caption to the code block</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% codeblock Array.map %&#125;</span><br><span class="line">array.map(callback[, thisArg])</span><br><span class="line">&#123;% endcodeblock %&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><figcaption><span>Array.map</span></figcaption><table><tr><td class="code"><pre><span class="line">array.map(callback[, thisArg])</span><br></pre></td></tr></table></figure>
+
+<p><strong>Adding a caption and a URL</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% codeblock _.compact http://underscorejs.org/#compact Underscore.js %&#125;</span><br><span class="line">_.compact([0, 1, false, 2, &#x27;&#x27;, 3]);</span><br><span class="line">=&gt; [1, 2, 3]</span><br><span class="line">&#123;% endcodeblock %&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><figcaption><span>_.compact</span><a target="_blank" rel="noopener external nofollow noreferrer" href="http://underscorejs.org/#compact">Underscore.js</a></figcaption><table><tr><td class="code"><pre><span class="line">_.compact([0, 1, false, 2, &#x27;&#x27;, 3]);</span><br><span class="line">=&gt; [1, 2, 3]</span><br></pre></td></tr></table></figure>
+
+<h2 id="Backtick-Code-Block" class="article-heading"><a href="#Backtick-Code-Block" class="headerlink" title="Backtick Code Block"></a>Backtick Code Block<a class="article-anchor" href="#Backtick-Code-Block" aria-hidden="true"></a></h2><p>This is identical to using a code block, but instead uses three backticks to delimit the block.</p>
+
+&#96`` [language] [title] [url] [link text]
+code snippet
+&#96;``
+
+
+<h2 id="Pull-Quote" class="article-heading"><a href="#Pull-Quote" class="headerlink" title="Pull Quote"></a>Pull Quote<a class="article-anchor" href="#Pull-Quote" aria-hidden="true"></a></h2><p>To add pull quotes to your posts:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% pullquote [class] %&#125;</span><br><span class="line">content</span><br><span class="line">&#123;% endpullquote %&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="jsFiddle" class="article-heading"><a href="#jsFiddle" class="headerlink" title="jsFiddle"></a>jsFiddle<a class="article-anchor" href="#jsFiddle" aria-hidden="true"></a></h2><p>To embed a jsFiddle snippet:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% jsfiddle shorttag [tabs] [skin] [width] [height] %&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Gist" class="article-heading"><a href="#Gist" class="headerlink" title="Gist"></a>Gist<a class="article-anchor" href="#Gist" aria-hidden="true"></a></h2><p>To embed a Gist snippet:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% gist gist_id [filename] %&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="iframe" class="article-heading"><a href="#iframe" class="headerlink" title="iframe"></a>iframe<a class="article-anchor" href="#iframe" aria-hidden="true"></a></h2><p>To embed an iframe:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% iframe url [width] [height] %&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Image" class="article-heading"><a href="#Image" class="headerlink" title="Image"></a>Image<a class="article-anchor" href="#Image" aria-hidden="true"></a></h2><p>Inserts an image with specified size.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% img [class names] /path/to/image [width] [height] &#x27;&quot;title text&quot; &quot;alt text&quot;&#x27; %&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Link" class="article-heading"><a href="#Link" class="headerlink" title="Link"></a>Link<a class="article-anchor" href="#Link" aria-hidden="true"></a></h2><p>Inserts a link with <code>target=&quot;_blank&quot;</code> attribute.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% link text url [external] [title] %&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Include-Code" class="article-heading"><a href="#Include-Code" class="headerlink" title="Include Code"></a>Include Code<a class="article-anchor" href="#Include-Code" aria-hidden="true"></a></h2><p>Inserts code snippets in <code>source/downloads/code</code> folder. The folder location can be specified through the <code>code_dir</code> option in the config.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% include_code [title] [lang:language] [from:line] [to:line] path/to/file %&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Examples-2" class="article-heading"><a href="#Examples-2" class="headerlink" title="Examples"></a>Examples<a class="article-anchor" href="#Examples-2" aria-hidden="true"></a></h3><p><strong>Embed the whole content of test.js</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% include_code lang:javascript test.js %&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Embed line 3 only</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% include_code lang:javascript from:3 to:3 test.js %&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Embed line 5 to 8</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% include_code lang:javascript from:5 to:8 test.js %&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Embed line 5 to the end of file</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% include_code lang:javascript from:5 test.js %&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Embed line 1 to 8</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% include_code lang:javascript to:8 test.js %&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="YouTube" class="article-heading"><a href="#YouTube" class="headerlink" title="YouTube"></a>YouTube<a class="article-anchor" href="#YouTube" aria-hidden="true"></a></h2><p>Inserts a YouTube video.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% youtube video_id [type] [cookie] %&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Examples-3" class="article-heading"><a href="#Examples-3" class="headerlink" title="Examples"></a>Examples<a class="article-anchor" href="#Examples-3" aria-hidden="true"></a></h3><p><strong>Embed a video</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% youtube lJIrF4YjHfQ %&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Embed a playlist</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% youtube PL9hW1uS6HUfscJ9DHkOSoOX45MjXduUxo &#x27;playlist&#x27; %&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Enable privacy-enhanced mode</strong></p>
+<p>YouTube’s cookie is not used in this mode.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% youtube lJIrF4YjHfQ false %&#125;</span><br><span class="line">&#123;% youtube PL9hW1uS6HUfscJ9DHkOSoOX45MjXduUxo &#x27;playlist&#x27; false %&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Vimeo" class="article-heading"><a href="#Vimeo" class="headerlink" title="Vimeo"></a>Vimeo<a class="article-anchor" href="#Vimeo" aria-hidden="true"></a></h2><p>Inserts a responsive or specified size Vimeo video.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% vimeo video_id [width] [height] %&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Include-Posts" class="article-heading"><a href="#Include-Posts" class="headerlink" title="Include Posts"></a>Include Posts<a class="article-anchor" href="#Include-Posts" aria-hidden="true"></a></h2><p>Include links to other posts.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% post_path filename %&#125;</span><br><span class="line">&#123;% post_link filename [title] [escape] %&#125;</span><br></pre></td></tr></table></figure>
+
+<p>You can ignore permalink and folder information, like languages and dates, when using this tag.</p>
+<p>For instance: <code>{% post_link how-to-bake-a-cake %}</code>.</p>
+<p>This will work as long as the filename of the post is <code>how-to-bake-a-cake.md</code>, even if the post is located at <code>source/posts/2015-02-my-family-holiday</code> and has permalink <code>2018/en/how-to-bake-a-cake</code>.</p>
+<p>You can customize the text to display, instead of displaying the post’s title.</p>
+<p>Post’s title and custom text are escaped by default. You can use the <code>escape</code> option to disable escaping.</p>
+<p>For instance:</p>
+<p><strong>Display title of the post.</strong></p>
+<p><code>{% post_link hexo-3-8-released %}</code></p>
+<a href="/news/2018/10/19/hexo-3-8-released/" title="Hexo 3.8.0 Released">Hexo 3.8.0 Released</a>
+
+<p><strong>Display custom text.</strong></p>
+<p><code>{% post_link hexo-3-8-released 'Link to a post' %}</code></p>
+<a href="/news/2018/10/19/hexo-3-8-released/" title="Link to a post">Link to a post</a>
+
+<p><strong>Escape title.</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% post_link hexo-4-released &#x27;How to use &lt;b&gt; tag in title&#x27; %&#125;</span><br></pre></td></tr></table></figure>
+
+<a href="/news/2019/10/14/hexo-4-released/" title="How to use &lt;b&gt; tag in title">How to use &lt;b&gt; tag in title</a>
+
+<p><strong>Do not escape title.</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% post_link hexo-4-released &#x27;&lt;b&gt;bold&lt;/b&gt; custom title&#x27; false %&#125;</span><br></pre></td></tr></table></figure>
+
+<a href="/news/2019/10/14/hexo-4-released/" title="&lt;b&gt;bold&lt;&#x2F;b&gt; custom title"><b>bold</b> custom title</a>
+
+<h2 id="Include-Assets" class="article-heading"><a href="#Include-Assets" class="headerlink" title="Include Assets"></a>Include Assets<a class="article-anchor" href="#Include-Assets" aria-hidden="true"></a></h2><p>Include post assets, to be used in conjunction with <a href="/docs/asset-folders"><code>post_asset_folder</code></a>.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% asset_path filename %&#125;</span><br><span class="line">&#123;% asset_img [class names] slug [width] [height] [title text [alt text]] %&#125;</span><br><span class="line">&#123;% asset_link filename [title] [escape] %&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="Embed-image" class="article-heading"><a href="#Embed-image" class="headerlink" title="Embed image"></a>Embed image<a class="article-anchor" href="#Embed-image" aria-hidden="true"></a></h3><p><em>hexo-renderer-marked 3.1.0+ can (optionally) resolves the post’s path of an image automatically, refer to <a href="/docs/asset-folders#Embedding-an-image-using-markdown">this section</a> on how to enable it.</em></p>
+<p>“foo.jpg” is located at <code>http://example.com/2020/01/02/hello/foo.jpg</code>.</p>
+<p><strong>Default (no option)</strong></p>
+<p><code>&#123;% asset_img foo.jpg %&#125;</code></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;/2020/01/02/hello/foo.jpg&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Custom class</strong></p>
+<p><code>&#123;% asset_img post-image foo.jpg %&#125;</code></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;/2020/01/02/hello/foo.jpg&quot;</span> <span class="attr">class</span>=<span class="string">&quot;post-image&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Display size</strong></p>
+<p><code>&#123;% asset_img foo.jpg 500 400 %&#125;</code></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;/2020/01/02/hello/foo.jpg&quot;</span> <span class="attr">width</span>=<span class="string">&quot;500&quot;</span> <span class="attr">height</span>=<span class="string">&quot;400&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>Title &amp; Alt</strong></p>
+<p><code>&#123;% asset_img foo.jpg "lorem ipsum'dolor'" %&#125;</code></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;/2020/01/02/hello/foo.jpg&quot;</span> <span class="attr">title</span>=<span class="string">&quot;lorem ipsum&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;dolor&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Raw" class="article-heading"><a href="#Raw" class="headerlink" title="Raw"></a>Raw<a class="article-anchor" href="#Raw" aria-hidden="true"></a></h2><p>If certain content is causing processing issues in your posts, wrap it with the <code>raw</code> tag to avoid rendering errors.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% raw %&#125;</span><br><span class="line">content</span><br><span class="line">&#123;% endraw %&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Post-Excerpt" class="article-heading"><a href="#Post-Excerpt" class="headerlink" title="Post Excerpt"></a>Post Excerpt<a class="article-anchor" href="#Post-Excerpt" aria-hidden="true"></a></h2><p>Use text placed before the <code>&lt;!-- more --&gt;</code> tag as an excerpt for the post. <code>excerpt:</code> value in the <a href="/docs/front-matter#Settings-amp-Their-Default-Values">front-matter</a>, if specified, will take precedent.</p>
+<p><strong>Examples:</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span><br></pre></td></tr></table></figure>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2022-05-05T02:50:05.014Z" itemprop="dateModified">Last updated: 2022-05-05</time>
+                <a href="front-matter.html" class="article-footer-prev" title="Front-matter"><i class="fa fa-chevron-left"></i><span>Prev</span></a><a href="asset-folders.html" class="article-footer-next" title="Asset Folders"><span>Next</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">Contents</strong>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Block-Quote"><span class="toc-text">Block Quote</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Examples"><span class="toc-text">Examples</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Code-Block"><span class="toc-text">Code Block</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Examples-1"><span class="toc-text">Examples</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Backtick-Code-Block"><span class="toc-text">Backtick Code Block</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Pull-Quote"><span class="toc-text">Pull Quote</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jsFiddle"><span class="toc-text">jsFiddle</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Gist"><span class="toc-text">Gist</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#iframe"><span class="toc-text">iframe</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Image"><span class="toc-text">Image</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Link"><span class="toc-text">Link</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Include-Code"><span class="toc-text">Include Code</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Examples-2"><span class="toc-text">Examples</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#YouTube"><span class="toc-text">YouTube</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Examples-3"><span class="toc-text">Examples</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vimeo"><span class="toc-text">Vimeo</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Include-Posts"><span class="toc-text">Include Posts</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Include-Assets"><span class="toc-text">Include Assets</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Embed-image"><span class="toc-text">Embed image</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Raw"><span class="toc-text">Raw</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Post-Excerpt"><span class="toc-text">Post Excerpt</span></a></li></ol>
+              <a href="#" id="article-toc-top">Back to Top</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">Getting Started</strong><a href="/standard/index.html" class="sidebar-link">Overview</a><a href="/standard/setup.html" class="sidebar-link">Setup</a><a href="/standard/configuration.html" class="sidebar-link">Configuration</a><a href="/standard/commands.html" class="sidebar-link">Commands</a><a href="/standard/migration.html" class="sidebar-link">Migration</a><strong class="sidebar-title">Basic Usage</strong><a href="/standard/writing.html" class="sidebar-link">Writing</a><a href="/standard/front-matter.html" class="sidebar-link">Front-matter</a><a href="/standard/tag-plugins.html" class="sidebar-link">Tag Plugins</a><a href="/standard/asset-folders.html" class="sidebar-link">Asset Folders</a><a href="/standard/data-files.html" class="sidebar-link">Data Files</a><a href="/standard/server.html" class="sidebar-link">Server</a><a href="/standard/generating.html" class="sidebar-link">Generating</a><strong class="sidebar-title">Deployment</strong><a href="/standard/github-pages.html" class="sidebar-link">GitHub Pages</a><a href="/standard/gitlab-pages.html" class="sidebar-link">GitLab Pages</a><a href="/standard/one-command-deployment.html" class="sidebar-link">One-Command Deployment</a><strong class="sidebar-title">Customization</strong><a href="/standard/permalinks.html" class="sidebar-link">Permalinks</a><a href="/standard/themes.html" class="sidebar-link">Themes</a><a href="/standard/templates.html" class="sidebar-link">Templates</a><a href="/standard/variables.html" class="sidebar-link">Variables</a><a href="/standard/helpers.html" class="sidebar-link">Helpers</a><a href="/standard/internationalization.html" class="sidebar-link">Internationalization (i18n)</a><a href="/standard/syntax-highlight.html" class="sidebar-link">Syntax Highlight</a><a href="/standard/plugins.html" class="sidebar-link">Plugins</a><strong class="sidebar-title">Miscellaneous</strong><a href="/standard/troubleshooting.html" class="sidebar-link">Troubleshooting</a><a href="/standard/contributing.html" class="sidebar-link">Contributing</a>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2022 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuo.jiangtao@h3c.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard" class="mobile-nav-link">standard</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">Getting Started</strong><a href="/standard/index.html" class="mobile-nav-link">Overview</a><a href="/standard/setup.html" class="mobile-nav-link">Setup</a><a href="/standard/configuration.html" class="mobile-nav-link">Configuration</a><a href="/standard/commands.html" class="mobile-nav-link">Commands</a><a href="/standard/migration.html" class="mobile-nav-link">Migration</a><strong class="mobile-nav-title">Basic Usage</strong><a href="/standard/writing.html" class="mobile-nav-link">Writing</a><a href="/standard/front-matter.html" class="mobile-nav-link">Front-matter</a><a href="/standard/tag-plugins.html" class="mobile-nav-link">Tag Plugins</a><a href="/standard/asset-folders.html" class="mobile-nav-link">Asset Folders</a><a href="/standard/data-files.html" class="mobile-nav-link">Data Files</a><a href="/standard/server.html" class="mobile-nav-link">Server</a><a href="/standard/generating.html" class="mobile-nav-link">Generating</a><strong class="mobile-nav-title">Deployment</strong><a href="/standard/github-pages.html" class="mobile-nav-link">GitHub Pages</a><a href="/standard/gitlab-pages.html" class="mobile-nav-link">GitLab Pages</a><a href="/standard/one-command-deployment.html" class="mobile-nav-link">One-Command Deployment</a><strong class="mobile-nav-title">Customization</strong><a href="/standard/permalinks.html" class="mobile-nav-link">Permalinks</a><a href="/standard/themes.html" class="mobile-nav-link">Themes</a><a href="/standard/templates.html" class="mobile-nav-link">Templates</a><a href="/standard/variables.html" class="mobile-nav-link">Variables</a><a href="/standard/helpers.html" class="mobile-nav-link">Helpers</a><a href="/standard/internationalization.html" class="mobile-nav-link">Internationalization (i18n)</a><a href="/standard/syntax-highlight.html" class="mobile-nav-link">Syntax Highlight</a><a href="/standard/plugins.html" class="mobile-nav-link">Plugins</a><strong class="mobile-nav-title">Miscellaneous</strong><a href="/standard/troubleshooting.html" class="mobile-nav-link">Troubleshooting</a><a href="/standard/contributing.html" class="mobile-nav-link">Contributing</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>English</span></span>
+    <select id="mobile-lang-select" data-canonical="docs/tag-plugins.html">
+      
+        <option value="zh-cn">简体中文</option>
+      
+        <option value="en" selected>English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>

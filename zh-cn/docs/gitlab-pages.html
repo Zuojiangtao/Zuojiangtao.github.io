@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>将 Hexo 部署到 GitLab Pages | 开发规范</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://hexo.io/zh-cn/docs/gitlab-pages.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="zh-cn" href="https://hexo.io/zh-cn/docs/gitlab-pages">
+    
+      <link rel="alternative" hreflang="en" href="https://hexo.io/en/zh-cn/docs/gitlab-pages">
+    
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard" class="main-nav-link">开发规范</a>
+    </nav>
+    <div id="lang-select-wrap">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">将 Hexo 部署到 GitLab Pages</h1>
+                <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/site/edit/master/source/zh-cn/docs/gitlab-pages.md" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <p>在本教程中，我们将会使用 GitLab CI 将 Hexo 博客部署到 GitLab Pages 上。</p>
+<ol>
+<li>新建一个 repository。如果你希望你的站点能通过 <code>&lt;你的 GitLab 用户名&gt;.gitlab.io</code> 域名访问，你的 repository 应该直接命名为 <code>&lt;你的 GitLab 用户名&gt;.gitlab.io</code>。</li>
+<li>将你的 Hexo 站点文件夹推送到 repository 中。默认情况下 <code>public</code> 目录将不会（并且不应该）被推送到 repository 中，建议你检查 <code>.gitignore</code> 文件中是否包含 <code>public</code> 一行，如果没有请加上。</li>
+<li>在你的站点文件夹中新建 <code>.gitlab-ci.yml</code> 文件：</li>
+</ol>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">image:</span> <span class="string">node:10-alpine</span> <span class="comment"># use nodejs v10 LTS</span></span><br><span class="line"><span class="attr">cache:</span></span><br><span class="line">  <span class="attr">paths:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">node_modules/</span></span><br><span class="line"></span><br><span class="line"><span class="attr">before_script:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">npm</span> <span class="string">install</span> <span class="string">hexo-cli</span> <span class="string">-g</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">npm</span> <span class="string">install</span></span><br><span class="line"></span><br><span class="line"><span class="attr">pages:</span></span><br><span class="line">  <span class="attr">script:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">hexo</span> <span class="string">generate</span></span><br><span class="line">  <span class="attr">artifacts:</span></span><br><span class="line">    <span class="attr">paths:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">public</span></span><br><span class="line">  <span class="attr">only:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>GitLab CI 应该会自动开始运行，构建成功以后你应该可以在 <code>https://&lt;你的 GitLab 用户名&gt;.gitlab.io</code> 查看你的网站。</li>
+<li>(可选) 如果你需要查看生成的文件，可以在 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.gitlab.com/ee/user/project/pipelines/job_artifacts.html">job artifact</a> 中找到。</li>
+</ol>
+<blockquote class="note info"><p>在 GitLab.com 上，GitLab CI 是默认启用的。如果你使用的是自托管的 GitLab，你可能需要在 <code>Settings -&gt; CI / CD -&gt; Shared Runners</code> 启用 GitLab CI。</p>
+</blockquote>
+
+<h2 id="Project-page" class="article-heading"><a href="#Project-page" class="headerlink" title="Project page"></a>Project page<a class="article-anchor" href="#Project-page" aria-hidden="true"></a></h2><p>如果你更希望你的站点部署在 <code>&lt;你的 GitLab 用户名&gt;.gitlab.io</code> 的子目录中，你的 repository 需要直接命名为子目录的名字，这样你的站点可以通过 <code>https://&lt;你的 GitLab 用户名&gt;.gitlab.io/&lt;repository 的名字&gt;</code> 访问。你需要检查你的 Hexo 配置文件，将 <code>url</code> 的值修改为 <code>https://&lt;你的 GitLab 用户名&gt;.gitlab.io/&lt;repository 的名字&gt;</code>、将 <code>root</code> 的值修改为 <code>/&lt;repository 的名字&gt;/</code></p>
+<h2 id="Useful-links" class="article-heading"><a href="#Useful-links" class="headerlink" title="Useful links"></a>Useful links<a class="article-anchor" href="#Useful-links" aria-hidden="true"></a></h2><ul>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.gitlab.com/ee/user/project/pages/index.html">GitLab Pages 相关文档</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.gitlab.com/ee/ci/README.html">GitLab CI 相关文档</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.baidu.com/s?wd=Hexo%20GitLab">在百度上搜索 “Hexo GitLab”</a></li>
+</ul>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2022-05-05T02:50:05.302Z" itemprop="dateModified">上次更新：2022-05-05</time>
+                <a href="github-pages.html" class="article-footer-prev" title="GitHub Pages"><i class="fa fa-chevron-left"></i><span>上一页</span></a><a href="one-command-deployment.html" class="article-footer-next" title="一键部署"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Project-page"><span class="toc-text">Project page</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Useful-links"><span class="toc-text">Useful links</span></a></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">开始使用</strong><a href="/standard/index.html" class="sidebar-link">概述</a><a href="/standard/setup.html" class="sidebar-link">建站</a><a href="/standard/configuration.html" class="sidebar-link">配置</a><a href="/standard/commands.html" class="sidebar-link">命令</a><a href="/standard/migration.html" class="sidebar-link">迁移</a><strong class="sidebar-title">基本操作</strong><a href="/standard/writing.html" class="sidebar-link">写作</a><a href="/standard/front-matter.html" class="sidebar-link">Front-matter</a><a href="/standard/tag-plugins.html" class="sidebar-link">标签插件</a><a href="/standard/asset-folders.html" class="sidebar-link">资源文件夹</a><a href="/standard/data-files.html" class="sidebar-link">数据文件夹</a><a href="/standard/server.html" class="sidebar-link">服务器</a><a href="/standard/generating.html" class="sidebar-link">生成器</a><strong class="sidebar-title">部署</strong><a href="/standard/github-pages.html" class="sidebar-link">GitHub Pages</a><a href="/standard/gitlab-pages.html" class="sidebar-link">GitLab Pages</a><a href="/standard/one-command-deployment.html" class="sidebar-link">一键部署</a><strong class="sidebar-title">自定义</strong><a href="/standard/permalinks.html" class="sidebar-link">永久链接</a><a href="/standard/themes.html" class="sidebar-link">主题</a><a href="/standard/templates.html" class="sidebar-link">模版</a><a href="/standard/variables.html" class="sidebar-link">变量</a><a href="/standard/helpers.html" class="sidebar-link">辅助函数</a><a href="/standard/internationalization.html" class="sidebar-link">国际化 (i18n)</a><a href="/standard/syntax-highlight.html" class="sidebar-link">代码高亮</a><a href="/standard/plugins.html" class="sidebar-link">插件</a><strong class="sidebar-title">其他</strong><a href="/standard/troubleshooting.html" class="sidebar-link">问题解答</a><a href="/standard/contributing.html" class="sidebar-link">贡献</a>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2022 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuo.jiangtao@h3c.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard" class="mobile-nav-link">开发规范</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">开始使用</strong><a href="/standard/index.html" class="mobile-nav-link">概述</a><a href="/standard/setup.html" class="mobile-nav-link">建站</a><a href="/standard/configuration.html" class="mobile-nav-link">配置</a><a href="/standard/commands.html" class="mobile-nav-link">命令</a><a href="/standard/migration.html" class="mobile-nav-link">迁移</a><strong class="mobile-nav-title">基本操作</strong><a href="/standard/writing.html" class="mobile-nav-link">写作</a><a href="/standard/front-matter.html" class="mobile-nav-link">Front-matter</a><a href="/standard/tag-plugins.html" class="mobile-nav-link">标签插件</a><a href="/standard/asset-folders.html" class="mobile-nav-link">资源文件夹</a><a href="/standard/data-files.html" class="mobile-nav-link">数据文件夹</a><a href="/standard/server.html" class="mobile-nav-link">服务器</a><a href="/standard/generating.html" class="mobile-nav-link">生成器</a><strong class="mobile-nav-title">部署</strong><a href="/standard/github-pages.html" class="mobile-nav-link">GitHub Pages</a><a href="/standard/gitlab-pages.html" class="mobile-nav-link">GitLab Pages</a><a href="/standard/one-command-deployment.html" class="mobile-nav-link">一键部署</a><strong class="mobile-nav-title">自定义</strong><a href="/standard/permalinks.html" class="mobile-nav-link">永久链接</a><a href="/standard/themes.html" class="mobile-nav-link">主题</a><a href="/standard/templates.html" class="mobile-nav-link">模版</a><a href="/standard/variables.html" class="mobile-nav-link">变量</a><a href="/standard/helpers.html" class="mobile-nav-link">辅助函数</a><a href="/standard/internationalization.html" class="mobile-nav-link">国际化 (i18n)</a><a href="/standard/syntax-highlight.html" class="mobile-nav-link">代码高亮</a><a href="/standard/plugins.html" class="mobile-nav-link">插件</a><strong class="mobile-nav-title">其他</strong><a href="/standard/troubleshooting.html" class="mobile-nav-link">问题解答</a><a href="/standard/contributing.html" class="mobile-nav-link">贡献</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></span>
+    <select id="mobile-lang-select" data-canonical="docs/gitlab-pages.html">
+      
+        <option value="zh-cn" selected>简体中文</option>
+      
+        <option value="en">English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>

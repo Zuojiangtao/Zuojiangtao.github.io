@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>代码高亮 | 开发规范</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://hexo.io/zh-cn/docs/syntax-highlight.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="zh-cn" href="https://hexo.io/zh-cn/docs/syntax-highlight">
+    
+      <link rel="alternative" hreflang="en" href="https://hexo.io/en/zh-cn/docs/syntax-highlight">
+    
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard" class="main-nav-link">开发规范</a>
+    </nav>
+    <div id="lang-select-wrap">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">代码高亮</h1>
+                <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/site/edit/master/source/zh-cn/docs/syntax-highlight.md" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <p>Hexo 对 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/highlightjs/highlight.js">highlight.js</a> 与 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/PrismJS/prism">prismjs</a> 两种代码高亮库提供内建支持。本篇教程将展示如何将 Hexo 的内建语法高亮组件整合至你的模板中。</p>
+<h2 id="如何在文章中插入代码块" class="article-heading"><a href="#如何在文章中插入代码块" class="headerlink" title="如何在文章中插入代码块"></a>如何在文章中插入代码块<a class="article-anchor" href="#如何在文章中插入代码块" aria-hidden="true"></a></h2><p>Hexo 支持两种代码块写法——<a href="tag-plugins#%E4%BB%A3%E7%A0%81%E5%9D%97">代码块标签插件</a>和<a href="tag-plugins#%E5%8F%8D%E5%BC%95%E5%8F%B7%E4%BB%A3%E7%A0%81%E5%9D%97">反引号代码块标签插件</a>：</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% codeblock [title] [lang:language] [url] [link text] [additional options] %&#125;</span><br><span class="line">code snippet</span><br><span class="line">&#123;% endcodeblock %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% code [title] [lang:language] [url] [link text] [additional options] %&#125;</span><br><span class="line">code snippet</span><br><span class="line">&#123;% endcode %&#125;</span><br><span class="line"></span><br><span class="line"><span class="code">``` [language] [title] [url] [link text] [additional options]</span></span><br><span class="line"><span class="code">code snippet</span></span><br><span class="line"><span class="code">```</span></span><br></pre></td></tr></table></figure>
+
+<p>上面的第三种是 Markdown 的 fenced code block 语法。Hexo 对其进行了扩展，使其支持更多特性。在<a href="tag-plugins#%E4%BB%A3%E7%A0%81%E5%9D%97">标签插件文档</a>中你可以找到可用的选项。</p>
+<blockquote>
+<p>提示：Hexo 支持用任何格式书写文章，只需安装相应渲染插件即可。不论文章以何种格式书写（Markdown、EJS、Swig、Nunjuck、Pug、ASCIIDoc），上述三种代码块语法总是可用。</p>
+</blockquote>
+<h2 id="配置" class="article-heading"><a href="#配置" class="headerlink" title="配置"></a>配置<a class="article-anchor" href="#配置" aria-hidden="true"></a></h2><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># _config.yml</span></span><br><span class="line"><span class="attr">highlight:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">auto_detect:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">line_number:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">line_threshold:</span> <span class="number">0</span></span><br><span class="line">  <span class="attr">tab_replace:</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line">  <span class="attr">exclude_languages:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">example</span></span><br><span class="line">  <span class="attr">wrap:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">hljs:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">prismjs:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">preprocess:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">line_number:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">line_threshold:</span> <span class="number">0</span></span><br><span class="line">  <span class="attr">tab_replace:</span> <span class="string">&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>以上为 Hexo 的默认配置。</p>
+<h2 id="禁用" class="article-heading"><a href="#禁用" class="headerlink" title="禁用"></a>禁用<a class="article-anchor" href="#禁用" aria-hidden="true"></a></h2><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># _config.yml</span></span><br><span class="line"><span class="attr">highlight:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">prismjs:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<p>当 <code>highlight.enable</code> 和 <code>prismjs.enable</code> 均为 <code>false</code> 时，代码块输出的 HTML 由相应的渲染器控制。举个例子：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/markedjs/marked"><code>marked.js</code></a>（Hexo 的默认 Markdown 渲染器 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked"><code>hexo-renderer-marked</code></a> 由此驱动）会把语言加入 <code>&lt;code&gt;</code> 标签的 <code>class</code> 中：</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="code">```yaml</span></span><br><span class="line"><span class="code">hello: hexo</span></span><br><span class="line"><span class="code">```</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">pre</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">code</span> <span class="attr">class</span>=<span class="string">&quot;yaml&quot;</span>&gt;</span>hello: hexo<span class="tag">&lt;/<span class="name">code</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">pre</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果内建语法高亮器均未启用，你可以安装第三方语法高亮插件，也可以使用浏览器端的语法高亮库（例如 <code>highlight.js</code> 和 <code>prism.js</code> 也都支持在浏览器中运行）。</p>
+<h2 id="Highlight-js" class="article-heading"><a href="#Highlight-js" class="headerlink" title="Highlight.js"></a>Highlight.js<a class="article-anchor" href="#Highlight-js" aria-hidden="true"></a></h2><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># _config.yml</span></span><br><span class="line"><span class="attr">highlight:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">auto_detect:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">line_number:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">line_threshold:</span> <span class="number">0</span></span><br><span class="line">  <span class="attr">tab_replace:</span> <span class="string">&#x27;  &#x27;</span></span><br><span class="line">  <span class="attr">exclude_languages:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">example</span></span><br><span class="line">  <span class="attr">wrap:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">hljs:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">prismjs:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<p><code>highlight.js</code> 默认开启，用作 Hexo 的服务端高亮组件。如果你需要在浏览器端运行 <code>highlight.js</code>，请把它关闭。</p>
+<blockquote>
+<p>「服务端高亮」指语法高亮在 <code>hexo generate</code> 或 <code>hexo server</code> 时完成。</p>
+</blockquote>
+<h3 id="auto-detect" class="article-heading"><a href="#auto-detect" class="headerlink" title="auto_detect"></a>auto_detect<a class="article-anchor" href="#auto-detect" aria-hidden="true"></a></h3><p><code>auto_detect</code> 是 <code>highlight.js</code> 的特性，能够自动检测代码块的语言。</p>
+<blockquote>
+<p>提示：如果你想使用「子语言高亮」功能（例如在高亮 HTML 时同时高亮内部嵌入的 JavaScript 代码），请开启 <code>auto_detect</code>，并且在文章中插入代码块时不要标注语言。</p>
+</blockquote>
+<blockquote class="note warn"><strong class="note-title">警告！</strong><p><code>auto_detect</code> 十分耗费资源。 如果你不需要使用「子语言高亮」功能，或者不介意在书写代码块时标记语言，请不要启用此功能。</p>
+</blockquote>
+
+<h3 id="line-number" class="article-heading"><a href="#line-number" class="headerlink" title="line_number"></a>line_number<a class="article-anchor" href="#line-number" aria-hidden="true"></a></h3><p><code>highlight.js</code> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://highlightjs.readthedocs.io/en/latest/line-numbers.html">不支持</a>行号显示。</p>
+<p>Hexo 通过用 <code>&lt;figure&gt;</code> 和 <code>&lt;table&gt;</code> 包裹其代码块为其添加了行号显示支持:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">figure</span> <span class="attr">class</span>=<span class="string">&quot;highlight yaml&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">&quot;gutter&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">pre</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;line&quot;</span>&gt;</span>1<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span><span class="tag">&lt;/<span class="name">pre</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">&quot;code&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">pre</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;line&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;attr&quot;</span>&gt;</span>hello:<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;string&quot;</span>&gt;</span>hexo<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span><span class="tag">&lt;/<span class="name">pre</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">figure</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>这不是 <code>highlight.js</code> 的行为，因此需要为 <code>&lt;figure&gt;</code> 和 <code>&lt;table&gt;</code> 添加自定义 CSS 代码。部分主题对此提供内建支持。</p>
+<p>你大概也注意到了，所有代码块的 <code>class</code> 都没有 <code>hljs-</code> 前缀。我们 <a href="#hljs">为此专门准备了一个章节</a>。</p>
+<h3 id="line-threshold-6-1-0" class="article-heading"><a href="#line-threshold-6-1-0" class="headerlink" title="line_threshold (+6.1.0)"></a>line_threshold (+6.1.0)<a class="article-anchor" href="#line-threshold-6-1-0" aria-hidden="true"></a></h3><p>Accepts an optional threshold to only show line numbers as long as the numbers of lines of the code block exceed such threshold. Default is <code>0</code>.</p>
+<h3 id="tab-replace" class="article-heading"><a href="#tab-replace" class="headerlink" title="tab_replace"></a>tab_replace<a class="article-anchor" href="#tab-replace" aria-hidden="true"></a></h3><p>用代码内的 tab (<code>\t</code>) 替换为给定值，默认值是两个空格。</p>
+<h3 id="exclude-languages-6-1-0" class="article-heading"><a href="#exclude-languages-6-1-0" class="headerlink" title="exclude_languages (+6.1.0)"></a>exclude_languages (+6.1.0)<a class="article-anchor" href="#exclude-languages-6-1-0" aria-hidden="true"></a></h3><p>Only wrap with <code>&lt;pre&gt;&lt;code class=&quot;lang&quot;&gt;&lt;/code&gt;&lt;/pre&gt;</code> and will not render all tags(<code>span</code>, and <code>br</code>) in content if are languages matches this option.</p>
+<h3 id="wrap" class="article-heading"><a href="#wrap" class="headerlink" title="wrap"></a>wrap<a class="article-anchor" href="#wrap" aria-hidden="true"></a></h3><p>为了支持行号显示，Hexo 将输出包裹在了 <code>&lt;figure&gt;</code> 和 <code>&lt;table&gt;</code> 内部。如果要保持 <code>highlight.js</code> 原来的行为，你需要将 <code>line_number</code> 和 <code>wrap</code> <strong>全部</strong>关闭。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">pre</span>&gt;</span><span class="tag">&lt;<span class="name">code</span> <span class="attr">class</span>=<span class="string">&quot;yaml&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;comment&quot;</span>&gt;</span># _config.yml<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;attr&quot;</span>&gt;</span>hexo:<span class="tag">&lt;/<span class="name">span</span>&gt;</span> <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;string&quot;</span>&gt;</span>hexo<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">code</span>&gt;</span><span class="tag">&lt;/<span class="name">pre</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote class="note warn"><strong class="note-title">警告！</strong><p>因为 <code>line_number</code> 功能依赖 <code>wrap</code>，你无法在配置中关闭 <code>wrap</code> 而又开启 <code>line_number</code>。如果你将 <code>line_number</code> 设置为 <code>true</code> 的话，<code>wrap</code> 将被自动开启。</p>
+</blockquote>
+
+<h3 id="hljs" class="article-heading"><a href="#hljs" class="headerlink" title="hljs"></a>hljs<a class="article-anchor" href="#hljs" aria-hidden="true"></a></h3><p>当 <code>hljs</code> 设置为 <code>true</code> 时，所有代码块的 HTML 输出均会给 <code>class</code> 添加 <code>hljs-</code> 前缀（无论 <code>wrap</code> 是否开启）：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">pre</span>&gt;</span><span class="tag">&lt;<span class="name">code</span> <span class="attr">class</span>=<span class="string">&quot;yaml hljs&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;hljs-comment&quot;</span>&gt;</span># _config.yml<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;hljs-attr&quot;</span>&gt;</span>hexo:<span class="tag">&lt;/<span class="name">span</span>&gt;</span> <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;hljs-string&quot;</span>&gt;</span>hexo<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">code</span>&gt;</span><span class="tag">&lt;/<span class="name">pre</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>提示：当 <code>line_number</code> 和 <code>wrap</code> 为 <code>false</code>，<code>hljs</code> 为 <code>true</code> 的时候，你可以在站点上直接应用 <code>highlight.js</code> 的<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/highlightjs/highlight.js/tree/master/src/styles">主题</a>。</p>
+</blockquote>
+<h2 id="PrismJS" class="article-heading"><a href="#PrismJS" class="headerlink" title="PrismJS"></a>PrismJS<a class="article-anchor" href="#PrismJS" aria-hidden="true"></a></h2><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># _config.yml</span></span><br><span class="line"><span class="attr">highlight:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">prismjs:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">preprocess:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">line_number:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">line_threshold:</span> <span class="number">0</span></span><br><span class="line">  <span class="attr">tab_replace:</span> <span class="string">&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>PrismJS 默认禁用。启用 PrimeJS 前应设置 <code>highlight.enable</code> 为 <code>false</code>。</p>
+<h3 id="preprocess" class="article-heading"><a href="#preprocess" class="headerlink" title="preprocess"></a>preprocess<a class="article-anchor" href="#preprocess" aria-hidden="true"></a></h3><p>Hexo 内建的 PrismJS 支持浏览器端高亮（<code>preprocess</code> 设置为 <code>false</code>）和服务器端高亮（<code>preprocess</code> 设置为 <code>true</code>）两种方式。</p>
+<p>使用服务器端高亮时（<code>preprocess</code> 设置为 <code>true</code>），只需要在站点引入 Prismjs 的主题（CSS 样式表）即可；而使用浏览器端高亮时（<code>preprocess</code> 设置为 <code>false</code>），需要将 JavaScript 文件也引入。</p>
+<p>PrismJS 主要是面向浏览器的。因此，在服务器端高亮模式下只有部分插件可用：</p>
+<ul>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://prismjs.com/plugins/line-numbers/">行号显示</a>：需要引入<code>prism-line-numbers.css</code>，无需引入<code>prism-line-numbers.js</code>。Hexo 将生成其所需的 HTML 代码片段。</li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://prismjs.com/plugins/show-language/">语言显示</a>：当代码块有标注语言时，Hexo 总会添加 <code>data-language</code> 属性。</li>
+<li>Hexo 也支持其它不需要特殊 HTML 代码格式的 PrismJS 插件，不过你需要引入它们的 JavaScript 文件。</li>
+</ul>
+<p><code>preprocess</code> 设置为 <code>false</code> 时所有 primejs 插件均可用，只需额外注意以下几点：</p>
+<ul>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://prismjs.com/plugins/line-numbers/">行号显示</a>：当 <code>preprocess</code> 设置为 <code>false</code> 时，Hexo 不会生成插件所需的 HTML 代码格式。<code>prism-line-numbers.css</code> 和 <code>prism-line-numbers.js</code>均需被引入。</li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://prismjs.com/plugins/show-language/">语言显示</a>：当代码块有标注语言时，Hexo 总会添加 <code>data-language</code> 属性。</li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://prismjs.com/plugins/line-highlight/">高亮特定行</a>: Hexo 的<a href="tag-plugins#%E4%BB%A3%E7%A0%81%E5%9D%97">代码块标签插件</a>和<a href="tag-plugins#%E5%8F%8D%E5%BC%95%E5%8F%B7%E4%BB%A3%E7%A0%81%E5%9D%97">反引号代码块标签插件</a>都支持高亮特定行的语法（即 <code>mark</code> 选项）。当 <code>mark</code> 项被设置时，Hexo 将生成其所需的 HTML 代码格式。</li>
+</ul>
+<h3 id="line-number-1" class="article-heading"><a href="#line-number-1" class="headerlink" title="line_number"></a>line_number<a class="article-anchor" href="#line-number-1" aria-hidden="true"></a></h3><p>当 <code>preprocess</code> 与 <code>line_number</code> 均设置为 <code>true</code> 时，只需要引入 <code>prism-line-numbers.css</code> 即可启用行号显示。如果 <code>preprocess</code> 和 <code>line_number</code> 均被关闭，则需要将 <code>prism-line-numbers.css</code> 和 <code>prism-line-numbers.js</code> 都引入才能启用行号显示。</p>
+<h3 id="line-threshold-6-1-0-1" class="article-heading"><a href="#line-threshold-6-1-0-1" class="headerlink" title="line_threshold (+6.1.0)"></a>line_threshold (+6.1.0)<a class="article-anchor" href="#line-threshold-6-1-0-1" aria-hidden="true"></a></h3><p>Accepts an optional threshold to only show line numbers as long as the numbers of lines of the code block exceed such threshold. Default is <code>0</code>.</p>
+<h3 id="tab-replace-1" class="article-heading"><a href="#tab-replace-1" class="headerlink" title="tab_replace"></a>tab_replace<a class="article-anchor" href="#tab-replace-1" aria-hidden="true"></a></h3><p>用代码内的 tab (<code>\t</code>) 替换为给定值，默认值是两个空格。</p>
+<h2 id="其它参考资料" class="article-heading"><a href="#其它参考资料" class="headerlink" title="其它参考资料"></a>其它参考资料<a class="article-anchor" href="#其它参考资料" aria-hidden="true"></a></h2><ul>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://highlightjs.readthedocs.io/en/latest/">Highlight.js</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://prismjs.com/">PrismJS</a></li>
+</ul>
+<p>Hexo 语法高亮部分的源码可参见：</p>
+<ul>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/blob/master/lib/highlight.js">Highlight.js 工具函数</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/blob/master/lib/prism.js">PrismJS 工具函数</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/blob/master/lib/plugins/tag/code.js">代码块标签插件</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/blob/master/lib/plugins/filter/before_post_render/backtick_code_block.js">反引号代码块标签插件</a></li>
+</ul>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2022-05-05T02:50:05.303Z" itemprop="dateModified">上次更新：2022-05-05</time>
+                <a href="internationalization.html" class="article-footer-prev" title="国际化 (i18n)"><i class="fa fa-chevron-left"></i><span>上一页</span></a><a href="plugins.html" class="article-footer-next" title="插件"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%9C%A8%E6%96%87%E7%AB%A0%E4%B8%AD%E6%8F%92%E5%85%A5%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="toc-text">如何在文章中插入代码块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-text">配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A6%81%E7%94%A8"><span class="toc-text">禁用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Highlight-js"><span class="toc-text">Highlight.js</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#auto-detect"><span class="toc-text">auto_detect</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#line-number"><span class="toc-text">line_number</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#line-threshold-6-1-0"><span class="toc-text">line_threshold (+6.1.0)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tab-replace"><span class="toc-text">tab_replace</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#exclude-languages-6-1-0"><span class="toc-text">exclude_languages (+6.1.0)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#wrap"><span class="toc-text">wrap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hljs"><span class="toc-text">hljs</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PrismJS"><span class="toc-text">PrismJS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#preprocess"><span class="toc-text">preprocess</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#line-number-1"><span class="toc-text">line_number</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#line-threshold-6-1-0-1"><span class="toc-text">line_threshold (+6.1.0)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tab-replace-1"><span class="toc-text">tab_replace</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E5%AE%83%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-text">其它参考资料</span></a></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">开始使用</strong><a href="/standard/index.html" class="sidebar-link">概述</a><a href="/standard/setup.html" class="sidebar-link">建站</a><a href="/standard/configuration.html" class="sidebar-link">配置</a><a href="/standard/commands.html" class="sidebar-link">命令</a><a href="/standard/migration.html" class="sidebar-link">迁移</a><strong class="sidebar-title">基本操作</strong><a href="/standard/writing.html" class="sidebar-link">写作</a><a href="/standard/front-matter.html" class="sidebar-link">Front-matter</a><a href="/standard/tag-plugins.html" class="sidebar-link">标签插件</a><a href="/standard/asset-folders.html" class="sidebar-link">资源文件夹</a><a href="/standard/data-files.html" class="sidebar-link">数据文件夹</a><a href="/standard/server.html" class="sidebar-link">服务器</a><a href="/standard/generating.html" class="sidebar-link">生成器</a><strong class="sidebar-title">部署</strong><a href="/standard/github-pages.html" class="sidebar-link">GitHub Pages</a><a href="/standard/gitlab-pages.html" class="sidebar-link">GitLab Pages</a><a href="/standard/one-command-deployment.html" class="sidebar-link">一键部署</a><strong class="sidebar-title">自定义</strong><a href="/standard/permalinks.html" class="sidebar-link">永久链接</a><a href="/standard/themes.html" class="sidebar-link">主题</a><a href="/standard/templates.html" class="sidebar-link">模版</a><a href="/standard/variables.html" class="sidebar-link">变量</a><a href="/standard/helpers.html" class="sidebar-link">辅助函数</a><a href="/standard/internationalization.html" class="sidebar-link">国际化 (i18n)</a><a href="/standard/syntax-highlight.html" class="sidebar-link">代码高亮</a><a href="/standard/plugins.html" class="sidebar-link">插件</a><strong class="sidebar-title">其他</strong><a href="/standard/troubleshooting.html" class="sidebar-link">问题解答</a><a href="/standard/contributing.html" class="sidebar-link">贡献</a>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2022 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuo.jiangtao@h3c.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard" class="mobile-nav-link">开发规范</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">开始使用</strong><a href="/standard/index.html" class="mobile-nav-link">概述</a><a href="/standard/setup.html" class="mobile-nav-link">建站</a><a href="/standard/configuration.html" class="mobile-nav-link">配置</a><a href="/standard/commands.html" class="mobile-nav-link">命令</a><a href="/standard/migration.html" class="mobile-nav-link">迁移</a><strong class="mobile-nav-title">基本操作</strong><a href="/standard/writing.html" class="mobile-nav-link">写作</a><a href="/standard/front-matter.html" class="mobile-nav-link">Front-matter</a><a href="/standard/tag-plugins.html" class="mobile-nav-link">标签插件</a><a href="/standard/asset-folders.html" class="mobile-nav-link">资源文件夹</a><a href="/standard/data-files.html" class="mobile-nav-link">数据文件夹</a><a href="/standard/server.html" class="mobile-nav-link">服务器</a><a href="/standard/generating.html" class="mobile-nav-link">生成器</a><strong class="mobile-nav-title">部署</strong><a href="/standard/github-pages.html" class="mobile-nav-link">GitHub Pages</a><a href="/standard/gitlab-pages.html" class="mobile-nav-link">GitLab Pages</a><a href="/standard/one-command-deployment.html" class="mobile-nav-link">一键部署</a><strong class="mobile-nav-title">自定义</strong><a href="/standard/permalinks.html" class="mobile-nav-link">永久链接</a><a href="/standard/themes.html" class="mobile-nav-link">主题</a><a href="/standard/templates.html" class="mobile-nav-link">模版</a><a href="/standard/variables.html" class="mobile-nav-link">变量</a><a href="/standard/helpers.html" class="mobile-nav-link">辅助函数</a><a href="/standard/internationalization.html" class="mobile-nav-link">国际化 (i18n)</a><a href="/standard/syntax-highlight.html" class="mobile-nav-link">代码高亮</a><a href="/standard/plugins.html" class="mobile-nav-link">插件</a><strong class="mobile-nav-title">其他</strong><a href="/standard/troubleshooting.html" class="mobile-nav-link">问题解答</a><a href="/standard/contributing.html" class="mobile-nav-link">贡献</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></span>
+    <select id="mobile-lang-select" data-canonical="docs/syntax-highlight.html">
+      
+        <option value="zh-cn" selected>简体中文</option>
+      
+        <option value="en">English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Official plugin hexo-util 1.0.0 & hexo-renderer-marked 2.0.0 released | 开发规范</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://hexo.io/news/2019/08/21/hexo-util-1-0-0_hexo-renderer-marked-2-0-0_released/index.html">
+  <!-- Alternative links -->
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard" class="main-nav-link">开发规范</a>
+    </nav>
+    <div id="lang-select-wrap">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div class="wrapper">
+    <div class="inner">
+      <article class="article post" itemscope itemtype="http://schema.org/Article">
+  <header class="article-header">
+    
+      <h1 class="article-title" itemprop="name">Official plugin hexo-util 1.0.0 & hexo-renderer-marked 2.0.0 released</h1>
+    
+    <a href="/news/2019/08/21/hexo-util-1-0-0_hexo-renderer-marked-2-0-0_released/" class="article-date"><time datetime="2019-08-21T00:00:00.000Z">2019-08-21</time></a>
+  </header>
+  <div class="article-content" itemprop="articleBody">
+    <p>We released a new version of the official plugins <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util">hexo-util</a> &amp; <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked">hexo-renderer-marked</a>.</p>
+<h2 id="hexo-util-1-0-0" class="article-heading"><a href="#hexo-util-1-0-0" class="headerlink" title="hexo-util 1.0.0"></a>hexo-util 1.0.0<a class="article-anchor" href="#hexo-util-1-0-0" aria-hidden="true"></a></h2><h3 id="Breaking-changes" class="article-heading"><a href="#Breaking-changes" class="headerlink" title="Breaking changes"></a>Breaking changes<a class="article-anchor" href="#Breaking-changes" aria-hidden="true"></a></h3><ul>
+<li>Drop Node 6 compatibility <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/61">#61</a></li>
+<li>Deprecate hashStream <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/45">#45</a>, use <code>createSha1Hash()</code></li>
+</ul>
+<h3 id="Features" class="article-heading"><a href="#Features" class="headerlink" title="Features"></a>Features<a class="article-anchor" href="#Features" aria-hidden="true"></a></h3><ul>
+<li>Add Color class from tagcloud hexo helper <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/58">#58</a></li>
+<li>Allows empty attributes in html tag helper <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/36">#36</a></li>
+</ul>
+<h3 id="Fixes" class="article-heading"><a href="#Fixes" class="headerlink" title="Fixes"></a>Fixes<a class="article-anchor" href="#Fixes" aria-hidden="true"></a></h3><ul>
+<li>fs.write instead of stdout <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/69">#69</a></li>
+<li>prevent firstLine being parsed as a string <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/67">#67</a></li>
+<li>Fix the part where the public API createSha1Hash() was not exported. <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/47">#47</a></li>
+</ul>
+<h3 id="Refactor" class="article-heading"><a href="#Refactor" class="headerlink" title="Refactor"></a>Refactor<a class="article-anchor" href="#Refactor" aria-hidden="true"></a></h3><ul>
+<li>camel_case_keys.js <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/48">#48</a></li>
+<li>ES6 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/44">#44</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/46">#46</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/70">#70</a></li>
+</ul>
+<h2 id="hexo-renderer-marked-2-0-0" class="article-heading"><a href="#hexo-renderer-marked-2-0-0" class="headerlink" title="hexo-renderer-marked 2.0.0"></a>hexo-renderer-marked 2.0.0<a class="article-anchor" href="#hexo-renderer-marked-2-0-0" aria-hidden="true"></a></h2><h3 id="Breaking-changes-1" class="article-heading"><a href="#Breaking-changes-1" class="headerlink" title="Breaking changes"></a>Breaking changes<a class="article-anchor" href="#Breaking-changes-1" aria-hidden="true"></a></h3><ul>
+<li>Drop Node 6 compatibility <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked/pull/98">#98</a></li>
+<li><code>sanitize</code> option has been deprecated, replaced by <code>sanitizeUrl</code> with limited functions <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked/pull/102">#102</a></li>
+<li><code>tables</code> option has been deprecated. Enabling <code>gfm</code> option also enables <code>tables</code> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked/pull/102">#102</a></li>
+<li>Refer to upstream’s <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/markedjs/marked/releases/tag/v0.7.0">changelog</a> for details on possible breaking changes.</li>
+</ul>
+<h3 id="Features-1" class="article-heading"><a href="#Features-1" class="headerlink" title="Features"></a>Features<a class="article-anchor" href="#Features-1" aria-hidden="true"></a></h3><ul>
+<li>Add option to disable headerIds <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked/pull/106">#106</a></li>
+</ul>
+<h3 id="Refactor-1" class="article-heading"><a href="#Refactor-1" class="headerlink" title="Refactor"></a>Refactor<a class="article-anchor" href="#Refactor-1" aria-hidden="true"></a></h3><ul>
+<li>ES6 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked/pull/97">#97</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked/pull/104">#104</a></li>
+</ul>
+
+  </div>
+  
+<section id="comments">
+  <div id="disqus_thread"></div>
+</section>
+<script>
+  var disqus_shortname = 'hexojs';
+  var disqus_url = 'https://hexo.io/news/2019/08/21/hexo-util-1-0-0_hexo-renderer-marked-2-0-0_released/index.html';
+  var disqus_title = "Official plugin hexo-util 1.0.0 & hexo-renderer-marked 2.0.0 released";
+  var disqus_config = function(){
+    this.language = 'zh';
+  };
+  (function(){
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'https://go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+</article>
+
+    </div>
+  </div>
+</div>
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2022 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuo.jiangtao@h3c.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard" class="mobile-nav-link">开发规范</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></span>
+    <select id="mobile-lang-select" data-canonical="">
+      
+        <option value="zh-cn" selected>简体中文</option>
+      
+        <option value="en">English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>

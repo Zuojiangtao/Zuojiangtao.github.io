@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Official plugins hexo-renderer-marked 5.0.0 and hexo-renderer-markdown-it 6.0.0 released | 开发规范</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://hexo.io/news/2022/01/29/hexo-renderer-marked-5-0-0-and-hexo-renderer-markdown-it-6-0-0/index.html">
+  <!-- Alternative links -->
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard" class="main-nav-link">开发规范</a>
+    </nav>
+    <div id="lang-select-wrap">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div class="wrapper">
+    <div class="inner">
+      <article class="article post" itemscope itemtype="http://schema.org/Article">
+  <header class="article-header">
+    
+      <h1 class="article-title" itemprop="name">Official plugins hexo-renderer-marked 5.0.0 and hexo-renderer-markdown-it 6.0.0 released</h1>
+    
+    <a href="/news/2022/01/29/hexo-renderer-marked-5-0-0-and-hexo-renderer-markdown-it-6-0-0/" class="article-date"><time datetime="2022-01-29T00:00:00.000Z">2022-01-29</time></a>
+  </header>
+  <div class="article-content" itemprop="articleBody">
+    <blockquote>
+<h2 id="hexo-renderer-marked-5-0-0" class="article-heading"><a href="#hexo-renderer-marked-5-0-0" class="headerlink" title="hexo-renderer-marked 5.0.0"></a><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked/releases/tag/5.0.0">hexo-renderer-marked 5.0.0</a><a class="article-anchor" href="#hexo-renderer-marked-5-0-0" aria-hidden="true"></a></h2></blockquote>
+<h3 id="Breaking-Changes" class="article-heading"><a href="#Breaking-Changes" class="headerlink" title="Breaking Changes"></a>Breaking Changes<a class="article-anchor" href="#Breaking-Changes" aria-hidden="true"></a></h3><ul>
+<li>Support node &gt;&#x3D;12 by <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/tomap">@tomap</a> in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked/pull/201">#201</a></li>
+<li>Enable prependRoot by default by <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/tomap">@tomap</a> in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked/pull/203">#203</a></li>
+</ul>
+<h3 id="Refactor" class="article-heading"><a href="#Refactor" class="headerlink" title="Refactor"></a>Refactor<a class="article-anchor" href="#Refactor" aria-hidden="true"></a></h3><ul>
+<li>refactor: call parent class url tokenizer method by <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/yoshinorin">@yoshinorin</a> in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked/pull/218">#218</a></li>
+</ul>
+<h3 id="Dependencies" class="article-heading"><a href="#Dependencies" class="headerlink" title="Dependencies"></a>Dependencies<a class="article-anchor" href="#Dependencies" aria-hidden="true"></a></h3><ul>
+<li>chore(deps): bump marked from 2.1.3 to 3.0.4 by @dependabot in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked/pull/208">#208</a></li>
+<li>chore(deps): bump marked from 3.0.8 to 4.0.1 by @dependabot in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked/pull/214">#214</a></li>
+<li>chore(deps): bump jsdom from 16.7.0 to 17.0.0 by @dependabot in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked/pull/199">#199</a></li>
+<li>chore(deps): bump jsdom from 17.0.0 to 18.0.0 by @dependabot in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked/pull/212">#212</a></li>
+<li>chore(deps): bump jsdom from 18.1.1 to 19.0.0 by @dependabot in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked/pull/215">#215</a></li>
+<li>chore(deps-dev): bump eslint from 7.32.0 to 8.0.0 by @dependabot in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked/pull/211">#211</a></li>
+<li>chore(deps-dev): bump hexo from 5.4.0 to 6.0.0 by @dependabot in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked/pull/217">#217</a></li>
+<li>chore(deps-dev): bump eslint-config-hexo from 4.2.0 to 5.0.0 by @dependabot in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked/pull/129">#129</a></li>
+</ul>
+<h3 id="Docs" class="article-heading"><a href="#Docs" class="headerlink" title="Docs"></a>Docs<a class="article-anchor" href="#Docs" aria-hidden="true"></a></h3><ul>
+<li>Explain security risk of using this plugin by <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/tomap">@tomap</a> in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked/pull/210">#210</a></li>
+</ul>
+<p><strong>Full Changelog</strong>: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked/compare/v4.1.0...5.0.0">https://github.com/hexojs/hexo-renderer-marked/compare/v4.1.0...5.0.0</a></p>
+<hr>
+<blockquote>
+<h2 id="hexo-renderer-markdown-it-6-0-0" class="article-heading"><a href="#hexo-renderer-markdown-it-6-0-0" class="headerlink" title="hexo-renderer-markdown-it 6.0.0"></a><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-markdown-it/releases/tag/6.0.0">hexo-renderer-markdown-it 6.0.0</a><a class="article-anchor" href="#hexo-renderer-markdown-it-6-0-0" aria-hidden="true"></a></h2></blockquote>
+<h3 id="Breaking-Changes-1" class="article-heading"><a href="#Breaking-Changes-1" class="headerlink" title="Breaking Changes"></a>Breaking Changes<a class="article-anchor" href="#Breaking-Changes-1" aria-hidden="true"></a></h3><ul>
+<li>chore: drop node.js 10.x by <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/yoshinorin">@yoshinorin</a> in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-markdown-it/pull/168">#168</a></li>
+</ul>
+<h3 id="Performance" class="article-heading"><a href="#Performance" class="headerlink" title="Performance"></a>Performance<a class="article-anchor" href="#Performance" aria-hidden="true"></a></h3><ul>
+<li>perf(#57): avoid creating instance each time when render each file by <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/yoshinorin">@yoshinorin</a> in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-markdown-it/pull/135">#135</a></li>
+</ul>
+<h3 id="Docs-1" class="article-heading"><a href="#Docs-1" class="headerlink" title="Docs"></a>Docs<a class="article-anchor" href="#Docs-1" aria-hidden="true"></a></h3><ul>
+<li>docs: add example of adding custom function to a plugin by <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-markdown-it/pull/128">#128</a></li>
+<li>docs(slugize): default separator is a dash by <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-markdown-it/pull/130">#130</a></li>
+<li>Move all documentation inside readme by <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/tomap">@tomap</a> in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-markdown-it/pull/154">#154</a></li>
+</ul>
+<h3 id="Test" class="article-heading"><a href="#Test" class="headerlink" title="Test"></a>Test<a class="article-anchor" href="#Test" aria-hidden="true"></a></h3><ul>
+<li>test(plugins): custom option by <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-markdown-it/pull/127">#127</a></li>
+<li>test: ‘langPrefix’ option by <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-markdown-it/pull/129">#129</a></li>
+</ul>
+<h3 id="Dependencies-1" class="article-heading"><a href="#Dependencies-1" class="headerlink" title="Dependencies"></a>Dependencies<a class="article-anchor" href="#Dependencies-1" aria-hidden="true"></a></h3><ul>
+<li>chore(deps): bump markdown-it from 11.0.1 to 12.0.0 by @dependabot-preview in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-markdown-it/pull/133">#133</a></li>
+<li>chore(deps): bump markdown-it-emoji from 1.4.0 to 2.0.0 by @dependabot-preview in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-markdown-it/pull/134">#134</a></li>
+<li>chore(ci): migrate to GitHub Actions from TravisCI by <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/yoshinorin">@yoshinorin</a> in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-markdown-it/pull/169">#169</a></li>
+<li>chore(deps-dev): bump hexo from 5.4.0 to 6.0.0 by @dependabot in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-markdown-it/pull/166">#166</a></li>
+<li>chore(deps-dev): bump mocha from 8.4.0 to 9.1.3 by @dependabot in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-markdown-it/pull/158">#158</a></li>
+<li>chore(deps-dev): bump eslint from 7.32.0 to 8.6.0 by @dependabot in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-markdown-it/pull/170">#170</a></li>
+<li>chore(deps-dev): bump eslint-config-hexo from 4.2.0 to 5.0.0 by @dependabot in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-markdown-it/pull/172">#172</a></li>
+</ul>
+<h3 id="Miscs" class="article-heading"><a href="#Miscs" class="headerlink" title="Miscs"></a>Miscs<a class="article-anchor" href="#Miscs" aria-hidden="true"></a></h3><ul>
+<li>Clean up tests by <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-markdown-it/pull/132">#132</a></li>
+<li>Upgrade to GitHub-native Dependabot by @dependabot-preview in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-markdown-it/pull/145">#145</a></li>
+</ul>
+<h2 id="New-Contributors" class="article-heading"><a href="#New-Contributors" class="headerlink" title="New Contributors"></a>New Contributors<a class="article-anchor" href="#New-Contributors" aria-hidden="true"></a></h2><ul>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/tomap">@tomap</a> made their first contribution in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-markdown-it/pull/154">#</a></li>
+</ul>
+<p><strong>Full Changelog</strong>: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-markdown-it/compare/5.0.0...6.0.0">https://github.com/hexojs/hexo-renderer-markdown-it/compare/5.0.0...6.0.0</a></p>
+
+  </div>
+  
+<section id="comments">
+  <div id="disqus_thread"></div>
+</section>
+<script>
+  var disqus_shortname = 'hexojs';
+  var disqus_url = 'https://hexo.io/news/2022/01/29/hexo-renderer-marked-5-0-0-and-hexo-renderer-markdown-it-6-0-0/index.html';
+  var disqus_title = "Official plugins hexo-renderer-marked 5.0.0 and hexo-renderer-markdown-it 6.0.0 released";
+  var disqus_config = function(){
+    this.language = 'zh';
+  };
+  (function(){
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'https://go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+</article>
+
+    </div>
+  </div>
+</div>
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2022 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuo.jiangtao@h3c.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard" class="mobile-nav-link">开发规范</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></span>
+    <select id="mobile-lang-select" data-canonical="">
+      
+        <option value="zh-cn" selected>简体中文</option>
+      
+        <option value="en">English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>

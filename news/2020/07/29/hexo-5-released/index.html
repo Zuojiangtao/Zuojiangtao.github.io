@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Hexo 5.0.0 Released | 开发规范</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://hexo.io/news/2020/07/29/hexo-5-released/index.html">
+  <!-- Alternative links -->
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard" class="main-nav-link">开发规范</a>
+    </nav>
+    <div id="lang-select-wrap">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div class="wrapper">
+    <div class="inner">
+      <article class="article post" itemscope itemtype="http://schema.org/Article">
+  <header class="article-header">
+    
+      <h1 class="article-title" itemprop="name">Hexo 5.0.0 Released</h1>
+    
+    <a href="/news/2020/07/29/hexo-5-released/" class="article-date"><time datetime="2020-07-29T00:00:00.000Z">2020-07-29</time></a>
+  </header>
+  <div class="article-content" itemprop="articleBody">
+    <p>Hexo is a Nodejs-powered static site generator. It offers powerful <a href="https://hexo.io/api/">API</a> to integrate existing npm packages for web development and programmatically inserts certain content into articles.</p>
+<p>This is our biggest release to date with tons of new features, performance improvements and bugfixes. According to our benchmark (which we run in every pull request to detect regression), Hexo 5 processed 500 posts in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://travis-ci.com/github/hexojs/hexo/jobs/365986028">16 seconds</a>, whereas <a target="_blank" rel="noopener external nofollow noreferrer" href="https://travis-ci.com/github/hexojs/hexo/jobs/269501202">4.2.0</a> processed 300 posts at the same time. Hexo now requires Nodejs 10+, Nodejs has dropped support of version 8 since 31 Dec 2019; although Nodejs 10.x is still supported, but since it’s going to be deprecated in less than a year (April 2021), we recommend using Nodejs 12+.</p>
+<p>Refer to our <a href="https://hexo.io/docs/">installation guide</a> to install Hexo.</p>
+<p>To upgrade to Hexo v5, change the following line in your package.json,</p>
+<figure class="highlight diff"><figcaption><span>package.json</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="deletion">-  &quot;hexo&quot;: &quot;^4.2.1&quot;,</span></span><br><span class="line"><span class="addition">+  &quot;hexo&quot;: &quot;^5.0.0&quot;,</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Breaking-change" class="article-heading"><a href="#Breaking-change" class="headerlink" title="Breaking change"></a>Breaking change<a class="article-anchor" href="#Breaking-change" aria-hidden="true"></a></h2><ul>
+<li><p>refactor(external_link): migrate config during load_config <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4414">#4414</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4371">#4371</a></p>
+<ul>
+<li>See <a href="https://hexo.io/docs/configuration#Writing">Writing</a> section for new options (introduced back in v4)</li>
+</ul>
+<figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment"># Deprecated</span></span><br><span class="line"><span class="attr">external_link:</span> <span class="literal">true</span><span class="string">|false</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># New option</span></span><br><span class="line"><span class="attr">external_link:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span><span class="string">|false</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Deprecated</span></span><br><span class="line"><span class="attr">use_date_for_updated:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># New option</span></span><br><span class="line"><span class="comment"># https://hexo.io/docs/configuration#Date-Time-format</span></span><br><span class="line"><span class="attr">updated_option:</span> <span class="string">date</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>If you check <code>external_link</code> for <a target="_blank" rel="noopener external nofollow noreferrer" href="https://developer.mozilla.org/en-US/docs/Glossary/Truthy">truthy</a> value, since it’s now automatically converted to object, it will always be truthy:</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (config.<span class="property">external_link</span>) &#123; %&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>If you wish to maintain backward compatibility with past versions:</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> ((<span class="keyword">typeof</span> config.<span class="property">external_link</span> === <span class="string">&#x27;boolean&#x27;</span> &amp;&amp; config.<span class="property">external_link</span> === <span class="literal">true</span>) || (<span class="keyword">typeof</span> config.<span class="property">external_link</span> === <span class="string">&#x27;object&#x27;</span> &amp;&amp; config.<span class="property">external_link</span>.<span class="property">enable</span> === <span class="literal">true</span>)) &#123; %&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>refactor(box): remove Bluebird.asCallback <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4379">#4379</a></p>
+<ul>
+<li>Callback syntax for <a href="https://hexo.io/api/box"><code>Box</code></a> is never documented nor utilized in Hexo’s internal.</li>
+<li>This is also a reminder that we might drop callbacks from all Hexo API in future. <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/issues/3328">#3328</a></li>
+</ul>
+</li>
+<li><p>feat: bring up config.<a href="https://hexo.io/docs/configuration#Date-Time-format">updated_option</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4278">#4278</a></p>
+<ul>
+<li>This can be useful for a theme that prefers to display <code>Updated:</code> only when it’s set in the article’s front-matter.</li>
+</ul>
+</li>
+<li><p>feat(open_graph): drop ‘keywords’ option from front-matter <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4174">#4174</a></p>
+<ul>
+<li>Search engines no longer support <code>keywords</code>.</li>
+</ul>
+</li>
+<li><p>fix: override site’s permalink using an article’s front-matter <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4359">#4359</a></p>
+<ul>
+<li>User config:</li>
+</ul>
+<figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">permalink:</span> <span class="string">:year/:month/:day/:title/</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Front-matter</li>
+</ul>
+<figure class="highlight yml"><figcaption><span>source/foo-bar.md</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">foo</span> <span class="string">bar</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">breaking-news/</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>That post will be available on <code>http://yourhexo.com/breaking-news/</code></li>
+<li>A reminder that permalink must have a trailing <code>.html</code> or <code>/</code></li>
+</ul>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">permalink:</span> <span class="string">:year/:month/:day/:title/</span> <span class="comment"># default</span></span><br><span class="line"><span class="comment"># or</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">:year/:month/:day/:title.html</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Remove lodash from global variable <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4266">#4266</a></p>
+<ul>
+<li>Lodash <code>_</code> is no longer available in Hexo API.</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Dropped</span></span><br><span class="line">&lt;% <span class="keyword">const</span> arrayB = _.<span class="title function_">uniq</span>(arrayA) %&gt;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>We encourage the use of native JS API over Lodash, we find <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/you-dont-need/You-Dont-Need-Lodash-Underscore">this guide</a> to be helpful.</li>
+<li>If you prefer to use Lodash, you can always install it and make it available via <a href="https://hexo.io/api/helper"><code>Helper</code></a> API</li>
+</ul>
+</li>
+<li><p>chore&#x2F;ci: drop Node.js 8 and add Node.js 14 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4255">#4255</a></p>
+<ul>
+<li>Node 8 has <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/nodejs/Release">reached EOL</a> on 31 Dec 2019.</li>
+</ul>
+</li>
+<li><p>refactor: remove site config from theme config <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4145">#4145</a></p>
+<ul>
+<li>Previously <code>hexo.theme.config</code> is merged into <code>hexo.config</code>, they are now separated to avoid possible conflict in configuration.</li>
+</ul>
+</li>
+</ul>
+<h2 id="New-feature" class="article-heading"><a href="#New-feature" class="headerlink" title="New feature"></a>New feature<a class="article-anchor" href="#New-feature" aria-hidden="true"></a></h2><ul>
+<li><p>feat(<a href="https://hexo.io/api/tag">tag</a>): show source of the error &amp; beautify <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4420">#4420</a></p>
+</li>
+<li><p>feat(<a href="https://hexo.io/docs/tag-plugins#Include-Posts">post_link</a>): better error message when a post could not be located <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4426">#4426</a></p>
+<ul>
+<li>The error message is now clearer when there is an incorrect filename.</li>
+</ul>
+</li>
+<li><p>skip assets of unpublished posts and delete them if exist <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/DaemondShu">@DaemondShu</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/3489">#3489</a></p>
+<ul>
+<li>When there is an unpublished post:</li>
+</ul>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">Still</span> <span class="string">a</span> <span class="string">draft....</span></span><br><span class="line"><span class="attr">published:</span> <span class="literal">false</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>That post including its assets will not be generated into the <code>public/</code> folder.</li>
+</ul>
+</li>
+<li><p>feat(extend&#x2F;injector): bring up new extend Injector <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4049">#4049</a></p>
+<ul>
+<li>Refer to the API <a href="https://hexo.io/api/injector">documentation</a> for usage.</li>
+</ul>
+</li>
+<li><p>feat: add prism highlight support <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4119">#4119</a></p>
+<ul>
+<li>Refer to the <a href="https://hexo.io/docs/syntax-highlight#PrismJS">documentation</a> for usage.</li>
+</ul>
+</li>
+<li><p>feat(<a href="https://hexo.io/docs/helpers#tagcloud">tagcloud</a>): new option class &amp; level <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/stevenjoezhang">@stevenjoezhang</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4370">#4370</a></p>
+<ul>
+<li>Ability to add class name for CSS styling.</li>
+</ul>
+</li>
+<li><p>feat(config): validate config before processing posts <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4381">#4381</a></p>
+</li>
+<li><p>feat(post_permalink): add <code>:second</code> attribute option for post permalink <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/kkocdko">@kkocdko</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4185">#4185</a></p>
+<ul>
+<li>Example:</li>
+</ul>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">permalink:</span> <span class="string">:year/:month/:day/:hour/:minute/:second/:title.html</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Refer to <a href="https://hexo.io/docs/permalinks">Permalinks</a> for available attributes.</li>
+</ul>
+</li>
+<li><p>feat(<a href="https://hexo.io/docs/tag-plugins#YouTube">youtube_tag</a>): add cookie option <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4155">#4155</a></p>
+<ul>
+<li>When disabled, cookie is not set&#x2F;sent in the youtube video embed.</li>
+</ul>
+</li>
+<li><p>feat(youtube_tag): support playlist <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4139">#4139</a></p>
+<ul>
+<li>Ability to embed a playlist.</li>
+</ul>
+</li>
+<li><p>feat(load_theme_config): support alternate theme config <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4120">#4120</a></p>
+<ul>
+<li>Theme can be configured in a file <code>_config.[name].yml</code>, e.g. <code>_config.landscape.yml</code> for <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-theme-landscape">hexo-theme-landscape</a>.</li>
+<li>Placed the file in the root folder, same as the current <code>_config.yml</code>.</li>
+<li>Refer to the <a href="https://hexo.io/docs/configuration#Alternate-Theme-Config">documentation</a> for configuration priority.</li>
+</ul>
+</li>
+<li><p>feat(<a href="https://hexo.io/docs/helpers#feed-tag">feed_tag</a>): support parsing config.feed <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4029">#4029</a></p>
+<ul>
+<li>Better integration with <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-generator-feed">hexo-generator-feed</a>.</li>
+</ul>
+</li>
+<li><p>feat(tag): add unregister() method <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4046">#4046</a></p>
+<ul>
+<li>This means you can now unregister existing <a href="https://hexo.io/docs/tag-plugins">tag plugins</a> and replace it with your own with the same name.</li>
+</ul>
+</li>
+<li><p>feat(filter): add <code>_after_html_render</code> filter <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jiangtj">@jiangtj</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4051">#4051</a></p>
+<ul>
+<li>perf(filter): set <code>after_render:html</code> as alias of <code>_after_html_render</code> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4073">#4073</a></li>
+<li>Existing <code>after_render:html</code> filter plugins automatically benefit from this improvement.</li>
+</ul>
+</li>
+<li><p>feat(load_config): support theme_dir in node_modules <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4112">#4112</a></p>
+</li>
+<li><p>fix(list_tags): custom class for each element <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/noraj">@noraj</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4059">#4059</a></p>
+<ul>
+<li>Customize the class name for each element <code>&lt;ul&gt;</code>, <code>&lt;li&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;span&gt;</code> for <a href="https://hexo.io/docs/helpers#list-tags">list_tags</a> plugin.</li>
+</ul>
+</li>
+</ul>
+<h2 id="Performance" class="article-heading"><a href="#Performance" class="headerlink" title="Performance"></a>Performance<a class="article-anchor" href="#Performance" aria-hidden="true"></a></h2><ul>
+<li>perf(tag): rendering optimization <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4418">#4418</a></li>
+<li>perf(external_link): faster regexp &amp; condition shorthand <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4436">#4436</a></li>
+<li>perf(external_link): optimize regex <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4008">#4008</a></li>
+<li>perf(filter): shorthand syntax <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4377">#4377</a></li>
+<li>perf(backtick_code): shorthand <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4369">#4369</a></li>
+<li>perf: avoid running irrelevant plugins in ‘clean’ command <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4386">#4386</a><ul>
+<li>To maintain compatibility with third-party <a href="https://hexo.io/api/console">console</a> plugins, this only applies to <code>hexo clean</code>, not <code>hexo c</code> alias.</li>
+</ul>
+</li>
+<li>perf(titlecase): lazy require <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4417">#4417</a></li>
+<li>perf(tag&#x2F;code): performance improvements <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4416">#4416</a></li>
+<li>perf(post): simplify codeblock escape <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4254">#4254</a></li>
+<li>perf(meta_generator): avoid unnecessary check <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4208">#4208</a></li>
+<li>perf(external_link): cache config <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4134">#4134</a></li>
+<li>perf(open_graph): avoid using htmlTag() and enhance cache <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4125">#4125</a></li>
+<li>refactor(list_archives): reduce calls to date.format() <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/dailyrandomphoto">@dailyrandomphoto</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4011">#4011</a></li>
+<li>fix(moment.locale): avoid lookup repeatedly with the wrong names <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/dailyrandomphoto">@dailyrandomphoto</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4007">#4007</a></li>
+</ul>
+<h2 id="Fix" class="article-heading"><a href="#Fix" class="headerlink" title="Fix"></a>Fix<a class="article-anchor" href="#Fix" aria-hidden="true"></a></h2><ul>
+<li>fix(box): ignore .git and node modules in the theme folder <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jiangtj">@jiangtj</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4306">#4306</a></li>
+<li>fix: allow empty title <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/stevenjoezhang">@stevenjoezhang</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4344">#4344</a></li>
+<li>fix(#4236): don’t create “&#x2F;index” directories when <a href="https://hexo.io/docs/asset-folders">post_asset_folder</a> is true <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jiangtj">@jiangtj</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4258">#4258</a></li>
+<li>fix(#4317): non-greedy regexp for tag escape <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4358">#4358</a></li>
+<li>fix(post): use non-greedy regular expressions <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/stevenjoezhang">@stevenjoezhang</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4161">#4161</a></li>
+<li>fix(post): properly escape swig tag inside post <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4352">#4352</a><ul>
+<li>swig tag inside a single backtick is now interpreted as code embed.</li>
+<li><pre><code>`&#123;% foo %&#125;&#123;&#123; bar &#125;&#125;&#123;% endfoo %&#125;`</code></pre></li>
+</ul>
+</li>
+<li>fix(logging): log database only in relevant commands <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4387">#4387</a><ul>
+<li><code>Writing database to $&#123;dbPath&#125;/db.json</code> message shouldn’t show up in <code>hexo clean</code> and <code>hexo version</code>.</li>
+</ul>
+</li>
+<li>fix(server-cache): must match exact alias <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4388">#4388</a><ul>
+<li>Improve compatibility with 3rd-party console plugins that may have a name that starts with an ‘s’.</li>
+</ul>
+</li>
+<li>fix(tag-code): parse ‘wrap’ option <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4391">#4391</a><ul>
+<li><a href="https://hexo.io/docs/configuration#Writing"><code>highlight.wrap</code></a> option in user config is now properly passed to the <a href="https://hexo.io/docs/tag-plugins#Code-Block"><code>codeblock</code></a> tag plugin</li>
+</ul>
+</li>
+<li>fix: remove unused type check <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Himself65">@Himself65</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4398">#4398</a></li>
+<li>fix: access error code from error object directly <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4280">#4280</a><ul>
+<li>Improve compatibility with native JS API</li>
+</ul>
+</li>
+<li>fix: load_plugin with extra line EOF <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4256">#4256</a></li>
+<li>fix: parsing code error in backticks <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/seaoak">@seaoak</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4229">#4229</a></li>
+<li>fix(toc_helper): escape class name and handle null id <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4009">#4009</a></li>
+<li>fix(meta_generator): match existing <code>&lt;meta&gt;</code> with different order <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4017">#4017</a></li>
+<li>fix(excerpt): stricter regex <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4443">#4443</a><ul>
+<li>Now only the following variants of <a href="https://hexo.io/docs/tag-plugins#Post-Excerpt">excerpt tag</a> are valid.</li>
+</ul>
+<ol>
+<li><code>&lt;!--more--&gt;</code></li>
+<li><code>&lt;!-- more--&gt;</code></li>
+<li><code>&lt;!--more --&gt;</code></li>
+<li><code>&lt;!-- more --&gt;</code></li>
+</ol>
+</li>
+</ul>
+<h2 id="Refactor" class="article-heading"><a href="#Refactor" class="headerlink" title="Refactor"></a>Refactor<a class="article-anchor" href="#Refactor" aria-hidden="true"></a></h2><ul>
+<li>refactor(meta_generator): no longer ignore empty <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4442">#4442</a></li>
+<li>refactor(external_link): migrate config during load_config <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4414">#4414</a></li>
+<li>Reduce array#reduce <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/segayuu">@segayuu</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4299">#4299</a></li>
+<li>Correct using createSha1Hash() with pipe() <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/seaoak">@seaoak</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4323">#4323</a></li>
+<li>refactor(post): reduce promise <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4337">#4337</a></li>
+<li>refactor: simplify code <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/2997ms">@2997ms</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4408">#4408</a></li>
+<li>refactor(external_link): filter regexp <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/segayuu">@segayuu</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4412">#4412</a></li>
+<li>refactor(hexo): merge theme_config before generation <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4360">#4360</a></li>
+<li>refactor(nunjucks): dedicated nunjucks renderer <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4356">#4356</a></li>
+<li>refactor: drop hexo-util#HashStream <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4279">#4279</a></li>
+<li>refactor(toc): avoid using htmlTag <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4183">#4183</a></li>
+<li>refactor(hexo_index): remove unused parameter <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4153">#4153</a></li>
+<li>Refactor(class): Replace prototype to class syntax <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/segayuu">@segayuu</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4151">#4151</a></li>
+<li>refactor: copy object with spread operator <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4140">#4140</a></li>
+<li>refactor: simplify code <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Himself65">@Himself65</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4138">#4138</a></li>
+<li>refactor: utilize Object.entries <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4118">#4118</a></li>
+<li>refactor: utilize hexo-util pr-169 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4045">#4045</a></li>
+<li>refactor(hexo&#x2F;index): use Set <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4013">#4013</a></li>
+<li>refactor: Class syntax <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4100">#4100</a></li>
+<li>refactor(helper): minor changes <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4061">#4061</a></li>
+<li>style: space for asyncArrow <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4102">#4102</a></li>
+<li>Reduce stream <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/segayuu">@segayuu</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4333">#4333</a></li>
+</ul>
+<h2 id="Misc" class="article-heading"><a href="#Misc" class="headerlink" title="Misc"></a>Misc<a class="article-anchor" href="#Misc" aria-hidden="true"></a></h2><ul>
+<li>refactor: port shell script to javascript <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Himself65">@Himself65</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4405">#4405</a></li>
+<li>refactor(console&#x2F;generate): class &amp; destructure assign <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4338">#4338</a></li>
+<li>Fix not to pass callback to hexo-fs <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/segayuu">@segayuu</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4339">#4339</a></li>
+<li>style: es6 string extensions &amp; destructure <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4357">#4357</a></li>
+<li>Migrate Travis and Appveyor tp GitHub Actions<ul>
+<li>ci(appveyor): drop appveyor <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4402">#4402</a></li>
+<li>chore: add release release-drafter (#3858) <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/YoshinoriN">@YoshinoriN</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4165">#4165</a></li>
+<li>ci: add GitHub Actions to run linter <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Himself65">@Himself65</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4143">#4143</a></li>
+<li>ci(travis): remove Windows <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4076">#4076</a></li>
+<li>ci(github_actions): Create tester job <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/segayuu">@segayuu</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4169">#4169</a></li>
+<li>Move coveralls from travis to github actions <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/segayuu">@segayuu</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4326">#4326</a></li>
+</ul>
+</li>
+<li>ci(benchmark): generate flamegraph <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4000">#4000</a></li>
+<li>ci(flamegraph): fix 0x <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4116">#4116</a></li>
+<li>Fix issues found by <a target="_blank" rel="noopener external nofollow noreferrer" href="https://lgtm.com/projects/g/hexojs/hexo/">lgtm.com</a><ul>
+<li>fix(console_generate): remove unnecessary boolean-to-object conversion <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4152">#4152</a></li>
+<li>fix: remove useless conditions <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4147">#4147</a></li>
+<li>fix: return callback if called <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4178">#4178</a></li>
+</ul>
+</li>
+<li>refactor(benchmark): minor changes <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4411">#4411</a></li>
+<li>github(issue_template): add special notice <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4348">#4348</a><ul>
+<li>add mandarin issue template</li>
+</ul>
+</li>
+</ul>
+<p>Refer to the <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/releases/tag/5.0.0">release note</a> for a complete changelog.</p>
+
+  </div>
+  
+<section id="comments">
+  <div id="disqus_thread"></div>
+</section>
+<script>
+  var disqus_shortname = 'hexojs';
+  var disqus_url = 'https://hexo.io/news/2020/07/29/hexo-5-released/index.html';
+  var disqus_title = "Hexo 5.0.0 Released";
+  var disqus_config = function(){
+    this.language = 'zh';
+  };
+  (function(){
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'https://go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+</article>
+
+    </div>
+  </div>
+</div>
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2022 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuo.jiangtao@h3c.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard" class="mobile-nav-link">开发规范</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></span>
+    <select id="mobile-lang-select" data-canonical="">
+      
+        <option value="zh-cn" selected>简体中文</option>
+      
+        <option value="en">English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>

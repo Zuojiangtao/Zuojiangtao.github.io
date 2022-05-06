@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Official plugins hexo-util 2.1.0 and hexo-fs 3.0.1 released | 开发规范</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://hexo.io/news/2020/04/30/hexo-util-2_hexo-fs-3/index.html">
+  <!-- Alternative links -->
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard" class="main-nav-link">开发规范</a>
+    </nav>
+    <div id="lang-select-wrap">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div class="wrapper">
+    <div class="inner">
+      <article class="article post" itemscope itemtype="http://schema.org/Article">
+  <header class="article-header">
+    
+      <h1 class="article-title" itemprop="name">Official plugins hexo-util 2.1.0 and hexo-fs 3.0.1 released</h1>
+    
+    <a href="/news/2020/04/30/hexo-util-2_hexo-fs-3/" class="article-date"><time datetime="2020-04-30T00:00:00.000Z">2020-04-30</time></a>
+  </header>
+  <div class="article-content" itemprop="articleBody">
+    <p>In preparation for the eventual release of Hexo 5.0.0, we have released new versions of the official plugins <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util">hexo-util</a> and <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-fs">hexo-fs</a>.</p>
+<p>Summary:</p>
+<ul>
+<li>We are dropping support of Node 8 across Hexo ecosystem, please upgrade to Node 10.13 or higher.</li>
+<li>Currently Hexo has compatibility issues with Node 14, to be fixed in Hexo 5.0.0. See below for temporary workarounds.</li>
+</ul>
+<h2 id="Workarounds" class="article-heading"><a href="#Workarounds" class="headerlink" title="Workarounds"></a>Workarounds<a class="article-anchor" href="#Workarounds" aria-hidden="true"></a></h2><p>There are two temporary workarounds in Node 14 usage:</p>
+<ol>
+<li>Downgrade to Node 10 or 12. If you use <code>.nvmrc</code> as part of your CI workflow, you need to change the content to <code>10</code> or <code>12</code>.</li>
+<li>If you prefer to use Node 14, force upgrade hexo-util and hexo-fs:</li>
+</ol>
+<figure class="highlight diff"><figcaption><span>package.json</span></figcaption><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  ...</span><br><span class="line">  &quot;dependencies&quot;: &#123;</span><br><span class="line">    &quot;hexo&quot;: &quot;^4.0.0&quot;,</span><br><span class="line">    &quot;hexo-generator-archive&quot;: &quot;^1.0.0&quot;,</span><br><span class="line">    &quot;hexo-generator-category&quot;: &quot;^1.0.0&quot;,</span><br><span class="line">    &quot;hexo-generator-index&quot;: &quot;^1.0.0&quot;,</span><br><span class="line">    &quot;hexo-generator-tag&quot;: &quot;^1.0.0&quot;,</span><br><span class="line">    &quot;hexo-renderer-ejs&quot;: &quot;^1.0.0&quot;,</span><br><span class="line">    &quot;hexo-renderer-stylus&quot;: &quot;^1.1.0&quot;,</span><br><span class="line">    &quot;hexo-renderer-marked&quot;: &quot;^2.0.0&quot;,</span><br><span class="line">    &quot;hexo-server&quot;: &quot;^1.0.0&quot;,</span><br><span class="line"><span class="addition">+    &quot;hexo-util&quot;: &quot;^2.1.0&quot;,</span></span><br><span class="line"><span class="addition">+    &quot;hexo-fs&quot;: &quot;^3.0.1&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ rm -rf node_modules/</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
+
+<p>The upcoming Hexo 5.0.0 will be compatible with Node 14. Stay tune.</p>
+<h2 id="hexo-util-2-1-0" class="article-heading"><a href="#hexo-util-2-1-0" class="headerlink" title="hexo-util 2.1.0"></a>hexo-util 2.1.0<a class="article-anchor" href="#hexo-util-2-1-0" aria-hidden="true"></a></h2><h2 id="Breaking-change" class="article-heading"><a href="#Breaking-change" class="headerlink" title="Breaking change"></a>Breaking change<a class="article-anchor" href="#Breaking-change" aria-hidden="true"></a></h2><ul>
+<li>Remove <code>HashStream()</code> function <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/198">#198</a><ul>
+<li>Deprecated in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/45">#45</a>, part of <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/releases/tag/1.0.0">v1.0.0</a> release</li>
+<li>Replaced by <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/tree/master#createsha1hash"><code>createSha1Hash()</code></a></li>
+</ul>
+</li>
+</ul>
+<h2 id="hexo-util-2-0-0" class="article-heading"><a href="#hexo-util-2-0-0" class="headerlink" title="hexo-util 2.0.0"></a>hexo-util 2.0.0<a class="article-anchor" href="#hexo-util-2-0-0" aria-hidden="true"></a></h2><h3 id="Breaking-change-1" class="article-heading"><a href="#Breaking-change-1" class="headerlink" title="Breaking change"></a>Breaking change<a class="article-anchor" href="#Breaking-change-1" aria-hidden="true"></a></h3><ul>
+<li>Drop support of Node 8 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/191">#191</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/193">#193</a></li>
+<li>Requires <code>autoDetect</code> to be enabled and <code>lang</code> to be unset to use sublanguage <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util#highlightstr-options"><code>highlight()</code></a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/192">#192</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/196">#196</a></li>
+</ul>
+<h3 id="Fix" class="article-heading"><a href="#Fix" class="headerlink" title="Fix"></a>Fix<a class="article-anchor" href="#Fix" aria-hidden="true"></a></h3><ul>
+<li>Fix <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util#cachestream"><code>CacheStream()</code></a> compatibility issue with Node 14 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/195">#195</a></li>
+</ul>
+<h3 id="Misc" class="article-heading"><a href="#Misc" class="headerlink" title="Misc"></a>Misc<a class="article-anchor" href="#Misc" aria-hidden="true"></a></h3><ul>
+<li>docs(isExternalLink): add JSDoc <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/YoshinoriN">@YoshinoriN</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/190">#190</a></li>
+</ul>
+<h3 id="Dependencies" class="article-heading"><a href="#Dependencies" class="headerlink" title="Dependencies"></a>Dependencies<a class="article-anchor" href="#Dependencies" aria-hidden="true"></a></h3><ul>
+<li>chore(deps-dev): bump rewire from 4.0.1 to 5.0.0 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/187">#187</a></li>
+</ul>
+<h2 id="hexo-fs-3-0-1" class="article-heading"><a href="#hexo-fs-3-0-1" class="headerlink" title="hexo-fs 3.0.1"></a>hexo-fs 3.0.1<a class="article-anchor" href="#hexo-fs-3-0-1" aria-hidden="true"></a></h2><h3 id="Changes" class="article-heading"><a href="#Changes" class="headerlink" title="Changes"></a>Changes<a class="article-anchor" href="#Changes" aria-hidden="true"></a></h3><ul>
+<li>Requires at least Node 10.13 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-fs/pull/63">#63</a><ul>
+<li>Requires Node 10.12+ to create folder recursively using <code>mkdirs()</code> and <code>mkdirsSync()</code> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-fs/pull/55">#55</a>. While hexo-fs previously supported this feature, it had custom implementation; hexo-fs 3+ uses native implementation instead.</li>
+</ul>
+</li>
+<li>chore(deps): update hexo-util to 2.0.0 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-fs/pull/64">#64</a></li>
+</ul>
+<h2 id="hexo-fs-3-0-0" class="article-heading"><a href="#hexo-fs-3-0-0" class="headerlink" title="hexo-fs 3.0.0"></a>hexo-fs 3.0.0<a class="article-anchor" href="#hexo-fs-3-0-0" aria-hidden="true"></a></h2><h3 id="Breaking-change-2" class="article-heading"><a href="#Breaking-change-2" class="headerlink" title="Breaking change"></a>Breaking change<a class="article-anchor" href="#Breaking-change-2" aria-hidden="true"></a></h3><ul>
+<li>Drop support of Node 8 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-fs/pull/51">#51</a></li>
+</ul>
+<h3 id="Feature" class="article-heading"><a href="#Feature" class="headerlink" title="Feature"></a>Feature<a class="article-anchor" href="#Feature" aria-hidden="true"></a></h3><ul>
+<li>Utilize native recursive option for <code>mkdirs()</code> and <code>mkdirsSync()</code> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/segayuu">@segayuu</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-fs/pull/55">#55</a></li>
+</ul>
+<h3 id="Fix-1" class="article-heading"><a href="#Fix-1" class="headerlink" title="Fix"></a>Fix<a class="article-anchor" href="#Fix-1" aria-hidden="true"></a></h3><ul>
+<li>fix compatibility issue with Node.js 14 in <code>writeFile()</code> and <code>copyFile()</code> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-fs/pull/60">#60</a></li>
+</ul>
+<h3 id="Refactor" class="article-heading"><a href="#Refactor" class="headerlink" title="Refactor"></a>Refactor<a class="article-anchor" href="#Refactor" aria-hidden="true"></a></h3><ul>
+<li>Replace <code>escape-string-regexp</code> package with hexo-util <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util#escaperegexstr"><code>escapeRegex()</code></a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-fs/pull/56">#56</a></li>
+<li>refactor: es6 syntax <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-fs/pull/57">#57</a></li>
+<li>Utilize native promise API in <code>fs.promises</code> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/segayuu">@segayuu</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-fs/pull/53">#53</a><ul>
+<li>If you need to catch error code, it’s now <code>err.code</code>, not <code>err.cause.code</code>, see <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-cli/pull/190">#190</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="Misc-1" class="article-heading"><a href="#Misc-1" class="headerlink" title="Misc"></a>Misc<a class="article-anchor" href="#Misc-1" aria-hidden="true"></a></h3><ul>
+<li>Add release-drafter for easier changelog editing <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/YoshinoriN">@YoshinoriN</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-fs/pull/58">#58</a></li>
+<li>chore(deps-dev): bump nyc from 14.1.1 to 15.0.0 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-fs/pull/52">#52</a></li>
+<li>chore(deps-dev): bump mocha from 6.2.2 to 7.0.0 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-fs/pull/54">#54</a></li>
+<li>Bump eslint-config-hexo from 3.0.0 to 4.0.0 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-fs/pull/48">#48</a></li>
+</ul>
+
+  </div>
+  
+<section id="comments">
+  <div id="disqus_thread"></div>
+</section>
+<script>
+  var disqus_shortname = 'hexojs';
+  var disqus_url = 'https://hexo.io/news/2020/04/30/hexo-util-2_hexo-fs-3/index.html';
+  var disqus_title = "Official plugins hexo-util 2.1.0 and hexo-fs 3.0.1 released";
+  var disqus_config = function(){
+    this.language = 'zh';
+  };
+  (function(){
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'https://go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+</article>
+
+    </div>
+  </div>
+</div>
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2022 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuo.jiangtao@h3c.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard" class="mobile-nav-link">开发规范</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></span>
+    <select id="mobile-lang-select" data-canonical="">
+      
+        <option value="zh-cn" selected>简体中文</option>
+      
+        <option value="en">English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>

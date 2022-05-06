@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Documentation | 开发规范</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://hexo.io/en/docs/index.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="zh-cn" href="https://hexo.io/en/docs/">
+    
+      <link rel="alternative" hreflang="en" href="https://hexo.io/en/en/docs/">
+    
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/en/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard" class="main-nav-link">standard</a>
+    </nav>
+    <div id="lang-select-wrap">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">Documentation</h1>
+                <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/site/edit/master/source/en/docs/index.md" class="article-edit-link" title="Improve this doc"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <p>Welcome to the Hexo documentation. If you encounter any problems when using Hexo, have a look at the  <a href="troubleshooting.html">troubleshooting guide</a>, raise an issue on <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/issues">GitHub</a> or start a topic on the <a target="_blank" rel="noopener external nofollow noreferrer" href="https://groups.google.com/group/hexo">Google Group</a>.</p>
+<h2 id="What-is-Hexo" class="article-heading"><a href="#What-is-Hexo" class="headerlink" title="What is Hexo?"></a>What is Hexo?<a class="article-anchor" href="#What-is-Hexo" aria-hidden="true"></a></h2><p>Hexo is a fast, simple and powerful blog framework. You write posts in <a target="_blank" rel="noopener external nofollow noreferrer" href="http://daringfireball.net/projects/markdown/">Markdown</a> (or other markup languages) and Hexo generates static files with a beautiful theme in seconds.</p>
+<h2 id="Installation" class="article-heading"><a href="#Installation" class="headerlink" title="Installation"></a>Installation<a class="article-anchor" href="#Installation" aria-hidden="true"></a></h2><p>It only takes a few minutes to set up Hexo. If you encounter a problem and can’t find the solution here, please <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/issues">submit a GitHub issue</a> and we’ll help.</p>
+<div class="video-container"><iframe src="https://www.youtube.com/embed/ARted4RniaU" frameborder="0" loading="lazy" allowfullscreen></iframe></div>
+
+<h3 id="Requirements" class="article-heading"><a href="#Requirements" class="headerlink" title="Requirements"></a>Requirements<a class="article-anchor" href="#Requirements" aria-hidden="true"></a></h3><p>Installing Hexo is quite easy and only requires the following beforehand:</p>
+<ul>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="http://nodejs.org/">Node.js</a> (Should be at least Node.js 10.13, recommends 12.0 or higher)</li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="http://git-scm.com/">Git</a></li>
+</ul>
+<p>If your computer already has these, congratulations! You can skip to the <a href="#Install-Hexo">Hexo installation</a> step.</p>
+<p>If not, please follow the following instructions to install all the requirements.</p>
+<h3 id="Install-Git" class="article-heading"><a href="#Install-Git" class="headerlink" title="Install Git"></a>Install Git<a class="article-anchor" href="#Install-Git" aria-hidden="true"></a></h3><ul>
+<li>Windows: Download &amp; install <a target="_blank" rel="noopener external nofollow noreferrer" href="https://git-scm.com/download/win">git</a>.</li>
+<li>Mac: Install it with <a target="_blank" rel="noopener external nofollow noreferrer" href="https://brew.sh/">Homebrew</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="http://www.macports.org/">MacPorts</a> or <a target="_blank" rel="noopener external nofollow noreferrer" href="http://sourceforge.net/projects/git-osx-installer/">installer</a>.</li>
+<li>Linux (Ubuntu, Debian): <code>sudo apt-get install git-core</code></li>
+<li>Linux (Fedora, Red Hat, CentOS): <code>sudo yum install git-core</code></li>
+</ul>
+<blockquote class="note warn"><strong class="note-title">For Mac users</strong><p>You may encounter some problems when compiling. Please install Xcode from App Store first. After Xcode is installed, open Xcode and go to <strong>Preferences -&gt; Download -&gt; Command Line Tools -&gt; Install</strong> to install command line tools.</p>
+</blockquote>
+
+<h3 id="Install-Node-js" class="article-heading"><a href="#Install-Node-js" class="headerlink" title="Install Node.js"></a>Install Node.js<a class="article-anchor" href="#Install-Node-js" aria-hidden="true"></a></h3><p>Node.js provides <a target="_blank" rel="noopener external nofollow noreferrer" href="https://nodejs.org/en/download/">official installer</a> for most platforms.</p>
+<p>Alternative installation methods:</p>
+<ul>
+<li>Windows: Install it with <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jasongin/nvs/">nvs</a> (recommended) or <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/nvm-sh/nvm">nvm</a>.</li>
+<li>Mac: Install it with <a target="_blank" rel="noopener external nofollow noreferrer" href="https://brew.sh/">Homebrew</a> or <a target="_blank" rel="noopener external nofollow noreferrer" href="http://www.macports.org/">MacPorts</a>.</li>
+<li>Linux (DEB&#x2F;RPM-based): Install it with <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/nodesource/distributions">NodeSource</a>.</li>
+<li>Others: Install it through respective package manager. Refer to <a target="_blank" rel="noopener external nofollow noreferrer" href="https://nodejs.org/en/download/package-manager/">the guide</a> provided by Node.js.</li>
+</ul>
+<p>nvs is also recommended for Mac and Linux to avoid possible permission issue.</p>
+<blockquote class="note info"><strong class="note-title">Windows</strong><p>If you use the official installer, make sure <strong>Add to PATH</strong> is checked (it’s checked by default).</p>
+</blockquote>
+
+<blockquote class="note warn"><strong class="note-title">Mac / Linux</strong><p>If you encounter <code>EACCES</code> permission error when trying to install Hexo, please follow <a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally">the workaround</a> provided by npmjs; overriding with root&#x2F;sudo is highly discouraged.</p>
+</blockquote>
+
+<blockquote class="note info"><strong class="note-title">Linux</strong><p>If you installed Node.js using Snap, you may need to manually run <code>npm install</code> in the target folder when <a href="/docs/commands#init">initializing</a> a blog.</p>
+</blockquote>
+
+<h3 id="Install-Hexo" class="article-heading"><a href="#Install-Hexo" class="headerlink" title="Install Hexo"></a>Install Hexo<a class="article-anchor" href="#Install-Hexo" aria-hidden="true"></a></h3><p>Once all the requirements are installed, you can install Hexo with npm:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<h3 id="Advanced-installation-and-usage" class="article-heading"><a href="#Advanced-installation-and-usage" class="headerlink" title="Advanced installation and usage"></a>Advanced installation and usage<a class="article-anchor" href="#Advanced-installation-and-usage" aria-hidden="true"></a></h3><p>Advanced users may prefer to install and use <code>hexo</code> package instead.</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install hexo</span><br></pre></td></tr></table></figure>
+
+<p>Once installed, you can run Hexo in two ways:</p>
+<ol>
+<li><code>npx hexo &lt;command&gt;</code></li>
+<li>Linux users can set relative path of <code>node_modules/</code> folder:</li>
+</ol>
+  <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;PATH=&quot;$PATH:./node_modules/.bin&quot;&#x27;</span> &gt;&gt; ~/.profile</span><br></pre></td></tr></table></figure>
+
+<p>  then run Hexo using <code>hexo &lt;command&gt;</code></p>
+<h3 id="Minimum-required-Node-js-version" class="article-heading"><a href="#Minimum-required-Node-js-version" class="headerlink" title="Minimum required Node.js version"></a>Minimum required Node.js version<a class="article-anchor" href="#Minimum-required-Node-js-version" aria-hidden="true"></a></h3><p>If you are stuck with older Node.js, you can consider installing a past version of Hexo.</p>
+<p>Please note we do not provide bugfixes to past versions of Hexo.</p>
+<p>We highly recommend to always install the <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.npmjs.com/package/hexo?activeTab=versions">latest version</a> of Hexo and the <a href="#Requirements">recommended version</a> of Node.js, whenever possible.</p>
+<table>
+<thead>
+<tr>
+<th>Hexo version</th>
+<th>Minimum Node.js version</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>6.0+</td>
+<td>12.13.0</td>
+</tr>
+<tr>
+<td>5.0+</td>
+<td>10.13.0</td>
+</tr>
+<tr>
+<td>4.1 - 4.2</td>
+<td>8.10</td>
+</tr>
+<tr>
+<td>4.0</td>
+<td>8.6</td>
+</tr>
+<tr>
+<td>3.3 - 3.9</td>
+<td>6.9</td>
+</tr>
+<tr>
+<td>3.2 - 3.3</td>
+<td>0.12</td>
+</tr>
+<tr>
+<td>3.0 - 3.1</td>
+<td>0.10 or iojs</td>
+</tr>
+<tr>
+<td>0.0.1 - 2.8</td>
+<td>0.10</td>
+</tr>
+</tbody></table>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2022-05-05T02:50:05.014Z" itemprop="dateModified">Last updated: 2022-05-05</time>
+                <a href="setup.html" class="article-footer-next" title="Setup"><span>Next</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">Contents</strong>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-Hexo"><span class="toc-text">What is Hexo?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Installation"><span class="toc-text">Installation</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Requirements"><span class="toc-text">Requirements</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Install-Git"><span class="toc-text">Install Git</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Install-Node-js"><span class="toc-text">Install Node.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Install-Hexo"><span class="toc-text">Install Hexo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Advanced-installation-and-usage"><span class="toc-text">Advanced installation and usage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Minimum-required-Node-js-version"><span class="toc-text">Minimum required Node.js version</span></a></li></ol></li></ol>
+              <a href="#" id="article-toc-top">Back to Top</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">Getting Started</strong><a href="/standard/index.html" class="sidebar-link">Overview</a><a href="/standard/setup.html" class="sidebar-link">Setup</a><a href="/standard/configuration.html" class="sidebar-link">Configuration</a><a href="/standard/commands.html" class="sidebar-link">Commands</a><a href="/standard/migration.html" class="sidebar-link">Migration</a><strong class="sidebar-title">Basic Usage</strong><a href="/standard/writing.html" class="sidebar-link">Writing</a><a href="/standard/front-matter.html" class="sidebar-link">Front-matter</a><a href="/standard/tag-plugins.html" class="sidebar-link">Tag Plugins</a><a href="/standard/asset-folders.html" class="sidebar-link">Asset Folders</a><a href="/standard/data-files.html" class="sidebar-link">Data Files</a><a href="/standard/server.html" class="sidebar-link">Server</a><a href="/standard/generating.html" class="sidebar-link">Generating</a><strong class="sidebar-title">Deployment</strong><a href="/standard/github-pages.html" class="sidebar-link">GitHub Pages</a><a href="/standard/gitlab-pages.html" class="sidebar-link">GitLab Pages</a><a href="/standard/one-command-deployment.html" class="sidebar-link">One-Command Deployment</a><strong class="sidebar-title">Customization</strong><a href="/standard/permalinks.html" class="sidebar-link">Permalinks</a><a href="/standard/themes.html" class="sidebar-link">Themes</a><a href="/standard/templates.html" class="sidebar-link">Templates</a><a href="/standard/variables.html" class="sidebar-link">Variables</a><a href="/standard/helpers.html" class="sidebar-link">Helpers</a><a href="/standard/internationalization.html" class="sidebar-link">Internationalization (i18n)</a><a href="/standard/syntax-highlight.html" class="sidebar-link">Syntax Highlight</a><a href="/standard/plugins.html" class="sidebar-link">Plugins</a><strong class="sidebar-title">Miscellaneous</strong><a href="/standard/troubleshooting.html" class="sidebar-link">Troubleshooting</a><a href="/standard/contributing.html" class="sidebar-link">Contributing</a>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2022 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuo.jiangtao@h3c.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard" class="mobile-nav-link">standard</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">Getting Started</strong><a href="/standard/index.html" class="mobile-nav-link">Overview</a><a href="/standard/setup.html" class="mobile-nav-link">Setup</a><a href="/standard/configuration.html" class="mobile-nav-link">Configuration</a><a href="/standard/commands.html" class="mobile-nav-link">Commands</a><a href="/standard/migration.html" class="mobile-nav-link">Migration</a><strong class="mobile-nav-title">Basic Usage</strong><a href="/standard/writing.html" class="mobile-nav-link">Writing</a><a href="/standard/front-matter.html" class="mobile-nav-link">Front-matter</a><a href="/standard/tag-plugins.html" class="mobile-nav-link">Tag Plugins</a><a href="/standard/asset-folders.html" class="mobile-nav-link">Asset Folders</a><a href="/standard/data-files.html" class="mobile-nav-link">Data Files</a><a href="/standard/server.html" class="mobile-nav-link">Server</a><a href="/standard/generating.html" class="mobile-nav-link">Generating</a><strong class="mobile-nav-title">Deployment</strong><a href="/standard/github-pages.html" class="mobile-nav-link">GitHub Pages</a><a href="/standard/gitlab-pages.html" class="mobile-nav-link">GitLab Pages</a><a href="/standard/one-command-deployment.html" class="mobile-nav-link">One-Command Deployment</a><strong class="mobile-nav-title">Customization</strong><a href="/standard/permalinks.html" class="mobile-nav-link">Permalinks</a><a href="/standard/themes.html" class="mobile-nav-link">Themes</a><a href="/standard/templates.html" class="mobile-nav-link">Templates</a><a href="/standard/variables.html" class="mobile-nav-link">Variables</a><a href="/standard/helpers.html" class="mobile-nav-link">Helpers</a><a href="/standard/internationalization.html" class="mobile-nav-link">Internationalization (i18n)</a><a href="/standard/syntax-highlight.html" class="mobile-nav-link">Syntax Highlight</a><a href="/standard/plugins.html" class="mobile-nav-link">Plugins</a><strong class="mobile-nav-title">Miscellaneous</strong><a href="/standard/troubleshooting.html" class="mobile-nav-link">Troubleshooting</a><a href="/standard/contributing.html" class="mobile-nav-link">Contributing</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>English</span></span>
+    <select id="mobile-lang-select" data-canonical="docs/index.html">
+      
+        <option value="zh-cn">简体中文</option>
+      
+        <option value="en" selected>English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>

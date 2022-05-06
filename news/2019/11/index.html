@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>News | 开发规范</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://hexo.io/news/2019/11/index.html">
+  <!-- Alternative links -->
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard" class="main-nav-link">开发规范</a>
+    </nav>
+    <div id="lang-select-wrap">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div class="wrapper">
+    <div class="inner">
+      
+        
+          <article class="article post" itemscope itemtype="http://schema.org/Article">
+  <header class="article-header">
+    
+      <h1>
+        <a href="/news/2019/11/28/hexo-util1-6_hexo-generator-feed-2-2_hexo-uglify-1-1/" class="article-title" itemprop="name">Official plugins hexo-util 1.6.0, hexo-generator-feed 2.2.0 & hexo-uglify 1.1.0 released</a>
+      </h1>
+    
+    <a href="/news/2019/11/28/hexo-util1-6_hexo-generator-feed-2-2_hexo-uglify-1-1/" class="article-date"><time datetime="2019-11-28T00:00:00.000Z">2019-11-28</time></a>
+  </header>
+  <div class="article-content" itemprop="articleBody">
+    <p>We have released a new version of the official plugins <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util">hexo-util</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-generator-feed">hexo-generator-feed</a> and <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-uglify">hexo-uglify</a>.</p>
+<h2 id="hexo-util-1-6-0" class="article-heading"><a href="#hexo-util-1-6-0" class="headerlink" title="hexo-util 1.6.0"></a>hexo-util 1.6.0<a class="article-anchor" href="#hexo-util-1-6-0" aria-hidden="true"></a></h2><h3 id="Breaking-changes" class="article-heading"><a href="#Breaking-changes" class="headerlink" title="Breaking changes"></a>Breaking changes<a class="article-anchor" href="#Breaking-changes" aria-hidden="true"></a></h3><ul>
+<li><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util#isexternallinkurl-sitehost-exclude"><code>isExternalLink</code></a> no longer requires <code>bind(hexo)</code> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/140">#140</a></p>
+<ul>
+<li>Pass the site config or an url as parameter</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title function_">isExternalLink</span>(<span class="string">&#x27;https://example.com&#x27;</span>, hexo.<span class="property">config</span>.<span class="property">url</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util#url_forpath-option"><code>url_for()</code></a> &amp; <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util#full_url_forpath"><code>full_url_for()</code></a> no longer process folder name with semicolon <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/130">#130</a></p>
+<ul>
+<li>This is necessary to avoid processing data urls (e.g. <code>mailto:</code> &amp; <code>data:</code>]</li>
+</ul>
+</li>
+</ul>
+<h3 id="Fixes" class="article-heading"><a href="#Fixes" class="headerlink" title="Fixes"></a>Fixes<a class="article-anchor" href="#Fixes" aria-hidden="true"></a></h3><ul>
+<li>Fix performance regression introduced in 1.5.0 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/125">#125</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/124">#124</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/128">#128</a><ul>
+<li>Affected <code>url_for()</code>, <code>full_url_for()</code>, <code>isExternalLink()</code></li>
+<li>For background, see <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/issues/3833">hexojs&#x2F;hexo#3833</a> &amp; <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/issues/3846">hexojs&#x2F;hexo#3846</a></li>
+</ul>
+</li>
+<li>Remove unnecessary new line <code>&lt;br&gt;</code> element from codeblock <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/132">#132</a></li>
+<li>Handle underscore sign in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util#permalinkrule-options"><code>permalink()</code></a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/139">#139</a></li>
+<li>Applies <code>pretty_urls.trailing_index</code> <a href="https://hexo.io/docs/configuration#URL">option</a> to <code>url_for()</code> and <code>full_url_for()</code>, to remove the trailing <code>index.html</code> from links. <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/134">#134</a></li>
+<li>Replace <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/mdevils/node-html-entities">node-html-entities</a> with <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util#escapehtmlstr"><code>escapeHTML()</code></a> in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util#highlightstr-options"><code>highlight()</code></a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/129">#129</a><ul>
+<li><code>escapeHTML()</code> escapes more characters compared to node-html-entities.</li>
+<li>This also means more unsafe characters are now escaped in codeblock</li>
+</ul>
+</li>
+<li>Escape equal <code>=</code> sign to <code>&amp;#x3D;</code> in <code>escapeHTML()</code> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/131">#131</a><ul>
+<li>Equal sign can be misused to create another attribute in html element, this fix prevents that</li>
+</ul>
+</li>
+</ul>
+<h2 id="hexo-generator-feed-2-2-0" class="article-heading"><a href="#hexo-generator-feed-2-2-0" class="headerlink" title="hexo-generator-feed 2.2.0"></a>hexo-generator-feed 2.2.0<a class="article-anchor" href="#hexo-generator-feed-2-2-0" aria-hidden="true"></a></h2><h3 id="Feature" class="article-heading"><a href="#Feature" class="headerlink" title="Feature"></a>Feature<a class="article-anchor" href="#Feature" aria-hidden="true"></a></h3><ul>
+<li><p>Support custom template, in addition to the default <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-generator-feed/blob/master/atom.xml">atom.xml</a> &amp; <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-generator-feed/blob/master/rss2.xml">rss2.xml</a> templates. <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-generator-feed/pull/110">#110</a></p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">feed:</span></span><br><span class="line">  <span class="attr">template:</span> <span class="string">&#x27;./path/to/template&#x27;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="Fix" class="article-heading"><a href="#Fix" class="headerlink" title="Fix"></a>Fix<a class="article-anchor" href="#Fix" aria-hidden="true"></a></h3><ul>
+<li>Fix compatibility issue with existing themes <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-generator-feed/pull/114">#114</a></li>
+</ul>
+<h2 id="hexo-uglify-1-1-0" class="article-heading"><a href="#hexo-uglify-1-1-0" class="headerlink" title="hexo-uglify 1.1.0"></a>hexo-uglify 1.1.0<a class="article-anchor" href="#hexo-uglify-1-1-0" aria-hidden="true"></a></h2><h3 id="Feature-1" class="article-heading"><a href="#Feature-1" class="headerlink" title="Feature"></a>Feature<a class="article-anchor" href="#Feature-1" aria-hidden="true"></a></h3><ul>
+<li><p>Support minifying javascript files with ES6+ syntax by utilizing <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/terser/terser">Terser</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-uglify/pull/71">#71</a></p>
+<ul>
+<li>Still defaults to <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/mishoo/UglifyJS2">UglifyJS</a> (which doesn’t support ES6)</li>
+<li>To enable ES6 support,</li>
+</ul>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">uglify:</span></span><br><span class="line">  <span class="attr">es6:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="hexo-uglify-1-0-0" class="article-heading"><a href="#hexo-uglify-1-0-0" class="headerlink" title="hexo-uglify 1.0.0"></a>hexo-uglify 1.0.0<a class="article-anchor" href="#hexo-uglify-1-0-0" aria-hidden="true"></a></h2><h3 id="Breaking-change" class="article-heading"><a href="#Breaking-change" class="headerlink" title="Breaking change"></a>Breaking change<a class="article-anchor" href="#Breaking-change" aria-hidden="true"></a></h3><ul>
+<li>Drop EOL Node 6, now requires Node 8.6 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-uglify/pull/46">#46</a></li>
+</ul>
+<h3 id="Feature-2" class="article-heading"><a href="#Feature-2" class="headerlink" title="Feature"></a>Feature<a class="article-anchor" href="#Feature-2" aria-hidden="true"></a></h3><ul>
+<li>Switch minimatch to micromatch, for faster exclusion operation and to support more <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/micromatch/micromatch#extended-globbing">globbing patterns</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-uglify/pull/40">#40</a></li>
+</ul>
+<h3 id="Refactors" class="article-heading"><a href="#Refactors" class="headerlink" title="Refactors"></a>Refactors<a class="article-anchor" href="#Refactors" aria-hidden="true"></a></h3><ul>
+<li>Use native <code>Object.assign()</code> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-uglify/pull/12">#12</a></li>
+<li>Switch to eslint and drop gulp, to be inline with hexo’s <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/eslint-config-hexo">style</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-uglify/pull/37">#37</a></li>
+</ul>
+<h3 id="Dependencies" class="article-heading"><a href="#Dependencies" class="headerlink" title="Dependencies"></a>Dependencies<a class="article-anchor" href="#Dependencies" aria-hidden="true"></a></h3><ul>
+<li>Update mocha from 2.0.1 to 6.2.0 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-uglify/pull/6">#6</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-uglify/pull/16">#16</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-uglify/pull/42">#42</a></li>
+<li>Update coveralls from 2.11.2 to 3.0.2 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-uglify/pull/9">#9</a></li>
+<li>Update chai from 1.9.1 to 4.2.0 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-uglify/pull/8">#8</a></li>
+<li>Update eslint from 5.16.0 to 6.1.0  <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-uglify/pull/43">#43</a></li>
+<li>Update uglify-js from 2.6.0 to 3.6.0 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-uglify/pull/36">#36</a></li>
+</ul>
+
+  </div>
+  
+</article>
+
+        
+      
+        
+          <article class="article post archive-post" itemscope itemtype="http://schema.org/Article">
+            <a class="archive-post-link" href="/news/2019/11/22/hexo-deployer-git-2-1_hexo-generator-feed-2-1-1_hexo-generator-sitemap-2/">
+              <strong class="archive-post-title" itemprop="name">Official plugins hexo-deployer-git 2.1.0, hexo-generator-feed 2.1.1 & hexo-generator-sitemap 2.0.0 released</strong>
+              <span class="archive-post-date"><time datetime="2019-11-22T00:00:00.000Z">2019-11-22</time></span>
+            </a>
+          </article>
+        
+      
+        
+          <article class="article post archive-post" itemscope itemtype="http://schema.org/Article">
+            <a class="archive-post-link" href="/news/2019/11/10/hexo-generator-feed-2-1_hexo-util-1-5/">
+              <strong class="archive-post-title" itemprop="name">Official plugins hexo-generator-feed 2.1.0 & hexo-util 1.5.0 released</strong>
+              <span class="archive-post-date"><time datetime="2019-11-10T00:00:00.000Z">2019-11-10</time></span>
+            </a>
+          </article>
+        
+      
+    </div>
+  </div>
+</div>
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2022 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuo.jiangtao@h3c.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard" class="mobile-nav-link">开发规范</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></span>
+    <select id="mobile-lang-select" data-canonical="">
+      
+        <option value="zh-cn" selected>简体中文</option>
+      
+        <option value="en">English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>

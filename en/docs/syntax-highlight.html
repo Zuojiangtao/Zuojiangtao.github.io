@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Syntax Highlighting | 开发规范</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://hexo.io/en/docs/syntax-highlight.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="zh-cn" href="https://hexo.io/en/docs/syntax-highlight">
+    
+      <link rel="alternative" hreflang="en" href="https://hexo.io/en/en/docs/syntax-highlight">
+    
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/en/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard" class="main-nav-link">standard</a>
+    </nav>
+    <div id="lang-select-wrap">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">Syntax Highlighting</h1>
+                <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/site/edit/master/source/en/docs/syntax-highlight.md" class="article-edit-link" title="Improve this doc"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <p>Hexo has two built-in syntax highlight libraries, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/highlightjs/highlight.js">highlight.js</a> and <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/PrismJS/prism">prismjs</a>. This tutorial shows you how to integrate Hexo’s built-in syntax highlight into your template.</p>
+<h2 id="How-to-use-code-block-in-posts" class="article-heading"><a href="#How-to-use-code-block-in-posts" class="headerlink" title="How to use code block in posts"></a>How to use code block in posts<a class="article-anchor" href="#How-to-use-code-block-in-posts" aria-hidden="true"></a></h2><p>Hexo supports two ways to write code block: <a href="tag-plugins#Code-Block">Tag Plugin - Code Block</a> and <a href="https://hexo.io/docs/tag-plugins#Backtick-Code-Block">Tag Plugin - Backtick Code Block</a>:</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">&#123;% codeblock [title] [lang:language] [url] [link text] [additional options] %&#125;</span><br><span class="line">code snippet</span><br><span class="line">&#123;% endcodeblock %&#125;</span><br><span class="line"></span><br><span class="line">&#123;% code [title] [lang:language] [url] [link text] [additional options] %&#125;</span><br><span class="line">code snippet</span><br><span class="line">&#123;% endcode %&#125;</span><br><span class="line"></span><br><span class="line"><span class="code">``` [language] [title] [url] [link text] [additional options]</span></span><br><span class="line"><span class="code">code snippet</span></span><br><span class="line"><span class="code">```</span></span><br></pre></td></tr></table></figure>
+
+<p>The third syntax is a Markdown’s fenced code block syntax and Hexo extends it to support more features. Check out <a href="tag-plugins#Code-Block">Tag Plugin Docs</a> to find out options available.</p>
+<blockquote>
+<p>Tip: Hexo support posts written in any format, so long the corresponding renderer plugin is installed. It can be in markdown, ejs, swig, nunjucks, pug, asciidoc, etc. Regardless of the format used, those three code block syntax will always be available.</p>
+</blockquote>
+<h2 id="Configuration" class="article-heading"><a href="#Configuration" class="headerlink" title="Configuration"></a>Configuration<a class="article-anchor" href="#Configuration" aria-hidden="true"></a></h2><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># _config.yml</span></span><br><span class="line"><span class="attr">highlight:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">auto_detect:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">line_number:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">line_threshold:</span> <span class="number">0</span></span><br><span class="line">  <span class="attr">tab_replace:</span> <span class="string">&#x27;&#x27;</span></span><br><span class="line">  <span class="attr">exclude_languages:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">example</span></span><br><span class="line">  <span class="attr">wrap:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">hljs:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">prismjs:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">preprocess:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">line_number:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">line_threshold:</span> <span class="number">0</span></span><br><span class="line">  <span class="attr">tab_replace:</span> <span class="string">&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>The YAML above is Hexo’s default configuration.</p>
+<h2 id="Disabled" class="article-heading"><a href="#Disabled" class="headerlink" title="Disabled"></a>Disabled<a class="article-anchor" href="#Disabled" aria-hidden="true"></a></h2><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># _config.yml</span></span><br><span class="line"><span class="attr">highlight:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">prismjs:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<p>When both <code>highlight.enable</code> and <code>prismjs.enable</code> are <code>false</code>, the output HTML of the code block is controlled by the corresponding renderer. For example, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/markedjs/marked"><code>marked.js</code></a> (used by <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked"><code>hexo-renderer-marked</code></a>, the default markdown renderer of Hexo) will add the language code to the <code>class</code> of <code>&lt;code&gt;</code>:</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="code">```yaml</span></span><br><span class="line"><span class="code">hello: hexo</span></span><br><span class="line"><span class="code">```</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">pre</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">code</span> <span class="attr">class</span>=<span class="string">&quot;yaml&quot;</span>&gt;</span>hello: hexo<span class="tag">&lt;/<span class="name">code</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">pre</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>When no built-in syntax highlight is enabled, you can either install third-party syntax-highlight plugin, or use a browser-side syntax hilighter (e.g. <code>highlight.js</code> and <code>prism.js</code> both support running in browser).</p>
+<h2 id="Highlight-js" class="article-heading"><a href="#Highlight-js" class="headerlink" title="Highlight.js"></a>Highlight.js<a class="article-anchor" href="#Highlight-js" aria-hidden="true"></a></h2><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># _config.yml</span></span><br><span class="line"><span class="attr">highlight:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">auto_detect:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">line_number:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">line_threshold:</span> <span class="number">0</span></span><br><span class="line">  <span class="attr">tab_replace:</span> <span class="string">&#x27;  &#x27;</span></span><br><span class="line">  <span class="attr">exclude_languages:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">example</span></span><br><span class="line">  <span class="attr">wrap:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">hljs:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">prismjs:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<p><code>highlight.js</code> is enabled by default and used as server-side highlighting in Hexo; it needs to be disabled if you prefer to run <code>highlight.js</code> on browser-side.</p>
+<blockquote>
+<p>Server-side means, the syntax highlight is generated during <code>hexo generate</code> or <code>hexo server</code>.</p>
+</blockquote>
+<h3 id="auto-detect" class="article-heading"><a href="#auto-detect" class="headerlink" title="auto_detect"></a>auto_detect<a class="article-anchor" href="#auto-detect" aria-hidden="true"></a></h3><p><code>auto_detect</code> is a <code>highlight.js</code> feature that detect language of the code block automatically.</p>
+<blockquote>
+<p>Tip: When you want to use “sublanguage highlight”, enable <code>auto_detect</code> and don’t mark language when writing code block.</p>
+</blockquote>
+<blockquote class="note warn"><strong class="note-title">Warning!</strong><p><code>auto_detect</code> is very resource-intensive. Do not enable it unless you really need “sublanguage highlight” or prefer not to mark language when writing code block.</p>
+</blockquote>
+
+<h3 id="line-number" class="article-heading"><a href="#line-number" class="headerlink" title="line_number"></a>line_number<a class="article-anchor" href="#line-number" aria-hidden="true"></a></h3><p><code>highlight.js</code> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://highlightjs.readthedocs.io/en/latest/line-numbers.html">does not</a> support line number.</p>
+<p>Hexo adds line number by wrapping output inside <code>&lt;figure&gt;</code> and <code>&lt;table&gt;</code>:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">figure</span> <span class="attr">class</span>=<span class="string">&quot;highlight yaml&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">&quot;gutter&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">pre</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;line&quot;</span>&gt;</span>1<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span><span class="tag">&lt;/<span class="name">pre</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">&quot;code&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">pre</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;line&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;attr&quot;</span>&gt;</span>hello:<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;string&quot;</span>&gt;</span>hexo<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>&gt;</span><span class="tag">&lt;/<span class="name">pre</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">figure</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>It is not the behavior of <code>highlight.js</code> and requires custom CSS for <code>&lt;figure&gt;</code> and <code>&lt;table&gt;</code> elements; some themes have built-in support.</p>
+<p>You might also notice that all <code>class</code> has no <code>hljs-</code> prefixed, we will revisit it <a href="#hljs">later part</a>.</p>
+<h3 id="line-threshold-6-1-0" class="article-heading"><a href="#line-threshold-6-1-0" class="headerlink" title="line_threshold (+6.1.0)"></a>line_threshold (+6.1.0)<a class="article-anchor" href="#line-threshold-6-1-0" aria-hidden="true"></a></h3><p>Accepts an optional threshold to only show line numbers as long as the numbers of lines of the code block exceed such threshold. Default is <code>0</code>.</p>
+<h3 id="tab-replace" class="article-heading"><a href="#tab-replace" class="headerlink" title="tab_replace"></a>tab_replace<a class="article-anchor" href="#tab-replace" aria-hidden="true"></a></h3><p>Replace tabs inside code block with given string. By default it is 2 spaces.</p>
+<h3 id="exclude-languages-6-1-0" class="article-heading"><a href="#exclude-languages-6-1-0" class="headerlink" title="exclude_languages (+6.1.0)"></a>exclude_languages (+6.1.0)<a class="article-anchor" href="#exclude-languages-6-1-0" aria-hidden="true"></a></h3><p>Only wrap with <code>&lt;pre&gt;&lt;code class=&quot;lang&quot;&gt;&lt;/code&gt;&lt;/pre&gt;</code> and will not render all tags(<code>span</code>, and <code>br</code>) in content if are languages matches this option.</p>
+<h3 id="wrap" class="article-heading"><a href="#wrap" class="headerlink" title="wrap"></a>wrap<a class="article-anchor" href="#wrap" aria-hidden="true"></a></h3><p>Hexo <em>wraps</em> the output inside <code>&lt;figure&gt;</code> and <code>&lt;table&gt;</code> to support line number. You need to disable <strong>both</strong> <code>line_number</code> and <code>wrap</code> to revert to <code>highlight.js</code>‘s behavior:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">pre</span>&gt;</span><span class="tag">&lt;<span class="name">code</span> <span class="attr">class</span>=<span class="string">&quot;yaml&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;comment&quot;</span>&gt;</span># _config.yml<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;attr&quot;</span>&gt;</span>hexo:<span class="tag">&lt;/<span class="name">span</span>&gt;</span> <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;string&quot;</span>&gt;</span>hexo<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">code</span>&gt;</span><span class="tag">&lt;/<span class="name">pre</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote class="note warn"><strong class="note-title">Warning!</strong><p>Because <code>line_number</code> feature relies on <code>wrap</code>, you can’t disable <code>wrap</code> with <code>line_number</code> enabled: If you set <code>line_number</code> to <code>true</code>, <code>wrap</code> will be automatically enabled.</p>
+</blockquote>
+
+<h3 id="hljs" class="article-heading"><a href="#hljs" class="headerlink" title="hljs"></a>hljs<a class="article-anchor" href="#hljs" aria-hidden="true"></a></h3><p>When <code>hljs</code> is set to <code>true</code>, all the HTML output will have <code>class</code> prefixed with <code>hljs-</code> (regardless <code>wrap</code> is enabled or not):</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">pre</span>&gt;</span><span class="tag">&lt;<span class="name">code</span> <span class="attr">class</span>=<span class="string">&quot;yaml hljs&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;hljs-comment&quot;</span>&gt;</span># _config.yml<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;hljs-attr&quot;</span>&gt;</span>hexo:<span class="tag">&lt;/<span class="name">span</span>&gt;</span> <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">&quot;hljs-string&quot;</span>&gt;</span>hexo<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">code</span>&gt;</span><span class="tag">&lt;/<span class="name">pre</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Tip: When <code>line_number</code> is set to <code>false</code>, <code>wrap</code> is set to false and <code>hljs</code> is set to <code>true</code>, you can then use <code>highlight.js</code> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/highlightjs/highlight.js/tree/master/src/styles">theme</a> directly in your site.</p>
+</blockquote>
+<h2 id="PrismJS" class="article-heading"><a href="#PrismJS" class="headerlink" title="PrismJS"></a>PrismJS<a class="article-anchor" href="#PrismJS" aria-hidden="true"></a></h2><figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># _config.yml</span></span><br><span class="line"><span class="attr">highlight:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">prismjs:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">preprocess:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">line_number:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">line_threshold:</span> <span class="number">0</span></span><br><span class="line">  <span class="attr">tab_replace:</span> <span class="string">&#x27;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>Prismjs is disabled by default. You should set <code>highlight.enable</code> to <code>false</code> before enabling prismjs.</p>
+<h3 id="preprocess" class="article-heading"><a href="#preprocess" class="headerlink" title="preprocess"></a>preprocess<a class="article-anchor" href="#preprocess" aria-hidden="true"></a></h3><p>Hexo’s built-in prismjs supports both browser-side (<code>preprocess</code> set to <code>false</code>) and server-side (<code>preprocess</code> set to <code>true</code>).</p>
+<p>When use server-side mode (set <code>preprocess</code> to <code>true</code>), you only need to include prismjs theme (css stylesheet) in your website. When use browser-side (set <code>preprocess</code> to <code>false</code>), you have to include the javascript library as well.</p>
+<p>Prismjs is designed to be used in browser, thus under <code>preprocess</code> mode only limited prismjs plugin is supported:</p>
+<ul>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://prismjs.com/plugins/line-numbers/">Line Numbers</a>: Only <code>prism-line-numbers.css</code> is required, No need to include <code>prism-line-numbers.js</code> in your website. Hexo will generate required HTML mark up mark up for you.</li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://prismjs.com/plugins/show-language/">Show Languages</a>: Hexo will always have <code>data-language</code> attribute added as long as language is given for the code block.</li>
+<li>Any other prism plugins that don’t need special HTML markup are supported as well, but you will have to include JavaScript required by those plugins.</li>
+</ul>
+<p>All prism plugins are supported if <code>preprocess</code> is set to <code>false</code>. Here are a few things you should still pay attention to:</p>
+<ul>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://prismjs.com/plugins/line-numbers/">Line Numbers</a>: Hexo won’t generate required HTML mark up when <code>preprocess</code> is set to <code>false</code>. Requires both <code>prism-line-numbers.css</code> and <code>prism-line-numbers.js</code>.</li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://prismjs.com/plugins/show-language/">Show Languages</a>: Hexo will always have <code>data-language</code> attribute added as long as language is given for the code block.</li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://prismjs.com/plugins/line-highlight/">Line Highlight</a>: Both Hexo <a href="tag-plugins#Code-Block">Tag Plugin - Code Block</a> and <a href="https://hexo.io/docs/tag-plugins#Backtick-Code-Block">Tag Plugin - Backtick Code Block</a> supports Line Highlight syntax (<code>mark</code> option). When <code>mark</code> option is given, Hexo will generate the corresponding HTML markup.</li>
+</ul>
+<h3 id="line-number-1" class="article-heading"><a href="#line-number-1" class="headerlink" title="line_number"></a>line_number<a class="article-anchor" href="#line-number-1" aria-hidden="true"></a></h3><p>With both <code>preprocess</code> and <code>line_number</code> set to <code>true</code>, you just need to include <code>prism-line-numbers.css</code> to make line-numbering work. If you set both <code>preprocess</code> and <code>line_number</code> to false, you will need both <code>prism-line-numbers.css</code> and <code>prism-line-numbers.js</code>.</p>
+<h3 id="line-threshold-6-1-0-1" class="article-heading"><a href="#line-threshold-6-1-0-1" class="headerlink" title="line_threshold (+6.1.0)"></a>line_threshold (+6.1.0)<a class="article-anchor" href="#line-threshold-6-1-0-1" aria-hidden="true"></a></h3><p>Accepts an optional threshold to only show line numbers as long as the numbers of lines of the code block exceed such threshold. Default is <code>0</code>.</p>
+<h3 id="tab-replace-1" class="article-heading"><a href="#tab-replace-1" class="headerlink" title="tab_replace"></a>tab_replace<a class="article-anchor" href="#tab-replace-1" aria-hidden="true"></a></h3><p>Replace <code>\t</code> inside code block with given string. By default it is 2 spaces.</p>
+<h2 id="Other-useful-information" class="article-heading"><a href="#Other-useful-information" class="headerlink" title="Other useful information"></a>Other useful information<a class="article-anchor" href="#Other-useful-information" aria-hidden="true"></a></h2><ul>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://highlightjs.readthedocs.io/en/latest/">Highlight.js</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://prismjs.com/">PrismJS</a></li>
+</ul>
+<p>The source codes behind Hexo’s syntax highlighting are available in:</p>
+<ul>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/blob/master/lib/highlight.js">Highlight.js Utility Functions</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/blob/master/lib/prism.js">PrismJS Utility Functions</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/blob/master/lib/plugins/tag/code.js">Tag Plugin - Code Block</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/blob/master/lib/plugins/filter/before_post_render/backtick_code_block.js">Tag Plugin - Backtick Code Block</a></li>
+</ul>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2022-05-05T02:50:05.014Z" itemprop="dateModified">Last updated: 2022-05-05</time>
+                <a href="internationalization.html" class="article-footer-prev" title="Internationalization (i18n)"><i class="fa fa-chevron-left"></i><span>Prev</span></a><a href="plugins.html" class="article-footer-next" title="Plugins"><span>Next</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">Contents</strong>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#How-to-use-code-block-in-posts"><span class="toc-text">How to use code block in posts</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Configuration"><span class="toc-text">Configuration</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Disabled"><span class="toc-text">Disabled</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Highlight-js"><span class="toc-text">Highlight.js</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#auto-detect"><span class="toc-text">auto_detect</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#line-number"><span class="toc-text">line_number</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#line-threshold-6-1-0"><span class="toc-text">line_threshold (+6.1.0)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tab-replace"><span class="toc-text">tab_replace</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#exclude-languages-6-1-0"><span class="toc-text">exclude_languages (+6.1.0)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#wrap"><span class="toc-text">wrap</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hljs"><span class="toc-text">hljs</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PrismJS"><span class="toc-text">PrismJS</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#preprocess"><span class="toc-text">preprocess</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#line-number-1"><span class="toc-text">line_number</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#line-threshold-6-1-0-1"><span class="toc-text">line_threshold (+6.1.0)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#tab-replace-1"><span class="toc-text">tab_replace</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Other-useful-information"><span class="toc-text">Other useful information</span></a></li></ol>
+              <a href="#" id="article-toc-top">Back to Top</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">Getting Started</strong><a href="/standard/index.html" class="sidebar-link">Overview</a><a href="/standard/setup.html" class="sidebar-link">Setup</a><a href="/standard/configuration.html" class="sidebar-link">Configuration</a><a href="/standard/commands.html" class="sidebar-link">Commands</a><a href="/standard/migration.html" class="sidebar-link">Migration</a><strong class="sidebar-title">Basic Usage</strong><a href="/standard/writing.html" class="sidebar-link">Writing</a><a href="/standard/front-matter.html" class="sidebar-link">Front-matter</a><a href="/standard/tag-plugins.html" class="sidebar-link">Tag Plugins</a><a href="/standard/asset-folders.html" class="sidebar-link">Asset Folders</a><a href="/standard/data-files.html" class="sidebar-link">Data Files</a><a href="/standard/server.html" class="sidebar-link">Server</a><a href="/standard/generating.html" class="sidebar-link">Generating</a><strong class="sidebar-title">Deployment</strong><a href="/standard/github-pages.html" class="sidebar-link">GitHub Pages</a><a href="/standard/gitlab-pages.html" class="sidebar-link">GitLab Pages</a><a href="/standard/one-command-deployment.html" class="sidebar-link">One-Command Deployment</a><strong class="sidebar-title">Customization</strong><a href="/standard/permalinks.html" class="sidebar-link">Permalinks</a><a href="/standard/themes.html" class="sidebar-link">Themes</a><a href="/standard/templates.html" class="sidebar-link">Templates</a><a href="/standard/variables.html" class="sidebar-link">Variables</a><a href="/standard/helpers.html" class="sidebar-link">Helpers</a><a href="/standard/internationalization.html" class="sidebar-link">Internationalization (i18n)</a><a href="/standard/syntax-highlight.html" class="sidebar-link">Syntax Highlight</a><a href="/standard/plugins.html" class="sidebar-link">Plugins</a><strong class="sidebar-title">Miscellaneous</strong><a href="/standard/troubleshooting.html" class="sidebar-link">Troubleshooting</a><a href="/standard/contributing.html" class="sidebar-link">Contributing</a>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2022 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuo.jiangtao@h3c.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard" class="mobile-nav-link">standard</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">Getting Started</strong><a href="/standard/index.html" class="mobile-nav-link">Overview</a><a href="/standard/setup.html" class="mobile-nav-link">Setup</a><a href="/standard/configuration.html" class="mobile-nav-link">Configuration</a><a href="/standard/commands.html" class="mobile-nav-link">Commands</a><a href="/standard/migration.html" class="mobile-nav-link">Migration</a><strong class="mobile-nav-title">Basic Usage</strong><a href="/standard/writing.html" class="mobile-nav-link">Writing</a><a href="/standard/front-matter.html" class="mobile-nav-link">Front-matter</a><a href="/standard/tag-plugins.html" class="mobile-nav-link">Tag Plugins</a><a href="/standard/asset-folders.html" class="mobile-nav-link">Asset Folders</a><a href="/standard/data-files.html" class="mobile-nav-link">Data Files</a><a href="/standard/server.html" class="mobile-nav-link">Server</a><a href="/standard/generating.html" class="mobile-nav-link">Generating</a><strong class="mobile-nav-title">Deployment</strong><a href="/standard/github-pages.html" class="mobile-nav-link">GitHub Pages</a><a href="/standard/gitlab-pages.html" class="mobile-nav-link">GitLab Pages</a><a href="/standard/one-command-deployment.html" class="mobile-nav-link">One-Command Deployment</a><strong class="mobile-nav-title">Customization</strong><a href="/standard/permalinks.html" class="mobile-nav-link">Permalinks</a><a href="/standard/themes.html" class="mobile-nav-link">Themes</a><a href="/standard/templates.html" class="mobile-nav-link">Templates</a><a href="/standard/variables.html" class="mobile-nav-link">Variables</a><a href="/standard/helpers.html" class="mobile-nav-link">Helpers</a><a href="/standard/internationalization.html" class="mobile-nav-link">Internationalization (i18n)</a><a href="/standard/syntax-highlight.html" class="mobile-nav-link">Syntax Highlight</a><a href="/standard/plugins.html" class="mobile-nav-link">Plugins</a><strong class="mobile-nav-title">Miscellaneous</strong><a href="/standard/troubleshooting.html" class="mobile-nav-link">Troubleshooting</a><a href="/standard/contributing.html" class="mobile-nav-link">Contributing</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>English</span></span>
+    <select id="mobile-lang-select" data-canonical="docs/syntax-highlight.html">
+      
+        <option value="zh-cn">简体中文</option>
+      
+        <option value="en" selected>English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>

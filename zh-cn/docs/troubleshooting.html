@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>问题解答 | 开发规范</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://hexo.io/zh-cn/docs/troubleshooting.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="zh-cn" href="https://hexo.io/zh-cn/docs/troubleshooting">
+    
+      <link rel="alternative" hreflang="en" href="https://hexo.io/en/zh-cn/docs/troubleshooting">
+    
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard" class="main-nav-link">开发规范</a>
+    </nav>
+    <div id="lang-select-wrap">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">问题解答</h1>
+                <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/site/edit/master/source/zh-cn/docs/troubleshooting.md" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <p>在使用 Hexo 时，您可能会遇到一些问题，下列的常见问题解答可能会对您有所帮助。如果您在这里找不到解答，可以在 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/issues">GitHub</a> 或 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://groups.google.com/group/hexo">Google Group</a> 上提问。</p>
+<h2 id="YAML-解析错误" class="article-heading"><a href="#YAML-解析错误" class="headerlink" title="YAML 解析错误"></a>YAML 解析错误<a class="article-anchor" href="#YAML-解析错误" aria-hidden="true"></a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JS-YAML: incomplete explicit mapping pair; a key node is missed at line 18, column 29:</span><br><span class="line">      last_updated: Last updated: %s</span><br></pre></td></tr></table></figure>
+
+<p>如果 YAML 字符串中包含冒号（<code>:</code>）的话，请加上引号。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">JS-YAML: bad indentation of a mapping entry at line 18, column 31:</span><br><span class="line">      last_updated:&quot;Last updated: %s&quot;</span><br></pre></td></tr></table></figure>
+
+<p>请确认您使用空格进行缩进（Soft tab），并确认冒号后有加上一个空格。</p>
+<p>您可参阅 <a target="_blank" rel="noopener external nofollow noreferrer" href="http://www.yaml.org/spec/1.2/spec.html">YAML 规范</a> 以取得更多信息。</p>
+<h2 id="EMFILE-错误" class="article-heading"><a href="#EMFILE-错误" class="headerlink" title="EMFILE 错误"></a>EMFILE 错误<a class="article-anchor" href="#EMFILE-错误" aria-hidden="true"></a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Error: EMFILE, too many open files</span><br></pre></td></tr></table></figure>
+
+<p>虽然 Node.js 有非阻塞 I&#x2F;O，同步 I&#x2F;O 的数量仍被系统所限制，在生成大量静态文件的时候，您可能会碰到 EMFILE 错误，您可以尝试提高同步 I&#x2F;O 的限制数量来解决此问题。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">ulimit</span> -n 10000</span><br></pre></td></tr></table></figure>
+
+<p>（这一命令只对Linux系统有效）</p>
+<p><strong>Error: cannot modify limit</strong></p>
+<p>If you encounter the following error:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ <span class="built_in">ulimit</span> -n 10000</span><br><span class="line"><span class="built_in">ulimit</span>: open files: cannot modify <span class="built_in">limit</span>: Operation not permitted</span><br></pre></td></tr></table></figure>
+
+<p>It means some system-wide configurations are preventing <code>ulimit</code> to being increased to a certain limit.</p>
+<p>To override the limit:</p>
+<ol>
+<li>Add the following line to “&#x2F;etc&#x2F;security&#x2F;limits.conf”:</li>
+</ol>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">* - nofile 10000</span><br><span class="line"></span><br><span class="line"># &#x27;*&#x27; applies to all users and &#x27;-&#x27; set both soft and hard limits</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>The above setting may not apply in some cases, ensure “&#x2F;etc&#x2F;pam.d&#x2F;login” and “&#x2F;etc&#x2F;pam.d&#x2F;lightdm” have the following line. (Ignore this step if those files do not exist)</li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">session required pam_limits.so</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>If you are on a <a target="_blank" rel="noopener external nofollow noreferrer" href="https://en.wikipedia.org/wiki/Systemd#Adoption">systemd-based</a> distribution, systemd may override “limits.conf”. To set the limit in systemd, add the following line in “&#x2F;etc&#x2F;systemd&#x2F;system.conf” and “&#x2F;etc&#x2F;systemd&#x2F;user.conf”:</li>
+</ol>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">DefaultLimitNOFILE=10000</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>Reboot</li>
+</ol>
+<h2 id="Git-部署问题" class="article-heading"><a href="#Git-部署问题" class="headerlink" title="Git 部署问题"></a>Git 部署问题<a class="article-anchor" href="#Git-部署问题" aria-hidden="true"></a></h2><h3 id="RPC-failed" class="article-heading"><a href="#RPC-failed" class="headerlink" title="RPC failed"></a>RPC failed<a class="article-anchor" href="#RPC-failed" aria-hidden="true"></a></h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">error: RPC failed; result=22, HTTP code = 403</span><br><span class="line"></span><br><span class="line">fatal: &#x27;username.github.io&#x27; does not appear to be a git repository</span><br></pre></td></tr></table></figure>
+
+<p>请确认您已经在电脑上 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://help.github.com/articles/set-up-git">配置 git</a>，或改用 HTTPS 库（repository）地址。</p>
+<h3 id="Error-ENOENT-no-such-file-or-directory" class="article-heading"><a href="#Error-ENOENT-no-such-file-or-directory" class="headerlink" title="Error: ENOENT: no such file or directory"></a>Error: ENOENT: no such file or directory<a class="article-anchor" href="#Error-ENOENT-no-such-file-or-directory" aria-hidden="true"></a></h3><p>如果你遇到了这个错误，有可能是你的文件名、分类或者标签的名字混淆了大写和小写，你可以尝试检查每一个标签和分类的名称，是否大小写一致来修复这一问题。</p>
+<h2 id="服务器问题" class="article-heading"><a href="#服务器问题" class="headerlink" title="服务器问题"></a>服务器问题<a class="article-anchor" href="#服务器问题" aria-hidden="true"></a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Error: listen EADDRINUSE</span><br></pre></td></tr></table></figure>
+
+<p>您可能同时开启两个 Hexo 服务器，或者有其他应用程序正在占用相同的端口，请尝试修改 <code>port</code> 参数，或是在启动 Hexo 服务器时加上 <code>-p</code> 选项。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server -p 5000</span><br></pre></td></tr></table></figure>
+
+<h2 id="插件安装问题" class="article-heading"><a href="#插件安装问题" class="headerlink" title="插件安装问题"></a>插件安装问题<a class="article-anchor" href="#插件安装问题" aria-hidden="true"></a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm ERR! node-waf configure build</span><br></pre></td></tr></table></figure>
+
+<p>当您尝试安装以 C&#x2F;C++ 或其他非 JavaScript 语言所编写的插件时，可能会遇到此类问题，请确认您已经在电脑上安装相对应的编译器。</p>
+<h2 id="DTrace-错误-（Mac-OS-X）" class="article-heading"><a href="#DTrace-错误-（Mac-OS-X）" class="headerlink" title="DTrace 错误 （Mac OS X）"></a>DTrace 错误 （Mac OS X）<a class="article-anchor" href="#DTrace-错误-（Mac-OS-X）" aria-hidden="true"></a></h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123; [Error: Cannot find module &#x27;./build/Release/DTraceProviderBindings&#x27;] code: &#x27;MODULE_NOT_FOUND&#x27; &#125;</span><br><span class="line">&#123; [Error: Cannot find module &#x27;./build/default/DTraceProviderBindings&#x27;] code: &#x27;MODULE_NOT_FOUND&#x27; &#125;</span><br><span class="line">&#123; [Error: Cannot find module &#x27;./build/Debug/DTraceProviderBindings&#x27;] code: &#x27;MODULE_NOT_FOUND&#x27; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>DTrace 安装可能有错误 , 使用下列命令:</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ npm install hexo --no-optional</span><br></pre></td></tr></table></figure>
+
+<p>参考 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/issues/1326#issuecomment-113871796">#1326</a></p>
+<h2 id="在-Jade-或-Swig-遍历资料" class="article-heading"><a href="#在-Jade-或-Swig-遍历资料" class="headerlink" title="在 Jade 或 Swig 遍历资料"></a>在 Jade 或 Swig 遍历资料<a class="article-anchor" href="#在-Jade-或-Swig-遍历资料" aria-hidden="true"></a></h2><p>Hexo 使用 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/warehouse">Warehouse</a> 存储资料，它不是一般数组所以必须先进行类型转型才能遍历。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% for post in site.posts.toArray() %&#125;</span><br><span class="line">&#123;% endfor %&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="资料没有更新" class="article-heading"><a href="#资料没有更新" class="headerlink" title="资料没有更新"></a>资料没有更新<a class="article-anchor" href="#资料没有更新" aria-hidden="true"></a></h2><p>有时资料可能没有被更新，或是生成的文件与修改前的相同，您可以尝试清除缓存并再执行一次。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo clean</span><br></pre></td></tr></table></figure>
+
+<h2 id="命令没有执行" class="article-heading"><a href="#命令没有执行" class="headerlink" title="命令没有执行"></a>命令没有执行<a class="article-anchor" href="#命令没有执行" aria-hidden="true"></a></h2><p>如果你除了 <code>hexo help</code>、<code>hexo init</code> 和 <code>hexo version</code> 以外不能执行任何命令、并且你的任何命令都只返回了 <code>hexo help</code> 的内容，这可能是由于 <code>package.json</code> 中缺乏 <code>hexo</code> 字段导致的。</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;hexo&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;version&quot;</span><span class="punctuation">:</span> <span class="string">&quot;3.9.0&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="泄露（Escape）内容" class="article-heading"><a href="#泄露（Escape）内容" class="headerlink" title="泄露（Escape）内容"></a>泄露（Escape）内容<a class="article-anchor" href="#泄露（Escape）内容" aria-hidden="true"></a></h2><p>Hexo 使用 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://mozilla.github.io/nunjucks/">Nunjucks</a> 来解析文章（旧版本使用 <a target="_blank" rel="noopener external nofollow noreferrer" href="http://paularmstrong.github.io/swig/">Swig</a>，两者语法类似），内容若包含 <code>&#123;&#123; &#125;&#125;</code> 或 <code>&#123;% %&#125;</code> 可能导致解析错误，您可以用 <a href="/docs/tag-plugins#Raw"><code>raw</code></a> 标签包裹，single backtick <code>`&#123;&#123; &#125;&#125;`</code> 或 triple backtick 来避免潜在问题发生。<br>Alternatively, Nunjucks tags can be disabled through the renderer’s option (if supported), <a href="/api/renderer#Disable-Nunjucks-tags">API</a> or <a href="/docs/front-matter">front-matter</a>.</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% raw %&#125;</span><br><span class="line">Hello &#123;&#123; world &#125;&#125;</span><br><span class="line">&#123;% endraw %&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line">Hello &#123;&#123; world &#125;&#125;</span><br><span class="line">```</span><br></pre></td></tr></table></figure>
+
+<h2 id="ENOSPC-错误-（Linux）" class="article-heading"><a href="#ENOSPC-错误-（Linux）" class="headerlink" title="ENOSPC 错误 （Linux）"></a>ENOSPC 错误 （Linux）<a class="article-anchor" href="#ENOSPC-错误-（Linux）" aria-hidden="true"></a></h2><p>运行 <code>$ hexo server</code> 命令有时会返回这样的错误：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Error: watch ENOSPC ...</span><br></pre></td></tr></table></figure>
+
+<p>它可以用过运行 <code>$ npm dedupe</code> 来解决，如果不起作用的话，可以尝试在 Linux 终端中运行下列命令：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf &amp;&amp; sudo sysctl -p</span><br></pre></td></tr></table></figure>
+
+<p>这将会提高你能监视的文件数量。</p>
+<h2 id="EMPERM-Error-Windows-Subsystem-for-Linux" class="article-heading"><a href="#EMPERM-Error-Windows-Subsystem-for-Linux" class="headerlink" title="EMPERM Error (Windows Subsystem for Linux)"></a>EMPERM Error (Windows Subsystem for Linux)<a class="article-anchor" href="#EMPERM-Error-Windows-Subsystem-for-Linux" aria-hidden="true"></a></h2><p>在执行 <code>hexo server</code> 后返回如下错误：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Error: watch /path/to/hexo/theme/ EMPERM</span><br></pre></td></tr></table></figure>
+
+<p>这是由于你使用的 WSL 版本不支持监听文件系统改动。 最新版的 WSL 已经解决了这一问题。</p>
+<p>您也仍然可以通过先使用 <code>hexo g</code> 生成文件然后将其作为静态服务器运行来从 WSL 环境运行服务器：</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br><span class="line">$ hexo server -s</span><br></pre></td></tr></table></figure>
+
+<p>关于 WSL 的这一 Issue 请前往 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Microsoft/BashOnWindows/issues/216">https://github.com/Microsoft/BashOnWindows/issues/216</a> 查看。目前这一问题已经得到了解决。</p>
+<h2 id="模板渲染错误" class="article-heading"><a href="#模板渲染错误" class="headerlink" title="模板渲染错误"></a>模板渲染错误<a class="article-anchor" href="#模板渲染错误" aria-hidden="true"></a></h2><p>有的时候你在执行 <code>hexo generate</code> 时会返回以下错误信息：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">FATAL Something&#x27;s wrong. Maybe you can find the solution here: http://hexo.io/docs/troubleshooting.html</span><br><span class="line">Template render error: (unknown path)</span><br></pre></td></tr></table></figure>
+
+<p>一种可能的原因是你的文件中存在一些不可被识别的字符，比如不可见的零宽度字符。</p>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2022-05-05T02:50:05.304Z" itemprop="dateModified">上次更新：2022-05-05</time>
+                <a href="plugins.html" class="article-footer-prev" title="插件"><i class="fa fa-chevron-left"></i><span>上一页</span></a><a href="contributing.html" class="article-footer-next" title="贡献"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#YAML-%E8%A7%A3%E6%9E%90%E9%94%99%E8%AF%AF"><span class="toc-text">YAML 解析错误</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EMFILE-%E9%94%99%E8%AF%AF"><span class="toc-text">EMFILE 错误</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git-%E9%83%A8%E7%BD%B2%E9%97%AE%E9%A2%98"><span class="toc-text">Git 部署问题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RPC-failed"><span class="toc-text">RPC failed</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Error-ENOENT-no-such-file-or-directory"><span class="toc-text">Error: ENOENT: no such file or directory</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%97%AE%E9%A2%98"><span class="toc-text">服务器问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85%E9%97%AE%E9%A2%98"><span class="toc-text">插件安装问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#DTrace-%E9%94%99%E8%AF%AF-%EF%BC%88Mac-OS-X%EF%BC%89"><span class="toc-text">DTrace 错误 （Mac OS X）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8-Jade-%E6%88%96-Swig-%E9%81%8D%E5%8E%86%E8%B5%84%E6%96%99"><span class="toc-text">在 Jade 或 Swig 遍历资料</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B5%84%E6%96%99%E6%B2%A1%E6%9C%89%E6%9B%B4%E6%96%B0"><span class="toc-text">资料没有更新</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E6%B2%A1%E6%9C%89%E6%89%A7%E8%A1%8C"><span class="toc-text">命令没有执行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%84%E9%9C%B2%EF%BC%88Escape%EF%BC%89%E5%86%85%E5%AE%B9"><span class="toc-text">泄露（Escape）内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ENOSPC-%E9%94%99%E8%AF%AF-%EF%BC%88Linux%EF%BC%89"><span class="toc-text">ENOSPC 错误 （Linux）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EMPERM-Error-Windows-Subsystem-for-Linux"><span class="toc-text">EMPERM Error (Windows Subsystem for Linux)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E6%9D%BF%E6%B8%B2%E6%9F%93%E9%94%99%E8%AF%AF"><span class="toc-text">模板渲染错误</span></a></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">开始使用</strong><a href="/standard/index.html" class="sidebar-link">概述</a><a href="/standard/setup.html" class="sidebar-link">建站</a><a href="/standard/configuration.html" class="sidebar-link">配置</a><a href="/standard/commands.html" class="sidebar-link">命令</a><a href="/standard/migration.html" class="sidebar-link">迁移</a><strong class="sidebar-title">基本操作</strong><a href="/standard/writing.html" class="sidebar-link">写作</a><a href="/standard/front-matter.html" class="sidebar-link">Front-matter</a><a href="/standard/tag-plugins.html" class="sidebar-link">标签插件</a><a href="/standard/asset-folders.html" class="sidebar-link">资源文件夹</a><a href="/standard/data-files.html" class="sidebar-link">数据文件夹</a><a href="/standard/server.html" class="sidebar-link">服务器</a><a href="/standard/generating.html" class="sidebar-link">生成器</a><strong class="sidebar-title">部署</strong><a href="/standard/github-pages.html" class="sidebar-link">GitHub Pages</a><a href="/standard/gitlab-pages.html" class="sidebar-link">GitLab Pages</a><a href="/standard/one-command-deployment.html" class="sidebar-link">一键部署</a><strong class="sidebar-title">自定义</strong><a href="/standard/permalinks.html" class="sidebar-link">永久链接</a><a href="/standard/themes.html" class="sidebar-link">主题</a><a href="/standard/templates.html" class="sidebar-link">模版</a><a href="/standard/variables.html" class="sidebar-link">变量</a><a href="/standard/helpers.html" class="sidebar-link">辅助函数</a><a href="/standard/internationalization.html" class="sidebar-link">国际化 (i18n)</a><a href="/standard/syntax-highlight.html" class="sidebar-link">代码高亮</a><a href="/standard/plugins.html" class="sidebar-link">插件</a><strong class="sidebar-title">其他</strong><a href="/standard/troubleshooting.html" class="sidebar-link">问题解答</a><a href="/standard/contributing.html" class="sidebar-link">贡献</a>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2022 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuo.jiangtao@h3c.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard" class="mobile-nav-link">开发规范</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">开始使用</strong><a href="/standard/index.html" class="mobile-nav-link">概述</a><a href="/standard/setup.html" class="mobile-nav-link">建站</a><a href="/standard/configuration.html" class="mobile-nav-link">配置</a><a href="/standard/commands.html" class="mobile-nav-link">命令</a><a href="/standard/migration.html" class="mobile-nav-link">迁移</a><strong class="mobile-nav-title">基本操作</strong><a href="/standard/writing.html" class="mobile-nav-link">写作</a><a href="/standard/front-matter.html" class="mobile-nav-link">Front-matter</a><a href="/standard/tag-plugins.html" class="mobile-nav-link">标签插件</a><a href="/standard/asset-folders.html" class="mobile-nav-link">资源文件夹</a><a href="/standard/data-files.html" class="mobile-nav-link">数据文件夹</a><a href="/standard/server.html" class="mobile-nav-link">服务器</a><a href="/standard/generating.html" class="mobile-nav-link">生成器</a><strong class="mobile-nav-title">部署</strong><a href="/standard/github-pages.html" class="mobile-nav-link">GitHub Pages</a><a href="/standard/gitlab-pages.html" class="mobile-nav-link">GitLab Pages</a><a href="/standard/one-command-deployment.html" class="mobile-nav-link">一键部署</a><strong class="mobile-nav-title">自定义</strong><a href="/standard/permalinks.html" class="mobile-nav-link">永久链接</a><a href="/standard/themes.html" class="mobile-nav-link">主题</a><a href="/standard/templates.html" class="mobile-nav-link">模版</a><a href="/standard/variables.html" class="mobile-nav-link">变量</a><a href="/standard/helpers.html" class="mobile-nav-link">辅助函数</a><a href="/standard/internationalization.html" class="mobile-nav-link">国际化 (i18n)</a><a href="/standard/syntax-highlight.html" class="mobile-nav-link">代码高亮</a><a href="/standard/plugins.html" class="mobile-nav-link">插件</a><strong class="mobile-nav-title">其他</strong><a href="/standard/troubleshooting.html" class="mobile-nav-link">问题解答</a><a href="/standard/contributing.html" class="mobile-nav-link">贡献</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></span>
+    <select id="mobile-lang-select" data-canonical="docs/troubleshooting.html">
+      
+        <option value="zh-cn" selected>简体中文</option>
+      
+        <option value="en">English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>

@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Official plugins hexo-cli 4.1.0, hexo-migrator-wordpress 2.1.0, hexo-migrator-rss 1.1.0 & hexo-generator-sitemap 2.1.0 released | 开发规范</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://hexo.io/news/2020/08/02/cli-4_wordpress-2-1_sitemap-2-1/index.html">
+  <!-- Alternative links -->
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard" class="main-nav-link">开发规范</a>
+    </nav>
+    <div id="lang-select-wrap">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div class="wrapper">
+    <div class="inner">
+      <article class="article post" itemscope itemtype="http://schema.org/Article">
+  <header class="article-header">
+    
+      <h1 class="article-title" itemprop="name">Official plugins hexo-cli 4.1.0, hexo-migrator-wordpress 2.1.0, hexo-migrator-rss 1.1.0 & hexo-generator-sitemap 2.1.0 released</h1>
+    
+    <a href="/news/2020/08/02/cli-4_wordpress-2-1_sitemap-2-1/" class="article-date"><time datetime="2020-08-02T00:00:00.000Z">2020-08-02</time></a>
+  </header>
+  <div class="article-content" itemprop="articleBody">
+    <h2 id="hexo-cli-4-1-0" class="article-heading"><a href="#hexo-cli-4-1-0" class="headerlink" title="hexo-cli 4.1.0"></a>hexo-cli 4.1.0<a class="article-anchor" href="#hexo-cli-4-1-0" aria-hidden="true"></a></h2><p>Include changes in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-cli/releases/tag/4.0.0">v4.0.0</a></p>
+<h3 id="Breaking-change" class="article-heading"><a href="#Breaking-change" class="headerlink" title="Breaking change"></a>Breaking change<a class="article-anchor" href="#Breaking-change" aria-hidden="true"></a></h3><ul>
+<li>Requires Node 10.13+ <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-cli/pull/195">#195</a></li>
+</ul>
+<h3 id="Fixes" class="article-heading"><a href="#Fixes" class="headerlink" title="Fixes"></a>Fixes<a class="article-anchor" href="#Fixes" aria-hidden="true"></a></h3><ul>
+<li>More detailed information for <code>hexo not found</code> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/stevenjoezhang">@stevenjoezhang</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-cli/pull/206">#206</a><ul>
+<li>When <code>hexo</code> binary could not be located, we usually recommend removing the node_modules folder and reinstall the packages.</li>
+<li><code>$ rm -rf node_modules &amp;&amp; npm install --force</code></li>
+</ul>
+</li>
+<li>fix(init): fix hexo init error with a number target project name <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/brelian">@brelian</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-cli/pull/200">#200</a><ul>
+<li>It’s now possible to <code>hexo init 888</code></li>
+</ul>
+</li>
+<li>fix(init): shallow clone and reduce verbosity <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-cli/pull/129">#129</a><ul>
+<li>This should result in faster <code>hexo init</code> due to less file download.</li>
+<li><code>hexo init</code> operates by git clone <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-starter/">hexo-starter</a>. With this change, git now just clone recent commit history (shallow clone), instead of full history.</li>
+<li><code>hexo init</code> is also more <em>quiet</em> while still show error if encountered.</li>
+</ul>
+</li>
+<li>Improve Node 14 compatibility <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-cli/pull/185">#185</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-cli/pull/190">#190</a></li>
+</ul>
+<h3 id="Refactor" class="article-heading"><a href="#Refactor" class="headerlink" title="Refactor"></a>Refactor<a class="article-anchor" href="#Refactor" aria-hidden="true"></a></h3><ul>
+<li>refactor: Class syntax &amp; Destructuring assignment <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-cli/pull/191">#191</a></li>
+<li>refactor: destructure hexo-util <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-cli/pull/141">#141</a></li>
+</ul>
+<h3 id="Housekeeping" class="article-heading"><a href="#Housekeeping" class="headerlink" title="Housekeeping"></a>Housekeeping<a class="article-anchor" href="#Housekeeping" aria-hidden="true"></a></h3><ul>
+<li>chore: update hexo-starter <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-cli/pull/147">#147</a></li>
+<li>chore: add release-drafter <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/YoshinoriN">@YoshinoriN</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-cli/pull/165">#165</a></li>
+<li>ci: drop Node 8 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-cli/pull/185">#185</a></li>
+<li>ci: add GitHub Actions <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-cli/pull/223">#223</a></li>
+<li>chore(deps-dev): bump hexo-renderer-marked from 2.0.0 to 3.0.0 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-cli/pull/216">#216</a></li>
+<li>chore(deps-dev): bump mocha from 6.2.2 to 8.0.1 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-cli/pull/172">#172</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-cli/pull/203">#203</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-cli/pull/209">#209</a><ul>
+<li>test(mocha): use yml format <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-cli/pull/192">#192</a></li>
+</ul>
+</li>
+<li>chore(deps-dev): bump eslint from 6.8.0 to 7.0.0 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-cli/pull/197">#197</a></li>
+<li>chore(deps-dev): bump rewire from 4.0.1 to 5.0.0 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-cli/pull/170">#170</a></li>
+<li>chore(deps): bump chalk from 2.4.2 to 4.0.0 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-cli/pull/131">#131</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-cli/pull/178">#178</a></li>
+<li>chore(deps-dev): bump sinon from 7.5.0 to 9.0.2 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-cli/pull/151">#151</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-cli/pull/180">#180</a></li>
+<li>chore(deps-dev): bump nyc from 14.1.1 to 15.0.0 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-cli/pull/149">#149</a></li>
+<li>chore(deps-dev): bump eslint-config-hexo from 3.0.0 to 4.1.0 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-cli/pull/139">#139</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-cli/pull/143">#143</a></li>
+</ul>
+<hr>
+<h2 id="hexo-migrator-wordpress-2-1-0" class="article-heading"><a href="#hexo-migrator-wordpress-2-1-0" class="headerlink" title="hexo-migrator-wordpress 2.1.0"></a>hexo-migrator-wordpress 2.1.0<a class="article-anchor" href="#hexo-migrator-wordpress-2-1-0" aria-hidden="true"></a></h2><h3 id="Breaking-change-1" class="article-heading"><a href="#Breaking-change-1" class="headerlink" title="Breaking change"></a>Breaking change<a class="article-anchor" href="#Breaking-change-1" aria-hidden="true"></a></h3><ul>
+<li>Drop support of Node 13 due to compatibility issue; this doesn’t prevent npm from installing this plugin in Node 13, it shows warning instead. <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-wordpress/pull/96">#96</a><ul>
+<li>Nodejs has officially dropped support of Node 13 since 1 Jun 2020.</li>
+</ul>
+</li>
+<li>fix(turndown): headingStyle: ‘atx’ &amp; codeBlockStyle: ‘fenced’ <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-wordpress/pull/65">#65</a><ul>
+<li>More in-line with markdown style preferred by Hexo.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Feature" class="article-heading"><a href="#Feature" class="headerlink" title="Feature"></a>Feature<a class="article-anchor" href="#Feature" aria-hidden="true"></a></h3><ul>
+<li><p>feat: import excerpt with markup <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-wordpress/pull/64">#64</a></p>
+<ul>
+<li>Retain original markup of excerpt</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">title: foo bar</span><br><span class="line">date: 2020-01-01 00:00:00</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">Lorem ipsum [dolor](http://example.com/) sit amet, **nam** ex putant _intellegat_ reprehendunt.</span><br><span class="line"></span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line"></span><br><span class="line">Cu nulla aeterno nec, tibique deterruisset an eam, ea pro dolorem vituperata.</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Option to import image attachments (original WP link must be up) <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-wordpress/pull/69">#69</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-wordpress/pull/70">#70</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-wordpress/pull/72">#72</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-wordpress/pull/73">#73</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-wordpress/pull/78">#78</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-wordpress/pull/85">#85</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-wordpress/pull/91">#91</a></p>
+<ul>
+<li>All attachments are imported by default, including original-sized and resized.<ul>
+<li>Usage: <code>$ hexo migrate wordpress /path/export.xml --import-image</code></li>
+</ul>
+</li>
+<li>There is an option to import original-size images only.<ul>
+<li>Usage: <code>$ hexo migrate wordpress /path/export.xml --import-image original</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Import nested categories <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-wordpress/pull/89">#89</a></p>
+<ul>
+<li>Imported categories are also no longer nested anymore if the original are not.</li>
+</ul>
+</li>
+<li><p>feat: ‘default-category’ option <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-wordpress/pull/93">#93</a></p>
+<ul>
+<li><code>Uncategorized</code> category is now skipped by default.</li>
+<li>A default category can be set for posts without any category.<br><code>$ hexo migrate wordpress /path/export.xml --default-category &#39;unknown&#39;</code></li>
+<li>Category name defaults to the value set in user configuration:</li>
+</ul>
+<figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">default_category:</span> <span class="string">uncategorized</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="Fix" class="article-heading"><a href="#Fix" class="headerlink" title="Fix"></a>Fix<a class="article-anchor" href="#Fix" aria-hidden="true"></a></h3><ul>
+<li>fix: unescape title if escaped <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-wordpress/pull/82">#82</a><ul>
+<li>A post could be entitled <code>Some&amp;quot;Title&amp;quot;</code>, the fix is to detect the pattern and unescape it when necessary.</li>
+</ul>
+</li>
+<li>fix: stricter excerpt regex <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-wordpress/pull/88">#88</a><ul>
+<li>Now only the following variants of <a href="https://hexo.io/docs/tag-plugins#Post-Excerpt">excerpt tag</a> are valid.</li>
+</ul>
+<ol>
+<li><code>&lt;!--more--&gt;</code></li>
+<li><code>&lt;!-- more--&gt;</code></li>
+<li><code>&lt;!--more --&gt;</code></li>
+<li><code>&lt;!-- more --&gt;</code></li>
+</ol>
+</li>
+<li>fix: handle title with double quotes <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-wordpress/pull/67">#67</a><ul>
+<li>Escape double quote before passing to yml parser</li>
+</ul>
+</li>
+<li>fix: restore paragraph <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-wordpress/pull/79">#79</a><ul>
+<li>Paragraph lost issue only affects <a target="_blank" rel="noopener external nofollow noreferrer" href="https://wordpress.org/plugins/classic-editor/">Classic Editor</a></li>
+</ul>
+</li>
+<li>Import tags and categories separately <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-wordpress/pull/81">#81</a></li>
+</ul>
+<h3 id="Documentation" class="article-heading"><a href="#Documentation" class="headerlink" title="Documentation"></a>Documentation<a class="article-anchor" href="#Documentation" aria-hidden="true"></a></h3><ul>
+<li>Add export instruction for Wordpress v5 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-wordpress/pull/84">#84</a></li>
+</ul>
+<hr>
+<h2 id="hexo-migrator-rss-1-1-0" class="article-heading"><a href="#hexo-migrator-rss-1-1-0" class="headerlink" title="hexo-migrator-rss 1.1.0"></a>hexo-migrator-rss 1.1.0<a class="article-anchor" href="#hexo-migrator-rss-1-1-0" aria-hidden="true"></a></h2><h3 id="Breaking-change-2" class="article-heading"><a href="#Breaking-change-2" class="headerlink" title="Breaking change"></a>Breaking change<a class="article-anchor" href="#Breaking-change-2" aria-hidden="true"></a></h3><ul>
+<li>Drop support of Node 13 due to compatibility issue; this doesn’t prevent npm from installing this plugin in Node 13, it shows warning instead. <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-rss/pull/69">#69</a><ul>
+<li>Nodejs has officially dropped support of Node 13 since 1 Jun 2020.</li>
+</ul>
+</li>
+<li>fix(turndown): headingStyle: ‘atx’ &amp; codeBlockStyle: ‘fenced’ <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-rss/pull/65">#65</a><ul>
+<li>More in-line with markdown style preferred by Hexo.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Feature-1" class="article-heading"><a href="#Feature-1" class="headerlink" title="Feature"></a>Feature<a class="article-anchor" href="#Feature-1" aria-hidden="true"></a></h3><ul>
+<li><p>feat: import excerpt with markup <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-rss/pull/65">#65</a></p>
+<ul>
+<li>Retain original markup of excerpt</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">title: foo bar</span><br><span class="line">date: 2020-01-01 00:00:00</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">Lorem ipsum [dolor](http://example.com/) sit amet, **nam** ex putant _intellegat_ reprehendunt.</span><br><span class="line"></span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line"></span><br><span class="line">Cu nulla aeterno nec, tibique deterruisset an eam, ea pro dolorem vituperata.</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="Fix-1" class="article-heading"><a href="#Fix-1" class="headerlink" title="Fix"></a>Fix<a class="article-anchor" href="#Fix-1" aria-hidden="true"></a></h3><ul>
+<li>fix: unescape title if escaped <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-rss/pull/71">#71</a><ul>
+<li>A post could be entitled <code>Some&amp;quot;Title&amp;quot;</code>, the fix is to detect the pattern and unescape it when necessary.</li>
+</ul>
+</li>
+<li>fix: stricter excerpt regex <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-rss/pull/70">#70</a><ul>
+<li>Now only the following variants of <a href="https://hexo.io/docs/tag-plugins#Post-Excerpt">excerpt tag</a> are valid.</li>
+</ul>
+<ol>
+<li><code>&lt;!--more--&gt;</code></li>
+<li><code>&lt;!-- more--&gt;</code></li>
+<li><code>&lt;!--more --&gt;</code></li>
+<li><code>&lt;!-- more --&gt;</code></li>
+</ol>
+</li>
+<li>fix: handle title with double quotes <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-rss/pull/64">#64</a><ul>
+<li>Escape double quote before passing to yml parser</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="hexo-generator-sitemap-2-1-0" class="article-heading"><a href="#hexo-generator-sitemap-2-1-0" class="headerlink" title="hexo-generator-sitemap 2.1.0"></a>hexo-generator-sitemap 2.1.0<a class="article-anchor" href="#hexo-generator-sitemap-2-1-0" aria-hidden="true"></a></h2><h3 id="Changes" class="article-heading"><a href="#Changes" class="headerlink" title="Changes"></a>Changes<a class="article-anchor" href="#Changes" aria-hidden="true"></a></h3><ul>
+<li>Include site’s tags, categories and home page in the sitemap <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-generator-sitemap/pull/26">#26</a></li>
+<li>fix(sitemap): use date only in <code>&lt;lastmod&gt;</code> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-generator-sitemap/pull/94">#94</a><ul>
+<li><code>2020-01-02 13:42:599Z</code> &#x3D;&gt; <code>2020-01-02</code></li>
+</ul>
+</li>
+</ul>
+
+  </div>
+  
+<section id="comments">
+  <div id="disqus_thread"></div>
+</section>
+<script>
+  var disqus_shortname = 'hexojs';
+  var disqus_url = 'https://hexo.io/news/2020/08/02/cli-4_wordpress-2-1_sitemap-2-1/index.html';
+  var disqus_title = "Official plugins hexo-cli 4.1.0, hexo-migrator-wordpress 2.1.0, hexo-migrator-rss 1.1.0 & hexo-generator-sitemap 2.1.0 released";
+  var disqus_config = function(){
+    this.language = 'zh';
+  };
+  (function(){
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    dsq.src = 'https://go.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+</article>
+
+    </div>
+  </div>
+</div>
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2022 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuo.jiangtao@h3c.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard" class="mobile-nav-link">开发规范</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></span>
+    <select id="mobile-lang-select" data-canonical="">
+      
+        <option value="zh-cn" selected>简体中文</option>
+      
+        <option value="en">English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>

@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>News | 开发规范</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://hexo.io/news/2019/index.html">
+  <!-- Alternative links -->
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard" class="main-nav-link">开发规范</a>
+    </nav>
+    <div id="lang-select-wrap">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div class="wrapper">
+    <div class="inner">
+      
+        
+          <article class="article post" itemscope itemtype="http://schema.org/Article">
+  <header class="article-header">
+    
+      <h1>
+        <a href="/news/2019/12/24/how-we-make-hexo-30-percent-faster/" class="article-title" itemprop="name">Speed is the Key - How We Make Hexo 30% Faster</a>
+      </h1>
+    
+    <a href="/news/2019/12/24/how-we-make-hexo-30-percent-faster/" class="article-date"><time datetime="2019-12-24T00:00:00.000Z">2019-12-24</time></a>
+  </header>
+  <div class="article-content" itemprop="articleBody">
+    <blockquote>
+<p>Originally written by <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">Sukka</a> (one of the current Hexo development team member) in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://blog.skk.moe/post/how-we-make-hexo-4-2-faster/">Simplified Chinese</a>  and translated into English by himself.</p>
+</blockquote>
+<p>Speed is always the key to Hexo. 3 years ago, <a href="https://hexo.io/news/2016/02/28/hexo-3-2-released/">Hexo 3.2 speeds up generation speed by 2x</a> through templates precompilation. And we are now at Hexo 4.2, with several performance improvements we successfully make the generation speed 30% faster compared to Hexo 3.2.</p>
+<h2 id="Benchmark" class="article-heading"><a href="#Benchmark" class="headerlink" title="Benchmark"></a>Benchmark<a class="article-anchor" href="#Benchmark" aria-hidden="true"></a></h2><p>Here is how the benchmark being set up:</p>
+<ul>
+<li>Travis CI - <a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.travis-ci.com/user/reference/overview/#virtualisation-environment-vs-operating-system">Ubuntu Xenial 16.04</a><ul>
+<li>CPU：2 Cores</li>
+<li>RAM：7.5 GB</li>
+</ul>
+</li>
+<li>Hexo default’s theme: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-theme-landscape">landscape</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaLab/hexo-many-posts/">300 randomly generated posts</a>. Each post contains all commonly used Markdown syntaxs and the code blocks for testing <code>highlight.js</code>. A unique category and three tags are also set in Front Matter of those posts.</li>
+</ul>
+<p>Since Hexo 3.2, rendered contents will be cached in the <code>warehouse</code> (<code>db.json</code>), therefore the performance of both cold generation (<code>hexo clean</code> before <code>hexo g</code>) and hot generation (no <code>hexo clean</code>) are tested in the benchmark. Each benchmark is performed by <code>Cold =&gt; Hot =&gt; Cold</code>. Memory usage is measured using <code>time</code> and the value of Resident Set Size (RSS) will be taken.</p>
+<p>You can find the benchmark script <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/theme-suka/performance-test/blob/3.2-vs-3.8-vs-4.2/perf-test.sh">here</a>.</p>
+<h3 id="Node-js-8" class="article-heading"><a href="#Node-js-8" class="headerlink" title="Node.js 8"></a>Node.js 8<a class="article-anchor" href="#Node-js-8" aria-hidden="true"></a></h3><table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">Hexo 3.2</th>
+<th align="center"></th>
+<th align="center">Hexo 3.8</th>
+<th align="center"></th>
+<th align="center">Hexo 4.2</th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Cold processing</td>
+<td align="center">13.585s</td>
+<td align="center">0%</td>
+<td align="center">18.572s</td>
+<td align="center">+37%</td>
+<td align="center">9.210s</td>
+<td align="center">-32%</td>
+</tr>
+<tr>
+<td align="center">Cold generation</td>
+<td align="center">13.027s</td>
+<td align="center">0%</td>
+<td align="center">50.528s</td>
+<td align="center">+284%</td>
+<td align="center">8.666s</td>
+<td align="center">-33%</td>
+</tr>
+<tr>
+<td align="center">Memory Usage (Cold)</td>
+<td align="center">815.754MB</td>
+<td align="center">0%</td>
+<td align="center">1416.309MB</td>
+<td align="center">+69%</td>
+<td align="center">605.312MB</td>
+<td align="center">-26%</td>
+</tr>
+<tr>
+<td align="center">Hot processing</td>
+<td align="center">0.668s</td>
+<td align="center">0%</td>
+<td align="center">0.712s</td>
+<td align="center">+6%</td>
+<td align="center">0.732s</td>
+<td align="center">+7%</td>
+</tr>
+<tr>
+<td align="center">Hot generation</td>
+<td align="center">11.734s</td>
+<td align="center">0%</td>
+<td align="center">46.339s</td>
+<td align="center">+295%</td>
+<td align="center">7.821s</td>
+<td align="center">-33%</td>
+</tr>
+<tr>
+<td align="center">Memory Usage (Hot)</td>
+<td align="center">702.535MB</td>
+<td align="center">0%</td>
+<td align="center">1450.719MB</td>
+<td align="center">+106%</td>
+<td align="center">821.512MB</td>
+<td align="center">+17%</td>
+</tr>
+</tbody></table>
+<h3 id="Node-js-10" class="article-heading"><a href="#Node-js-10" class="headerlink" title="Node.js 10"></a>Node.js 10<a class="article-anchor" href="#Node-js-10" aria-hidden="true"></a></h3><table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">Hexo 3.2</th>
+<th align="center"></th>
+<th align="center">Hexo 3.8</th>
+<th align="center"></th>
+<th align="center">Hexo 4.2</th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Cold processing</td>
+<td align="center">11.875s</td>
+<td align="center">0%</td>
+<td align="center">15.985s</td>
+<td align="center">+35%</td>
+<td align="center">8.043s</td>
+<td align="center">-29%</td>
+</tr>
+<tr>
+<td align="center">Cold generation</td>
+<td align="center">10.308s</td>
+<td align="center">0%</td>
+<td align="center">41.339s</td>
+<td align="center">+301%</td>
+<td align="center">7.450s</td>
+<td align="center">-28%</td>
+</tr>
+<tr>
+<td align="center">Memory Usage (Cold)</td>
+<td align="center">805.633MB</td>
+<td align="center">0%</td>
+<td align="center">1440.297MB</td>
+<td align="center">+79%</td>
+<td align="center">599.008MB</td>
+<td align="center">-26%</td>
+</tr>
+<tr>
+<td align="center">Hot processing</td>
+<td align="center">0.700s</td>
+<td align="center">0%</td>
+<td align="center">0.676s</td>
+<td align="center">-3%</td>
+<td align="center">0.731s</td>
+<td align="center">+4%</td>
+</tr>
+<tr>
+<td align="center">Hot generation</td>
+<td align="center">8.322s</td>
+<td align="center">0%</td>
+<td align="center">35.453s</td>
+<td align="center">+326%</td>
+<td align="center">6.420s</td>
+<td align="center">-23%</td>
+</tr>
+<tr>
+<td align="center">Memory Usage (Hot)</td>
+<td align="center">679.082MB</td>
+<td align="center">0%</td>
+<td align="center">1447.109MB</td>
+<td align="center">+113%</td>
+<td align="center">789.527MB</td>
+<td align="center">+16%</td>
+</tr>
+</tbody></table>
+<h3 id="Node-js-12" class="article-heading"><a href="#Node-js-12" class="headerlink" title="Node.js 12"></a>Node.js 12<a class="article-anchor" href="#Node-js-12" aria-hidden="true"></a></h3><table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">Hexo 3.2</th>
+<th align="center"></th>
+<th align="center">Hexo 3.8</th>
+<th align="center"></th>
+<th align="center">Hexo 4.2</th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Cold processing</td>
+<td align="center">11.454s</td>
+<td align="center">0%</td>
+<td align="center">15.626s</td>
+<td align="center">+36%</td>
+<td align="center">8.381s</td>
+<td align="center">-27%</td>
+</tr>
+<tr>
+<td align="center">Cold generation</td>
+<td align="center">10.428s</td>
+<td align="center">0%</td>
+<td align="center">37.482s</td>
+<td align="center">+260%</td>
+<td align="center">7.283s</td>
+<td align="center">-30%</td>
+</tr>
+<tr>
+<td align="center">Memory Usage (Cold)</td>
+<td align="center">1101.586MB</td>
+<td align="center">0%</td>
+<td align="center">1413.359MB</td>
+<td align="center">+28%</td>
+<td align="center">580.953MB</td>
+<td align="center">-47%</td>
+</tr>
+<tr>
+<td align="center">Hot processing</td>
+<td align="center">0.724s</td>
+<td align="center">0%</td>
+<td align="center">0.790s</td>
+<td align="center">+9%</td>
+<td align="center">0.790s</td>
+<td align="center">+9%</td>
+</tr>
+<tr>
+<td align="center">Hot generation</td>
+<td align="center">8.994s</td>
+<td align="center">0%</td>
+<td align="center">35.116s</td>
+<td align="center">+293%</td>
+<td align="center">6.385s</td>
+<td align="center">-29%</td>
+</tr>
+<tr>
+<td align="center">Memory Usage (Hot)</td>
+<td align="center">696.500MB</td>
+<td align="center">0%</td>
+<td align="center">1538.719MB</td>
+<td align="center">+120%</td>
+<td align="center">600.398MB</td>
+<td align="center">-14%</td>
+</tr>
+</tbody></table>
+<h3 id="Node-js-13" class="article-heading"><a href="#Node-js-13" class="headerlink" title="Node.js 13"></a>Node.js 13<a class="article-anchor" href="#Node-js-13" aria-hidden="true"></a></h3><table>
+<thead>
+<tr>
+<th align="center"></th>
+<th align="center">Hexo 3.2</th>
+<th align="center"></th>
+<th align="center">Hexo 3.8</th>
+<th align="center"></th>
+<th align="center">Hexo 4.2</th>
+<th align="center"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Cold processing</td>
+<td align="center">11.496s</td>
+<td align="center">0%</td>
+<td align="center">14.970s</td>
+<td align="center">+29%</td>
+<td align="center">8.489s</td>
+<td align="center">-26%</td>
+</tr>
+<tr>
+<td align="center">Cold generation</td>
+<td align="center">10.088s</td>
+<td align="center">0%</td>
+<td align="center">36.867s</td>
+<td align="center">+265%</td>
+<td align="center">7.212s</td>
+<td align="center">-28%</td>
+</tr>
+<tr>
+<td align="center">Memory Usage (Cold)</td>
+<td align="center">1104.465MB</td>
+<td align="center">0%</td>
+<td align="center">1418.273MB</td>
+<td align="center">+28%</td>
+<td align="center">596.233MB</td>
+<td align="center">-46%</td>
+</tr>
+<tr>
+<td align="center">Hot processing</td>
+<td align="center">0.724s</td>
+<td align="center">0%</td>
+<td align="center">0.776s</td>
+<td align="center">+7%</td>
+<td align="center">0.756s</td>
+<td align="center">+4%</td>
+</tr>
+<tr>
+<td align="center">Hot generation</td>
+<td align="center">7.995s</td>
+<td align="center">0%</td>
+<td align="center">33.968s</td>
+<td align="center">+325%</td>
+<td align="center">6.294s</td>
+<td align="center">-21%</td>
+</tr>
+<tr>
+<td align="center">Memory Usage (Hot)</td>
+<td align="center">761.195MB</td>
+<td align="center">0%</td>
+<td align="center">1516.078MB</td>
+<td align="center">+99%</td>
+<td align="center">812.234MB</td>
+<td align="center">+7%</td>
+</tr>
+</tbody></table>
+<h2 id="Drop-cheerio-dependency-from-Hexo" class="article-heading"><a href="#Drop-cheerio-dependency-from-Hexo" class="headerlink" title="Drop cheerio dependency from Hexo"></a>Drop cheerio dependency from Hexo<a class="article-anchor" href="#Drop-cheerio-dependency-from-Hexo" aria-hidden="true"></a></h2><p>As you can see through benchmark result, there is a serious performance regression in Hexo 3.8. It turns out that the <code>meta_generator</code> filter introduced in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/issues/3129">#3129</a> is the culprit. <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/issues/3129">#3129</a> uses <code>cheerio</code> to insert <code>&lt;meta name = &quot;generator&quot; content = &quot;Hexo [version]&quot;&gt;</code> into <code>&lt;head&gt;</code>, thus <code>cheerio</code> has to load all the HTMLs generated by Hexo into memory and parsed into DOM.</p>
+<p><code>cheerio</code> is fast, but still there will be performance bottlenecks when traversing through hundreds of HTML files. In <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/issues/3677">#3677</a> we made a proposal to relpace <code>cheerio</code> with native API. In <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/issues/3671">#3671</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/issues/3680">#3680</a> and <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/3685">#3685</a> we replace <code>cheerio</code> wirh regex for <code>open_graph()</code> helper, <code>meta_generator</code> filter and <code>external_link</code> filter, and in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/137">hexo-util#137</a> &amp; <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/3850">#3850</a> we replace <code>cheerio</code> with faster <code>htmlparser2</code>. Now we have completely dropped <code>cheerio</code> in Hexo 4.2</p>
+<h2 id="Improve-Cache-of-Rendered-HTML-mechanism" class="article-heading"><a href="#Improve-Cache-of-Rendered-HTML-mechanism" class="headerlink" title="Improve Cache of Rendered HTML mechanism"></a>Improve <code>Cache of Rendered HTML</code> mechanism<a class="article-anchor" href="#Improve-Cache-of-Rendered-HTML-mechanism" aria-hidden="true"></a></h2><p><code>Cache of Rendered HTML</code> is introduced in Hexo 3.0.0-rc4 (<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/commit/e8e45ed0f379f975147a214fbf52b2c28a6c806a#diff-b9bb6fa7bb069bab9948daba90c6c3b2"><code>e8e45ed</code></a>), which is an attempt to improve Hexo’s generation performance by caching rendering results. However, each route is used only once during <code>hexo g</code>, so memory is consumed while no performance gained. In <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/3756">#3756</a>  <code>Cache of Rendered HTML</code>  is disabled for <code>hexo g</code> and enabled for <code>hexo s</code>, so the the memory usage of <code>hexo g</code> has been reduced.</p>
+<h2 id="Drop-Lodash-dependency-from-Hexo" class="article-heading"><a href="#Drop-Lodash-dependency-from-Hexo" class="headerlink" title="Drop Lodash dependency from Hexo"></a>Drop Lodash dependency from Hexo<a class="article-anchor" href="#Drop-Lodash-dependency-from-Hexo" aria-hidden="true"></a></h2><p>Lodash is a modern JavaScript utility library that makes working with arrays, numbers, objects and strings much easier. However, as more and more new features have been brought to ES6, most of Lodash’s features could be replaced by native JavaScript.</p>
+<p>Hexo actually started to reduce Lodash dependent a year ago, such as <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/3285">#3285</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/3290">#3290</a> &amp; <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/warehouse/pull/18">warehouse#18</a>. In <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/issues/3753">#3753</a>, we propose to gradually replace Lodash with native JavaScript by following the <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/you-dont-need/You-Dont-Need-Lodash-Underscore">You don’t (may not) need Lodash&#x2F;Underscore</a>. After <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/3785">#3785</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/3786">#3786</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/3788">#3788</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/3790">#3790</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/3791">#3791</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/3809">#3809</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/3810">#3810</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/3813">#3813</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/3826">#3826</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/3845">#3845</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/141">hexo-util#141</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/3880">#3880</a> &amp; <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/3969">#3969</a>, we successfully dropped Lodash from Hexo. We also opened a new <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/you-dont-need/You-Dont-Need-Lodash-Underscore/pull/244">PR</a> at <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/you-dont-need/You-Dont-Need-Lodash-Underscore">You don’t (may not) need Lodash&#x2F;Underscore</a> to bring our <code>_.assignIn</code> alternative back to the community.</p>
+<h2 id="Cache-the-return-value-of-utility-function" class="article-heading"><a href="#Cache-the-return-value-of-utility-function" class="headerlink" title="Cache the return value of utility function"></a>Cache the return value of utility function<a class="article-anchor" href="#Cache-the-return-value-of-utility-function" aria-hidden="true"></a></h2><p>There are many utilities in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util"><code>hexo-util</code></a>, such as <code>relative_url(from, to)</code> for calculating relative paths, <code>url_for(path)</code> and <code>full_url_for(path)</code> for trasnsforming relative paths into URLs, <code>gravatar(mail)</code> for calculating gravatar URLs from E-mail address, and <code>isExternalLink(url)</code> for determine whether the given URL is an external link. We found out that those functions might be called thousands of times during the Hexo generation process while the same parameters might be passed repeatedly, so the key-values of the parameters and the return value could be cached. This idea was implemented in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/162">hexo-util#162</a>.</p>
+<h2 id="Future" class="article-heading"><a href="#Future" class="headerlink" title="Future"></a>Future<a class="article-anchor" href="#Future" aria-hidden="true"></a></h2><p>We have added Benchmark to CI as part of the unit test in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/3776">#3776</a>. Since then, benchmark has helped us find potential performance regressions (likes <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/3807">#3807</a> &amp; <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/issues/3833">#3833</a>) several times and avoiding the severe performance regression like <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/issues/3129">#3129</a>. And we are going to take a step further to add flamegraph to unit case in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4000">#4000</a>, which will help us better optimizing the generation process of Hexo. For Hexo, speed is always the key.</p>
+
+  </div>
+  
+</article>
+
+        
+      
+        
+          <article class="article post archive-post" itemscope itemtype="http://schema.org/Article">
+            <a class="archive-post-link" href="/news/2019/12/22/hexo-4.2_hexo-util-1-8_eslint-config-hexo-released/">
+              <strong class="archive-post-title" itemprop="name">Hexo 4.2.0, hexo-util 1.8.0 & eslint-config-hexo 4.1.0 released</strong>
+              <span class="archive-post-date"><time datetime="2019-12-22T00:00:00.000Z">2019-12-22</time></span>
+            </a>
+          </article>
+        
+      
+        
+          <article class="article post archive-post" itemscope itemtype="http://schema.org/Article">
+            <a class="archive-post-link" href="/news/2019/12/15/hexo-renderer-markdown-it-4/">
+              <strong class="archive-post-title" itemprop="name">Official plugin hexo-renderer-markdown-it 4.0.0 released</strong>
+              <span class="archive-post-date"><time datetime="2019-12-15T00:00:00.000Z">2019-12-15</time></span>
+            </a>
+          </article>
+        
+      
+        
+          <article class="article post archive-post" itemscope itemtype="http://schema.org/Article">
+            <a class="archive-post-link" href="/news/2019/12/12/hexo-4-1-1_hexo-util-1-7_eslint-config-hexo-4/">
+              <strong class="archive-post-title" itemprop="name">Hexo 4.1.1, hexo-util 1.7.0 & eslint-config-hexo 4.0.0 released</strong>
+              <span class="archive-post-date"><time datetime="2019-12-12T00:00:00.000Z">2019-12-12</time></span>
+            </a>
+          </article>
+        
+      
+        
+          <article class="article post archive-post" itemscope itemtype="http://schema.org/Article">
+            <a class="archive-post-link" href="/news/2019/12/09/hexo-4-1-released/">
+              <strong class="archive-post-title" itemprop="name">Hexo 4.1.0 Released</strong>
+              <span class="archive-post-date"><time datetime="2019-12-09T00:00:00.000Z">2019-12-09</time></span>
+            </a>
+          </article>
+        
+      
+        
+          <article class="article post archive-post" itemscope itemtype="http://schema.org/Article">
+            <a class="archive-post-link" href="/news/2019/11/28/hexo-util1-6_hexo-generator-feed-2-2_hexo-uglify-1-1/">
+              <strong class="archive-post-title" itemprop="name">Official plugins hexo-util 1.6.0, hexo-generator-feed 2.2.0 & hexo-uglify 1.1.0 released</strong>
+              <span class="archive-post-date"><time datetime="2019-11-28T00:00:00.000Z">2019-11-28</time></span>
+            </a>
+          </article>
+        
+      
+        
+          <article class="article post archive-post" itemscope itemtype="http://schema.org/Article">
+            <a class="archive-post-link" href="/news/2019/11/22/hexo-deployer-git-2-1_hexo-generator-feed-2-1-1_hexo-generator-sitemap-2/">
+              <strong class="archive-post-title" itemprop="name">Official plugins hexo-deployer-git 2.1.0, hexo-generator-feed 2.1.1 & hexo-generator-sitemap 2.0.0 released</strong>
+              <span class="archive-post-date"><time datetime="2019-11-22T00:00:00.000Z">2019-11-22</time></span>
+            </a>
+          </article>
+        
+      
+        
+          <article class="article post archive-post" itemscope itemtype="http://schema.org/Article">
+            <a class="archive-post-link" href="/news/2019/11/10/hexo-generator-feed-2-1_hexo-util-1-5/">
+              <strong class="archive-post-title" itemprop="name">Official plugins hexo-generator-feed 2.1.0 & hexo-util 1.5.0 released</strong>
+              <span class="archive-post-date"><time datetime="2019-11-10T00:00:00.000Z">2019-11-10</time></span>
+            </a>
+          </article>
+        
+      
+        
+          <article class="article post archive-post" itemscope itemtype="http://schema.org/Article">
+            <a class="archive-post-link" href="/news/2019/10/19/hexo-renderer-jade-0-5_hexo-renderer-pug-1/">
+              <strong class="archive-post-title" itemprop="name">Official plugins hexo-renderer-jade 0.5.0 & hexo-renderer-pug 1.0.0 released</strong>
+              <span class="archive-post-date"><time datetime="2019-10-19T00:00:00.000Z">2019-10-19</time></span>
+            </a>
+          </article>
+        
+      
+        
+          <article class="article post archive-post" itemscope itemtype="http://schema.org/Article">
+            <a class="archive-post-link" href="/news/2019/10/14/hexo-4-released/">
+              <strong class="archive-post-title" itemprop="name">Hexo 4.0.0 Released</strong>
+              <span class="archive-post-date"><time datetime="2019-10-14T00:00:00.000Z">2019-10-14</time></span>
+            </a>
+          </article>
+        
+      
+        
+          <article class="article post archive-post" itemscope itemtype="http://schema.org/Article">
+            <a class="archive-post-link" href="/news/2019/10/09/hexo-cli-3_hexo-util-1-4/">
+              <strong class="archive-post-title" itemprop="name">Official plugins hexo-cli 3.0.0 & hexo-util 1.4.0 released</strong>
+              <span class="archive-post-date"><time datetime="2019-10-09T00:00:00.000Z">2019-10-09</time></span>
+            </a>
+          </article>
+        
+      
+        
+          <article class="article post archive-post" itemscope itemtype="http://schema.org/Article">
+            <a class="archive-post-link" href="/news/2019/09/27/warehouse-3_hexo-util-1-3-1/">
+              <strong class="archive-post-title" itemprop="name">Official plugins warehouse 3.0.0 & hexo-util 1.2.0, 1.3.0, 1.3.1 released</strong>
+              <span class="archive-post-date"><time datetime="2019-09-27T00:00:00.000Z">2019-09-27</time></span>
+            </a>
+          </article>
+        
+      
+        
+          <article class="article post archive-post" itemscope itemtype="http://schema.org/Article">
+            <a class="archive-post-link" href="/news/2019/09/17/hexo-filter-nofollow-joined-hexo-official-plugin/">
+              <strong class="archive-post-title" itemprop="name">hexo-filter-nofollow joined hexo official plugins</strong>
+              <span class="archive-post-date"><time datetime="2019-09-17T00:00:00.000Z">2019-09-17</time></span>
+            </a>
+          </article>
+        
+      
+        
+          <article class="article post archive-post" itemscope itemtype="http://schema.org/Article">
+            <a class="archive-post-link" href="/news/2019/09/08/hexo-i18n-1_hexo-clean-css-1_hexo-util-1-1/">
+              <strong class="archive-post-title" itemprop="name">Official plugin hexo-i18n 1.0.0, hexo-clean-css 1.0.0 & hexo-util 1.1.0 released</strong>
+              <span class="archive-post-date"><time datetime="2019-09-08T00:00:00.000Z">2019-09-08</time></span>
+            </a>
+          </article>
+        
+      
+        
+          <article class="article post archive-post" itemscope itemtype="http://schema.org/Article">
+            <a class="archive-post-link" href="/news/2019/09/07/hexo-server-1_hexo-front-matter-1_hexo-fs_2/">
+              <strong class="archive-post-title" itemprop="name">Official plugin hexo-server 1.0.0, hexo-front-matter 1.0.0 & hexo-fs 2.0.0 released</strong>
+              <span class="archive-post-date"><time datetime="2019-09-07T00:00:00.000Z">2019-09-07</time></span>
+            </a>
+          </article>
+        
+      
+        
+          <article class="article post archive-post" itemscope itemtype="http://schema.org/Article">
+            <a class="archive-post-link" href="/news/2019/09/06/hexo-generator-tag-1_hexo-renderer-ejs-1_hexo-renderer-stylus-1/">
+              <strong class="archive-post-title" itemprop="name">Official plugin hexo-generator-tag 1.0.0, hexo-renderer-ejs 1.0.0 & hexo-renderer-stylus 1.1.0 released</strong>
+              <span class="archive-post-date"><time datetime="2019-09-06T00:00:00.000Z">2019-09-06</time></span>
+            </a>
+          </article>
+        
+      
+        
+          <article class="article post archive-post" itemscope itemtype="http://schema.org/Article">
+            <a class="archive-post-link" href="/news/2019/08/21/hexo-util-1-0-0_hexo-renderer-marked-2-0-0_released/">
+              <strong class="archive-post-title" itemprop="name">Official plugin hexo-util 1.0.0 & hexo-renderer-marked 2.0.0 released</strong>
+              <span class="archive-post-date"><time datetime="2019-08-21T00:00:00.000Z">2019-08-21</time></span>
+            </a>
+          </article>
+        
+      
+        
+          <article class="article post archive-post" itemscope itemtype="http://schema.org/Article">
+            <a class="archive-post-link" href="/news/2019/06/19/hexo-3-9-released/">
+              <strong class="archive-post-title" itemprop="name">Hexo 3.9.0 Released</strong>
+              <span class="archive-post-date"><time datetime="2019-06-19T00:00:00.000Z">2019-06-19</time></span>
+            </a>
+          </article>
+        
+      
+        
+          <article class="article post archive-post" itemscope itemtype="http://schema.org/Article">
+            <a class="archive-post-link" href="/news/2019/06/01/hexo-cli-2-0-0-released/">
+              <strong class="archive-post-title" itemprop="name">hexo-cli 2.0.0 Released!!</strong>
+              <span class="archive-post-date"><time datetime="2019-06-01T15:40:00.000Z">2019-06-01</time></span>
+            </a>
+          </article>
+        
+      
+        
+          <article class="article post archive-post" itemscope itemtype="http://schema.org/Article">
+            <a class="archive-post-link" href="/news/2019/05/23/hexo-renderer-marked-1-0-0_1_0_1-released/">
+              <strong class="archive-post-title" itemprop="name">Official plugin hexo-renderer-marked 1.0.0 & 1.0.1 Released!!</strong>
+              <span class="archive-post-date"><time datetime="2019-05-22T23:59:00.000Z">2019-05-22</time></span>
+            </a>
+          </article>
+        
+      
+        
+          <article class="article post archive-post" itemscope itemtype="http://schema.org/Article">
+            <a class="archive-post-link" href="/news/2019/01/12/hexo-deployer-git-1.0.0_released/">
+              <strong class="archive-post-title" itemprop="name">Official plugin hexo-deployer-git 1.0.0 Released!!</strong>
+              <span class="archive-post-date"><time datetime="2019-01-11T22:13:00.000Z">2019-01-11</time></span>
+            </a>
+          </article>
+        
+      
+    </div>
+  </div>
+</div>
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2022 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuo.jiangtao@h3c.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard" class="mobile-nav-link">开发规范</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></span>
+    <select id="mobile-lang-select" data-canonical="">
+      
+        <option value="zh-cn" selected>简体中文</option>
+      
+        <option value="en">English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>News | 开发规范</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://hexo.io/news/2020/08/index.html">
+  <!-- Alternative links -->
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard" class="main-nav-link">开发规范</a>
+    </nav>
+    <div id="lang-select-wrap">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div class="wrapper">
+    <div class="inner">
+      
+        
+          <article class="article post" itemscope itemtype="http://schema.org/Article">
+  <header class="article-header">
+    
+      <h1>
+        <a href="/news/2020/08/22/hexo-5-1_marked-3-1_math-4_util-2-4/" class="article-title" itemprop="name">Hexo 5.1.0, hexo-renderer-marked 3.1.0, hexo-math 4.0.0 & hexo-util 2.4.0 released</a>
+      </h1>
+    
+    <a href="/news/2020/08/22/hexo-5-1_marked-3-1_math-4_util-2-4/" class="article-date"><time datetime="2020-08-22T00:00:00.000Z">2020-08-22</time></a>
+  </header>
+  <div class="article-content" itemprop="articleBody">
+    <h2 id="Hexo-5-1-0" class="article-heading"><a href="#Hexo-5-1-0" class="headerlink" title="Hexo 5.1.0"></a>Hexo 5.1.0<a class="article-anchor" href="#Hexo-5-1-0" aria-hidden="true"></a></h2><h3 id="Features" class="article-heading"><a href="#Features" class="headerlink" title="Features"></a>Features<a class="article-anchor" href="#Features" aria-hidden="true"></a></h3><ul>
+<li><p>feat(highlight): parse ‘caption’ option to prismHighlight <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4476">#4476</a></p>
+<ul>
+<li><code>caption</code> is now available in prismjs:</li>
+</ul>
+<figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">highlight:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">false</span></span><br><span class="line"><span class="attr">prismjs:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>It can be used in triple backtick codeblock:</li>
+</ul>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="code">``` js caption</span></span><br><span class="line"><span class="code">console.log(&#x27;foo&#x27;)</span></span><br><span class="line"><span class="code">```</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>above codeblock will be rendered as:<br>(class attributes are omitted for brevity)</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">pre</span>&gt;</span><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;caption&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>caption<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span><span class="tag">&lt;<span class="name">code</span>&gt;</span>console...<span class="tag">&lt;/<span class="name">code</span>&gt;</span><span class="tag">&lt;/<span class="name">pre</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>you can style the caption by:</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">pre <span class="selector-tag">div</span><span class="selector-class">.caption</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">0.9em</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#888</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">pre <span class="selector-tag">div</span><span class="selector-class">.caption</span> <span class="selector-tag">a</span> &#123;</span><br><span class="line">  <span class="attribute">float</span>: right;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>also available via <a href="https://hexo.io/docs/tag-plugins#Code-Block"><code>codeblock</code></a> and <a href="https://hexo.io/docs/tag-plugins#Include-Code"><code>include_code</code></a> tag plugins.</p>
+</li>
+</ul>
+</li>
+<li><p>fix: refactor post escape <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4472">#4472</a></p>
+<ul>
+<li>fixed issue with prismjs that, in some cases, did not remove hexo’s processing tag properly</li>
+</ul>
+</li>
+<li><p>Remove plugins option in config <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/stevenjoezhang">@stevenjoezhang</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4475">#4475</a></p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># _config.yml</span></span><br><span class="line"><span class="attr">plugins:</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>plugins</code> option has been deprecated long ago and it’s now completely dropped</li>
+<li>plugins should be saved in <code>scripts/</code> folder or installed via npm <code>package.json</code>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Performance" class="article-heading"><a href="#Performance" class="headerlink" title="Performance"></a>Performance<a class="article-anchor" href="#Performance" aria-hidden="true"></a></h3><ul>
+<li>perf(backtick_code): avoid duplicated escaping <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4478">#4478</a></li>
+</ul>
+<hr>
+<h2 id="Hexo-5-0-2" class="article-heading"><a href="#Hexo-5-0-2" class="headerlink" title="Hexo 5.0.2"></a>Hexo 5.0.2<a class="article-anchor" href="#Hexo-5-0-2" aria-hidden="true"></a></h2><h3 id="Changes" class="article-heading"><a href="#Changes" class="headerlink" title="Changes"></a>Changes<a class="article-anchor" href="#Changes" aria-hidden="true"></a></h3><ul>
+<li>Revert “perf: avoid running plugins in ‘clean’ command” <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4386">#4386</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4470">#4470</a><ul>
+<li>This fixes error in <code>hexo clean</code>.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="Hexo-5-0-1" class="article-heading"><a href="#Hexo-5-0-1" class="headerlink" title="Hexo 5.0.1"></a>Hexo 5.0.1<a class="article-anchor" href="#Hexo-5-0-1" aria-hidden="true"></a></h2><h3 id="Changes-1" class="article-heading"><a href="#Changes-1" class="headerlink" title="Changes"></a>Changes<a class="article-anchor" href="#Changes-1" aria-hidden="true"></a></h3><ul>
+<li>fix(helpers): call url_for from hexo-util <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4447">#4447</a><ul>
+<li><a href="/docs/helpers">helpers</a> are now accessible from APIs such as <a href="/api/injector#Example"><code>Injector</code></a></li>
+</ul>
+</li>
+<li>perf(external_link): update regexp <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4467">#4467</a><ul>
+<li>regex of <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/blob/master/lib/plugins/filter/after_render/external_link.js"><code>external_link</code></a> filter now pre-match external links, instead of solely rely on <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util#isexternallinkurl-sitehost-exclude"><code>isExternalLink</code></a></li>
+</ul>
+</li>
+<li>perf(injector): shorthand optimization <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4462">#4462</a></li>
+</ul>
+<hr>
+<h2 id="hexo-renderer-marked-3-1-0" class="article-heading"><a href="#hexo-renderer-marked-3-1-0" class="headerlink" title="hexo-renderer-marked 3.1.0"></a>hexo-renderer-marked 3.1.0<a class="article-anchor" href="#hexo-renderer-marked-3-1-0" aria-hidden="true"></a></h2><h3 id="Features-1" class="article-heading"><a href="#Features-1" class="headerlink" title="Features"></a>Features<a class="article-anchor" href="#Features-1" aria-hidden="true"></a></h3><ul>
+<li><p>feat: postAsset to prepend post’s relative path <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked/pull/159">#159</a></p>
+<ul>
+<li>With this feature, <a href="https://hexo.io/docs/tag-plugins#Embed-image"><code>asset_img</code></a> tag plugin is no longer required.</li>
+<li>Only applies to <a href="https://hexo.io/docs/asset-folders"><code>post_asset_folder</code></a></li>
+<li>An example is “image.jpg” is located at “&#x2F;2020&#x2F;01&#x2F;02&#x2F;foo&#x2F;image.jpg”, which is a post asset of “&#x2F;2020&#x2F;01&#x2F;02&#x2F;foo&#x2F;“.<ul>
+<li><code>![](image.jpg)</code> becomes <code>&lt;img src=&quot;/2020/01/02/foo/image.jpg&quot;&gt;</code></li>
+</ul>
+</li>
+<li>To enable:</li>
+</ul>
+<figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">marked:</span></span><br><span class="line">  <span class="attr">prependRoot:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">postAsset:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>feat: lazyload <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked/pull/156">#156</a></p>
+<ul>
+<li>Load image only when it’s coming into view. <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/scott-little/lazyload">Explainer</a></li>
+<li><code>loading=&quot;lazy&quot;</code> will be injected to every image embed <code>&lt;img&gt;</code>.</li>
+<li>Only takes effect on <a target="_blank" rel="noopener external nofollow noreferrer" href="https://caniuse.com/#feat=loading-lazy-attr">supported browsers</a>.</li>
+<li>To enable:</li>
+</ul>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">marked:</span></span><br><span class="line">  <span class="attr">lazyload:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="Dependency" class="article-heading"><a href="#Dependency" class="headerlink" title="Dependency"></a>Dependency<a class="article-anchor" href="#Dependency" aria-hidden="true"></a></h3><ul>
+<li>chore(deps-dev): bump hexo from 4.2.1 to 5.0.0 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked/pull/158">#158</a></li>
+</ul>
+<hr>
+<h2 id="hexo-math-4-0-0" class="article-heading"><a href="#hexo-math-4-0-0" class="headerlink" title="hexo-math 4.0.0"></a>hexo-math 4.0.0<a class="article-anchor" href="#hexo-math-4-0-0" aria-hidden="true"></a></h2><h3 id="Breaking-change" class="article-heading"><a href="#Breaking-change" class="headerlink" title="Breaking change"></a>Breaking change<a class="article-anchor" href="#Breaking-change" aria-hidden="true"></a></h3><ul>
+<li><p>The syntax is changed to tag plugin syntax <code>&#123;% %&#125;</code> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-math/pull/130">#130</a></p>
+<ul>
+<li>Examples:</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% katex %&#125;</span><br><span class="line">c = \pm\sqrt&#123;a^2 + b^2&#125;</span><br><span class="line">&#123;% endkatex %&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;% mathjax %&#125;</span><br><span class="line">\frac&#123;1&#125;&#123;x^2-1&#125;</span><br><span class="line">&#123;% endmathjax %&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>The renderer option is highly customizable and it can be different across posts and even within a post, refer to the <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-math#hexo-math">documentation</a> for usage guide.</li>
+<li>If you prefer to use <code>$...$</code> syntax, we recommend <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/next-theme/hexo-filter-mathjax">hexo-filter-mathjax</a> which is also developed a Hexo developer, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/stevenjoezhang">@stevenjoezhang</a>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Misc" class="article-heading"><a href="#Misc" class="headerlink" title="Misc"></a>Misc<a class="article-anchor" href="#Misc" aria-hidden="true"></a></h3><ul>
+<li>Drop Travis CI <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-math/pull/134">#134</a></li>
+</ul>
+<hr>
+<h2 id="hexo-util-2-4-0" class="article-heading"><a href="#hexo-util-2-4-0" class="headerlink" title="hexo-util 2.4.0"></a>hexo-util 2.4.0<a class="article-anchor" href="#hexo-util-2-4-0" aria-hidden="true"></a></h2><h3 id="Breaking-change-1" class="article-heading"><a href="#Breaking-change-1" class="headerlink" title="Breaking change"></a>Breaking change<a class="article-anchor" href="#Breaking-change-1" aria-hidden="true"></a></h3><ul>
+<li><p>fix(highlight): use <code>&lt;div&gt;</code> when wrap is disabled <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/229">#229</a></p>
+<ul>
+<li>when <code>wrap</code> is disabled:</li>
+</ul>
+<figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">highlight:</span></span><br><span class="line">  <span class="attr">wrap:</span> <span class="literal">false</span> <span class="comment"># defaults to true</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>previously, caption is rendered as:</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">pre</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">figcaption</span>&gt;</span>caption<span class="tag">&lt;/<span class="name">figcaption</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">code</span>&gt;</span><span class="tag">&lt;/<span class="name">code</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">pre</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>it’s now rendered as:</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">pre</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;caption&quot;</span>&gt;</span>caption<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">code</span>&gt;</span><span class="tag">&lt;/<span class="name">code</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">pre</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="Feature" class="article-heading"><a href="#Feature" class="headerlink" title="Feature"></a>Feature<a class="article-anchor" href="#Feature" aria-hidden="true"></a></h3><ul>
+<li><p>feat(prism): caption <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/227">#227</a></p>
+<ul>
+<li>caption is rendered as:</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">pre</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;caption&quot;</span>&gt;</span>caption<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">code</span>&gt;</span><span class="tag">&lt;/<span class="name">code</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">pre</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h2 id="hexo-util-2-3-0" class="article-heading"><a href="#hexo-util-2-3-0" class="headerlink" title="hexo-util 2.3.0"></a>hexo-util 2.3.0<a class="article-anchor" href="#hexo-util-2-3-0" aria-hidden="true"></a></h2><h3 id="Changes-2" class="article-heading"><a href="#Changes-2" class="headerlink" title="Changes"></a>Changes<a class="article-anchor" href="#Changes-2" aria-hidden="true"></a></h3><ul>
+<li><p>feat(highlight): support ‘tab’ &amp; ‘mark’ when wrap is disabled <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/225">#225</a></p>
+<ul>
+<li>Previously <code>tab</code> and <code>mark</code> options were only availble when <code>wrap</code> is enabled, now they are also available even when <code>wrap</code> is disabled.</li>
+<li>Example:</li>
+</ul>
+<figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">highlight:</span></span><br><span class="line">  <span class="attr">tab_replace:</span> <span class="string">&#x27;  &#x27;</span></span><br><span class="line">  <span class="attr">wrap:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;% codeblock <span class="attr">lang</span>:js <span class="attr">mark</span>:<span class="number">2</span>,<span class="number">5</span> %&#125;</span><br><span class="line"><span class="keyword">const</span> input = [</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&#x27;lorem&#x27;</span>, <span class="attr">item</span>: <span class="string">&#x27;ipsum&#x27;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&#x27;per&#x27;</span>, <span class="attr">item</span>: <span class="string">&#x27;doming&#x27;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&#x27;dolor&#x27;</span>, <span class="attr">item</span>: <span class="string">&#x27;lorem&#x27;</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">&#x27;usu&#x27;</span>, <span class="attr">item</span>: <span class="string">&#x27;pericula&#x27;</span> &#125;</span><br><span class="line">]</span><br><span class="line">&#123;% endcodeblock %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>ci: drop appveyor <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/224">#224</a></p>
+</li>
+<li><p>docs(spawn): link to upstream docs <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/223">#223</a></p>
+<ul>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util#spawncommand-args-options"><code>spawn()</code></a> is a nice wrapper around <a target="_blank" rel="noopener external nofollow noreferrer" href="https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options"><code>child_process.spawn()</code></a>, so it supports similar options.</li>
+</ul>
+</li>
+</ul>
+<h2 id="hexo-util-2-2-0" class="article-heading"><a href="#hexo-util-2-2-0" class="headerlink" title="hexo-util 2.2.0"></a>hexo-util 2.2.0<a class="article-anchor" href="#hexo-util-2-2-0" aria-hidden="true"></a></h2><h3 id="Features-2" class="article-heading"><a href="#Features-2" class="headerlink" title="Features"></a>Features<a class="article-anchor" href="#Features-2" aria-hidden="true"></a></h3><ul>
+<li><p>perf(cache): Use faster <a target="_blank" rel="noopener external nofollow noreferrer" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map"><code>Map</code></a> instead of Object. <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/209">#209</a></p>
+</li>
+<li><p>feat(cache): cache#dump &amp; cache#size <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/209">#209</a></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Output number of key-value pairs</span></span><br><span class="line">cache.<span class="title function_">size</span>();</span><br><span class="line"><span class="comment">// 3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Outputs everything in cache</span></span><br><span class="line">cache.<span class="title function_">dump</span>();</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">&#123;</span></span><br><span class="line"><span class="comment">  foo: &#x27;bar&#x27;,</span></span><br><span class="line"><span class="comment">  baz: 123,</span></span><br><span class="line"><span class="comment">  qux: 456</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="Fixes" class="article-heading"><a href="#Fixes" class="headerlink" title="Fixes"></a>Fixes<a class="article-anchor" href="#Fixes" aria-hidden="true"></a></h3><ul>
+<li><p>Support string argument in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util#spawncommand-args-options"><code>spawn()</code></a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/220">#220</a></p>
+<ul>
+<li>Previously <code>spawn()</code> only supports array argument:</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title function_">spawn</span>(<span class="string">&#x27;cat&#x27;</span>, [<span class="string">&#x27;test.txt&#x27;</span>]).<span class="title function_">then</span>(<span class="function">(<span class="params">content</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(content);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Now string argument is also valid:</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="title function_">spawn</span>(<span class="string">&#x27;cat&#x27;</span>, <span class="string">&#x27;test.txt&#x27;</span>).<span class="title function_">then</span>(<span class="function">(<span class="params">content</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(content);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>fix(highlight): support <a href="https://hexo.io/docs/tag-plugins#Backtick-Code-Block">caption</a> when wrap is disabled <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/210">#210</a></p>
+<figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">highlight:</span></span><br><span class="line">  <span class="attr">wrap:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<pre><code>```js caption
+const hi = 'bob'
+```</code></pre></li>
+</ul>
+<h3 id="Housekeeping" class="article-heading"><a href="#Housekeeping" class="headerlink" title="Housekeeping"></a>Housekeeping<a class="article-anchor" href="#Housekeeping" aria-hidden="true"></a></h3><ul>
+<li>Drop Node 13 from CI <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/219">#219</a></li>
+<li>refactor(encode&#x2F;decode_url): replace decodeURI with native <a target="_blank" rel="noopener external nofollow noreferrer" href="https://nodejs.org/api/querystring.html#querystring_querystring_unescape_str">querystring.unescape</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/214">#214</a></li>
+</ul>
+<h3 id="Dependencies" class="article-heading"><a href="#Dependencies" class="headerlink" title="Dependencies"></a>Dependencies<a class="article-anchor" href="#Dependencies" aria-hidden="true"></a></h3><ul>
+<li>chore(deps-dev): bump mocha from 7.2.0 to 8.0.1 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/211">#211</a></li>
+<li>chore(deps-dev): bump eslint from 6.8.0 to 7.0.0 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/207">#207</a></li>
+</ul>
+<hr>
+<h2 id="hexo-util-2-1-0" class="article-heading"><a href="#hexo-util-2-1-0" class="headerlink" title="hexo-util 2.1.0"></a>hexo-util 2.1.0<a class="article-anchor" href="#hexo-util-2-1-0" aria-hidden="true"></a></h2><h3 id="Breaking-change-2" class="article-heading"><a href="#Breaking-change-2" class="headerlink" title="Breaking change"></a>Breaking change<a class="article-anchor" href="#Breaking-change-2" aria-hidden="true"></a></h3><ul>
+<li>Remove <code>HashStream()</code> function <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/198">#198</a><ul>
+<li>Deprecated in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/45">#45</a>, part of <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/releases/tag/1.0.0">v1.0.0</a> release</li>
+<li>Replaced by <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/tree/master#createsha1hash"><code>createSha1Hash()</code></a></li>
+</ul>
+</li>
+</ul>
+<h3 id="Refactor" class="article-heading"><a href="#Refactor" class="headerlink" title="Refactor"></a>Refactor<a class="article-anchor" href="#Refactor" aria-hidden="true"></a></h3><ul>
+<li>refactor: prototype to class syntax <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/199">#199</a></li>
+</ul>
+<hr>
+<h2 id="hexo-util-2-0-0" class="article-heading"><a href="#hexo-util-2-0-0" class="headerlink" title="hexo-util 2.0.0"></a>hexo-util 2.0.0<a class="article-anchor" href="#hexo-util-2-0-0" aria-hidden="true"></a></h2><h3 id="Breaking-change-3" class="article-heading"><a href="#Breaking-change-3" class="headerlink" title="Breaking change"></a>Breaking change<a class="article-anchor" href="#Breaking-change-3" aria-hidden="true"></a></h3><ul>
+<li>Drop support of Node 8 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/191">#191</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/193">#193</a></li>
+<li>Requires <code>autoDetect</code> to be enabled and <code>lang</code> to be unset to use sublanguage <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util#highlightstr-options"><code>highlight()</code></a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/192">#192</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/196">#196</a></li>
+</ul>
+<h3 id="Fix" class="article-heading"><a href="#Fix" class="headerlink" title="Fix"></a>Fix<a class="article-anchor" href="#Fix" aria-hidden="true"></a></h3><ul>
+<li>Fix <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util#cachestream"><code>CacheStream()</code></a> compatibility issue with Node 14 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/195">#195</a></li>
+</ul>
+<h3 id="Misc-1" class="article-heading"><a href="#Misc-1" class="headerlink" title="Misc"></a>Misc<a class="article-anchor" href="#Misc-1" aria-hidden="true"></a></h3><ul>
+<li>docs(isExternalLink): add JSDoc <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/YoshinoriN">@YoshinoriN</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/190">#190</a></li>
+</ul>
+<h3 id="Dependencies-1" class="article-heading"><a href="#Dependencies-1" class="headerlink" title="Dependencies"></a>Dependencies<a class="article-anchor" href="#Dependencies-1" aria-hidden="true"></a></h3><ul>
+<li>chore(deps-dev): bump rewire from 4.0.1 to 5.0.0 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util/pull/187">#187</a></li>
+</ul>
+
+  </div>
+  
+</article>
+
+        
+      
+        
+          <article class="article post archive-post" itemscope itemtype="http://schema.org/Article">
+            <a class="archive-post-link" href="/news/2020/08/02/cli-4_wordpress-2-1_sitemap-2-1/">
+              <strong class="archive-post-title" itemprop="name">Official plugins hexo-cli 4.1.0, hexo-migrator-wordpress 2.1.0, hexo-migrator-rss 1.1.0 & hexo-generator-sitemap 2.1.0 released</strong>
+              <span class="archive-post-date"><time datetime="2020-08-02T00:00:00.000Z">2020-08-02</time></span>
+            </a>
+          </article>
+        
+      
+    </div>
+  </div>
+</div>
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2022 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuo.jiangtao@h3c.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard" class="mobile-nav-link">开发规范</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></span>
+    <select id="mobile-lang-select" data-canonical="">
+      
+        <option value="zh-cn" selected>简体中文</option>
+      
+        <option value="en">English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Injector | 开发规范</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://hexo.io/en/api/injector.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="zh-cn" href="https://hexo.io/en/api/injector">
+    
+      <link rel="alternative" hreflang="en" href="https://hexo.io/en/en/api/injector">
+    
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/en/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard" class="main-nav-link">standard</a>
+    </nav>
+    <div id="lang-select-wrap">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">Injector</h1>
+                <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/site/edit/master/source/en/api/injector.md" class="article-edit-link" title="Improve this doc"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <p>An injector is used to add static code snippet to the <code>&lt;head&gt;</code> or&#x2F;and <code>&lt;body&gt;</code> of generated HTML files. Hexo run injector <strong>before</strong> <code>after_render:html</code> filter is executed.</p>
+<h2 id="Synopsis" class="article-heading"><a href="#Synopsis" class="headerlink" title="Synopsis"></a>Synopsis<a class="article-anchor" href="#Synopsis" aria-hidden="true"></a></h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">hexo.<span class="property">extend</span>.<span class="property">injector</span>.<span class="title function_">register</span>(entry, value, to)</span><br></pre></td></tr></table></figure>
+
+<h3 id="entry-lt-string-gt" class="article-heading"><a href="#entry-lt-string-gt" class="headerlink" title="entry &lt;string&gt;"></a>entry <code>&lt;string&gt;</code><a class="article-anchor" href="#entry-lt-string-gt" aria-hidden="true"></a></h3><p>Where the code will be injected inside the HTML.</p>
+<p>Support those values:</p>
+<ul>
+<li><code>head_begin</code>: Inject code snippet right after <code>&lt;head&gt;</code> (Default).</li>
+<li><code>head_end</code>: Inject code snippet right before <code>&lt;/head&gt;</code>.</li>
+<li><code>body_begin</code>: Inject code snippet right after <code>&lt;body&gt;</code>.</li>
+<li><code>body_end</code>: Inject code snippet right before <code>&lt;/body&gt;</code>.</li>
+</ul>
+<h3 id="value-lt-string-gt-lt-Function-gt" class="article-heading"><a href="#value-lt-string-gt-lt-Function-gt" class="headerlink" title="value &lt;string&gt; | &lt;Function&gt;"></a>value <code>&lt;string&gt; | &lt;Function&gt;</code><a class="article-anchor" href="#value-lt-string-gt-lt-Function-gt" aria-hidden="true"></a></h3><blockquote>
+<p>A function that returns string is supported.</p>
+</blockquote>
+<p>The code snippet to be injected.</p>
+<h3 id="to-lt-string-gt" class="article-heading"><a href="#to-lt-string-gt" class="headerlink" title="to &lt;string&gt;"></a>to <code>&lt;string&gt;</code><a class="article-anchor" href="#to-lt-string-gt" aria-hidden="true"></a></h3><p>Which page will code snippets being injected.</p>
+<ul>
+<li><code>default</code>: Inject to every page (Default).</li>
+<li><code>home</code>: Only inject to home page (which has <code>is_home()</code> helper being <code>true</code>)</li>
+<li><code>post</code>: Only inject to post pages (which has <code>is_post()</code> helper being <code>true</code>)</li>
+<li><code>page</code>: Only inject to pages (which has <code>is_page()</code> helper being <code>true</code>)</li>
+<li><code>archive</code>: Only inject to archive pages (which has <code>is_archive()</code> helper being <code>true</code>)</li>
+<li><code>category</code>: Only inject to category pages (which has <code>is_category()</code> helper being <code>true</code>)</li>
+<li><code>tag</code>: Only inject to tag pages (which has <code>is_tag()</code> helper being <code>true</code>)</li>
+<li>Custom layout name could be used as well, see <a href="writing#Layout">Writing - Layout</a>.</li>
+</ul>
+<hr>
+<p>There are other internal functions, see <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4049">hexojs&#x2F;hexo#4049</a> for more details.</p>
+<h2 id="Example" class="article-heading"><a href="#Example" class="headerlink" title="Example"></a>Example<a class="article-anchor" href="#Example" aria-hidden="true"></a></h2><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> css = hexo.<span class="property">extend</span>.<span class="property">helper</span>.<span class="title function_">get</span>(<span class="string">&#x27;css&#x27;</span>).<span class="title function_">bind</span>(hexo);</span><br><span class="line"><span class="keyword">const</span> js = hexo.<span class="property">extend</span>.<span class="property">helper</span>.<span class="title function_">get</span>(<span class="string">&#x27;js&#x27;</span>).<span class="title function_">bind</span>(hexo);</span><br><span class="line"></span><br><span class="line">hexo.<span class="property">extend</span>.<span class="property">injector</span>.<span class="title function_">register</span>(<span class="string">&#x27;head_end&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">css</span>(<span class="string">&#x27;https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css&#x27;</span>);</span><br><span class="line">&#125;, <span class="string">&#x27;music&#x27;</span>);</span><br><span class="line"></span><br><span class="line">hexo.<span class="property">extend</span>.<span class="property">injector</span>.<span class="title function_">register</span>(<span class="string">&#x27;body_end&#x27;</span>, <span class="string">&#x27;&lt;script src=&quot;https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js&quot;&gt;&#x27;</span>, <span class="string">&#x27;music&#x27;</span>);</span><br><span class="line"></span><br><span class="line">hexo.<span class="property">extend</span>.<span class="property">injector</span>.<span class="title function_">register</span>(<span class="string">&#x27;body_end&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">js</span>(<span class="string">&#x27;/js/jquery.js&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>Above setup will inject <code>APlayer.min.css</code> (<code>&lt;link&gt;</code> tag) to the <code>&lt;/head&gt;</code> of any page which layout is <code>music</code>, and <code>APlayer.min.js</code> (<code>&lt;script&gt;</code> tag) to the <code>&lt;/body&gt;</code> of those pages. Also, <code>jquery.js</code> (<code>&lt;script&gt;</code> tag) will be injected to <code>&lt;/body&gt;</code> of every page generated.</p>
+<h2 id="Accessing-user-configuration" class="article-heading"><a href="#Accessing-user-configuration" class="headerlink" title="Accessing user configuration"></a>Accessing user configuration<a class="article-anchor" href="#Accessing-user-configuration" aria-hidden="true"></a></h2><p>Use any of the following options:</p>
+<ol>
+<li></li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> css = hexo.<span class="property">extend</span>.<span class="property">helper</span>.<span class="title function_">get</span>(<span class="string">&#x27;css&#x27;</span>).<span class="title function_">bind</span>(hexo);</span><br><span class="line"></span><br><span class="line">hexo.<span class="property">extend</span>.<span class="property">injector</span>.<span class="title function_">register</span>(<span class="string">&#x27;head_end&#x27;</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; cssPath &#125; = hexo.<span class="property">config</span>.<span class="property">fooPlugin</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">css</span>(cssPath);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li></li>
+</ol>
+<figure class="highlight js"><figcaption><span>index.js</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">/* global hexo */</span></span><br><span class="line"></span><br><span class="line">hexo.<span class="property">extend</span>.<span class="property">injector</span>.<span class="title function_">register</span>(<span class="string">&#x27;head_end&#x27;</span>, <span class="built_in">require</span>(<span class="string">&#x27;./lib/inject&#x27;</span>).<span class="title function_">bind</span>(hexo))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><figcaption><span>lib/inject.js</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> css = <span class="variable language_">this</span>.<span class="property">extend</span>.<span class="property">helper</span>.<span class="title function_">get</span>(<span class="string">&#x27;css&#x27;</span>);</span><br><span class="line">  <span class="keyword">const</span> &#123; cssPath &#125; = <span class="variable language_">this</span>.<span class="property">config</span>.<span class="property">fooPlugin</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">css</span>(cssPath);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><figcaption><span>lib/inject.js</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">injectFn</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> css = <span class="variable language_">this</span>.<span class="property">extend</span>.<span class="property">helper</span>.<span class="title function_">get</span>(<span class="string">&#x27;css&#x27;</span>);</span><br><span class="line">  <span class="keyword">const</span> &#123; cssPath &#125; = <span class="variable language_">this</span>.<span class="property">config</span>.<span class="property">fooPlugin</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">css</span>(cssPath);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = injectFn;</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li></li>
+</ol>
+<figure class="highlight js"><figcaption><span>index.js</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="comment">/* global hexo */</span></span><br><span class="line"></span><br><span class="line">hexo.<span class="property">extend</span>.<span class="property">injector</span>.<span class="title function_">register</span>(<span class="string">&#x27;head_end&#x27;</span>, <span class="built_in">require</span>(<span class="string">&#x27;./lib/inject&#x27;</span>)(hexo))</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><figcaption><span>lib/inject.js</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="function">(<span class="params">hexo</span>) =&gt;</span> <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> css = hexo.<span class="property">extend</span>.<span class="property">helper</span>.<span class="title function_">get</span>(<span class="string">&#x27;css&#x27;</span>).<span class="title function_">bind</span>(hexo);</span><br><span class="line">  <span class="keyword">const</span> &#123; cssPath &#125; = hexo.<span class="property">config</span>.<span class="property">fooPlugin</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">css</span>(cssPath);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><figcaption><span>lib/inject.js</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="title function_">injectFn</span> = (<span class="params">hexo</span>) =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> css = hexo.<span class="property">extend</span>.<span class="property">helper</span>.<span class="title function_">get</span>(<span class="string">&#x27;css&#x27;</span>).<span class="title function_">bind</span>(hexo);</span><br><span class="line">  <span class="keyword">const</span> &#123; cssPath &#125; = hexo.<span class="property">config</span>.<span class="property">fooPlugin</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">css</span>(cssPath);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="function">(<span class="params">hexo</span>) =&gt;</span> <span class="title function_">injectFn</span>(hexo);</span><br></pre></td></tr></table></figure>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2022-05-05T02:50:05.014Z" itemprop="dateModified">Last updated: 2022-05-05</time>
+                <a href="helper.html" class="article-footer-prev" title="Helper"><i class="fa fa-chevron-left"></i><span>Prev</span></a><a href="migrator.html" class="article-footer-next" title="Migrator"><span>Next</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">Contents</strong>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Synopsis"><span class="toc-text">Synopsis</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#entry-lt-string-gt"><span class="toc-text">entry &lt;string&gt;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#value-lt-string-gt-lt-Function-gt"><span class="toc-text">value &lt;string&gt; | &lt;Function&gt;</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#to-lt-string-gt"><span class="toc-text">to &lt;string&gt;</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Example"><span class="toc-text">Example</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Accessing-user-configuration"><span class="toc-text">Accessing user configuration</span></a></li></ol>
+              <a href="#" id="article-toc-top">Back to Top</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">Core</strong><a href="/standard/index.html" class="sidebar-link">Overview</a><a href="/standard/events.html" class="sidebar-link">Events</a><a href="/standard/locals.html" class="sidebar-link">Locals</a><a href="/standard/router.html" class="sidebar-link">Router</a><a href="/standard/box.html" class="sidebar-link">Box</a><a href="/standard/rendering.html" class="sidebar-link">Rendering</a><a href="/standard/posts.html" class="sidebar-link">Posts</a><a href="/standard/scaffolds.html" class="sidebar-link">Scaffolds</a><a href="/standard/themes.html" class="sidebar-link">Themes</a><strong class="sidebar-title">Extensions</strong><a href="/standard/console.html" class="sidebar-link">Console</a><a href="/standard/deployer.html" class="sidebar-link">Deployer</a><a href="/standard/filter.html" class="sidebar-link">Filter</a><a href="/standard/generator.html" class="sidebar-link">Generator</a><a href="/standard/helper.html" class="sidebar-link">Helper</a><a href="/standard/injector.html" class="sidebar-link">Injector</a><a href="/standard/migrator.html" class="sidebar-link">Migrator</a><a href="/standard/processor.html" class="sidebar-link">Processor</a><a href="/standard/renderer.html" class="sidebar-link">Renderer</a><a href="/standard/tag.html" class="sidebar-link">Tag</a>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2022 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuo.jiangtao@h3c.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard" class="mobile-nav-link">standard</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">Core</strong><a href="/standard/index.html" class="mobile-nav-link">Overview</a><a href="/standard/events.html" class="mobile-nav-link">Events</a><a href="/standard/locals.html" class="mobile-nav-link">Locals</a><a href="/standard/router.html" class="mobile-nav-link">Router</a><a href="/standard/box.html" class="mobile-nav-link">Box</a><a href="/standard/rendering.html" class="mobile-nav-link">Rendering</a><a href="/standard/posts.html" class="mobile-nav-link">Posts</a><a href="/standard/scaffolds.html" class="mobile-nav-link">Scaffolds</a><a href="/standard/themes.html" class="mobile-nav-link">Themes</a><strong class="mobile-nav-title">Extensions</strong><a href="/standard/console.html" class="mobile-nav-link">Console</a><a href="/standard/deployer.html" class="mobile-nav-link">Deployer</a><a href="/standard/filter.html" class="mobile-nav-link">Filter</a><a href="/standard/generator.html" class="mobile-nav-link">Generator</a><a href="/standard/helper.html" class="mobile-nav-link">Helper</a><a href="/standard/injector.html" class="mobile-nav-link">Injector</a><a href="/standard/migrator.html" class="mobile-nav-link">Migrator</a><a href="/standard/processor.html" class="mobile-nav-link">Processor</a><a href="/standard/renderer.html" class="mobile-nav-link">Renderer</a><a href="/standard/tag.html" class="mobile-nav-link">Tag</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>English</span></span>
+    <select id="mobile-lang-select" data-canonical="api/injector.html">
+      
+        <option value="zh-cn">简体中文</option>
+      
+        <option value="en" selected>English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>

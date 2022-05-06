@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>News | 开发规范</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://hexo.io/news/2020/09/index.html">
+  <!-- Alternative links -->
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard" class="main-nav-link">开发规范</a>
+    </nav>
+    <div id="lang-select-wrap">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div class="wrapper">
+    <div class="inner">
+      
+        
+          <article class="article post" itemscope itemtype="http://schema.org/Article">
+  <header class="article-header">
+    
+      <h1>
+        <a href="/news/2020/09/17/hexo-5-2_wordpress-2-1-2_marked-3-2_stylus-2_less-2/" class="article-title" itemprop="name">Hexo 5.2.0, hexo-migrator-wordpress 2.1.2, hexo-renderer-marked 3.2.0, hexo-renderer-stylus 2.0.1 & hexo-renderer-less 2.0.2 released</a>
+      </h1>
+    
+    <a href="/news/2020/09/17/hexo-5-2_wordpress-2-1-2_marked-3-2_stylus-2_less-2/" class="article-date"><time datetime="2020-09-17T00:00:00.000Z">2020-09-17</time></a>
+  </header>
+  <div class="article-content" itemprop="articleBody">
+    <h2 id="Hexo-5-2-0" class="article-heading"><a href="#Hexo-5-2-0" class="headerlink" title="Hexo 5.2.0"></a>Hexo 5.2.0<a class="article-anchor" href="#Hexo-5-2-0" aria-hidden="true"></a></h2><h3 id="Changes" class="article-heading"><a href="#Changes" class="headerlink" title="Changes"></a>Changes<a class="article-anchor" href="#Changes" aria-hidden="true"></a></h3><ul>
+<li><p>perf(external_link): faster regexp <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4536">#4536</a></p>
+<ul>
+<li>prioritise <code>http(s)://</code> over <code>//</code></li>
+</ul>
+</li>
+<li><p>feat: support ‘disableNunjucks’ in front-matter <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4518">#4518</a></p>
+<ul>
+<li>Enable this option to disable <a href="https://hexo.io/docs/tag-plugins">tag plugin</a></li>
+<li>Setting this option in front-matter will override the same option set by the renderer (e.g. <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked">hexo-renderer-marked</a>)</li>
+</ul>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">title:</span> <span class="string">foo</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2020-01-02 03:04:05</span></span><br><span class="line"><span class="attr">disableNunjucks:</span> <span class="literal">true</span><span class="string">|false</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>fix: avoid escaping front-matter if unnecessary <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4522">#4522</a></p>
+<ul>
+<li>using variable (e.g. <code>&#123;&#123; title &#125;&#125;</code>) with special characters no longer result in double-quote wrap</li>
+</ul>
+</li>
+<li><p>fix: validate value of <a href="https://hexo.io/docs/configuration#URL">config.url</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4520">#4520</a></p>
+<ul>
+<li><code>config.url</code> should starts with “http:&#x2F;&#x2F;“ or “https:&#x2F;&#x2F;“</li>
+</ul>
+</li>
+<li><p>fix(router): convert string to buffer in route stream <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/ppoffice">@ppoffice</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4517">#4517</a></p>
+<ul>
+<li>fix crash in <code>hexo generate --bail</code></li>
+</ul>
+</li>
+<li><p>fix(disableNunjucks): query both async and sync versions of renderer <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/curbengh">@curbengh</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4498">#4498</a></p>
+<ul>
+<li><a href="https://hexo.io/api/renderer#Disable-Nunjucks-tags"><code>disableNunjucks</code></a> option should now works reliably with synchronous renderer</li>
+</ul>
+</li>
+<li><p>feat(load_plugin): ignore pkg name endswith theme name <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4497">#4497</a></p>
+<ul>
+<li>An initial effort to support scoped package</li>
+</ul>
+</li>
+</ul>
+<h3 id="Housekeeping" class="article-heading"><a href="#Housekeeping" class="headerlink" title="Housekeeping"></a>Housekeeping<a class="article-anchor" href="#Housekeeping" aria-hidden="true"></a></h3><ul>
+<li>chore&#x2F;ci: move benchmark &amp; profiling to Actions <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/SukkaW">@SukkaW</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4525">#4525</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4514">#4514</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4335">#4335</a><ul>
+<li>Travis is now completely replaced by Actions (in this repo)</li>
+</ul>
+</li>
+<li>chore: use example.com for example domain <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/YoshinoriN">@YoshinoriN</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/pull/4512">#4512</a></li>
+</ul>
+<hr>
+<h2 id="hexo-migrator-wordpress-2-1-2" class="article-heading"><a href="#hexo-migrator-wordpress-2-1-2" class="headerlink" title="hexo-migrator-wordpress 2.1.2"></a>hexo-migrator-wordpress 2.1.2<a class="article-anchor" href="#hexo-migrator-wordpress-2-1-2" aria-hidden="true"></a></h2><h3 id="Fix" class="article-heading"><a href="#Fix" class="headerlink" title="Fix"></a>Fix<a class="article-anchor" href="#Fix" aria-hidden="true"></a></h3><ul>
+<li>fix(import-image): regex and image slug <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-wordpress/pull/103">#103</a><ul>
+<li>replacing image embed link in a post should now also works within a paragraph that has a pair of bracket “()”.</li>
+</ul>
+</li>
+<li>fix(parseFeed): sanitize input <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-wordpress/pull/106">#106</a><ul>
+<li>xml parser <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/tuananh/camaro">camaro</a> may throw error if there is an unprintable character in the input. Those unsafe characters are now removed before being parsed by camaro.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="hexo-migrator-wordpress-2-1-1" class="article-heading"><a href="#hexo-migrator-wordpress-2-1-1" class="headerlink" title="hexo-migrator-wordpress 2.1.1"></a>hexo-migrator-wordpress 2.1.1<a class="article-anchor" href="#hexo-migrator-wordpress-2-1-1" aria-hidden="true"></a></h2><h2 id="Fix-1" class="article-heading"><a href="#Fix-1" class="headerlink" title="Fix"></a>Fix<a class="article-anchor" href="#Fix-1" aria-hidden="true"></a></h2><ul>
+<li>fix: avoid handling non-post asset <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-migrator-wordpress/pull/99">#99</a><ul>
+<li>A post may embeds external images and they should not be processed by <code>import-image</code>.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="hexo-renderer-marked-3-2-0" class="article-heading"><a href="#hexo-renderer-marked-3-2-0" class="headerlink" title="hexo-renderer-marked 3.2.0"></a>hexo-renderer-marked 3.2.0<a class="article-anchor" href="#hexo-renderer-marked-3-2-0" aria-hidden="true"></a></h2><h3 id="Features" class="article-heading"><a href="#Features" class="headerlink" title="Features"></a>Features<a class="article-anchor" href="#Features" aria-hidden="true"></a></h3><ul>
+<li>feat: mangle option <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked/pull/164">#164</a><ul>
+<li>a built-in <a target="_blank" rel="noopener external nofollow noreferrer" href="https://marked.js.org/using_advanced#options">option</a> of marked</li>
+<li>only useful against a <em>basic</em> crawler used by spam bot.</li>
+</ul>
+</li>
+<li>feat: disableNunjucks option <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked/pull/166">#166</a><ul>
+<li>enable this option to disable processing of Nunjucks tag <code>&#123;&#123; &#125;&#125;</code> <code>&#123;% %&#125;</code>, particularly useful if you’re not going to use <a href="https://hexo.io/docs/tag-plugins">tag plugins</a>.</li>
+</ul>
+</li>
+<li>feat: extend filter to tokenizer <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked/pull/165">#165</a><ul>
+<li>It’s now possible to customize the <a target="_blank" rel="noopener external nofollow noreferrer" href="https://marked.js.org/using_pro#tokenizer">tokenizer</a>.</li>
+<li>Refer to <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked#tokenizer">this section</a> for example.</li>
+</ul>
+</li>
+<li>feat: ‘quotes’ option to override smartypants <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked/pull/161">#161</a><ul>
+<li>it’s now possible to specify the quote symbols to replace.</li>
+<li>e.g. <code>quotes: &#39;«»“”&#39;</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="Fixes" class="article-heading"><a href="#Fixes" class="headerlink" title="Fixes"></a>Fixes<a class="article-anchor" href="#Fixes" aria-hidden="true"></a></h3><ul>
+<li>fix: handle invalid URL <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked/pull/163">#163</a><ul>
+<li>invalid URL like <code>http://localhost:4000lorem</code> is no longer <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-util#encodeurlstr">encoded</a>.</li>
+</ul>
+</li>
+<li>fix: autolink option should not apply on markdown syntax <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-marked/pull/162">#162</a><ul>
+<li><code>autolink:</code> no longer affects <code>&lt;http://example.com&gt;</code>.</li>
+<li>on another note, marked renderer doesn’t detect <code>example.com</code>, if a link doesn’t starts with protocol (e.g. <code>http://</code>), a link must starts with www to be detected (for autolink).</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="hexo-renderer-stylus-2-0-1" class="article-heading"><a href="#hexo-renderer-stylus-2-0-1" class="headerlink" title="hexo-renderer-stylus 2.0.1"></a>hexo-renderer-stylus 2.0.1<a class="article-anchor" href="#hexo-renderer-stylus-2-0-1" aria-hidden="true"></a></h2><h3 id="Fix-2" class="article-heading"><a href="#Fix-2" class="headerlink" title="Fix"></a>Fix<a class="article-anchor" href="#Fix-2" aria-hidden="true"></a></h3><ul>
+<li><p>fix: enable disableNunjucks to avoid rendering nunjucks tag <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-stylus/pull/55">#55</a></p>
+<ul>
+<li>it’s now safe to use:</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">div::before</span><br><span class="line">  content: &quot;&#123;&#123;&#125;&#125;&quot;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h2 id="hexo-renderer-stylus-2-0-0" class="article-heading"><a href="#hexo-renderer-stylus-2-0-0" class="headerlink" title="hexo-renderer-stylus 2.0.0"></a>hexo-renderer-stylus 2.0.0<a class="article-anchor" href="#hexo-renderer-stylus-2-0-0" aria-hidden="true"></a></h2><h3 id="Breaking-change" class="article-heading"><a href="#Breaking-change" class="headerlink" title="Breaking change"></a>Breaking change<a class="article-anchor" href="#Breaking-change" aria-hidden="true"></a></h3><ul>
+<li>Drop Node 8 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-stylus/pull/54">#54</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-stylus/pull/50">#50</a></li>
+</ul>
+<h3 id="Feature" class="article-heading"><a href="#Feature" class="headerlink" title="Feature"></a>Feature<a class="article-anchor" href="#Feature" aria-hidden="true"></a></h3><ul>
+<li><p>feat: execute hexo filter with stylus context <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-stylus/pull/45">#45</a></p>
+<ul>
+<li>It’s now possible to interact with <a target="_blank" rel="noopener external nofollow noreferrer" href="https://stylus-lang.com/docs/js.html">stylus API</a> via hexo’s filter API, see <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-stylus#extensibility">our guide</a>.</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">hexo.<span class="property">extend</span>.<span class="property">filter</span>.<span class="title function_">register</span>(<span class="string">&#x27;stylus:renderer&#x27;</span>, <span class="keyword">function</span>(<span class="params">style</span>) &#123;</span><br><span class="line">  style</span><br><span class="line">    <span class="comment">// we may define a global variable by passing a `Node`</span></span><br><span class="line">    .<span class="title function_">define</span>(<span class="string">&#x27;has-canvas&#x27;</span>, <span class="built_in">require</span>(<span class="string">&#x27;stylus&#x27;</span>).<span class="property">nodes</span>.<span class="property">false</span>);</span><br><span class="line">    <span class="comment">// stylus also casts JavaScript values to their Stylus equivalents when possible</span></span><br><span class="line">    .<span class="title function_">define</span>(<span class="string">&#x27;families&#x27;</span>, [<span class="string">&#x27;Helvetica Neue&#x27;</span>, <span class="string">&#x27;Helvetica&#x27;</span>, <span class="string">&#x27;sans-serif&#x27;</span>])</span><br><span class="line">    <span class="comment">// also allows you to provide a JavaScript-defined function to Stylus</span></span><br><span class="line">    .<span class="title function_">define</span>(<span class="string">&#x27;get-list&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> [<span class="string">&#x27;foo&#x27;</span>, <span class="string">&#x27;bar&#x27;</span>, <span class="string">&#x27;baz&#x27;</span>];</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="Misc" class="article-heading"><a href="#Misc" class="headerlink" title="Misc"></a>Misc<a class="article-anchor" href="#Misc" aria-hidden="true"></a></h3><ul>
+<li>docs: setting variables <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-stylus/pull/41">#41</a><ul>
+<li>This feature has been available since 0.3.1 but not documented until now.</li>
+<li>Refer to <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-stylus#setting-stylus-variables">our guide</a>.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="hexo-renderer-less-2-0-2" class="article-heading"><a href="#hexo-renderer-less-2-0-2" class="headerlink" title="hexo-renderer-less 2.0.2"></a>hexo-renderer-less 2.0.2<a class="article-anchor" href="#hexo-renderer-less-2-0-2" aria-hidden="true"></a></h2><h3 id="Fix-3" class="article-heading"><a href="#Fix-3" class="headerlink" title="Fix"></a>Fix<a class="article-anchor" href="#Fix-3" aria-hidden="true"></a></h3><ul>
+<li><p>fix: enable disableNunjucks to avoid rendering nunjucks tag <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-less/pull/52">#52</a></p>
+<ul>
+<li>it’s now safe to use:</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">div</span><span class="selector-pseudo">::before</span> &#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">&quot;&#123;&#123;&#125;&#125;&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<hr>
+<h2 id="hexo-renderer-less-2-0-0" class="article-heading"><a href="#hexo-renderer-less-2-0-0" class="headerlink" title="hexo-renderer-less 2.0.0"></a>hexo-renderer-less 2.0.0<a class="article-anchor" href="#hexo-renderer-less-2-0-0" aria-hidden="true"></a></h2><h3 id="Breaking-changes" class="article-heading"><a href="#Breaking-changes" class="headerlink" title="Breaking changes"></a>Breaking changes<a class="article-anchor" href="#Breaking-changes" aria-hidden="true"></a></h3><ul>
+<li>Drop Node 8 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-less/pull/48">#48</a> <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-less/pull/44">#44</a></li>
+<li><code>compress</code> option has been deprecated <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-less/pull/30">#30</a><ul>
+<li>Deprecated by upstream.</li>
+</ul>
+</li>
+</ul>
+<h3 id="Features-1" class="article-heading"><a href="#Features-1" class="headerlink" title="Features"></a>Features<a class="article-anchor" href="#Features-1" aria-hidden="true"></a></h3><ul>
+<li><p>feat: support Less.js options <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-less/pull/47">#47</a></p>
+<ul>
+<li>Support Less.js <a target="_blank" rel="noopener external nofollow noreferrer" href="http://lesscss.org/usage/#less-options">options</a></li>
+<li>Example:</li>
+</ul>
+<figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">less:</span></span><br><span class="line">  <span class="attr">options:</span></span><br><span class="line">    <span class="attr">globalVars:</span></span><br><span class="line">      <span class="attr">var1:</span> <span class="string">&#x27;some value&#x27;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>feat: supports globbing <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-less/pull/37">#37</a></p>
+<ul>
+<li>Example:</li>
+</ul>
+<figure class="highlight yml"><figcaption><span>_config.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">less:</span></span><br><span class="line">  <span class="attr">paths:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&#x27;**/css/variables/*&#x27;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+  </div>
+  
+</article>
+
+        
+      
+        
+          <article class="article post archive-post" itemscope itemtype="http://schema.org/Article">
+            <a class="archive-post-link" href="/news/2020/09/04/alias-1_cli-4-2_front-matter-2_feed-3/">
+              <strong class="archive-post-title" itemprop="name">Official plugins hexo-generator-alias 1.0.0, hexo-cli 4.2.0, hexo-front-matter 2.0.0 & hexo-generator-feed 3.0.0 released</strong>
+              <span class="archive-post-date"><time datetime="2020-09-04T00:00:00.000Z">2020-09-04</time></span>
+            </a>
+          </article>
+        
+      
+    </div>
+  </div>
+</div>
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2022 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuo.jiangtao@h3c.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard" class="mobile-nav-link">开发规范</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></span>
+    <select id="mobile-lang-select" data-canonical="">
+      
+        <option value="zh-cn" selected>简体中文</option>
+      
+        <option value="en">English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>

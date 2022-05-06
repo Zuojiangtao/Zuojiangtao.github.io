@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>贡献 | 开发规范</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://hexo.io/zh-cn/docs/contributing.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="zh-cn" href="https://hexo.io/zh-cn/docs/contributing">
+    
+      <link rel="alternative" hreflang="en" href="https://hexo.io/en/zh-cn/docs/contributing">
+    
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard" class="main-nav-link">开发规范</a>
+    </nav>
+    <div id="lang-select-wrap">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">贡献</h1>
+                <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/site/edit/master/source/zh-cn/docs/contributing.md" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <p>我们非常欢迎您加入 Hexo 的开发。 🤗</p>
+<h2 id="开发" class="article-heading"><a href="#开发" class="headerlink" title="开发"></a>开发<a class="article-anchor" href="#开发" aria-hidden="true"></a></h2><p>我们非常欢迎您加入 Hexo 的开发，这份文件将帮助您了解开发流程。</p>
+<h3 id="开始之前" class="article-heading"><a href="#开始之前" class="headerlink" title="开始之前"></a>开始之前<a class="article-anchor" href="#开始之前" aria-hidden="true"></a></h3><p>请首先阅读<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/blob/master/CODE_OF_CONDUCT.md">《贡献者行为准则》</a>，并确保您不会违反它。</p>
+<p>请使用以下代码风格：</p>
+<ul>
+<li>遵守 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://google.github.io/styleguide/jsguide.html">Google JavaScript 代码风格</a>。</li>
+<li>缩进使用 2 个空格。</li>
+<li>不要把逗号放在最前面。</li>
+</ul>
+<p>另外，Hexo 拥有自己的 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/eslint-config-hexo">ESLint 配置</a>，因此请确保您的贡献能够通过 ESLint。</p>
+<h3 id="工作流" class="article-heading"><a href="#工作流" class="headerlink" title="工作流"></a>工作流<a class="article-anchor" href="#工作流" aria-hidden="true"></a></h3><ol>
+<li>Fork <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo">hexojs&#x2F;hexo</a></li>
+<li>把库（repository）复制到电脑上，并安装所依赖的插件。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/&lt;username&gt;/hexo.git</span><br><span class="line">$ <span class="built_in">cd</span> hexo</span><br><span class="line">$ npm install</span><br><span class="line">$ git submodule update --init</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>新增一个功能分支。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ git checkout -b new_feature</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>开始开发。</li>
+<li>推送（push）分支。</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git push origin new_feature</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>建立一个新的合并申请（pull request）并描述变动。</li>
+</ol>
+<h3 id="注意事项" class="article-heading"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项<a class="article-anchor" href="#注意事项" aria-hidden="true"></a></h3><ul>
+<li>不要修改 <code>package.json</code> 的版本号。</li>
+<li>只有在测试通过的情况下您的合并申请才会被批准，在提交前别忘了进行测试。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="更新-Hexo-官方插件" class="article-heading"><a href="#更新-Hexo-官方插件" class="headerlink" title="更新 Hexo 官方插件"></a>更新 Hexo 官方插件<a class="article-anchor" href="#更新-Hexo-官方插件" aria-hidden="true"></a></h2><p>我们也欢迎给 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs">Hexo 官方插件</a> 提交 PR 和 Issue 🤗</p>
+<h2 id="更新文档" class="article-heading"><a href="#更新文档" class="headerlink" title="更新文档"></a>更新文档<a class="article-anchor" href="#更新文档" aria-hidden="true"></a></h2><p>Hexo 文档开放源代码，您可以在 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/site">hexojs&#x2F;site</a> 找到源代码。</p>
+<h3 id="工作流-1" class="article-heading"><a href="#工作流-1" class="headerlink" title="工作流"></a>工作流<a class="article-anchor" href="#工作流-1" aria-hidden="true"></a></h3><ol>
+<li>Fork <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/site">hexojs&#x2F;site</a></li>
+<li>把库（repository）复制到电脑上，并安装所依赖的插件。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ npm install hexo-cli -g <span class="comment"># If you don&#x27;t have hexo-cli installed</span></span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/&lt;username&gt;/site.git</span><br><span class="line">$ <span class="built_in">cd</span> site</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>开始编辑文件，您可以通过服务器预览变动。</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>推送（push）分支。</li>
+<li>建立一个新的合并申请（pull request）并描述变动。</li>
+</ol>
+<h3 id="翻译" class="article-heading"><a href="#翻译" class="headerlink" title="翻译"></a>翻译<a class="article-anchor" href="#翻译" aria-hidden="true"></a></h3><ol>
+<li>在 <code>source</code> 资料夹中建立一个新的语言资料夹（全小写）。</li>
+<li>把 <code>source</code> 资料夹中相关的文件（Markdown 和模板文件）复制到新的语言资料夹中。</li>
+<li>在 <code>source/_data/language.yml</code> 中新增语言。</li>
+<li>将 <code>en.yml</code> 复制到 <code>themes/navy/languages</code>中并命名为语言名称（全小写）。</li>
+</ol>
+<h2 id="反馈问题" class="article-heading"><a href="#反馈问题" class="headerlink" title="反馈问题"></a>反馈问题<a class="article-anchor" href="#反馈问题" aria-hidden="true"></a></h2><p>当您在使用 Hexo 时遇到问题，您可以尝试在 <a href="troubleshooting.html">问题解答</a> 中寻找解答，或是在 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/issues">GitHub</a> 或 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://groups.google.com/group/hexo">Google Group</a> 上提问。如果你没有找答案，请在 Github 报告它。</p>
+<ol>
+<li>在 <a href="commands.html#%E8%B0%83%E8%AF%95%E6%A8%A1%E5%BC%8F">调试模式</a> 中重现问题。</li>
+<li>在 GitHub 上提交 Issue 时，请遵循 Issue 模板中的步骤提供调试消息和版本信息。</li>
+</ol>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2022-05-05T02:50:05.301Z" itemprop="dateModified">上次更新：2022-05-05</time>
+                <a href="troubleshooting.html" class="article-footer-prev" title="问题解答"><i class="fa fa-chevron-left"></i><span>上一页</span></a>
+              </footer>
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%8F%91"><span class="toc-text">开发</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E4%B9%8B%E5%89%8D"><span class="toc-text">开始之前</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E6%B5%81"><span class="toc-text">工作流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-text">注意事项</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0-Hexo-%E5%AE%98%E6%96%B9%E6%8F%92%E4%BB%B6"><span class="toc-text">更新 Hexo 官方插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E6%96%87%E6%A1%A3"><span class="toc-text">更新文档</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E4%BD%9C%E6%B5%81-1"><span class="toc-text">工作流</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BF%BB%E8%AF%91"><span class="toc-text">翻译</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E9%A6%88%E9%97%AE%E9%A2%98"><span class="toc-text">反馈问题</span></a></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">开始使用</strong><a href="/standard/index.html" class="sidebar-link">概述</a><a href="/standard/setup.html" class="sidebar-link">建站</a><a href="/standard/configuration.html" class="sidebar-link">配置</a><a href="/standard/commands.html" class="sidebar-link">命令</a><a href="/standard/migration.html" class="sidebar-link">迁移</a><strong class="sidebar-title">基本操作</strong><a href="/standard/writing.html" class="sidebar-link">写作</a><a href="/standard/front-matter.html" class="sidebar-link">Front-matter</a><a href="/standard/tag-plugins.html" class="sidebar-link">标签插件</a><a href="/standard/asset-folders.html" class="sidebar-link">资源文件夹</a><a href="/standard/data-files.html" class="sidebar-link">数据文件夹</a><a href="/standard/server.html" class="sidebar-link">服务器</a><a href="/standard/generating.html" class="sidebar-link">生成器</a><strong class="sidebar-title">部署</strong><a href="/standard/github-pages.html" class="sidebar-link">GitHub Pages</a><a href="/standard/gitlab-pages.html" class="sidebar-link">GitLab Pages</a><a href="/standard/one-command-deployment.html" class="sidebar-link">一键部署</a><strong class="sidebar-title">自定义</strong><a href="/standard/permalinks.html" class="sidebar-link">永久链接</a><a href="/standard/themes.html" class="sidebar-link">主题</a><a href="/standard/templates.html" class="sidebar-link">模版</a><a href="/standard/variables.html" class="sidebar-link">变量</a><a href="/standard/helpers.html" class="sidebar-link">辅助函数</a><a href="/standard/internationalization.html" class="sidebar-link">国际化 (i18n)</a><a href="/standard/syntax-highlight.html" class="sidebar-link">代码高亮</a><a href="/standard/plugins.html" class="sidebar-link">插件</a><strong class="sidebar-title">其他</strong><a href="/standard/troubleshooting.html" class="sidebar-link">问题解答</a><a href="/standard/contributing.html" class="sidebar-link">贡献</a>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2022 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuo.jiangtao@h3c.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard" class="mobile-nav-link">开发规范</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">开始使用</strong><a href="/standard/index.html" class="mobile-nav-link">概述</a><a href="/standard/setup.html" class="mobile-nav-link">建站</a><a href="/standard/configuration.html" class="mobile-nav-link">配置</a><a href="/standard/commands.html" class="mobile-nav-link">命令</a><a href="/standard/migration.html" class="mobile-nav-link">迁移</a><strong class="mobile-nav-title">基本操作</strong><a href="/standard/writing.html" class="mobile-nav-link">写作</a><a href="/standard/front-matter.html" class="mobile-nav-link">Front-matter</a><a href="/standard/tag-plugins.html" class="mobile-nav-link">标签插件</a><a href="/standard/asset-folders.html" class="mobile-nav-link">资源文件夹</a><a href="/standard/data-files.html" class="mobile-nav-link">数据文件夹</a><a href="/standard/server.html" class="mobile-nav-link">服务器</a><a href="/standard/generating.html" class="mobile-nav-link">生成器</a><strong class="mobile-nav-title">部署</strong><a href="/standard/github-pages.html" class="mobile-nav-link">GitHub Pages</a><a href="/standard/gitlab-pages.html" class="mobile-nav-link">GitLab Pages</a><a href="/standard/one-command-deployment.html" class="mobile-nav-link">一键部署</a><strong class="mobile-nav-title">自定义</strong><a href="/standard/permalinks.html" class="mobile-nav-link">永久链接</a><a href="/standard/themes.html" class="mobile-nav-link">主题</a><a href="/standard/templates.html" class="mobile-nav-link">模版</a><a href="/standard/variables.html" class="mobile-nav-link">变量</a><a href="/standard/helpers.html" class="mobile-nav-link">辅助函数</a><a href="/standard/internationalization.html" class="mobile-nav-link">国际化 (i18n)</a><a href="/standard/syntax-highlight.html" class="mobile-nav-link">代码高亮</a><a href="/standard/plugins.html" class="mobile-nav-link">插件</a><strong class="mobile-nav-title">其他</strong><a href="/standard/troubleshooting.html" class="mobile-nav-link">问题解答</a><a href="/standard/contributing.html" class="mobile-nav-link">贡献</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></span>
+    <select id="mobile-lang-select" data-canonical="docs/contributing.html">
+      
+        <option value="zh-cn" selected>简体中文</option>
+      
+        <option value="en">English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>

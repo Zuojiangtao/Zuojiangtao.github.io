@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>GitHub Pages | 开发规范</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://hexo.io/en/docs/github-pages.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="zh-cn" href="https://hexo.io/en/docs/github-pages">
+    
+      <link rel="alternative" hreflang="en" href="https://hexo.io/en/en/docs/github-pages">
+    
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/en/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard" class="main-nav-link">standard</a>
+    </nav>
+    <div id="lang-select-wrap">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">GitHub Pages</h1>
+                <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/site/edit/master/source/en/docs/github-pages.md" class="article-edit-link" title="Improve this doc"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <p>In this tutorial, we use <a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.github.com/en/actions">GitHub Actions</a> to deploy GitHub Pages. It works in both public and private repository. Skip to the <a href="#One-command-deployment">One-command deployment</a> section if you prefer not to upload your source folder to GitHub.</p>
+<ol>
+<li>Create a repo named <b><em>username</em>.github.io</b>, where username is your username on GitHub. If you have already uploaded to other repo, rename the repo instead.</li>
+<li>Push the files of your Hexo folder to the default branch of your repository. The default branch is usually <strong>main</strong>, older repository may use <strong>master</strong> branch.</li>
+</ol>
+<ul>
+<li><p>To push <code>main</code> branch to GitHub:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ git push -u origin main</span><br></pre></td></tr></table></figure></li>
+<li><p>The <code>public/</code> folder is not (and should not be) uploaded by default, make sure the <code>.gitignore</code> file contains <code>public/</code> line. The folder structure should be roughly similar to <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-starter">this repo</a>, without the <code>.gitmodules</code> file.</p>
+</li>
+</ul>
+<ol start="3">
+<li>Check what version of Node.js you are using on your local machine with <code>node --version</code>. Make a note of the major version (e.g., <code>v16.y.z</code>)</li>
+<li>Create <code>.github/workflows/pages.yml</code> in your repo with the following contents (substituting <code>16</code> to the major version of Node.js that you noted in previous step):</li>
+</ol>
+<figure class="highlight yml"><figcaption><span>.github/workflows/pages.yml</span></figcaption><table><tr><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">Pages</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">main</span>  <span class="comment"># default branch</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">pages:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Use</span> <span class="string">Node.js</span> <span class="number">16.</span><span class="string">x</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/setup-node@v2</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">node-version:</span> <span class="string">&#x27;16&#x27;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Cache</span> <span class="string">NPM</span> <span class="string">dependencies</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/cache@v2</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">path:</span> <span class="string">node_modules</span></span><br><span class="line">          <span class="attr">key:</span> <span class="string">$&#123;&#123;</span> <span class="string">runner.OS</span> <span class="string">&#125;&#125;-npm-cache</span></span><br><span class="line">          <span class="attr">restore-keys:</span> <span class="string">|</span></span><br><span class="line"><span class="string">            $&#123;&#123; runner.OS &#125;&#125;-npm-cache</span></span><br><span class="line"><span class="string"></span>      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Install</span> <span class="string">Dependencies</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">npm</span> <span class="string">install</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Build</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">npm</span> <span class="string">run</span> <span class="string">build</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Deploy</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">peaceiris/actions-gh-pages@v3</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">github_token:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.GITHUB_TOKEN</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">publish_dir:</span> <span class="string">./public</span></span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>Once the deployment is finished, the generated pages can be found in the <code>gh-pages</code> branch of your repository.</li>
+<li>In your GitHub repo’s setting, navigate to <strong>Settings</strong> &gt; <strong>Pages</strong> &gt; <strong>Source</strong>. Change the branch to <code>gh-pages</code> and save.</li>
+<li>Check the webpage at <em>username</em>.github.io.</li>
+</ol>
+<p>Note - if you specify a custom domain name with a <code>CNAME</code>, you need to add the <code>CNAME</code> file to the <code>source/</code> folder. <a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site">More info</a>.</p>
+<h2 id="Project-page" class="article-heading"><a href="#Project-page" class="headerlink" title="Project page"></a>Project page<a class="article-anchor" href="#Project-page" aria-hidden="true"></a></h2><p>If you prefer to have a project page on GitHub:</p>
+<ol>
+<li>Navigate to your repo on GitHub. Go to the <strong>Settings</strong> tab. Change the <strong>Repository name</strong> so your blog is available at <b>username.github.io&#x2F;<em>repository</em></b>,  <strong>repository</strong> can be any name, like <em>blog</em> or <em>hexo</em>.</li>
+<li>Edit your <strong>_config.yml</strong>, change the <code>url:</code> value to <b>https:&#x2F;&#x2F;<em>username</em>.github.io&#x2F;<em>repository</em></b>.</li>
+<li>Commit and push to the default branch.</li>
+<li>Once the deployment is finished, the generated pages can be found in the <code>gh-pages</code> branch of your repository.</li>
+<li>In your GitHub repo’s setting, navigate to <strong>Settings</strong> &gt; <strong>Pages</strong> &gt; <strong>Source</strong>. Change the branch to <code>gh-pages</code> and save.</li>
+<li>Check the webpage at <em>username</em>.github.io&#x2F;<em>repository</em>.</li>
+</ol>
+<h2 id="One-command-deployment" class="article-heading"><a href="#One-command-deployment" class="headerlink" title="One-command deployment"></a>One-command deployment<a class="article-anchor" href="#One-command-deployment" aria-hidden="true"></a></h2><p>The following instruction is adapted from <a href="/docs/one-command-deployment">one-command deployment</a> page.</p>
+<ol>
+<li>Install <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-deployer-git">hexo-deployer-git</a>.</li>
+<li>Add the following configurations to <strong>_config.yml</strong>, (remove existing lines if any).</li>
+</ol>
+  <figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://github.com/&lt;username&gt;/&lt;project&gt;</span></span><br><span class="line">  <span class="comment"># example, https://github.com/hexojs/hexojs.github.io</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">gh-pages</span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>Run <code>hexo clean &amp;&amp; hexo deploy</code>.</li>
+<li>Check the webpage at <em>username</em>.github.io.</li>
+</ol>
+<h2 id="Useful-links" class="article-heading"><a href="#Useful-links" class="headerlink" title="Useful links"></a>Useful links<a class="article-anchor" href="#Useful-links" aria-hidden="true"></a></h2><ul>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.github.com/en/pages">GitHub Pages</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/marketplace/actions/github-pages-action">peaceiris&#x2F;actions-gh-pages</a></li>
+</ul>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2022-05-05T02:50:05.014Z" itemprop="dateModified">Last updated: 2022-05-05</time>
+                <a href="generating.html" class="article-footer-prev" title="Generating"><i class="fa fa-chevron-left"></i><span>Prev</span></a><a href="gitlab-pages.html" class="article-footer-next" title="GitLab Pages"><span>Next</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">Contents</strong>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Project-page"><span class="toc-text">Project page</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#One-command-deployment"><span class="toc-text">One-command deployment</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Useful-links"><span class="toc-text">Useful links</span></a></li></ol>
+              <a href="#" id="article-toc-top">Back to Top</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">Getting Started</strong><a href="/standard/index.html" class="sidebar-link">Overview</a><a href="/standard/setup.html" class="sidebar-link">Setup</a><a href="/standard/configuration.html" class="sidebar-link">Configuration</a><a href="/standard/commands.html" class="sidebar-link">Commands</a><a href="/standard/migration.html" class="sidebar-link">Migration</a><strong class="sidebar-title">Basic Usage</strong><a href="/standard/writing.html" class="sidebar-link">Writing</a><a href="/standard/front-matter.html" class="sidebar-link">Front-matter</a><a href="/standard/tag-plugins.html" class="sidebar-link">Tag Plugins</a><a href="/standard/asset-folders.html" class="sidebar-link">Asset Folders</a><a href="/standard/data-files.html" class="sidebar-link">Data Files</a><a href="/standard/server.html" class="sidebar-link">Server</a><a href="/standard/generating.html" class="sidebar-link">Generating</a><strong class="sidebar-title">Deployment</strong><a href="/standard/github-pages.html" class="sidebar-link">GitHub Pages</a><a href="/standard/gitlab-pages.html" class="sidebar-link">GitLab Pages</a><a href="/standard/one-command-deployment.html" class="sidebar-link">One-Command Deployment</a><strong class="sidebar-title">Customization</strong><a href="/standard/permalinks.html" class="sidebar-link">Permalinks</a><a href="/standard/themes.html" class="sidebar-link">Themes</a><a href="/standard/templates.html" class="sidebar-link">Templates</a><a href="/standard/variables.html" class="sidebar-link">Variables</a><a href="/standard/helpers.html" class="sidebar-link">Helpers</a><a href="/standard/internationalization.html" class="sidebar-link">Internationalization (i18n)</a><a href="/standard/syntax-highlight.html" class="sidebar-link">Syntax Highlight</a><a href="/standard/plugins.html" class="sidebar-link">Plugins</a><strong class="sidebar-title">Miscellaneous</strong><a href="/standard/troubleshooting.html" class="sidebar-link">Troubleshooting</a><a href="/standard/contributing.html" class="sidebar-link">Contributing</a>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2022 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuo.jiangtao@h3c.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard" class="mobile-nav-link">standard</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">Getting Started</strong><a href="/standard/index.html" class="mobile-nav-link">Overview</a><a href="/standard/setup.html" class="mobile-nav-link">Setup</a><a href="/standard/configuration.html" class="mobile-nav-link">Configuration</a><a href="/standard/commands.html" class="mobile-nav-link">Commands</a><a href="/standard/migration.html" class="mobile-nav-link">Migration</a><strong class="mobile-nav-title">Basic Usage</strong><a href="/standard/writing.html" class="mobile-nav-link">Writing</a><a href="/standard/front-matter.html" class="mobile-nav-link">Front-matter</a><a href="/standard/tag-plugins.html" class="mobile-nav-link">Tag Plugins</a><a href="/standard/asset-folders.html" class="mobile-nav-link">Asset Folders</a><a href="/standard/data-files.html" class="mobile-nav-link">Data Files</a><a href="/standard/server.html" class="mobile-nav-link">Server</a><a href="/standard/generating.html" class="mobile-nav-link">Generating</a><strong class="mobile-nav-title">Deployment</strong><a href="/standard/github-pages.html" class="mobile-nav-link">GitHub Pages</a><a href="/standard/gitlab-pages.html" class="mobile-nav-link">GitLab Pages</a><a href="/standard/one-command-deployment.html" class="mobile-nav-link">One-Command Deployment</a><strong class="mobile-nav-title">Customization</strong><a href="/standard/permalinks.html" class="mobile-nav-link">Permalinks</a><a href="/standard/themes.html" class="mobile-nav-link">Themes</a><a href="/standard/templates.html" class="mobile-nav-link">Templates</a><a href="/standard/variables.html" class="mobile-nav-link">Variables</a><a href="/standard/helpers.html" class="mobile-nav-link">Helpers</a><a href="/standard/internationalization.html" class="mobile-nav-link">Internationalization (i18n)</a><a href="/standard/syntax-highlight.html" class="mobile-nav-link">Syntax Highlight</a><a href="/standard/plugins.html" class="mobile-nav-link">Plugins</a><strong class="mobile-nav-title">Miscellaneous</strong><a href="/standard/troubleshooting.html" class="mobile-nav-link">Troubleshooting</a><a href="/standard/contributing.html" class="mobile-nav-link">Contributing</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>English</span></span>
+    <select id="mobile-lang-select" data-canonical="docs/github-pages.html">
+      
+        <option value="zh-cn">简体中文</option>
+      
+        <option value="en" selected>English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>News | 开发规范</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://hexo.io/news/2016/index.html">
+  <!-- Alternative links -->
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.3.0/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard" class="main-nav-link">开发规范</a>
+    </nav>
+    <div id="lang-select-wrap">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div class="wrapper">
+    <div class="inner">
+      
+        
+          <article class="article post" itemscope itemtype="http://schema.org/Article">
+  <header class="article-header">
+    
+      <h1>
+        <a href="/news/2016/02/28/hexo-3-2-released/" class="article-title" itemprop="name">Hexo 3.2 Released</a>
+      </h1>
+    
+    <a href="/news/2016/02/28/hexo-3-2-released/" class="article-date"><time datetime="2016-02-28T00:00:00.000Z">2016-02-28</time></a>
+  </header>
+  <div class="article-content" itemprop="articleBody">
+    <p>It has been a long time that Hexo is poor at handling large website. (<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/issues/710">#710</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/issues/1124">#1124</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/issues/283">#283</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/issues/1187">#1187</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/issues/550">#550</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/issues/1769">#1769</a>, etc.) We tried hard to solve this problem and there’re several improvements in Hexo 3.2.</p>
+<h2 id="It’s-all-about-speed" class="article-heading"><a href="#It’s-all-about-speed" class="headerlink" title="It’s all about speed"></a>It’s all about speed<a class="article-anchor" href="#It’s-all-about-speed" aria-hidden="true"></a></h2><h3 id="Caching-rendered-contents" class="article-heading"><a href="#Caching-rendered-contents" class="headerlink" title="Caching rendered contents"></a>Caching rendered contents<a class="article-anchor" href="#Caching-rendered-contents" aria-hidden="true"></a></h3><p>Rendered contents are cached in the warehouse. This saves a lot of time and made hot processing (2nd-time processing) <strong>1.7x faster</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>3.1</th>
+<th>3.2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Cold processing</td>
+<td>6.094s</td>
+<td>6.454s</td>
+</tr>
+<tr>
+<td>Hot processing</td>
+<td>5.154s</td>
+<td>3.002s</td>
+</tr>
+</tbody></table>
+<h3 id="Lazy-load-language-files-of-highlight-js" class="article-heading"><a href="#Lazy-load-language-files-of-highlight-js" class="headerlink" title="Lazy load language files of highlight.js"></a>Lazy load language files of highlight.js<a class="article-anchor" href="#Lazy-load-language-files-of-highlight-js" aria-hidden="true"></a></h3><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/issues/1036">highlight.js is slow</a>. Especially when it try to detect the language. Lazy load language files make processing faster and don’t have to load bunch of unused language files. However there’re some limitations:</p>
+<ul>
+<li>Auto detect must be disabled.</li>
+<li>You have to specify language in code block.</li>
+</ul>
+<p>You can set auto detect disabled in <code>_config.yml</code>.</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">highlight:</span></span><br><span class="line">  <span class="attr">auto_detect:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Templates-precompilation" class="article-heading"><a href="#Templates-precompilation" class="headerlink" title="Templates precompilation"></a>Templates precompilation<a class="article-anchor" href="#Templates-precompilation" aria-hidden="true"></a></h3><p>Theme templates are precompiled if possible. It makes generation speed <strong>2x faster</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Version</th>
+<th>3.1</th>
+<th>3.2</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Cold generation</td>
+<td>27.2s</td>
+<td>13.6s</td>
+</tr>
+<tr>
+<td>Hot generation</td>
+<td>24.4s</td>
+<td>12.6s</td>
+</tr>
+</tbody></table>
+<p>The following renderers have already supported this feature.</p>
+<ul>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-ejs">hexo-renderer-ejs</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-jade">hexo-renderer-jade</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo-renderer-swig">hexo-renderer-swig</a></li>
+</ul>
+<p>And it’s easy to implement precompilation for renderers. Just add a <code>compile</code> function to the renderer. Take EJS renderer for example:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> ejs = <span class="built_in">require</span>(<span class="string">&#x27;ejs&#x27;</span>);</span><br><span class="line"><span class="keyword">var</span> assign = <span class="built_in">require</span>(<span class="string">&#x27;object-assign&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">ejsRenderer</span>(<span class="params">data, locals</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> ejs.<span class="title function_">render</span>(data.<span class="property">text</span>, <span class="title function_">assign</span>(&#123;<span class="attr">filename</span>: data.<span class="property">path</span>&#125;, locals));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ejsRenderer.<span class="property">compile</span> = <span class="keyword">function</span>(<span class="params">data</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> ejs.<span class="title function_">compile</span>(data.<span class="property">text</span>, &#123;</span><br><span class="line">    <span class="attr">filename</span>: data.<span class="property">path</span></span><br><span class="line">  &#125;);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = ejsRenderer;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Include-x2F-exclude-source-files" class="article-heading"><a href="#Include-x2F-exclude-source-files" class="headerlink" title="Include&#x2F;exclude source files"></a>Include&#x2F;exclude source files<a class="article-anchor" href="#Include-x2F-exclude-source-files" aria-hidden="true"></a></h2><p>You can include&#x2F;exclude specified source files in <code>_config.yml</code>.</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">include:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">.htaccess</span></span><br><span class="line"></span><br><span class="line"><span class="attr">exclude:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">tmp/**/*</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/hexojs/hexo/releases">changelog</a>, <a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.google.com/spreadsheets/d/1nLW3fPCtrkfMolz8UnUiKq5lqys6bIcZqrfksuvQHA0/edit?usp=sharing">benchmark results</a>.</p>
+
+  </div>
+  
+</article>
+
+        
+      
+    </div>
+  </div>
+</div>
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2022 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuo.jiangtao@h3c.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard" class="mobile-nav-link">开发规范</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></span>
+    <select id="mobile-lang-select" data-canonical="">
+      
+        <option value="zh-cn" selected>简体中文</option>
+      
+        <option value="en">English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>
