@@ -37,3 +37,8 @@ algolia:
 #    api_key: c83d2ec3440f40aec6d0e695ecec7ef3
 #    index_name: hexo_zh-tw
 github: Zuojiangtao
+
+deploy:
+  type: git
+  repo: http://10.63.32.225/eos/it-dev-spec-frontend-static-web.git
+  branch: master
