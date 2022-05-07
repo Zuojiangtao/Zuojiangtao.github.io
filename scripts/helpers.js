@@ -97,7 +97,7 @@ hexo.extend.helper.register('url_for_lang', function(path) {
   return url;
 });
 
-hexo.extend.helper.register('raw_link', path => `https://github.com/hexojs/site/edit/master/source/${path}`);
+hexo.extend.helper.register('raw_link', path => `http://itgit.h3c.com/eos/it-dev-spec-frontend/tree/master/source/${path}`);
 
 hexo.extend.helper.register('page_anchor', str => {
   const $ = cheerio.load(str, {decodeEntities: false});
