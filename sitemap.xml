@@ -2,6 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/ecology/qiankun/questions</loc>
+    
+    <lastmod>2022-05-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/ecology/qiankun/guide</loc>
+    
+    <lastmod>2022-05-11</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/ecology/</loc>
+    
+    <lastmod>2022-05-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/standard/name/dir</loc>
     
     <lastmod>2022-05-06</lastmod>
@@ -155,7 +182,7 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/zh-cn/docs/plugins</loc>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/zh-cn/docs/server</loc>
     
     <lastmod>2022-05-05</lastmod>
     
@@ -164,7 +191,7 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/zh-cn/docs/server</loc>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/zh-cn/docs/plugins</loc>
     
     <lastmod>2022-05-05</lastmod>
     
@@ -236,15 +263,6 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/zh-cn/docs/helpers</loc>
-    
-    <lastmod>2022-05-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/zh-cn/docs/</loc>
     
     <lastmod>2022-05-05</lastmod>
@@ -254,7 +272,7 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/zh-cn/docs/internationalization</loc>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/zh-cn/docs/helpers</loc>
     
     <lastmod>2022-05-05</lastmod>
     
@@ -264,6 +282,15 @@
   
   <url>
     <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/zh-cn/docs/migration</loc>
+    
+    <lastmod>2022-05-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/zh-cn/docs/internationalization</loc>
     
     <lastmod>2022-05-05</lastmod>
     
@@ -308,6 +335,15 @@
   </url>
   
   <url>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/zh-cn/docs/configuration</loc>
+    
+    <lastmod>2022-05-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/zh-cn/docs/commands</loc>
     
     <lastmod>2022-05-05</lastmod>
@@ -326,24 +362,6 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/zh-cn/docs/configuration</loc>
-    
-    <lastmod>2022-05-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/zh-cn/docs/data-files</loc>
-    
-    <lastmod>2022-05-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/zh-cn/docs/front-matter</loc>
     
     <lastmod>2022-05-05</lastmod>
@@ -353,7 +371,7 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/zh-cn/api/migrator</loc>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/zh-cn/docs/data-files</loc>
     
     <lastmod>2022-05-05</lastmod>
     
@@ -380,6 +398,15 @@
   </url>
   
   <url>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/zh-cn/api/migrator</loc>
+    
+    <lastmod>2022-05-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/zh-cn/api/posts</loc>
     
     <lastmod>2022-05-05</lastmod>
@@ -390,15 +417,6 @@
   
   <url>
     <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/zh-cn/api/processor</loc>
-    
-    <lastmod>2022-05-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/zh-cn/api/rendering</loc>
     
     <lastmod>2022-05-05</lastmod>
     
@@ -425,7 +443,7 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/zh-cn/api/generator</loc>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/zh-cn/api/rendering</loc>
     
     <lastmod>2022-05-05</lastmod>
     
@@ -435,6 +453,15 @@
   
   <url>
     <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/zh-cn/api/filter</loc>
+    
+    <lastmod>2022-05-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/zh-cn/api/generator</loc>
     
     <lastmod>2022-05-05</lastmod>
     
@@ -470,7 +497,7 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/zh-cn/api/console</loc>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/zh-cn/api/deployer</loc>
     
     <lastmod>2022-05-05</lastmod>
     
@@ -479,7 +506,7 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/zh-cn/api/deployer</loc>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/zh-cn/api/console</loc>
     
     <lastmod>2022-05-05</lastmod>
     
@@ -515,7 +542,7 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2019/12/24/how-we-make-hexo-30-percent-faster/</loc>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2019/12/22/hexo-4.2_hexo-util-1-8_eslint-config-hexo-released/</loc>
     
     <lastmod>2022-05-05</lastmod>
     
@@ -524,7 +551,7 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2019/12/22/hexo-4.2_hexo-util-1-8_eslint-config-hexo-released/</loc>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2019/12/24/how-we-make-hexo-30-percent-faster/</loc>
     
     <lastmod>2022-05-05</lastmod>
     
@@ -551,15 +578,6 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2020/06/27/hexo-marked-3_migrator-wordpress-2_migrator-rss-1/</loc>
-    
-    <lastmod>2022-05-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2020/05/14/hexo-4-2-1-hexo-fs-2-0-1-hexo-util-1-9-1/</loc>
     
     <lastmod>2022-05-05</lastmod>
@@ -569,7 +587,7 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2020/08/02/cli-4_wordpress-2-1_sitemap-2-1/</loc>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2020/06/27/hexo-marked-3_migrator-wordpress-2_migrator-rss-1/</loc>
     
     <lastmod>2022-05-05</lastmod>
     
@@ -587,7 +605,7 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2020/09/04/alias-1_cli-4-2_front-matter-2_feed-3/</loc>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2020/08/02/cli-4_wordpress-2-1_sitemap-2-1/</loc>
     
     <lastmod>2022-05-05</lastmod>
     
@@ -614,6 +632,15 @@
   </url>
   
   <url>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2020/09/04/alias-1_cli-4-2_front-matter-2_feed-3/</loc>
+    
+    <lastmod>2022-05-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2020/12/17/hexo-5-3-released/</loc>
     
     <lastmod>2022-05-05</lastmod>
@@ -632,7 +659,7 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2021/05/05/hexo-util-2-5-0-released/</loc>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2021/02/21/hexo-5-4-0-released/</loc>
     
     <lastmod>2022-05-05</lastmod>
     
@@ -641,7 +668,7 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2021/02/21/hexo-5-4-0-released/</loc>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2021/05/05/hexo-util-2-5-0-released/</loc>
     
     <lastmod>2022-05-05</lastmod>
     
@@ -659,7 +686,7 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2021/11/26/hexo-renderer-ejs-2-0-0-and-hexo-generator-sitemap-2-2-0-released/</loc>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2021/12/26/hexo-6-0-0-released/</loc>
     
     <lastmod>2022-05-05</lastmod>
     
@@ -668,7 +695,7 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2021/12/26/hexo-6-0-0-released/</loc>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2021/11/26/hexo-renderer-ejs-2-0-0-and-hexo-generator-sitemap-2-2-0-released/</loc>
     
     <lastmod>2022-05-05</lastmod>
     
@@ -686,6 +713,15 @@
   </url>
   
   <url>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2022/03/12/hexo-6-1-0-released/</loc>
+    
+    <lastmod>2022-05-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2022/01/29/hexo-renderer-marked-5-0-0-and-hexo-renderer-markdown-it-6-0-0/</loc>
     
     <lastmod>2022-05-05</lastmod>
@@ -695,7 +731,7 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2022/03/12/hexo-6-1-0-released/</loc>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/en/api/console</loc>
     
     <lastmod>2022-05-05</lastmod>
     
@@ -722,24 +758,6 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/en/api/console</loc>
-    
-    <lastmod>2022-05-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/en/api/events</loc>
-    
-    <lastmod>2022-05-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/en/api/generator</loc>
     
     <lastmod>2022-05-05</lastmod>
@@ -749,7 +767,7 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/en/api/injector</loc>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/en/api/events</loc>
     
     <lastmod>2022-05-05</lastmod>
     
@@ -777,6 +795,15 @@
   
   <url>
     <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/en/api/</loc>
+    
+    <lastmod>2022-05-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/en/api/injector</loc>
     
     <lastmod>2022-05-05</lastmod>
     
@@ -857,6 +884,15 @@
   </url>
   
   <url>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/en/api/tag</loc>
+    
+    <lastmod>2022-05-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/en/api/themes</loc>
     
     <lastmod>2022-05-05</lastmod>
@@ -866,7 +902,7 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/en/api/tag</loc>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/en/docs/data-files</loc>
     
     <lastmod>2022-05-05</lastmod>
     
@@ -893,7 +929,7 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/en/docs/contributing</loc>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/en/docs/configuration</loc>
     
     <lastmod>2022-05-05</lastmod>
     
@@ -902,7 +938,7 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/en/docs/configuration</loc>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/en/docs/contributing</loc>
     
     <lastmod>2022-05-05</lastmod>
     
@@ -920,15 +956,6 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/en/docs/data-files</loc>
-    
-    <lastmod>2022-05-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/en/docs/generating</loc>
     
     <lastmod>2022-05-05</lastmod>
@@ -938,7 +965,7 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/en/docs/github-pages</loc>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/en/docs/gitlab-pages</loc>
     
     <lastmod>2022-05-05</lastmod>
     
@@ -947,7 +974,7 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/en/docs/gitlab-pages</loc>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/en/docs/github-pages</loc>
     
     <lastmod>2022-05-05</lastmod>
     
@@ -1001,7 +1028,7 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/en/docs/permalinks</loc>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/en/docs/plugins</loc>
     
     <lastmod>2022-05-05</lastmod>
     
@@ -1010,7 +1037,7 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/en/docs/plugins</loc>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/en/docs/permalinks</loc>
     
     <lastmod>2022-05-05</lastmod>
     
@@ -1028,7 +1055,7 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/en/docs/server</loc>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/en/docs/syntax-highlight</loc>
     
     <lastmod>2022-05-05</lastmod>
     
@@ -1037,7 +1064,7 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/en/docs/syntax-highlight</loc>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/en/docs/server</loc>
     
     <lastmod>2022-05-05</lastmod>
     
@@ -1208,15 +1235,6 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2019/01/12/hexo-deployer-git-1.0.0_released/</loc>
-    
-    <lastmod>2022-05-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2019/05/23/hexo-renderer-marked-1-0-0_1_0_1-released/</loc>
     
     <lastmod>2022-05-05</lastmod>
@@ -1226,7 +1244,7 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2019/06/19/hexo-3-9-released/</loc>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2019/01/12/hexo-deployer-git-1.0.0_released/</loc>
     
     <lastmod>2022-05-05</lastmod>
     
@@ -1253,6 +1271,15 @@
   </url>
   
   <url>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2019/06/19/hexo-3-9-released/</loc>
+    
+    <lastmod>2022-05-05</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2016/02/28/hexo-3-2-released/</loc>
     
     <lastmod>2022-05-05</lastmod>
@@ -1262,7 +1289,7 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2018/12/01/2018-12-01-hexofs-1-0-1-and-hexo-renderer-less-1-0-0-released-md/</loc>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2018/10/19/hexo-3-8-released/</loc>
     
     <lastmod>2022-05-05</lastmod>
     
@@ -1271,7 +1298,7 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2018/10/19/hexo-3-8-released/</loc>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2018/12/01/2018-12-01-hexofs-1-0-1-and-hexo-renderer-less-1-0-0-released-md/</loc>
     
     <lastmod>2022-05-05</lastmod>
     
@@ -1307,7 +1334,7 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2015/02/27/new-documentation-and-registry/</loc>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2014/07/13/hexo-2-8-released/</loc>
     
     <lastmod>2022-05-05</lastmod>
     
@@ -1316,7 +1343,7 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2014/07/13/hexo-2-8-released/</loc>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/news/2015/02/27/new-documentation-and-registry/</loc>
     
     <lastmod>2022-05-05</lastmod>
     
@@ -1335,6 +1362,33 @@
   
   <url>
     <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/themes/</loc>
+    
+    <lastmod>2021-06-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/standard/html/code</loc>
+    
+    <lastmod>2021-06-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/standard/html/note</loc>
+    
+    <lastmod>2021-06-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/standard/html/webapp</loc>
     
     <lastmod>2021-06-10</lastmod>
     
@@ -1397,7 +1451,7 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/standard/html/code</loc>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/standard/js/code</loc>
     
     <lastmod>2021-06-10</lastmod>
     
@@ -1406,7 +1460,7 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/standard/html/note</loc>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/standard/js/language</loc>
     
     <lastmod>2021-06-10</lastmod>
     
@@ -1415,7 +1469,7 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/standard/html/webapp</loc>
+    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/standard/name/classname</loc>
     
     <lastmod>2021-06-10</lastmod>
     
@@ -1460,33 +1514,6 @@
   </url>
   
   <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/standard/js/code</loc>
-    
-    <lastmod>2021-06-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/standard/js/language</loc>
-    
-    <lastmod>2021-06-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/standard/name/classname</loc>
-    
-    <lastmod>2021-06-10</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://static.eos-ts.h3c.com/dev-spec/index.html/standard/project/react</loc>
     
     <lastmod>2021-06-10</lastmod>
@@ -1507,7 +1534,7 @@
 
   <url>
     <loc>http://static.eos-ts.h3c.com/dev-spec/index.html</loc>
-    <lastmod>2022-05-06</lastmod>
+    <lastmod>2022-05-11</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
