@@ -43,7 +43,6 @@ hexo.extend.helper.register('doc_sidebar', function(className) {
   let result = '';
   const self = this;
   const prefix = 'sidebar.' + type + '.';
-  const standardRoot = '/standard/';
 
   if (typeof sidebar === 'undefined') {
     return '';
@@ -54,10 +53,10 @@ hexo.extend.helper.register('doc_sidebar', function(className) {
 
     for (const [text, link] of Object.entries(menu)) {
       let itemClass = className + '-link';
-      const standardLink = standardRoot + link;
-      if (standardLink === `/${this.path}`) itemClass += ' current';
+      const prefixLink = `/${type}/` + link;
+      if (prefixLink === `/${this.path}`) itemClass += ' current';
 
-      result += '<a href="' + standardLink + '" class="' + itemClass + '">' + self.__(prefix + text) + '</a>';
+      result += '<a href="' + prefixLink + '" class="' + itemClass + '">' + self.__(prefix + text) + '</a>';
     }
   }
 

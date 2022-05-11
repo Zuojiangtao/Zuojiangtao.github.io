@@ -2,6 +2,7 @@ menu:
   docs: 文档
   api: API
   standard: 开发规范
+  ecology: 前沿生态
   news: 新闻
   plugins: 插件
   themes: 主题
@@ -112,3 +113,9 @@ sidebar:
     rule: 项目开发约定
     CI/CD: 持续集成
     template: 模板工程
+  ecology:
+    getting_started: 开始使用
+    overview: 概述
+    qiankun: 微前端qiankun
+    qiankun_guide: 文档指南
+    qiankun_questions: 问题汇总

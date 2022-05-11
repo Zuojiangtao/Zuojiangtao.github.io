@@ -2,6 +2,7 @@ menu:
   docs: Docs
   api: API
   standard: standard
+  ecology: ecology
   news: News
   plugins: Plugins
   themes: Themes
@@ -109,3 +110,9 @@ sidebar:
     rule: 项目开发约定
     CI/CD: 持续集成
     template: 模板工程
+  ecology:
+    getting_started: 开始使用
+    overview: 概述
+    qiankun: 微前端qiankun
+    qiankun_guide: 文档指南
+    qiankun_questions: 问题汇总

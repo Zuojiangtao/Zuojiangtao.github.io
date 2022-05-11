@@ -88,3 +88,10 @@ standard:
     rule: project/rule.html
     CI/CD: project/ci_cd.html
     template: project/template.html
+
+ecology:
+  getting_started:
+    overview: index.html
+  qiankun:
+    qiankun_guide: qiankun/guide.html
+    qiankun_questions: qiankun/questions.html
