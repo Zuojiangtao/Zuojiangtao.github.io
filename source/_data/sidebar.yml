@@ -95,3 +95,9 @@ ecology:
   qiankun:
     qiankun_guide: qiankun/guide.html
     qiankun_questions: qiankun/questions.html
+
+util:
+  getting_started:
+    overview: index.html
+  yapi:
+    yapi_guide: yapi/guide.html

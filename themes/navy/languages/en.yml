@@ -3,6 +3,7 @@ menu:
   api: API
   standard: standard
   ecology: ecology
+  util: util
   news: News
   plugins: Plugins
   themes: Themes
@@ -116,3 +117,7 @@ sidebar:
     qiankun: 微前端qiankun
     qiankun_guide: 文档指南
     qiankun_questions: 问题汇总
+  util:
+    getting_started: 开始使用
+    yapi: YApi
+    yapi_guide: YApi文档

@@ -3,6 +3,7 @@ menu:
   api: API
   standard: 开发规范
   ecology: 前沿生态
+  util: 开发工具
   news: 新闻
   plugins: 插件
   themes: 主题
@@ -119,3 +120,8 @@ sidebar:
     qiankun: 微前端qiankun
     qiankun_guide: 文档指南
     qiankun_questions: 问题汇总
+  util:
+    getting_started: 开始使用
+    overview: 概述
+    yapi: YApi
+    yapi_guide: YApi文档
