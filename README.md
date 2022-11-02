@@ -6,8 +6,8 @@ The website for frontend standard.
 Install dependencies:
 
 ``` bash
-$ git clone http://10.63.32.225/eos/it-dev-spec-frontend.git
-$ cd it-dev-spec-frontend
+$ git clone https://github.com/Zuojiangtao/Zuojiangtao.github.io.git [project-name]
+$ cd project-name
 $ npm install
 ```
 
