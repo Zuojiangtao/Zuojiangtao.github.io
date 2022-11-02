@@ -1,11 +1,11 @@
-title: 开发规范
+title: 个人博客
 subtitle: "A fast, simple & powerful blog framework powered by Node.js."
 description: "Hexo is a fast, simple & powerful blog framework powered by Node.js."
 author: zuo.jiangtao@h3c.com/ZuoJiangtao
 language: zh-cn
 timezone: UTC
 
-url: http://static.eos-ts.h3c.com/dev-spec/index.html
+url: https://zuojiangtao.github.io/
 root: /
 permalink: news/:year/:month/:day/:title/
 archive_dir: news
@@ -36,9 +36,9 @@ algolia:
 #  zh-tw:
 #    api_key: c83d2ec3440f40aec6d0e695ecec7ef3
 #    index_name: hexo_zh-tw
-github: Zuojiangtao
+github: https://github.com/Zuojiangtao
 
 deploy:
   type: git
-  repo: http://10.63.32.225/eos/it-dev-spec-frontend-static-web.git
-  branch: master
+  repo: https://github.com/Zuojiangtao/Zuojiangtao.github.io.git
+  branch: gh-pages
