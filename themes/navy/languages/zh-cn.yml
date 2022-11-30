@@ -125,3 +125,5 @@ sidebar:
     overview: 概述
     yapi: YApi
     yapi_guide: YApi文档
+    sentry: Sentry
+    sentry_guide: Sentry指南

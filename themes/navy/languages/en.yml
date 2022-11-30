@@ -121,3 +121,5 @@ sidebar:
     getting_started: 开始使用
     yapi: YApi
     yapi_guide: YApi文档
+    sentry: Sentry
+    sentry_guide: Sentry指南
