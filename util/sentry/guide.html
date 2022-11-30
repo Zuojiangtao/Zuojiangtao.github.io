@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>前端监控系统-Sentry | 个人博客</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://zuojiangtao.github.io/util/sentry/guide.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="zh-cn" href="https://zuojiangtao.github.io/util/sentry/guide">
+    
+      <link rel="alternative" hreflang="en" href="https://zuojiangtao.github.io/en/util/sentry/guide">
+    
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-w/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 6.1.0"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard/" class="main-nav-link">开发规范</a><a href="/ecology/" class="main-nav-link">前沿生态</a><a href="/util/" class="main-nav-link">开发工具</a>
+    </nav>
+    <div id="lang-select-wrap">
+      <a href="https://github.com/https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">前端监控系统-Sentry</h1>
+                <a target="_blank" rel="noopener external nofollow noreferrer" href="http://itgit.h3c.com/eos/it-dev-spec-frontend/tree/master/source/util/sentry/guide.md" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <h3 id="一、前端监控系统" class="article-heading"><a href="#一、前端监控系统" class="headerlink" title="一、前端监控系统"></a>一、前端监控系统<a class="article-anchor" href="#一、前端监控系统" aria-hidden="true"></a></h3><h4 id="1-什么是监控系统？为什么要对项目监控？" class="article-heading"><a href="#1-什么是监控系统？为什么要对项目监控？" class="headerlink" title="1. 什么是监控系统？为什么要对项目监控？"></a>1. 什么是监控系统？为什么要对项目监控？<a class="article-anchor" href="#1-什么是监控系统？为什么要对项目监控？" aria-hidden="true"></a></h4><p>在IT界内，监控系统指对项目运行的各项指标的实时记录的系统或服务，旨在提升项目质量和量化项目的各项指标，为项目发展提供可量化的依据。</p>
+<p>一般来说项目监控是为了：</p>
+<ul>
+<li>更快的发现和解决线上问题；</li>
+<li>做产品和制定需求的决策依据；</li>
+<li>为业务扩展提供了更多可能性；</li>
+<li>对项目质量提供真实数据；</li>
+</ul>
+<h4 id="2-监控哪些指标？哪些参数可量化？" class="article-heading"><a href="#2-监控哪些指标？哪些参数可量化？" class="headerlink" title="2. 监控哪些指标？哪些参数可量化？"></a>2. 监控哪些指标？哪些参数可量化？<a class="article-anchor" href="#2-监控哪些指标？哪些参数可量化？" aria-hidden="true"></a></h4><ul>
+<li>白屏时间；</li>
+<li>首屏加载时间；</li>
+<li>用户可交互时间；</li>
+<li>总下载时间；</li>
+<li>DNS解析时间；</li>
+<li>TCP连接时间；</li>
+<li>HTTP请求时间；</li>
+<li>HTTP响应时间；</li>
+<li>pv；</li>
+<li>uv；</li>
+<li>用户行为统计；</li>
+<li>界面js异常及报错；</li>
+<li>用户设备信息: ip、浏览器、操作系统等；</li>
+</ul>
+<h4 id="3-有哪些成熟方案？" class="article-heading"><a href="#3-有哪些成熟方案？" class="headerlink" title="3. 有哪些成熟方案？"></a>3. 有哪些成熟方案？<a class="article-anchor" href="#3-有哪些成熟方案？" aria-hidden="true"></a></h4><p>现在市场上有不少的成熟方案，包括fundebug、webfunny、阿里ARMS、腾讯BadJS、Sentry。。。</p>
+<h3 id="二、成熟方案比较" class="article-heading"><a href="#二、成熟方案比较" class="headerlink" title="二、成熟方案比较"></a>二、成熟方案比较<a class="article-anchor" href="#二、成熟方案比较" aria-hidden="true"></a></h3><table>
+<thead>
+<tr>
+<th align="left">监控平台</th>
+<th align="center">是否支持异常监控</th>
+<th align="center">是否支持性能监控</th>
+<th align="center">是否有免费版</th>
+<th align="center">是否开源</th>
+<th align="center">是否能私有化部署</th>
+<th align="center">是否支持多端多语言</th>
+<th align="center">是否有告警系统</th>
+<th align="left">其他</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">mmTrix</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="left">云服务</td>
+</tr>
+<tr>
+<td align="left">监控宝</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="left">云服务</td>
+</tr>
+<tr>
+<td align="left">OneAPM</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">-</td>
+<td align="center">×</td>
+<td align="left">服务端和客户端分离，支持语言有限</td>
+</tr>
+<tr>
+<td align="left">听云</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">FrontJs</td>
+<td align="center">√</td>
+<td align="center">-</td>
+<td align="center">√</td>
+<td align="center">×</td>
+<td align="center">-</td>
+<td align="center">×</td>
+<td align="center">√</td>
+<td align="left">价格阶梯服务，免费版功能受限,没有性能监控</td>
+</tr>
+<tr>
+<td align="left">FunDebug</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">×</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">√</td>
+<td align="left">免费版功能受限</td>
+</tr>
+<tr>
+<td align="left">Webfunny</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">×</td>
+<td align="center">-</td>
+<td align="center">×</td>
+<td align="center">√</td>
+<td align="left">免费版功能受限</td>
+</tr>
+<tr>
+<td align="left">阿里ARMS</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">-</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="center">√</td>
+<td align="left">15天免费</td>
+</tr>
+<tr>
+<td align="left">腾讯BadJS</td>
+<td align="center">√</td>
+<td align="center">×</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">×</td>
+<td align="center">×</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">web-monitoring</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">×</td>
+<td align="center">√</td>
+<td align="left">由个人开发者开源</td>
+</tr>
+<tr>
+<td align="left">newrelic</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">Sentry</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="center">√</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<p>从这个表中分析可知，一个兼顾异常监控和性能监控，且能够私有化部署的平台有Sentry、newrelic、web-monitoring。<br>如果我们小团队仅使用前端监控的话，<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/kisslove/web-monitoring/">web-monitoring</a>就可以满足需要了。<br>而newrelic和Sentry相比，在语言支持度上略逊。</p>
+<h3 id="三、Sentry使用流程" class="article-heading"><a href="#三、Sentry使用流程" class="headerlink" title="三、Sentry使用流程"></a>三、Sentry使用流程<a class="article-anchor" href="#三、Sentry使用流程" aria-hidden="true"></a></h3><h4 id="1-官方文档" class="article-heading"><a href="#1-官方文档" class="headerlink" title="1. 官方文档"></a>1. 官方文档<a class="article-anchor" href="#1-官方文档" aria-hidden="true"></a></h4><p>官方文档站点：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.sentry.io/">Sentry官网</a></p>
+<h4 id="2-术语介绍" class="article-heading"><a href="#2-术语介绍" class="headerlink" title="2. 术语介绍"></a>2. 术语介绍<a class="article-anchor" href="#2-术语介绍" aria-hidden="true"></a></h4><ul>
+<li>FP(First Paint)：首次绘制时间，包括了任何用户自定义的背景绘制，它是首先将像素绘制到屏幕的时刻；</li>
+<li>FCP(First Content Paint)：首次内容绘制。浏览器将第一个 DOM 渲染到屏幕的时间，可能是文本、图像、SVG 等。这其实就是白屏时间；</li>
+<li>FMP(First Meaningful Paint)：首次有意义绘制。页面有意义的内容渲染的时间；</li>
+<li>LCP(Largest Contentful Paint)。最大内容渲染。代表在 viewport 中最大的页面元素加载的时间；</li>
+<li>DCL(DomContentLoaded)：DOM 加载完成。当 HTML 文档被完全加载和解析完成之后，DOMContentLoaded 事件被触发。无需等待样式表，图像和子框架的完成加载；</li>
+<li>L(onload)：当依赖的资源全部加载完毕之后才会触发；</li>
+<li>TTI(Time to Interactive)：可交互时间。用于标记应用已进行视觉渲染并能可靠响应用户输入的时间点；</li>
+<li>FID(First Input Delay)：首次输入延迟。用户首次和页面交互(单击链接、点击按钮等)到页面响应交互的时间；</li>
+</ul>
+<p><img src="/../../images/sentry/timing-overview.png"><br>这些术语代表了页面加载声明周期的几个阶段用于衡量页面性能的指标。</p>
+<p><img src="/../../images/sentry/sentry_performance_standard.png"><br>Google为这些指标制定了一个打分规则，用于衡量网站的质量。我们可以根据sentry对性能指标的打分来针对性的优化项目。</p>
+<h4 id="3-部署流程" class="article-heading"><a href="#3-部署流程" class="headerlink" title="3. 部署流程"></a>3. 部署流程<a class="article-anchor" href="#3-部署流程" aria-hidden="true"></a></h4><p>方式一：通过Docker Compose部署</p>
+<p>官方提供了docker-compose，也是它推荐的部署方式，参考地址：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/getsentry/onpremise%E3%80%82">https://github.com/getsentry/onpremise。</a></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/getsentry/onpremise.git</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> onpremise</span><br><span class="line"></span><br><span class="line">./install.sh</span><br><span class="line"></span><br><span class="line">docker-compose up -d </span><br></pre></td></tr></table></figure>
+
+<p>方式二：k8s部署</p>
+<p>另外关于sentry的高可用方案，首推k8s部署了，参考地址：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/sentry-kubernetes/charts%E3%80%82">https://github.com/sentry-kubernetes/charts。</a></p>
+<p><strong>sentry组件结构图示：</strong><br><img src="/../../images/sentry/sentry.webp"></p>
+<h4 id="4-项目使用" class="article-heading"><a href="#4-项目使用" class="headerlink" title="4. 项目使用"></a>4. 项目使用<a class="article-anchor" href="#4-项目使用" aria-hidden="true"></a></h4><p>我们以vue项目来展示下如何使用。</p>
+<p>1&gt; 安装依赖</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">// npm</span><br><span class="line">npm install --save @sentry/vue @sentry/tracing</span><br><span class="line"></span><br><span class="line">// yarn</span><br><span class="line">yarn add @sentry/vue @sentry/tracing</span><br></pre></td></tr></table></figure>
+
+<p>2&gt; sentry平台创建项目<br>项目 &gt; 创建项目 &gt; 选择平台-警告设置-命名</p>
+<p>如图：<br><img src="/../../images/sentry/sentry_create_project.png"></p>
+<blockquote>
+<p>进入创建好的项目有详细的使用步骤。可以在说明里获取dsn，用于项目引入设置。</p>
+</blockquote>
+<p>3&gt; 项目引入</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Vue</span> <span class="keyword">from</span> <span class="string">&quot;vue&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Router</span> <span class="keyword">from</span> <span class="string">&quot;vue-router&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> <span class="title class_">Sentry</span> <span class="keyword">from</span> <span class="string">&quot;@sentry/vue&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="title class_">BrowserTracing</span> &#125; <span class="keyword">from</span> <span class="string">&quot;@sentry/tracing&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="title class_">Vue</span>.<span class="title function_">use</span>(<span class="title class_">Router</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> <span class="title class_">Router</span>(&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="title class_">Sentry</span>.<span class="title function_">init</span>(&#123;</span><br><span class="line">  <span class="title class_">Vue</span>,</span><br><span class="line">  <span class="attr">dsn</span>: <span class="string">&quot;https://examplePublicKey@o0.ingest.sentry.io/0&quot;</span>, <span class="comment">// 这里是创建项目获取的dsn</span></span><br><span class="line">  <span class="attr">integrations</span>: [</span><br><span class="line">    <span class="keyword">new</span> <span class="title class_">BrowserTracing</span>(&#123;</span><br><span class="line">      <span class="attr">routingInstrumentation</span>: <span class="title class_">Sentry</span>.<span class="title function_">vueRouterInstrumentation</span>(router),</span><br><span class="line">      <span class="attr">tracingOrigins</span>: [<span class="string">&quot;localhost&quot;</span>, <span class="string">&quot;my-site-url.com&quot;</span>, <span class="regexp">/^\//</span>],</span><br><span class="line">    &#125;),</span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// Set tracesSampleRate to 1.0 to capture 100%</span></span><br><span class="line">  <span class="comment">// of transactions for performance monitoring.</span></span><br><span class="line">  <span class="comment">// We recommend adjusting this value in production</span></span><br><span class="line">  <span class="attr">tracesSampleRate</span>: <span class="number">1.0</span>,</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Vue</span>(&#123;</span><br><span class="line">  router,</span><br><span class="line">  <span class="attr">render</span>: <span class="function"><span class="params">h</span> =&gt;</span> <span class="title function_">h</span>(<span class="title class_">App</span>),</span><br><span class="line">&#125;).$mount(<span class="string">&quot;#app&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>4&gt; 线上验证</p>
+<p>将配置好的项目重新部署，我们可以看下有什么变化？<br><img src="/../../images/sentry/sentry_validate.png" alt="img_1.png"></p>
+<p>可以看到数据已经在上报了，那么我们继续看下具体上报了什么东西？<br><img src="/../../images/sentry/sentry_request_payload.png"></p>
+<p>将数据格式化，我们看下。</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">sentry_key<span class="punctuation">:</span></span><br><span class="line">	<span class="number">5506516</span> d755f4313830750daa767af79</span><br><span class="line">sentry_version<span class="punctuation">:</span></span><br><span class="line">	<span class="number">7</span></span><br><span class="line">sentry_client<span class="punctuation">:</span></span><br><span class="line">	sentry.javascript.vue % <span class="number">2</span> F7 <span class="number">.16</span> <span class="number">.0</span> <span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;event_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ac11b4cd016247819cb6731e374613a5&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;sent_at&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2022-11-04T06:05:14.103Z&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;sdk&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;sentry.javascript.vue&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;version&quot;</span><span class="punctuation">:</span> <span class="string">&quot;7.16.0&quot;</span></span><br><span class="line">		<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;trace&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;transaction&quot;</span><span class="punctuation">:</span> <span class="string">&quot;proEditableTable&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;public_key&quot;</span><span class="punctuation">:</span> <span class="string">&quot;5506516d755f4313830750daa767af79&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;trace_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;c5721071d33d471ea78c66d87a920cab&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;sample_rate&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1&quot;</span></span><br><span class="line">		<span class="punctuation">&#125;</span></span><br><span class="line">	<span class="punctuation">&#125;</span> <span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;transaction&quot;</span></span><br><span class="line">	<span class="punctuation">&#125;</span> <span class="punctuation">&#123;</span></span><br><span class="line">		<span class="attr">&quot;contexts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;trace&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">				<span class="attr">&quot;data&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">					<span class="attr">&quot;params&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span><span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">					<span class="attr">&quot;query&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span><span class="punctuation">&#125;</span></span><br><span class="line">				<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">				<span class="attr">&quot;op&quot;</span><span class="punctuation">:</span> <span class="string">&quot;navigation&quot;</span><span class="punctuation">,</span></span><br><span class="line">				<span class="attr">&quot;span_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;a0e60d5d5ee32c75&quot;</span><span class="punctuation">,</span></span><br><span class="line">				<span class="attr">&quot;tags&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">					<span class="attr">&quot;routing.instrumentation&quot;</span><span class="punctuation">:</span> <span class="string">&quot;vue-router&quot;</span><span class="punctuation">,</span></span><br><span class="line">					<span class="attr">&quot;effectiveConnectionType&quot;</span><span class="punctuation">:</span> <span class="string">&quot;4g&quot;</span><span class="punctuation">,</span></span><br><span class="line">					<span class="attr">&quot;hardwareConcurrency&quot;</span><span class="punctuation">:</span> <span class="string">&quot;8&quot;</span><span class="punctuation">,</span></span><br><span class="line">					<span class="attr">&quot;sentry_reportAllChanges&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span></span><br><span class="line">				<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">				<span class="attr">&quot;trace_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;c5721071d33d471ea78c66d87a920cab&quot;</span></span><br><span class="line">			<span class="punctuation">&#125;</span></span><br><span class="line">		<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;spans&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;data&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">				<span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xhr&quot;</span><span class="punctuation">,</span></span><br><span class="line">				<span class="attr">&quot;method&quot;</span><span class="punctuation">:</span> <span class="string">&quot;POST&quot;</span><span class="punctuation">,</span></span><br><span class="line">				<span class="attr">&quot;url&quot;</span><span class="punctuation">:</span> <span class="string">&quot;http://api.eos.h3c.com/stage/v1/v1/example/list&quot;</span></span><br><span class="line">			<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;description&quot;</span><span class="punctuation">:</span> <span class="string">&quot;POST http://api.eos.h3c.com/stage/v1/v1/example/list&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;op&quot;</span><span class="punctuation">:</span> <span class="string">&quot;http.client&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;parent_span_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;a0e60d5d5ee32c75&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;span_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;8dcd1b60d5349885&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;start_timestamp&quot;</span><span class="punctuation">:</span> <span class="number">1667541913.0532</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;status&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ok&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;tags&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">				<span class="attr">&quot;http.status_code&quot;</span><span class="punctuation">:</span> <span class="string">&quot;200&quot;</span></span><br><span class="line">			<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;timestamp&quot;</span><span class="punctuation">:</span> <span class="number">1667541913.1011999</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;trace_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;c5721071d33d471ea78c66d87a920cab&quot;</span></span><br><span class="line">		<span class="punctuation">&#125;</span><span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;description&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Main UI thread blocked&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;op&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ui.long-task&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;parent_span_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;a0e60d5d5ee32c75&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;span_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;89bc0457af0da5e4&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;start_timestamp&quot;</span><span class="punctuation">:</span> <span class="number">1667541912.9773002</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;timestamp&quot;</span><span class="punctuation">:</span> <span class="number">1667541913.0533001</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;trace_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;c5721071d33d471ea78c66d87a920cab&quot;</span></span><br><span class="line">		<span class="punctuation">&#125;</span><span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;description&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Main UI thread blocked&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;op&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ui.long-task&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;parent_span_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;a0e60d5d5ee32c75&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;span_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;8f3e12b890c2c000&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;start_timestamp&quot;</span><span class="punctuation">:</span> <span class="number">1667541913.1013</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;timestamp&quot;</span><span class="punctuation">:</span> <span class="number">1667541913.2153</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;trace_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;c5721071d33d471ea78c66d87a920cab&quot;</span></span><br><span class="line">		<span class="punctuation">&#125;</span><span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;data&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">				<span class="attr">&quot;Transfer Size&quot;</span><span class="punctuation">:</span> <span class="number">300</span><span class="punctuation">,</span></span><br><span class="line">				<span class="attr">&quot;Encoded Body Size&quot;</span><span class="punctuation">:</span> <span class="number">10422</span><span class="punctuation">,</span></span><br><span class="line">				<span class="attr">&quot;Decoded Body Size&quot;</span><span class="punctuation">:</span> <span class="number">10422</span></span><br><span class="line">			<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;description&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/js/664.b397e579.js&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;op&quot;</span><span class="punctuation">:</span> <span class="string">&quot;resource.script&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;parent_span_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;a0e60d5d5ee32c75&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;span_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;8a5f744e2cc11bbb&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;start_timestamp&quot;</span><span class="punctuation">:</span> <span class="number">1667541912.9673002</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;timestamp&quot;</span><span class="punctuation">:</span> <span class="number">1667541912.9762</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;trace_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;c5721071d33d471ea78c66d87a920cab&quot;</span></span><br><span class="line">		<span class="punctuation">&#125;</span><span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;data&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">				<span class="attr">&quot;Transfer Size&quot;</span><span class="punctuation">:</span> <span class="number">0</span><span class="punctuation">,</span></span><br><span class="line">				<span class="attr">&quot;Encoded Body Size&quot;</span><span class="punctuation">:</span> <span class="number">6796</span><span class="punctuation">,</span></span><br><span class="line">				<span class="attr">&quot;Decoded Body Size&quot;</span><span class="punctuation">:</span> <span class="number">6796</span></span><br><span class="line">			<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;description&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/favicon.ico&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;op&quot;</span><span class="punctuation">:</span> <span class="string">&quot;resource.other&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;parent_span_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;a0e60d5d5ee32c75&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;span_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;9c603e0e824220b2&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;start_timestamp&quot;</span><span class="punctuation">:</span> <span class="number">1667541913.0607002</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;timestamp&quot;</span><span class="punctuation">:</span> <span class="number">1667541913.0621002</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;trace_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;c5721071d33d471ea78c66d87a920cab&quot;</span></span><br><span class="line">		<span class="punctuation">&#125;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;start_timestamp&quot;</span><span class="punctuation">:</span> <span class="number">1667541912.9664</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;tags&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;routing.instrumentation&quot;</span><span class="punctuation">:</span> <span class="string">&quot;vue-router&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;effectiveConnectionType&quot;</span><span class="punctuation">:</span> <span class="string">&quot;4g&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;hardwareConcurrency&quot;</span><span class="punctuation">:</span> <span class="string">&quot;8&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;sentry_reportAllChanges&quot;</span><span class="punctuation">:</span> <span class="keyword">false</span></span><br><span class="line">		<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;timestamp&quot;</span><span class="punctuation">:</span> <span class="number">1667541913.2153</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;transaction&quot;</span><span class="punctuation">:</span> <span class="string">&quot;proEditableTable&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;transaction&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;transaction_info&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;source&quot;</span><span class="punctuation">:</span> <span class="string">&quot;custom&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;changes&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;propagations&quot;</span><span class="punctuation">:</span> <span class="number">1</span></span><br><span class="line">		<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;platform&quot;</span><span class="punctuation">:</span> <span class="string">&quot;javascript&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;event_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ac11b4cd016247819cb6731e374613a5&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;environment&quot;</span><span class="punctuation">:</span> <span class="string">&quot;production&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;sdk&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;integrations&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="string">&quot;InboundFilters&quot;</span><span class="punctuation">,</span> <span class="string">&quot;FunctionToString&quot;</span><span class="punctuation">,</span> <span class="string">&quot;TryCatch&quot;</span><span class="punctuation">,</span> <span class="string">&quot;Breadcrumbs&quot;</span><span class="punctuation">,</span> <span class="string">&quot;GlobalHandlers&quot;</span><span class="punctuation">,</span> <span class="string">&quot;LinkedErrors&quot;</span><span class="punctuation">,</span> <span class="string">&quot;Dedupe&quot;</span><span class="punctuation">,</span> <span class="string">&quot;HttpContext&quot;</span><span class="punctuation">,</span> <span class="string">&quot;BrowserTracing&quot;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;sentry.javascript.vue&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;version&quot;</span><span class="punctuation">:</span> <span class="string">&quot;7.16.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;packages&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">&#123;</span></span><br><span class="line">				<span class="attr">&quot;name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;npm:@sentry/vue&quot;</span><span class="punctuation">,</span></span><br><span class="line">				<span class="attr">&quot;version&quot;</span><span class="punctuation">:</span> <span class="string">&quot;7.16.0&quot;</span></span><br><span class="line">			<span class="punctuation">&#125;</span><span class="punctuation">]</span></span><br><span class="line">		<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;breadcrumbs&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;timestamp&quot;</span><span class="punctuation">:</span> <span class="number">1667541890.766</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;navigation&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;data&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">				<span class="attr">&quot;from&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/&quot;</span><span class="punctuation">,</span></span><br><span class="line">				<span class="attr">&quot;to&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/dashboard/list&quot;</span></span><br><span class="line">			<span class="punctuation">&#125;</span></span><br><span class="line">		<span class="punctuation">&#125;</span><span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;timestamp&quot;</span><span class="punctuation">:</span> <span class="number">1667541891.027</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;navigation&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;data&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">				<span class="attr">&quot;from&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/dashboard/list&quot;</span><span class="punctuation">,</span></span><br><span class="line">				<span class="attr">&quot;to&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/components/table/ProTablePlus&quot;</span></span><br><span class="line">			<span class="punctuation">&#125;</span></span><br><span class="line">		<span class="punctuation">&#125;</span><span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;timestamp&quot;</span><span class="punctuation">:</span> <span class="number">1667541891.195</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xhr&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;data&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">				<span class="attr">&quot;method&quot;</span><span class="punctuation">:</span> <span class="string">&quot;POST&quot;</span><span class="punctuation">,</span></span><br><span class="line">				<span class="attr">&quot;url&quot;</span><span class="punctuation">:</span> <span class="string">&quot;http://api.eos.h3c.com/stage/v1/v1/example/list&quot;</span><span class="punctuation">,</span></span><br><span class="line">				<span class="attr">&quot;status_code&quot;</span><span class="punctuation">:</span> <span class="number">200</span></span><br><span class="line">			<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;http&quot;</span></span><br><span class="line">		<span class="punctuation">&#125;</span><span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;timestamp&quot;</span><span class="punctuation">:</span> <span class="number">1667541891.355</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xhr&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;data&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">				<span class="attr">&quot;method&quot;</span><span class="punctuation">:</span> <span class="string">&quot;GET&quot;</span><span class="punctuation">,</span></span><br><span class="line">				<span class="attr">&quot;url&quot;</span><span class="punctuation">:</span> <span class="string">&quot;http://api.eos.h3c.com/stage/v1/import/template/list?componentKey=portal-application-table&quot;</span><span class="punctuation">,</span></span><br><span class="line">				<span class="attr">&quot;status_code&quot;</span><span class="punctuation">:</span> <span class="number">200</span></span><br><span class="line">			<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;http&quot;</span></span><br><span class="line">		<span class="punctuation">&#125;</span><span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;timestamp&quot;</span><span class="punctuation">:</span> <span class="number">1667541891.356</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xhr&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;data&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">				<span class="attr">&quot;method&quot;</span><span class="punctuation">:</span> <span class="string">&quot;GET&quot;</span><span class="punctuation">,</span></span><br><span class="line">				<span class="attr">&quot;url&quot;</span><span class="punctuation">:</span> <span class="string">&quot;http://api.eos.h3c.com/stage/v1/export/template/list?componentKey=portal-application-table&quot;</span><span class="punctuation">,</span></span><br><span class="line">				<span class="attr">&quot;status_code&quot;</span><span class="punctuation">:</span> <span class="number">200</span></span><br><span class="line">			<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;http&quot;</span></span><br><span class="line">		<span class="punctuation">&#125;</span><span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;timestamp&quot;</span><span class="punctuation">:</span> <span class="number">1667541891.357</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xhr&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;data&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">				<span class="attr">&quot;method&quot;</span><span class="punctuation">:</span> <span class="string">&quot;GET&quot;</span><span class="punctuation">,</span></span><br><span class="line">				<span class="attr">&quot;url&quot;</span><span class="punctuation">:</span> <span class="string">&quot;http://api.eos.h3c.com/stage/v1/view/list/portal-application-table&quot;</span><span class="punctuation">,</span></span><br><span class="line">				<span class="attr">&quot;status_code&quot;</span><span class="punctuation">:</span> <span class="number">200</span></span><br><span class="line">			<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;http&quot;</span></span><br><span class="line">		<span class="punctuation">&#125;</span><span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;timestamp&quot;</span><span class="punctuation">:</span> <span class="number">1667541892.364</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;sentry.transaction&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;event_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;38a33b9586c040ae819f14c5784b0f4d&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;message&quot;</span><span class="punctuation">:</span> <span class="string">&quot;38a33b9586c040ae819f14c5784b0f4d&quot;</span></span><br><span class="line">		<span class="punctuation">&#125;</span><span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;timestamp&quot;</span><span class="punctuation">:</span> <span class="number">1667541892.368</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xhr&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;data&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">				<span class="attr">&quot;method&quot;</span><span class="punctuation">:</span> <span class="string">&quot;GET&quot;</span><span class="punctuation">,</span></span><br><span class="line">				<span class="attr">&quot;url&quot;</span><span class="punctuation">:</span> <span class="string">&quot;http://rap2api.taobao.org/app/mock/270426/city?bussinessId=324&quot;</span><span class="punctuation">,</span></span><br><span class="line">				<span class="attr">&quot;status_code&quot;</span><span class="punctuation">:</span> <span class="number">200</span></span><br><span class="line">			<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;http&quot;</span></span><br><span class="line">		<span class="punctuation">&#125;</span><span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;timestamp&quot;</span><span class="punctuation">:</span> <span class="number">1667541892.466</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xhr&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;data&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">				<span class="attr">&quot;method&quot;</span><span class="punctuation">:</span> <span class="string">&quot;GET&quot;</span><span class="punctuation">,</span></span><br><span class="line">				<span class="attr">&quot;url&quot;</span><span class="punctuation">:</span> <span class="string">&quot;http://rap2api.taobao.org/app/mock/270426/getCascaderList?bussinessId=324&quot;</span><span class="punctuation">,</span></span><br><span class="line">				<span class="attr">&quot;status_code&quot;</span><span class="punctuation">:</span> <span class="number">200</span></span><br><span class="line">			<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;http&quot;</span></span><br><span class="line">		<span class="punctuation">&#125;</span><span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;timestamp&quot;</span><span class="punctuation">:</span> <span class="number">1667541893.469</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;sentry.transaction&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;event_id&quot;</span><span class="punctuation">:</span> <span class="string">&quot;8f2e3e3f21fb4c5baa189d99652b14b6&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;message&quot;</span><span class="punctuation">:</span> <span class="string">&quot;8f2e3e3f21fb4c5baa189d99652b14b6&quot;</span></span><br><span class="line">		<span class="punctuation">&#125;</span><span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;timestamp&quot;</span><span class="punctuation">:</span> <span class="number">1667541912.963</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;ui.click&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;message&quot;</span><span class="punctuation">:</span> <span class="string">&quot;div &gt; i.anticon.anticon-close.ant-tabs-close-x &gt; svg&quot;</span></span><br><span class="line">		<span class="punctuation">&#125;</span><span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;timestamp&quot;</span><span class="punctuation">:</span> <span class="number">1667541912.979</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;navigation&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;data&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">				<span class="attr">&quot;from&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/components/table/ProTablePlus&quot;</span><span class="punctuation">,</span></span><br><span class="line">				<span class="attr">&quot;to&quot;</span><span class="punctuation">:</span> <span class="string">&quot;/components/editableTable/proEditableTable&quot;</span></span><br><span class="line">			<span class="punctuation">&#125;</span></span><br><span class="line">		<span class="punctuation">&#125;</span><span class="punctuation">,</span> <span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;timestamp&quot;</span><span class="punctuation">:</span> <span class="number">1667541913.102</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;category&quot;</span><span class="punctuation">:</span> <span class="string">&quot;xhr&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;data&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">				<span class="attr">&quot;method&quot;</span><span class="punctuation">:</span> <span class="string">&quot;POST&quot;</span><span class="punctuation">,</span></span><br><span class="line">				<span class="attr">&quot;url&quot;</span><span class="punctuation">:</span> <span class="string">&quot;http://api.eos.h3c.com/stage/v1/v1/example/list&quot;</span><span class="punctuation">,</span></span><br><span class="line">				<span class="attr">&quot;status_code&quot;</span><span class="punctuation">:</span> <span class="number">200</span></span><br><span class="line">			<span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;type&quot;</span><span class="punctuation">:</span> <span class="string">&quot;http&quot;</span></span><br><span class="line">		<span class="punctuation">&#125;</span><span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">		<span class="attr">&quot;request&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">			<span class="attr">&quot;url&quot;</span><span class="punctuation">:</span> <span class="string">&quot;http://preview.eos.h3c.com/components/editableTable/proEditableTable&quot;</span><span class="punctuation">,</span></span><br><span class="line">			<span class="attr">&quot;headers&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">				<span class="attr">&quot;User-Agent&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36&quot;</span></span><br><span class="line">			<span class="punctuation">&#125;</span></span><br><span class="line">		<span class="punctuation">&#125;</span></span><br><span class="line">	<span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看到上报的数据除了sentry自己的信息外，包括了页面的资源，事件交互信息，接口请求及设备信息等。<br>这些信息都将上报到sentry平台用于性能分析。</p>
+<p>那么如果页面报错了呢？是否会按照我们预想的一样，也会在平台上看到呢？<br><img src="/../../images/sentry/sentry_errors.png"><br>可以看到，错误信息确实上报到了平台。</p>
+<h4 id="5-功能介绍" class="article-heading"><a href="#5-功能介绍" class="headerlink" title="5. 功能介绍"></a>5. 功能介绍<a class="article-anchor" href="#5-功能介绍" aria-hidden="true"></a></h4><p>部署好之后登录进入，显示：<br><img src="/../../images/sentry/sentry_index.png"></p>
+<p>我们着重介绍项目、问题、性能、警报和设置。</p>
+<p><em><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.sentry.io/product/projects/">项目</a></strong></em><br><img src="/../../images/sentry/project_home.png" alt="img.png"></p>
+<p><em><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.sentry.io/product/issues/">问题</a></strong></em><br><img src="/../../images/sentry/sentry_error_home.png" alt="error_home"></p>
+<p><em><strong>问题详情</strong></em><br><img src="/../../images/sentry/sentry_error_detail1.png" alt="error_detail"></p>
+<p><strong><em><a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.sentry.io/product/performance/web-vitals/">性能</a></em></strong><br><img src="/../../images/sentry/sentry_performance_view.png"></p>
+<p><em><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.sentry.io/product/alerts/">警告</a></strong></em></p>
+<p><img src="/../../images/sentry/sentry_alert_home2.png"></p>
+<p><em><strong><a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.sentry.io/product/accounts/getting-started/">设置</a></strong></em><br><img src="/../../images/sentry/sentry_setting.png" alt="sentry_setting"></p>
+<h4 id="6-邮件通知配置" class="article-heading"><a href="#6-邮件通知配置" class="headerlink" title="6. 邮件通知配置"></a>6. 邮件通知配置<a class="article-anchor" href="#6-邮件通知配置" aria-hidden="true"></a></h4><p>一般说来，我们不会时时刻刻地盯着平台看自己的项目是否有线上错误。我们需要的是只有在线上项目报错的时候知道，然后尽快解决即可。<br>因此我们需要使用告警功能，而sentry的告警功能很强大。这里我们只介绍邮件告警，其他的大家自己去看。</p>
+<p>邮件告警配置很简单。<br>首先进入警报页面，然后点击右上角的 <code>Create Alert</code> 按钮，如图：<br><img src="/../../images/sentry/sentry_alert_home.png" alt="alert-home"></p>
+<p>然后进入 <code>Select Alert</code> 页面，这里可以选择告警的类型，如问题还是性能等。如图：<br><img src="/../../images/sentry/sentry_alert_type.png" alt="alert-type"></p>
+<p>最后点击右下角的 <code>Set Conditions</code> 按钮进入配置规则页面。如图：<br><img src="/../../images/sentry/sentry_alert_config.png" alt="alert-config"></p>
+<p>在配置规则页面，第一步是配置环境和想要通知的团队；第二步配置规则；第三步配置告警事件间隔。最后点击最下方的 <code>保存规则</code> 按钮即可。</p>
+<p>这样在配置好规则后，当线上环境报错后会邮件通知相关人员。如图：<br><img src="/../../images/sentry/sentry_alert_email.png" alt="alert-email"></p>
+<h3 id="四、遇到的问题" class="article-heading"><a href="#四、遇到的问题" class="headerlink" title="四、遇到的问题"></a>四、遇到的问题<a class="article-anchor" href="#四、遇到的问题" aria-hidden="true"></a></h3><ol>
+<li>部署时，报错服务器cpu缺少指令集的问题。<br> 我们将源代码下载到本地，修改源码的校验规则跳过对这一条的校验。现在运行了一段时间，可以正常使用。</li>
+<li>KafkaError{code&#x3D;UNKNOWN_TOPIC_OR_PART,val&#x3D;3,str&#x3D;”Subscribed topic not available: snuba-transactions-commit-log: Broker: Unknown topic or partition”}<br> 这一条是Kafka的错误，<strong>暂未解决</strong>。</li>
+<li>微前端qiankun方案下，多个子应用上报的问题。<br> 在单页存在多个子应用时，报错会全部发到父应用。这极大地影响正常的异常监控。我在网上找到了一个解决方案。<br><a target="_blank" rel="noopener external nofollow noreferrer" href="https://juejin.cn/post/7139452175088320520">使用 Sentry 做异常监控 - 如何优雅的解决 Qiankun 下 Sentry 异常上报无法自动区分项目的问题 ?</a></li>
+</ol>
+<h3 id="五、相关资料参考" class="article-heading"><a href="#五、相关资料参考" class="headerlink" title="五、相关资料参考"></a>五、相关资料参考<a class="article-anchor" href="#五、相关资料参考" aria-hidden="true"></a></h3><ol>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="http://events.jianshu.io/p/64a3b3283f0a">Sentry的应用接入与部署运维</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.zhihu.com/question/37585246">知乎-你是如何搭建 Web 前端性能监控系统的？</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://juejin.cn/post/7151753156341268487">使用 Sentry 做性能监控 - 基于 qiankun 的实践篇</a></li>
+</ol>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2022-11-10T06:40:46.082Z" itemprop="dateModified">上次更新：2022-11-10</time>
+                <a href="index.html" class="article-footer-next" title="概述"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%89%8D%E7%AB%AF%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F"><span class="toc-text">一、前端监控系统</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF%E7%9B%91%E6%8E%A7%E7%B3%BB%E7%BB%9F%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%AF%B9%E9%A1%B9%E7%9B%AE%E7%9B%91%E6%8E%A7%EF%BC%9F"><span class="toc-text">1. 什么是监控系统？为什么要对项目监控？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%9B%91%E6%8E%A7%E5%93%AA%E4%BA%9B%E6%8C%87%E6%A0%87%EF%BC%9F%E5%93%AA%E4%BA%9B%E5%8F%82%E6%95%B0%E5%8F%AF%E9%87%8F%E5%8C%96%EF%BC%9F"><span class="toc-text">2. 监控哪些指标？哪些参数可量化？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%9C%89%E5%93%AA%E4%BA%9B%E6%88%90%E7%86%9F%E6%96%B9%E6%A1%88%EF%BC%9F"><span class="toc-text">3. 有哪些成熟方案？</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%88%90%E7%86%9F%E6%96%B9%E6%A1%88%E6%AF%94%E8%BE%83"><span class="toc-text">二、成熟方案比较</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81Sentry%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B"><span class="toc-text">三、Sentry使用流程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3"><span class="toc-text">1. 官方文档</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%9C%AF%E8%AF%AD%E4%BB%8B%E7%BB%8D"><span class="toc-text">2. 术语介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E9%83%A8%E7%BD%B2%E6%B5%81%E7%A8%8B"><span class="toc-text">3. 部署流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E9%A1%B9%E7%9B%AE%E4%BD%BF%E7%94%A8"><span class="toc-text">4. 项目使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E5%8A%9F%E8%83%BD%E4%BB%8B%E7%BB%8D"><span class="toc-text">5. 功能介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E9%82%AE%E4%BB%B6%E9%80%9A%E7%9F%A5%E9%85%8D%E7%BD%AE"><span class="toc-text">6. 邮件通知配置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">四、遇到的问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E7%9B%B8%E5%85%B3%E8%B5%84%E6%96%99%E5%8F%82%E8%80%83"><span class="toc-text">五、相关资料参考</span></a></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">开始使用</strong><a href="/util/index.html" class="sidebar-link">概述</a><strong class="sidebar-title">YApi</strong><a href="/util/yapi/guide.html" class="sidebar-link">YApi文档</a><strong class="sidebar-title">Sentry</strong><a href="/util/sentry/guide.html" class="sidebar-link current">Sentry指南</a>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2022 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuo.jiangtao@h3c.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard/" class="mobile-nav-link">开发规范</a><a href="/ecology/" class="mobile-nav-link">前沿生态</a><a href="/util/" class="mobile-nav-link">开发工具</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">开始使用</strong><a href="/util/index.html" class="mobile-nav-link">概述</a><strong class="mobile-nav-title">YApi</strong><a href="/util/yapi/guide.html" class="mobile-nav-link">YApi文档</a><strong class="mobile-nav-title">Sentry</strong><a href="/util/sentry/guide.html" class="mobile-nav-link current">Sentry指南</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></span>
+    <select id="mobile-lang-select" data-canonical="">
+      
+        <option value="zh-cn" selected>简体中文</option>
+      
+        <option value="en">English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>
