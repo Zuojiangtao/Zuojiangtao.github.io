@@ -1,4 +1,4 @@
-title: 前端监控系统-Sentry
+title: 前端监控系统Sentry
 ---
 
 ### 一、前端监控系统
@@ -30,11 +30,11 @@ title: 前端监控系统-Sentry
 * 用户设备信息: ip、浏览器、操作系统等；
 
 #### 3. 有哪些成熟方案？
-现在市场上有不少的成熟方案，包括fundebug、webfunny、阿里ARMS、腾讯BadJS、Sentry。。。
+现在市场上有不少的成熟方案，包括fundebug、webfunny、阿里ARMS、腾讯BadJS、Sentry。
 
-### 二、成熟方案比较
+#### 4. 成熟方案比较
 
-| 监控平台           | 是否支持异常监控 | 是否支持性能监控 | 是否有免费版 | 是否开源 | 是否能私有化部署 | 是否支持多端多语言 | 是否有告警系统 | 其他                    |
+| 监控平台           | 是否支持异常监控 | 是否支持性能监控 | 是否有免费版 | 是否开源 | 是否能私有化部署 | 是否支持多端多语言 | 是否有告警系统 | 备注                    |
 |:---------------|:--------:|:--------:|:------:|:----:|:--------:|:---------:|:-------:|:----------------------|
 | mmTrix         |    √     |    √     |   ×    |  ×   |    ×     |     ×     |    ×    | 云服务                   |
 | 监控宝            |    √     |    √     |   ×    |  ×   |    ×     |     ×     |    ×    | 云服务                   |
@@ -49,11 +49,12 @@ title: 前端监控系统-Sentry
 | newrelic       |    √     |    √     |   √    |  √   |    √     |     √     |    √    |                       |
 | Sentry         |    √     |    √     |   √    |  √   |    √     |     √     |    √    |                       |
 
-从这个表中分析可知，一个兼顾异常监控和性能监控，且能够私有化部署的平台有Sentry、newrelic、web-monitoring。
-如果我们小团队仅使用前端监控的话，[web-monitoring](https://github.com/kisslove/web-monitoring/)就可以满足需要了。
-而newrelic和Sentry相比，在语言支持度上略逊。
+从这个表中分析可知，一个兼顾异常监控和性能监控，且能够私有化部署的平台有Sentry、newrelic、web-monitoring。 如果小团队仅使用前端监控的话，[web-monitoring](https://github.com/kisslove/web-monitoring/)就可以满足需要了。 在考虑产品问世时间，市场占有率之后我选择了Sentry。
 
-### 三、Sentry使用流程
+下图是这2个npm近一年下载趋势比较图表：
+![](../../images/sentry/npm_trend.png)
+
+### 二、Sentry使用流程
 
 #### 1. 官方文档
 
@@ -93,16 +94,17 @@ docker-compose up -d
 
 方式二：k8s部署
 
-另外关于sentry的高可用方案，首推k8s部署了，参考地址：https://github.com/sentry-kubernetes/charts。
+另外关于sentry的高可用方案，k8s部署，参考地址：https://github.com/sentry-kubernetes/charts。
 
-**sentry组件结构图示：**
+#### 4. sentry结构
+
 ![](../../images/sentry/sentry.webp)
 
-#### 4. 项目使用
+### 三、 项目使用
 
 我们以vue项目来展示下如何使用。
 
-1> 安装依赖
+#### 1. 安装依赖
 ``` bash
 // npm
 npm install --save @sentry/vue @sentry/tracing
@@ -111,15 +113,18 @@ npm install --save @sentry/vue @sentry/tracing
 yarn add @sentry/vue @sentry/tracing
 ```
 
-2> sentry平台创建项目
-项目 > 创建项目 > 选择平台-警告设置-命名
-
-如图：
+#### 2. sentry平台创建项目
+项目 > 创建项目
 ![](../../images/sentry/sentry_create_project.png)
+
+![](../../images/sentry/install_guide.png)
+
+![](../../images/sentry/config_vue.png)
 
 > 进入创建好的项目有详细的使用步骤。可以在说明里获取dsn，用于项目引入设置。
 
-3> 项目引入
+#### 3. 项目引入
+// sentry.js
 ```js
 import Vue from "vue";
 import Router from "vue-router";
@@ -155,7 +160,14 @@ new Vue({
 }).$mount("#app");
 ```
 
-4> 线上验证
+// main.js
+```js
+if (process.env.NODE_ENV === 'production') {
+  import('@/../sentry') // use sentry for monitor
+}
+```
+
+#### 4. 线上验证
 
 将配置好的项目重新部署，我们可以看下有什么变化？
 ![img_1.png](../../images/sentry/sentry_validate.png)
@@ -164,7 +176,7 @@ new Vue({
 ![](../../images/sentry/sentry_request_payload.png)
 
 将数据格式化，我们看下。
-```json
+```
 sentry_key:
 	5506516 d755f4313830750daa767af79
 sentry_version:
@@ -450,6 +462,97 @@ _**[设置](https://docs.sentry.io/product/accounts/getting-started/)**_
 
 这样在配置好规则后，当线上环境报错后会邮件通知相关人员。如图：
 ![alert-email](../../images/sentry/sentry_alert_email.png)
+
+#### 7. 上传用户信息
+在处理错误时，我们想知道异常的用户信息。可以通过sentry提供的方法主动上报用户信息。
+
+```js
+// ...void 之前的sentry代码
+
+// 用户信息设置
+Sentry.setUser({
+  // id: storage.get('userName'), // userId cookie.get('userId')
+  // email: 'test@qq.com', // cookie.get('email')
+  username: storage.get('userName'), // cookie.get('username')
+})
+```
+
+线上报错可以看到已经上传用户信息：
+![](../../images/sentry/error_userinfo.png)
+
+#### 8. 快照
+要实现异常快照要额外安装依赖 `rrweb`和`@sentry/rrweb`。
+
+```js
+import Vue from 'vue'
+import router from '../router'
+import * as Sentry from '@sentry/vue'
+import { BrowserTracing } from '@sentry/tracing'
+import SentryRRWeb from '@sentry/rrweb'
+import storage from 'store'
+
+Sentry.init({
+    Vue,
+    dsn: process.env.VUE_APP_SENTRY_DSN,
+    integrations: [
+        new BrowserTracing({
+            routingInstrumentation: Sentry.vueRouterInstrumentation(router),
+            tracingOrigins: ['https', 'xxx.yyy.zzz.com/', /^\//],
+        }),
+        new SentryRRWeb({
+            checkoutEveryNms: 10 * 1000, // 每10秒重新制作快照
+            checkoutEveryNth: 200, // 每 200 个 event 重新制作快照
+            maskAllInputs: false, // 将所有输入内容记录为 *
+        }),
+    ],
+    // Set tracesSampleRate to 1.0 to capture 100%
+    // of transactions for performance monitoring.
+    // We recommend adjusting this value in production
+    tracesSampleRate: 1.0,
+    environment: process.env.NODE_ENV,
+})
+```
+
+查看报错快照:
+![](../../images/sentry/error_rrweb.png)
+点击播放可以看到报错过程。
+
+#### 9. sourceMap文件上传
+安装依赖
+```
+npm install --save-dev @sentry/webpack-plugin
+```
+
+// webpack.config.js
+```js
+const SentryWebpackPlugin = require("@sentry/webpack-plugin");
+
+module.exports = {
+  // ... other config above ...
+
+  devtool: "source-map", // Source map generation must be turned on
+  plugins: [
+    new SentryWebpackPlugin({
+      org: "example-org",
+      project: "example-project",
+
+      // Specify the directory containing build artifacts
+      include: "./dist",
+
+      // Auth tokens can be obtained from https://sentry.io/settings/account/api/auth-tokens/
+      // and needs the `project:releases` and `org:read` scopes
+      authToken: process.env.SENTRY_AUTH_TOKEN,
+
+      // Optionally uncomment the line below to override automatic release name detection
+      // release: process.env.RELEASE,
+    }),
+  ],
+};
+```
+Sentry Webpack 插件会自动将发布值注入 SDK，因此您必须省略release选项Sentry.init或确保Sentry.init的release选项与插件的release选项完全匹配：
+
+authToken设置路径：
+![](../../images/sentry/sourcemap_authtoken.png)
 
 ### 四、遇到的问题
 
