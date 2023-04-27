@@ -124,6 +124,8 @@ sidebar:
   util:
     getting_started: 开始使用
     overview: 概述
+    webpack: Webpack
+    webpack_plugin: webpack plugin开发实践
     yapi: YApi
     yapi_guide: YApi文档
     sentry: Sentry

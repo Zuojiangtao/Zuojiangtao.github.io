@@ -99,10 +99,13 @@ ecology:
 util:
   getting_started:
     overview: index.html
+  webpack:
+    webpack_plugin: webpack/plugin.html
   yapi:
     yapi_guide: yapi/guide.html
   sentry:
     sentry_guide: sentry/guide.html
+
 
 design:
   getting_started:
