@@ -4,7 +4,7 @@ menu:
   standard: 开发规范
   ecology: 前沿生态
   util: 开发工具
-  design: UED设计
+  design: 开发指南
   news: 新闻
   plugins: 插件
   themes: 主题
@@ -115,6 +115,11 @@ sidebar:
     rule: 项目开发约定
     CI/CD: 持续集成
     template: 模板工程
+  design:
+    getting_started: 开始使用
+    overview: 概述
+    design: 设计规范指南
+    design_guide: 中后台设计规范
   ecology:
     getting_started: 开始使用
     overview: 概述
@@ -130,8 +135,3 @@ sidebar:
     yapi_guide: YApi文档
     sentry: Sentry
     sentry_guide: Sentry指南
-  design:
-    getting_started: 开始使用
-    overview: 概述
-    design: 设计规范指南
-    design_guide: 中后台设计规范

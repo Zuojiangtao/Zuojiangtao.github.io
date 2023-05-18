@@ -89,6 +89,12 @@ standard:
     CI/CD: project/ci_cd.html
     template: project/template.html
 
+design:
+  getting_started:
+    overview: index.html
+  design:
+    design_guide: design_guide.html
+
 ecology:
   getting_started:
     overview: index.html
@@ -105,10 +111,3 @@ util:
     yapi_guide: yapi/guide.html
   sentry:
     sentry_guide: sentry/guide.html
-
-
-design:
-  getting_started:
-    overview: index.html
-  design:
-    design_guide: design_guide.html
