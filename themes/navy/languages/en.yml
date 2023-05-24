@@ -116,6 +116,8 @@ sidebar:
     overview: 概述
     design: 设计规范指南
     design_guide: 中后台设计规范
+    planet: 知识星球
+    nodejs_crawler: nodejs爬虫
   ecology:
     getting_started: 开始使用
     overview: 概述
