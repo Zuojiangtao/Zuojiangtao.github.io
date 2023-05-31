@@ -105,3 +105,9 @@ export default {
 }
 </script>
 ```
+
+#### 5. 子应用前端下载excel文件
+
+前端下载excel文件报打不开，格式错误问题。
+
+解决方案： 判断当在qiankun下时，拼接 `window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__ + 'path'` 。在子应用需要前端下载的path拼接运行时publicPath 变量即可。
