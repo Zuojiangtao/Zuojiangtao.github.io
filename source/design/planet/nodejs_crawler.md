@@ -74,6 +74,24 @@ title: NodeJs爬虫
 
 源码请看 `src/tiantian-fund.js`。
 
+#### 4. 国家统计局
+
+通过**爬取接口的方式**获取相应的数据，并生成xlsx文件。这里我爬取了 `国民经济核算最近6季度的数据`。
+
+<img src="../../images/nodejs-crawler/national_data.png" width="600">
+
+#### 5. 高清素材
+
+通过**爬取接口的方式**获取相应高清图片素材，这个网站有token校验，要自己登录获取相应字段值 `Sentry-Trace` 和 `Cookie`。
+
+<img src="../../images/nodejs-crawler/pexels.png" width="600">
+
+#### 6. 4k高清壁纸
+
+通过**页面分析的方式**获取相应高清壁纸。
+
+<img src="../../images/nodejs-crawler/netbian.png" width="600">
+
 ### 项目本地预览
 
 项目已开源，欢迎点赞: [一款基于nodejs的爬虫程序集](https://github.com/Zuojiangtao/nodejs-spider)
