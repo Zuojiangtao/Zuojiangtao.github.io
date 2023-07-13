@@ -96,6 +96,7 @@ design:
     design_guide: design_guide.html
   planet:
     nodejs_crawler: planet/nodejs_crawler.html
+    vw_mobile: planet/vw_mobile.html
 
 ecology:
   getting_started:
