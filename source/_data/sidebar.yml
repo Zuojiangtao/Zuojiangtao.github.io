@@ -104,6 +104,10 @@ ecology:
   qiankun:
     qiankun_guide: qiankun/guide.html
     qiankun_questions: qiankun/questions.html
+  vite:
+    vite_guide: vite/guide.html
+#    vite_plugin: vite/plugin.html
+    vite_summary: vite/summary.html
 
 util:
   getting_started:

@@ -129,6 +129,10 @@ sidebar:
     qiankun: 微前端qiankun
     qiankun_guide: 文档指南
     qiankun_questions: 问题汇总
+    vite: vite
+    vite_guide: 文档指南
+#    vite_plugin: vite plugin开发实践
+    vite_summary: vite插件汇总
   util:
     getting_started: 开始使用
     overview: 概述
