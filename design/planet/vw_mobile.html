@@ -79,12 +79,12 @@
 <h3 id="二、一些简单概念" class="article-heading"><a href="#二、一些简单概念" class="headerlink" title="二、一些简单概念"></a>二、一些简单概念<a class="article-anchor" href="#二、一些简单概念" aria-hidden="true"></a></h3><h4 id="1-像素" class="article-heading"><a href="#1-像素" class="headerlink" title="1.像素"></a>1.像素<a class="article-anchor" href="#1-像素" aria-hidden="true"></a></h4><p>像素（pixel，缩写为 px）是计算机图形和数字图像领域中的基本单位，用于表示显示设备上的一个点或一个图像元素。</p>
 <p>在我们前端样式设置时，像素一般使用css像素作为单位，但是实际上对应到设备上，具体负责显示元素的是<strong>物理像素</strong>。</p>
 <p>物理像素指的是显示器最小可视显示单元，一个个小的单位物理像素各自显示不同的颜色和亮度来组合成一个完整的物体。</p>
-<p>设备像素决定物体显示效果，但是是由系统来控制设备的显示的，我们称之为<strong>设备独立像素</strong>。不同的设备独立像素不一样，高清显示屏的独立像素比较大，能够显示更改高清的图片。<br>但是，如果将普通图片放到高清显示屏上，图片会变模糊，这也需要我们在不同的设备上显示不同倍率的图片，如UI常说的2倍图，3倍图。</p>
+<p>设备像素决定物体显示效果，但是是由系统来控制设备的显示的，我们称之为<strong>设备独立像素</strong>。不同的设备独立像素不一样，高清显示屏的独立像素比较大，能够显示更高清的图片。<br>但是，如果将普通图片放到高清显示屏上，图片会变模糊，所以需要我们在不同的设备上显示不同倍率的图片，如UI常说的2倍图，3倍图。</p>
 <p>css像素在不同的设备独立像素显示效果不同，如1px的点在1倍屏显示是1x1的设备像素显示，在2倍屏上就变成2x2的是设备像素显示，在3倍屏上则是3x3的设备像素显示。</p>
 <h4 id="2-相对单位" class="article-heading"><a href="#2-相对单位" class="headerlink" title="2.相对单位"></a>2.相对单位<a class="article-anchor" href="#2-相对单位" aria-hidden="true"></a></h4><p>目前，为不同设备分辨率适配，css由多种相对单位，这里我们简要介绍rem和viewport。</p>
-<p>rem，是相对HTML的根字体大小的相对单位，如某项目html根字体为20px，那么1rem等于20px。通过动态设置根字体大小，移动端开发我们可适配不同分辨率的设备。</p>
+<p>rem，是相对HTML的根字体大小的相对单位，如某项目html根字体为20px，那么1rem等于20px。通过动态设置根字体大小，我们可适配不同分辨率的设备。</p>
 <p>vw，是浏览器可视区域的视口（viewport），100vw等于视口的宽度。在移动端要注意，布局视口和视觉视口不一样，要通过meta标签设置设备宽度为视口宽度。<code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</code> 。</p>
-<h3 id="三、几种方案对比" class="article-heading"><a href="#三、几种方案对比" class="headerlink" title="三、几种方案对比"></a>三、几种方案对比<a class="article-anchor" href="#三、几种方案对比" aria-hidden="true"></a></h3><h4 id="1-百分比和flex布局" class="article-heading"><a href="#1-百分比和flex布局" class="headerlink" title="1.百分比和flex布局"></a>1.百分比和flex布局<a class="article-anchor" href="#1-百分比和flex布局" aria-hidden="true"></a></h4><p>这种方案其实是对某些打开的区块做整体性布局适配比较合适，针对细化的内容块、高度、字体的适配不是很好。</p>
+<h3 id="三、几种方案对比" class="article-heading"><a href="#三、几种方案对比" class="headerlink" title="三、几种方案对比"></a>三、几种方案对比<a class="article-anchor" href="#三、几种方案对比" aria-hidden="true"></a></h3><h4 id="1-百分比和flex布局" class="article-heading"><a href="#1-百分比和flex布局" class="headerlink" title="1.百分比和flex布局"></a>1.百分比和flex布局<a class="article-anchor" href="#1-百分比和flex布局" aria-hidden="true"></a></h4><p>这种方案其实是对某些打开的区块做整体性布局适配比较合适，针对细化的内容块、高度以及字体的适配不是很好。</p>
 <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.logo</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">20%</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">17.5%</span>;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>此方案缺陷较大，不建议使用。</p>
@@ -92,15 +92,15 @@
 
 <p>优点：</p>
 <ul>
-<li>更细致、更准确还原视觉稿设计；</li>
-<li>对特殊设备可单独处理</li>
+<li>更细致、更准确还原视觉稿设计</li>
+<li>对特殊样式可单独处理</li>
 </ul>
 <p>缺点：</p>
 <ul>
 <li>工程量大</li>
 <li>不易维护</li>
 </ul>
-<h4 id="3-使用第三方css库" class="article-heading"><a href="#3-使用第三方css库" class="headerlink" title="3.使用第三方css库"></a>3.使用第三方css库<a class="article-anchor" href="#3-使用第三方css库" aria-hidden="true"></a></h4><p>一些优秀的css库可直接使用，像bootstrap、UnoCSS和tailwind都是优秀的css库，适用h5活动页、更新频率低的网站。<br>通过原子化的样式类名直接控制内容区块在不同宽度设备的显示。</p>
+<h4 id="3-使用第三方css库" class="article-heading"><a href="#3-使用第三方css库" class="headerlink" title="3.使用第三方css库"></a>3.使用第三方css库<a class="article-anchor" href="#3-使用第三方css库" aria-hidden="true"></a></h4><p>一些优秀的css库可直接使用，像bootstrap、UnoCSS和tailwind都是优秀的css库，适用于h5活动页、更新频率低的网站。 通过原子化的样式类名直接控制内容区块在不同宽度设备的显示。</p>
 <figure class="highlight html"><table><tr><td class="code"><pre><span class="line">// tailwindcss</span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;container mx-auto&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;w-full h-[50px] flex flex-row bg-white&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <p>优点：</p>
@@ -113,7 +113,7 @@
 <ul>
 <li>上手有成本，对一些class要记忆，需要一段适应时间</li>
 <li>维护成本高</li>
-<li>对有自己设计稿的更改样式成本高</li>
+<li>更改样式成本高</li>
 </ul>
 <h4 id="4-rem-x2F-flexible方案" class="article-heading"><a href="#4-rem-x2F-flexible方案" class="headerlink" title="4.rem&#x2F;flexible方案"></a>4.rem&#x2F;flexible方案<a class="article-anchor" href="#4-rem-x2F-flexible方案" aria-hidden="true"></a></h4><p>rem是相对单位，可以通过js在html动态设置根字体大小，然后可以直接按照ui视觉稿开发。这种方案适用于对ui没那么严格的项目，尤其是一些B端产品。</p>
 <p>可直接安装依赖amfe-flexible使用：</p>
@@ -146,7 +146,7 @@
 <ul>
 <li>兼容性问题，少数低版本手机系统 ios8、android4.4以下不支持</li>
 </ul>
-<h4 id="6-其他" class="article-heading"><a href="#6-其他" class="headerlink" title="6.其他"></a>6.其他<a class="article-anchor" href="#6-其他" aria-hidden="true"></a></h4><p>其他方案也有通过动态更改meta标签设置缩放比、通过css缩放属性scale来做适配、rem&#x2F;vw&#x2F;px混用适配等几种方案。我没使用过就不做对比了，感兴趣可更具关键词自行搜索。</p>
+<h4 id="6-其他" class="article-heading"><a href="#6-其他" class="headerlink" title="6.其他"></a>6.其他<a class="article-anchor" href="#6-其他" aria-hidden="true"></a></h4><p>其他方案也有通过动态更改meta标签设置缩放比并配合css缩放属性scale来做适配、rem&#x2F;vw&#x2F;px混用适配等方案。我没使用过就不做对比了，感兴趣可根据关键词自行搜索。</p>
 <h3 id="四、开发指南" class="article-heading"><a href="#四、开发指南" class="headerlink" title="四、开发指南"></a>四、开发指南<a class="article-anchor" href="#四、开发指南" aria-hidden="true"></a></h3><h4 id="1-meta标签" class="article-heading"><a href="#1-meta标签" class="headerlink" title="1.meta标签"></a>1.meta标签<a class="article-anchor" href="#1-meta标签" aria-hidden="true"></a></h4><table>
 <thead>
 <tr>
@@ -183,7 +183,7 @@
 <h4 id="2-1px问题" class="article-heading"><a href="#2-1px问题" class="headerlink" title="2.1px问题"></a>2.1px问题<a class="article-anchor" href="#2-1px问题" aria-hidden="true"></a></h4><p>通过之前的概念介绍，可知道像素分为设备像素和设备独立像素，css像素的显示在不同屏幕上显示效果不一样。</p>
 <p>解决方案：</p>
 <ol>
-<li><p>动态更改像素大小，在普通屏幕下就设置1px，在2倍屏和3倍屏下显示0.5px（因为实测在小于0.46px后就无法显示了，所以3倍屏和2倍屏一样）；</p>
+<li><p>动态更改像素大小，在普通屏幕下就设置1px，在2倍屏和3倍屏下显示0.5px（因为实测3倍屏在小于0.46px后就无法显示了，所以3倍屏和2倍屏一样）；</p>
 </li>
 <li><p>使用边框图片来代替</p>
  <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.fix-1px</span> &#123;</span><br><span class="line">    <span class="attribute">border</span>：<span class="number">1px</span> solid transparent;</span><br><span class="line">    <span class="attribute">border-image</span>: <span class="built_in">url</span>(<span class="string">&#x27;./../../image.jpg&#x27;</span>) <span class="number">2</span> repeat;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -208,6 +208,7 @@
  <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.div-vw</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">120px</span>;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
 <h4 id="4-针对不同dpr屏幕图片尺寸" class="article-heading"><a href="#4-针对不同dpr屏幕图片尺寸" class="headerlink" title="4.针对不同dpr屏幕图片尺寸"></a>4.针对不同dpr屏幕图片尺寸<a class="article-anchor" href="#4-针对不同dpr屏幕图片尺寸" aria-hidden="true"></a></h4><p>对于图片我们希望在不同设备像素的屏幕上显示对应的倍率图片，以追求最好的体验与流畅度。</p>
+<p>解决方案：</p>
 <ol>
 <li><p>利用css媒体查询属性</p>
 <p> less:</p>
@@ -225,7 +226,7 @@
 
               </div>
               <footer class="article-footer">
-                <time class="article-footer-updated" datetime="2023-07-13T08:39:32.387Z" itemprop="dateModified">上次更新：2023-07-13</time>
+                <time class="article-footer-updated" datetime="2023-07-13T10:48:43.825Z" itemprop="dateModified">上次更新：2023-07-13</time>
                 <a href="index.html" class="article-footer-next" title="概述"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
               </footer>
             </div>
