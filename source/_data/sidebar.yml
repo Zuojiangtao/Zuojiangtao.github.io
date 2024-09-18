@@ -97,6 +97,7 @@ design:
   planet:
     nodejs_crawler: planet/nodejs_crawler.html
     vw_mobile: planet/vw_mobile.html
+    vite_cli: planet/vite_cli.html
 
 ecology:
   getting_started:

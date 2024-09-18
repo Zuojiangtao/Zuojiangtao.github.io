@@ -123,6 +123,7 @@ sidebar:
     planet: 知识星球
     nodejs_crawler: nodejs爬虫
     vw_mobile: 移动端适配
+    vite_cli: vite前端脚手架
   ecology:
     getting_started: 开始使用
     overview: 概述
