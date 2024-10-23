@@ -1,0 +1,143 @@
+menu:
+  docs: Docs
+  api: API
+  standard: standard
+  ecology: ecology
+  util: util
+  news: News
+  plugins: Plugins
+  themes: Themes
+  about: About
+  search: Search
+
+index:
+  get_started: Get started
+  theme_intro: Choose from a huge library of spectacular, feature-packed and customizable themes. Create your own using any compatible template engines.
+  theme_link: Explore themes
+
+page:
+  contents: Contents
+  back_to_top: Back to Top
+  improve: Improve this doc
+  prev: Prev
+  next: Next
+  last_updated: "Last updated: %s"
+
+sidebar:
+  docs:
+    getting_started: Getting Started
+    overview: Overview
+    setup: Setup
+    configuration: Configuration
+    commands: Commands
+    migration: Migration
+    basic_usage: Basic Usage
+    writing: Writing
+    front_matter: Front-matter
+    tag_plugins: Tag Plugins
+    asset_folders: Asset Folders
+    data_files: Data Files
+    server: Server
+    generating: Generating
+    deployment: Deployment
+    github_pages: GitHub Pages
+    gitlab_pages: GitLab Pages
+    one_command_deployment: One-Command Deployment
+    customization: Customization
+    permalinks: Permalinks
+    themes: Themes
+    structure: Structure
+    templates: Templates
+    variables: Variables
+    helpers: Helpers
+    internationalization: Internationalization (i18n)
+    syntax_highlight: Syntax Highlight
+    plugins: Plugins
+    miscellaneous: Miscellaneous
+    troubleshooting: Troubleshooting
+    contributing: Contributing
+  api:
+    core: Core
+    overview: Overview
+    events: Events
+    locals: Locals
+    router: Router
+    box: Box
+    rendering: Rendering
+    posts: Posts
+    scaffolds: Scaffolds
+    themes: Themes
+    extensions: Extensions
+    console: Console
+    deployer: Deployer
+    filter: Filter
+    generator: Generator
+    helper: Helper
+    injector: Injector
+    migrator: Migrator
+    processor: Processor
+    renderer: Renderer
+    tag: Tag
+  standard:
+    getting_started: Getting Started
+    overview: Overview
+    html: HTML 规范
+    html_code: 代码规范
+    html_note: 注释规范
+    html_template: 文件模版
+    html_webapp: WebApp
+    css: CSS 规范
+    css_code: 代码规范
+    css_note: 注释规范
+    css_less: LESS 规范
+    css_reset: 重置样式
+    markdown: md 规范
+    md: 语言规范
+    image: 图片规范
+    image_format: 图片格式
+    image_size: 图片大小
+    image_quality: 图片质量
+    image_import: 图片引入
+    name: 命名规范
+    name_dir: 目录命名
+    name_htmlcss: HTML/CSS 命名
+    name_image: 图片命名
+    name_class: ClassName 命名
+    project: 前端开发公约
+    common: 通用
+    vue: vue开发规范
+    react: react开发规范
+    structure: 代码结构
+    rule: 项目开发约定
+    CI/CD: 持续集成
+    template: 模板工程
+  design:
+    getting_started: 开始使用
+    overview: 概述
+    design: 设计规范指南
+    design_guide: 中后台设计规范
+    planet: 知识星球
+    nodejs_crawler: nodejs爬虫
+    vw_mobile: 移动端适配
+    vite_cli: vite前端脚手架
+    architecture: 软件架构
+    design_pattern: 设计模式
+    database_consistency: 数据一致性
+  ecology:
+    getting_started: 开始使用
+    overview: 概述
+    qiankun: 微前端qiankun
+    qiankun_guide: 文档指南
+    qiankun_questions: 问题汇总
+    vite: vite
+    vite_guide: 文档指南
+#    vite_plugin: vite plugin开发实践
+    vite_summary: vite插件汇总
+  util:
+    getting_started: 开始使用
+    webpack: Webpack
+    webpack_plugin: webpack plugin开发实践
+    yapi: YApi
+    yapi_guide: YApi文档
+    sentry: Sentry
+    sentry_guide: Sentry指南
