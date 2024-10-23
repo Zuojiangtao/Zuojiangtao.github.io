@@ -1,5 +1,5 @@
-# IT FrontEnd Standard Website
-The website for frontend standard.
+# FrontEnd Blog Website
+Front-end technology blog website.
 
 ## Getting started
 
