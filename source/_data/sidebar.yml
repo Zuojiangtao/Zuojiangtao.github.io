@@ -100,6 +100,7 @@ design:
     vite_cli: planet/vite_cli.html
   architecture:
     design_pattern: architecture/design_pattern.html
+    database_consistency: architecture/database_consistency.html
 
 ecology:
   getting_started:
