@@ -1,14 +1,8 @@
 menu:
-  docs: Docs
-  api: API
   standard: standard
   ecology: ecology
   util: util
-  news: News
-  plugins: Plugins
-  themes: Themes
-  about: About
-  search: Search
+  design: design
 
 index:
   get_started: Get started
@@ -24,60 +18,6 @@ page:
   last_updated: "Last updated: %s"
 
 sidebar:
-  docs:
-    getting_started: Getting Started
-    overview: Overview
-    setup: Setup
-    configuration: Configuration
-    commands: Commands
-    migration: Migration
-    basic_usage: Basic Usage
-    writing: Writing
-    front_matter: Front-matter
-    tag_plugins: Tag Plugins
-    asset_folders: Asset Folders
-    data_files: Data Files
-    server: Server
-    generating: Generating
-    deployment: Deployment
-    github_pages: GitHub Pages
-    gitlab_pages: GitLab Pages
-    one_command_deployment: One-Command Deployment
-    customization: Customization
-    permalinks: Permalinks
-    themes: Themes
-    structure: Structure
-    templates: Templates
-    variables: Variables
-    helpers: Helpers
-    internationalization: Internationalization (i18n)
-    syntax_highlight: Syntax Highlight
-    plugins: Plugins
-    miscellaneous: Miscellaneous
-    troubleshooting: Troubleshooting
-    contributing: Contributing
-  api:
-    core: Core
-    overview: Overview
-    events: Events
-    locals: Locals
-    router: Router
-    box: Box
-    rendering: Rendering
-    posts: Posts
-    scaffolds: Scaffolds
-    themes: Themes
-    extensions: Extensions
-    console: Console
-    deployer: Deployer
-    filter: Filter
-    generator: Generator
-    helper: Helper
-    injector: Injector
-    migrator: Migrator
-    processor: Processor
-    renderer: Renderer
-    tag: Tag
   standard:
     getting_started: Getting Started
     overview: Overview
