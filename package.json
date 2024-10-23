@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "hexo": {
-    "version": "6.1.0"
+    "version": "7.3.0"
   },
   "scripts": {
     "serve": "hexo server",
@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "cheerio": "^0.22.0",
-    "hexo": "hexojs/hexo",
+    "hexo": "^7.3.0",
     "hexo-clean-css": "^2.0.0",
     "hexo-deployer-git": "^3.0.0",
     "hexo-filter-nofollow": "^2.0.2",
