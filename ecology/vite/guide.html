@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>文档指南 | 个人博客</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://zuojiangtao.github.io/ecology/vite/guide.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="zh-cn" href="https://zuojiangtao.github.io/ecology/vite/guide">
+    
+      <link rel="alternative" hreflang="en" href="https://zuojiangtao.github.io/en/ecology/vite/guide">
+    
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-w/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard/" class="main-nav-link">开发规范</a><a href="/design/" class="main-nav-link">开发指南</a><a href="/ecology/" class="main-nav-link">前沿生态</a><a href="/util/" class="main-nav-link">开发工具</a>
+    </nav>
+    <div id="github-icon-link">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="icon" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">文档指南</h1>
+                <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Zuojiangtao/Zuojiangtao.github.io/tree/master/source/ecology/vite/guide.md" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <h2 id="现实问题" class="article-heading"><a href="#现实问题" class="headerlink" title="现实问题"></a>现实问题<a class="article-anchor" href="#现实问题" aria-hidden="true"></a></h2><p>在浏览器支持 ES 模块之前，JavaScript 并没有提供原生机制让开发者以模块化的方式进行开发。这也正是我们对 “打包” 这个概念熟悉的原因：使用工具抓取、处理并将我们的源码模块串联成可以在浏览器中运行的文件。</p>
+<p>时过境迁，我们见证了诸如 webpack、Rollup 和 Parcel 等工具的变迁，它们极大地改善了前端开发者的开发体验。</p>
+<p>然而，当我们开始构建越来越大型的应用时，需要处理的 JavaScript 代码量也呈指数级增长。包含数千个模块的大型项目相当普遍。基于 JavaScript 开发的工具就会开始遇到性能瓶颈：通常需要很长时间（甚至是几分钟！）才能启动开发服务器，即使使用模块热替换（HMR），文件修改后的效果也需要几秒钟才能在浏览器中反映出来。如此循环往复，迟钝的反馈会极大地影响开发者的开发效率和幸福感。</p>
+<p>Vite 旨在利用生态系统中的新进展解决上述问题：浏览器开始原生支持 ES 模块，且越来越多 JavaScript 工具使用编译型语言编写。</p>
+<h2 id="缓慢的服务器启动" class="article-heading"><a href="#缓慢的服务器启动" class="headerlink" title="缓慢的服务器启动"></a>缓慢的服务器启动<a class="article-anchor" href="#缓慢的服务器启动" aria-hidden="true"></a></h2><p>当冷启动开发服务器时，基于打包器的方式启动必须优先抓取并构建你的整个应用，然后才能提供服务。</p>
+<p>Vite 通过在一开始将应用中的模块区分为 依赖 和 源码 两类，改进了开发服务器启动时间。</p>
+<ul>
+<li>依赖</li>
+</ul>
+<p>大多为在开发时不会变动的纯 JavaScript。一些较大的依赖（例如有上百个模块的组件库）处理的代价也很高。依赖也通常会存在多种模块化格式（例如 ESM 或者 CommonJS）。</p>
+<p>Vite 将会使用 esbuild 预构建依赖。esbuild 使用 Go 编写，并且比以 JavaScript 编写的打包器预构建依赖快 10-100 倍。</p>
+<ul>
+<li>源码</li>
+</ul>
+<p>通常包含一些并非直接是 JavaScript 的文件，需要转换（例如 JSX，CSS 或者 Vue&#x2F;Svelte 组件），时常会被编辑。同时，并不是所有的源码都需要同时被加载（例如基于路由拆分的代码模块）。</p>
+<p>Vite 以 原生 ESM 方式提供源码。这实际上是让浏览器接管了打包程序的部分工作：Vite 只需要在浏览器请求源码时进行转换并按需提供源码。根据情景动态导入代码，即只在当前屏幕上实际使用时才会被处理。</p>
+<h2 id="缓慢的更新" class="article-heading"><a href="#缓慢的更新" class="headerlink" title="缓慢的更新"></a>缓慢的更新<a class="article-anchor" href="#缓慢的更新" aria-hidden="true"></a></h2><p>基于打包器启动时，重建整个包的效率很低。原因显而易见：因为这样更新速度会随着应用体积增长而直线下降。</p>
+<p>一些打包器的开发服务器将构建内容存入内存，这样它们只需要在文件更改时使模块图的一部分失活[1]，但它也仍需要整个重新构建并重载页面。这样代价很高，并且重新加载页面会消除应用的当前状态，所以打包器支持了动态模块热替换（HMR）：允许一个模块 “热替换” 它自己，而不会影响页面其余部分。这大大改进了开发体验 —— 然而，在实践中我们发现，即使采用了 HMR 模式，其热更新速度也会随着应用规模的增长而显著下降。</p>
+<p>在 Vite 中，HMR 是在原生 ESM 上执行的。当编辑一个文件时，Vite 只需要精确地使已编辑的模块与其最近的 HMR 边界之间的链失活[1]（大多数时候只是模块本身），使得无论应用大小如何，HMR 始终能保持快速更新。</p>
+<p>Vite 同时利用 HTTP 头来加速整个页面的重新加载（再次让浏览器为我们做更多事情）：源码模块的请求会根据 304 Not Modified 进行协商缓存，而依赖模块请求则会通过 Cache-Control: max-age&#x3D;31536000,immutable 进行强缓存，因此一旦被缓存它们将不需要再次请求。</p>
+<p>一旦你体验到 Vite 的神速，你是否愿意再忍受像曾经那样使用打包器开发就要打上一个大大的问号了。</p>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2024-10-23T03:38:37.673Z" itemprop="dateModified">上次更新：2024-10-23</time>
+                <a href="index.html" class="article-footer-next" title="概述"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%B0%E5%AE%9E%E9%97%AE%E9%A2%98"><span class="toc-text">现实问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%93%E6%85%A2%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%90%AF%E5%8A%A8"><span class="toc-text">缓慢的服务器启动</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%93%E6%85%A2%E7%9A%84%E6%9B%B4%E6%96%B0"><span class="toc-text">缓慢的更新</span></a></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">开始使用</strong><a href="/ecology/index.html" class="sidebar-link">概述</a><strong class="sidebar-title">微前端qiankun</strong><a href="/ecology/qiankun/guide.html" class="sidebar-link">文档指南</a><a href="/ecology/qiankun/questions.html" class="sidebar-link">问题汇总</a><strong class="sidebar-title">vite</strong><a href="/ecology/vite/guide.html" class="sidebar-link current">文档指南</a><a href="/ecology/vite/summary.html" class="sidebar-link">vite插件汇总</a>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2024 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuo.jiangtao@h3c.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard/" class="mobile-nav-link">开发规范</a><a href="/design/" class="mobile-nav-link">开发指南</a><a href="/ecology/" class="mobile-nav-link">前沿生态</a><a href="/util/" class="mobile-nav-link">开发工具</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">开始使用</strong><a href="/ecology/index.html" class="mobile-nav-link">概述</a><strong class="mobile-nav-title">微前端qiankun</strong><a href="/ecology/qiankun/guide.html" class="mobile-nav-link">文档指南</a><a href="/ecology/qiankun/questions.html" class="mobile-nav-link">问题汇总</a><strong class="mobile-nav-title">vite</strong><a href="/ecology/vite/guide.html" class="mobile-nav-link current">文档指南</a><a href="/ecology/vite/summary.html" class="mobile-nav-link">vite插件汇总</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></span>
+    <select id="mobile-lang-select" data-canonical="">
+      
+        <option value="zh-cn" selected>简体中文</option>
+      
+        <option value="en">English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>

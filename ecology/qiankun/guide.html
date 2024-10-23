@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>文档指南 | 个人博客</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://zuojiangtao.github.io/ecology/qiankun/guide.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="zh-cn" href="https://zuojiangtao.github.io/ecology/qiankun/guide">
+    
+      <link rel="alternative" hreflang="en" href="https://zuojiangtao.github.io/en/ecology/qiankun/guide">
+    
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-w/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard/" class="main-nav-link">开发规范</a><a href="/design/" class="main-nav-link">开发指南</a><a href="/ecology/" class="main-nav-link">前沿生态</a><a href="/util/" class="main-nav-link">开发工具</a>
+    </nav>
+    <div id="github-icon-link">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="icon" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">文档指南</h1>
+                <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Zuojiangtao/Zuojiangtao.github.io/tree/master/source/ecology/qiankun/guide.md" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <h3 id="官方文档" class="article-heading"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档<a class="article-anchor" href="#官方文档" aria-hidden="true"></a></h3><p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://qiankun.umijs.org/zh">微前端-乾坤qiankun官网</a></p>
+<h3 id="什么是微前端" class="article-heading"><a href="#什么是微前端" class="headerlink" title="什么是微前端"></a>什么是微前端<a class="article-anchor" href="#什么是微前端" aria-hidden="true"></a></h3><blockquote>
+<p>Techniques, strategies and recipes for building a modern web app with multiple teams that can ship features independently. – Micro Frontends</p>
+<p>微前端是一种多个团队通过独立发布功能的方式来共同构建现代化 web 应用的技术手段及方法策略。</p>
+</blockquote>
+<h4 id="微前端架构具备以下几个核心价值：" class="article-heading"><a href="#微前端架构具备以下几个核心价值：" class="headerlink" title="微前端架构具备以下几个核心价值："></a>微前端架构具备以下几个核心价值：<a class="article-anchor" href="#微前端架构具备以下几个核心价值：" aria-hidden="true"></a></h4><ul>
+<li>技术栈无关<br>主框架不限制接入应用的技术栈，微应用具备完全自主权</li>
+<li>独立开发、独立部署<br>微应用仓库独立，前后端可独立开发，部署完成后主框架自动完成同步更新</li>
+<li>增量升级<br>在面对各种复杂场景时，我们通常很难对一个已经存在的系统做全量的技术栈升级或重构，而微前端是一种非常好的实施渐进式重构的手段和策略</li>
+<li>独立运行时<br>每个微应用之间状态隔离，运行时状态不共享</li>
+</ul>
+<p>微前端架构旨在解决单体应用在一个相对长的时间跨度下，由于参与的人员、团队的增多、变迁，从一个普通应用演变成一个巨石应用(Frontend Monolith)后，随之而来的应用不可维护的问题。这类问题在企业级 Web 应用中尤其常见。</p>
+<h4 id="更多关于微前端的相关介绍：" class="article-heading"><a href="#更多关于微前端的相关介绍：" class="headerlink" title="更多关于微前端的相关介绍："></a>更多关于微前端的相关介绍：<a class="article-anchor" href="#更多关于微前端的相关介绍：" aria-hidden="true"></a></h4><ul>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://micro-frontends.org/">Micro Frontends</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://martinfowler.com/articles/micro-frontends.html">Micro Frontends from martinfowler.com</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://zhuanlan.zhihu.com/p/78362028">可能是你见过最完善的微前端解决方案</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://zhuanlan.zhihu.com/p/95085796">微前端的核心价值</a></li>
+</ul>
+<h3 id="qiankun-的核心设计理念" class="article-heading"><a href="#qiankun-的核心设计理念" class="headerlink" title="qiankun 的核心设计理念"></a>qiankun 的核心设计理念<a class="article-anchor" href="#qiankun-的核心设计理念" aria-hidden="true"></a></h3><ul>
+<li>🥄 简单<br>由于主应用微应用都能做到技术栈无关，qiankun 对于用户而言只是一个类似 jQuery 的库，你需要调用几个 qiankun 的 API 即可完成应用的微前端改造。同时由于 qiankun 的 HTML entry 及沙箱的设计，使得微应用的接入像使用 iframe 一样简单。</li>
+<li>🍡 解耦&#x2F;技术栈无关<br>微前端的核心目标是将巨石应用拆解成若干可以自治的松耦合微应用，而 qiankun 的诸多设计均是秉持这一原则，如 HTML entry、沙箱、应用间通信等。这样才能确保微应用真正具备 独立开发、独立运行 的能力。</li>
+</ul>
+<h3 id="为什么不是-iframe" class="article-heading"><a href="#为什么不是-iframe" class="headerlink" title="为什么不是 iframe"></a>为什么不是 iframe<a class="article-anchor" href="#为什么不是-iframe" aria-hidden="true"></a></h3><p>看这里<a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.yuque.com/kuitos/gky7yw/gesexv">Why Not Iframe</a></p>
+<h3 id="特性" class="article-heading"><a href="#特性" class="headerlink" title="特性"></a>特性<a class="article-anchor" href="#特性" aria-hidden="true"></a></h3><ul>
+<li>📦 基于 single-spa 封装，提供了更加开箱即用的 API。</li>
+<li>📱 技术栈无关，任意技术栈的应用均可 使用&#x2F;接入，不论是 React&#x2F;Vue&#x2F;Angular&#x2F;JQuery 还是其他等框架。</li>
+<li>💪 HTML Entry 接入方式，让你接入微应用像使用 iframe 一样简单。</li>
+<li>🛡 样式隔离，确保微应用之间样式互相不干扰。</li>
+<li>🧳 JS 沙箱，确保微应用之间 全局变量&#x2F;事件 不冲突。</li>
+<li>⚡ 资源预加载，在浏览器空闲时间预加载未打开的微应用资源，加速微应用打开速度。</li>
+<li>🔌 umi 插件，提供了 @umijs&#x2F;plugin-qiankun 供 umi 应用一键切换成微前端架构系统。</li>
+</ul>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2024-10-23T03:38:37.671Z" itemprop="dateModified">上次更新：2024-10-23</time>
+                <a href="index.html" class="article-footer-next" title="概述"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3"><span class="toc-text">官方文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%BE%AE%E5%89%8D%E7%AB%AF"><span class="toc-text">什么是微前端</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BE%AE%E5%89%8D%E7%AB%AF%E6%9E%B6%E6%9E%84%E5%85%B7%E5%A4%87%E4%BB%A5%E4%B8%8B%E5%87%A0%E4%B8%AA%E6%A0%B8%E5%BF%83%E4%BB%B7%E5%80%BC%EF%BC%9A"><span class="toc-text">微前端架构具备以下几个核心价值：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9B%B4%E5%A4%9A%E5%85%B3%E4%BA%8E%E5%BE%AE%E5%89%8D%E7%AB%AF%E7%9A%84%E7%9B%B8%E5%85%B3%E4%BB%8B%E7%BB%8D%EF%BC%9A"><span class="toc-text">更多关于微前端的相关介绍：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#qiankun-%E7%9A%84%E6%A0%B8%E5%BF%83%E8%AE%BE%E8%AE%A1%E7%90%86%E5%BF%B5"><span class="toc-text">qiankun 的核心设计理念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E6%98%AF-iframe"><span class="toc-text">为什么不是 iframe</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E6%80%A7"><span class="toc-text">特性</span></a></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">开始使用</strong><a href="/ecology/index.html" class="sidebar-link">概述</a><strong class="sidebar-title">微前端qiankun</strong><a href="/ecology/qiankun/guide.html" class="sidebar-link current">文档指南</a><a href="/ecology/qiankun/questions.html" class="sidebar-link">问题汇总</a><strong class="sidebar-title">vite</strong><a href="/ecology/vite/guide.html" class="sidebar-link">文档指南</a><a href="/ecology/vite/summary.html" class="sidebar-link">vite插件汇总</a>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2024 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuo.jiangtao@h3c.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard/" class="mobile-nav-link">开发规范</a><a href="/design/" class="mobile-nav-link">开发指南</a><a href="/ecology/" class="mobile-nav-link">前沿生态</a><a href="/util/" class="mobile-nav-link">开发工具</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">开始使用</strong><a href="/ecology/index.html" class="mobile-nav-link">概述</a><strong class="mobile-nav-title">微前端qiankun</strong><a href="/ecology/qiankun/guide.html" class="mobile-nav-link current">文档指南</a><a href="/ecology/qiankun/questions.html" class="mobile-nav-link">问题汇总</a><strong class="mobile-nav-title">vite</strong><a href="/ecology/vite/guide.html" class="mobile-nav-link">文档指南</a><a href="/ecology/vite/summary.html" class="mobile-nav-link">vite插件汇总</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></span>
+    <select id="mobile-lang-select" data-canonical="">
+      
+        <option value="zh-cn" selected>简体中文</option>
+      
+        <option value="en">English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>

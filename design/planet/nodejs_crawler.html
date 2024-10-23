@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>NodeJs爬虫 | 个人博客</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://zuojiangtao.github.io/design/planet/nodejs_crawler.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="zh-cn" href="https://zuojiangtao.github.io/design/planet/nodejs_crawler">
+    
+      <link rel="alternative" hreflang="en" href="https://zuojiangtao.github.io/en/design/planet/nodejs_crawler">
+    
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-w/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard/" class="main-nav-link">开发规范</a><a href="/design/" class="main-nav-link">开发指南</a><a href="/ecology/" class="main-nav-link">前沿生态</a><a href="/util/" class="main-nav-link">开发工具</a>
+    </nav>
+    <div id="github-icon-link">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="icon" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">NodeJs爬虫</h1>
+                <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Zuojiangtao/Zuojiangtao.github.io/tree/master/source/design/planet/nodejs_crawler.md" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <h3 id="前言" class="article-heading"><a href="#前言" class="headerlink" title="前言"></a>前言<a class="article-anchor" href="#前言" aria-hidden="true"></a></h3><p>网络爬虫（又称为网页蜘蛛，网络机器人，在FOAF社区中间，更经常的称为网页追逐者），是一种按照一定的规则，自动地抓取万维网信息的程序或者脚本。另外一些不常使用的名字还有蚂蚁、自动索引、模拟程序或者蠕虫。</p>
+<p>目前几乎所有语言都可以实现爬虫，较为流行的有NodeJs、python等。 简单场景使用nodejs即可，专业级的爬虫考虑的比较多，像多线程、吞吐量、分布式爬取、拓展性等，应该使用python做爬虫更合适。</p>
+<p>本文简单介绍nodejs爬虫的使用，并实现几个较为简单的程序作为小玩具，只为学习交流。<strong>不要恶意爬取网站数据，和谐网络环境需要大家共同维护。</strong></p>
+<h3 id="介绍" class="article-heading"><a href="#介绍" class="headerlink" title="介绍"></a>介绍<a class="article-anchor" href="#介绍" aria-hidden="true"></a></h3><p>爬取数据一般简单来说就是 <code>目标请求</code> -&gt; <code>获取数据</code> -&gt; <code>处理数据</code> 这几个阶段。</p>
+<p>获取数据一般有直接<strong>从接口获取</strong>、<strong>解析JS构造运行环境获取</strong>和<strong>页面解析获取</strong>等几种方式。</p>
+<p>从接口获取是最简单的，到目标网站直接F12找到相应接口，然后构造请求函数获取数据，最后将数据处理。</p>
+<p>有的网站的页面可能是混合生成，比如某些部分是异步获取JS再动态生成对应内容，这时需要JS引擎对异步JS内容做解析才能获取数据。</p>
+<p>有些页面是服务端渲染生成的，这种情况要对目标网站做页面解析，可查看页面DOM结构，然后获取相应数据。</p>
+<h3 id="程序实现" class="article-heading"><a href="#程序实现" class="headerlink" title="程序实现"></a>程序实现<a class="article-anchor" href="#程序实现" aria-hidden="true"></a></h3><h4 id="1-美女图片" class="article-heading"><a href="#1-美女图片" class="headerlink" title="1. 美女图片"></a>1. 美女图片<a class="article-anchor" href="#1-美女图片" aria-hidden="true"></a></h4><p>我们通过<strong>爬取接口的方式</strong>实现获取数据并下载图片保存到本地。</p>
+<ul>
+<li>设置接口相关参数(通过axios)；</li>
+<li>通过接口获取数据(这里是图片的url)；</li>
+<li>将图片下载到本地(通过download)；</li>
+</ul>
+<p>对于这个美女网站我们可以直接爬取接口来获取图片url，然后将图片保存。结果如图：</p>
+<p><img src="/../../images/nodejs-crawler/beauty.png" alt="beauty"></p>
+<p>完整源代码请看 <code>src/beauty.js</code>。</p>
+<h4 id="2-微博-x2F-百度热搜" class="article-heading"><a href="#2-微博-x2F-百度热搜" class="headerlink" title="2. 微博&#x2F;百度热搜"></a>2. 微博&#x2F;百度热搜<a class="article-anchor" href="#2-微博-x2F-百度热搜" aria-hidden="true"></a></h4><p>有的网站并不是通过接口的方式来获取数据，比如服务端渲染的页面。这时我们可以通过<strong>页面解析的方式</strong>来爬取数据。</p>
+<ul>
+<li>百度热搜</li>
+</ul>
+<p>像<a target="_blank" rel="noopener external nofollow noreferrer" href="https://top.baidu.com/board?platform=pc&sa=pcindex_a_right">百度热搜</a>，我们通过分析页面DOM结构可知热搜数据位于 <code>.theme-hot[theme=&quot;realtime&quot;] .list_1EDla a</code> ，通过 <code>cheerio</code> 框架来使用选择器获取热搜文案及其他数据。<br>然后可以直接使用nodejs 内置工具函数 <code>fs.writeFileSync</code> 来将数据保存到本地。结果如下：</p>
+<img src="../../images/nodejs-crawler/baidu_hot.png" width="400">
+
+<p>可以运行 <code>npm run baidu-hot</code> 然后在 <code>static/baidu_realtime_hot.json</code> 查看。</p>
+<ul>
+<li>微博热搜</li>
+</ul>
+<p>有些网站为了防爬虫加了一些校验，如<a target="_blank" rel="noopener external nofollow noreferrer" href="https://s.weibo.com/top/summary?cate=realtimehot">微博热搜</a>需要设置 <code>Cookie</code>。一般来说比较简单，我们F12查看可以通过分析看文件请求 <code>Request Headers</code> 字段是否有校验字段，通常是cookie和token这种。<br>可以对微博热搜设置headers来通过校验。结果如下：</p>
+<img src="../../images/nodejs-crawler/weibo_hot.png" width="400">
+
+<p>可以运行 <code>npm run weibo-hot</code> 然后在 <code>static/weibo_realtime_hot.json</code> 查看。</p>
+<blockquote>
+<p>cheerio作为选择器使用要处理，cheerio.load(res.data)。具体使用请看：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/cheeriojs/cheerio">https://github.com/cheeriojs/cheerio</a></p>
+</blockquote>
+<h4 id="3-天天基金" class="article-heading"><a href="#3-天天基金" class="headerlink" title="3. 天天基金"></a>3. 天天基金<a class="article-anchor" href="#3-天天基金" aria-hidden="true"></a></h4><p>同样的，这个程序也是通过<strong>抓取接口形式</strong>来爬取数据。规则是爬取 <code>今年前50，资金规模不超过10亿</code> 的基金。</p>
+<ul>
+<li>通过axios获取接口数据;</li>
+<li>并对获取到的数据做处理，将会得到 <code>var rankData =&#123; /.../ &#125;</code> 形式数据;</li>
+<li>使用 <code>node-xlsx</code> 将[[str, str, str], [str, str, str]]形式数据转换为buffer;</li>
+<li>将buffer通过fs模块下载到本地，这里是指定了下载位置到 <code>/static</code>;</li>
+</ul>
+<p><img src="/../../images/nodejs-crawler/tiantian_fund.png"></p>
+<p>源码请看 <code>src/tiantian-fund.js</code>。</p>
+<h4 id="4-国家统计局" class="article-heading"><a href="#4-国家统计局" class="headerlink" title="4. 国家统计局"></a>4. 国家统计局<a class="article-anchor" href="#4-国家统计局" aria-hidden="true"></a></h4><p>通过<strong>爬取接口的方式</strong>获取相应的数据，并生成xlsx文件。这里我爬取了 <code>国民经济核算最近6季度的数据</code>。</p>
+<img src="../../images/nodejs-crawler/national_data.png" width="600">
+
+<h4 id="5-高清素材" class="article-heading"><a href="#5-高清素材" class="headerlink" title="5. 高清素材"></a>5. 高清素材<a class="article-anchor" href="#5-高清素材" aria-hidden="true"></a></h4><p>通过<strong>爬取接口的方式</strong>获取相应高清图片素材，这个网站有token校验，要自己登录获取相应字段值 <code>Sentry-Trace</code> 和 <code>Cookie</code>。</p>
+<img src="../../images/nodejs-crawler/pexels.png" width="600">
+
+<h4 id="6-4k高清壁纸" class="article-heading"><a href="#6-4k高清壁纸" class="headerlink" title="6. 4k高清壁纸"></a>6. 4k高清壁纸<a class="article-anchor" href="#6-4k高清壁纸" aria-hidden="true"></a></h4><p>通过<strong>页面分析的方式</strong>获取相应高清壁纸。</p>
+<img src="../../images/nodejs-crawler/netbian.png" width="600">
+
+<h3 id="项目本地预览" class="article-heading"><a href="#项目本地预览" class="headerlink" title="项目本地预览"></a>项目本地预览<a class="article-anchor" href="#项目本地预览" aria-hidden="true"></a></h3><p>项目已开源，欢迎点赞: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Zuojiangtao/nodejs-spider">一款基于nodejs的爬虫程序集</a></p>
+<h4 id="Clone-repo" class="article-heading"><a href="#Clone-repo" class="headerlink" title="Clone repo"></a>Clone repo<a class="article-anchor" href="#Clone-repo" aria-hidden="true"></a></h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> --depth=1 https://github.com/Zuojiangtao/nodejs-spider.git my-project</span><br><span class="line"><span class="built_in">cd</span> my-project</span><br></pre></td></tr></table></figure>
+
+<h4 id="安装依赖" class="article-heading"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖<a class="article-anchor" href="#安装依赖" aria-hidden="true"></a></h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yarn install</span><br></pre></td></tr></table></figure>
+
+<h4 id="运行爬虫指令" class="article-heading"><a href="#运行爬虫指令" class="headerlink" title="运行爬虫指令"></a>运行爬虫指令<a class="article-anchor" href="#运行爬虫指令" aria-hidden="true"></a></h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yarn beauty // 爬取美女图片</span><br><span class="line"></span><br><span class="line">yarn weibo-hot // 爬取微博热搜</span><br><span class="line"></span><br><span class="line">yarn baidu-hot // 爬取百度热搜</span><br><span class="line"></span><br><span class="line">yarn tiantian-fund // 爬取天天基金筛选数据</span><br></pre></td></tr></table></figure>
+
+<h4 id="内容查看" class="article-heading"><a href="#内容查看" class="headerlink" title="内容查看"></a>内容查看<a class="article-anchor" href="#内容查看" aria-hidden="true"></a></h4><p>所有生成内容均在 <code>/static</code> 下找到。</p>
+<h3 id="常用模块推荐" class="article-heading"><a href="#常用模块推荐" class="headerlink" title="常用模块推荐"></a>常用模块推荐<a class="article-anchor" href="#常用模块推荐" aria-hidden="true"></a></h3><h4 id="下载文件常用模块" class="article-heading"><a href="#下载文件常用模块" class="headerlink" title="下载文件常用模块"></a>下载文件常用模块<a class="article-anchor" href="#下载文件常用模块" aria-hidden="true"></a></h4><ol>
+<li>可使用内置模块 ‘fs’ ;</li>
+<li>使用第三方插件 ‘node-downloader-helper’ ;</li>
+<li>使用第三方插件 ‘download’ ;</li>
+</ol>
+<h4 id="获取数据常用模块" class="article-heading"><a href="#获取数据常用模块" class="headerlink" title="获取数据常用模块"></a>获取数据常用模块<a class="article-anchor" href="#获取数据常用模块" aria-hidden="true"></a></h4><ol>
+<li>如果node版本17.5.0以上，可以使用fetch模块;</li>
+<li>使用axios、request、superagent等第三方插件;</li>
+<li>使用内置模块 ‘http’;</li>
+</ol>
+<h4 id="其他优秀依赖及模块推荐" class="article-heading"><a href="#其他优秀依赖及模块推荐" class="headerlink" title="其他优秀依赖及模块推荐"></a>其他优秀依赖及模块推荐<a class="article-anchor" href="#其他优秀依赖及模块推荐" aria-hidden="true"></a></h4><ol>
+<li>一款轻量级nodejs爬虫工具：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/bda-research/node-crawler">node-crawler</a>;</li>
+<li>一个验证码相关工具：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/desmondmorris/node-tesseract">node-tesseract</a>;</li>
+<li>爬虫定时爬取：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/node-schedule/node-schedule">node-schedule</a>;</li>
+<li>将markdown文件转成PDF文件：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/alanshaw/markdown-pdf">markdown-pdf</a>;</li>
+<li>xlsx：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/mgcrea/node-xlsx">node-xlsx</a>;</li>
+<li>csv：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/adaltas/node-csv">node-csv</a>;</li>
+<li>其他依赖资源汇总：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/sindresorhus/awesome-nodejs">awesome-nodejs</a>;</li>
+</ol>
+<h3 id="参考资料" class="article-heading"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料<a class="article-anchor" href="#参考资料" aria-hidden="true"></a></h3><ul>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://baike.baidu.com/item/%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB/5162711?fromtitle=%E7%88%AC%E8%99%AB&fromid=22046949&fr=aladdin">网络爬虫-百度百科</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://juejin.cn/post/6844903449054674952">Node.js 爬虫相关模块小整合</a></li>
+</ul>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2024-10-23T03:38:37.669Z" itemprop="dateModified">上次更新：2024-10-23</time>
+                <a href="index.html" class="article-footer-next" title="概述"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8B%E7%BB%8D"><span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A8%8B%E5%BA%8F%E5%AE%9E%E7%8E%B0"><span class="toc-text">程序实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%BE%8E%E5%A5%B3%E5%9B%BE%E7%89%87"><span class="toc-text">1. 美女图片</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%BE%AE%E5%8D%9A-x2F-%E7%99%BE%E5%BA%A6%E7%83%AD%E6%90%9C"><span class="toc-text">2. 微博&#x2F;百度热搜</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%A4%A9%E5%A4%A9%E5%9F%BA%E9%87%91"><span class="toc-text">3. 天天基金</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%9B%BD%E5%AE%B6%E7%BB%9F%E8%AE%A1%E5%B1%80"><span class="toc-text">4. 国家统计局</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E9%AB%98%E6%B8%85%E7%B4%A0%E6%9D%90"><span class="toc-text">5. 高清素材</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-4k%E9%AB%98%E6%B8%85%E5%A3%81%E7%BA%B8"><span class="toc-text">6. 4k高清壁纸</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E6%9C%AC%E5%9C%B0%E9%A2%84%E8%A7%88"><span class="toc-text">项目本地预览</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Clone-repo"><span class="toc-text">Clone repo</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96"><span class="toc-text">安装依赖</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E7%88%AC%E8%99%AB%E6%8C%87%E4%BB%A4"><span class="toc-text">运行爬虫指令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E5%AE%B9%E6%9F%A5%E7%9C%8B"><span class="toc-text">内容查看</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97%E6%8E%A8%E8%8D%90"><span class="toc-text">常用模块推荐</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97"><span class="toc-text">下载文件常用模块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%95%B0%E6%8D%AE%E5%B8%B8%E7%94%A8%E6%A8%A1%E5%9D%97"><span class="toc-text">获取数据常用模块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96%E4%BC%98%E7%A7%80%E4%BE%9D%E8%B5%96%E5%8F%8A%E6%A8%A1%E5%9D%97%E6%8E%A8%E8%8D%90"><span class="toc-text">其他优秀依赖及模块推荐</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-text">参考资料</span></a></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">开始使用</strong><a href="/design/index.html" class="sidebar-link">概述</a><strong class="sidebar-title">设计规范指南</strong><a href="/design/design_guide.html" class="sidebar-link">中后台设计规范</a><strong class="sidebar-title">知识星球</strong><a href="/design/planet/nodejs_crawler.html" class="sidebar-link current">nodejs爬虫</a><a href="/design/planet/vw_mobile.html" class="sidebar-link">移动端适配</a><a href="/design/planet/vite_cli.html" class="sidebar-link">vite前端脚手架</a><strong class="sidebar-title">软件架构</strong><a href="/design/architecture/design_pattern.html" class="sidebar-link">设计模式</a><a href="/design/architecture/database_consistency.html" class="sidebar-link">数据一致性</a>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2024 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuo.jiangtao@h3c.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard/" class="mobile-nav-link">开发规范</a><a href="/design/" class="mobile-nav-link">开发指南</a><a href="/ecology/" class="mobile-nav-link">前沿生态</a><a href="/util/" class="mobile-nav-link">开发工具</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">开始使用</strong><a href="/design/index.html" class="mobile-nav-link">概述</a><strong class="mobile-nav-title">设计规范指南</strong><a href="/design/design_guide.html" class="mobile-nav-link">中后台设计规范</a><strong class="mobile-nav-title">知识星球</strong><a href="/design/planet/nodejs_crawler.html" class="mobile-nav-link current">nodejs爬虫</a><a href="/design/planet/vw_mobile.html" class="mobile-nav-link">移动端适配</a><a href="/design/planet/vite_cli.html" class="mobile-nav-link">vite前端脚手架</a><strong class="mobile-nav-title">软件架构</strong><a href="/design/architecture/design_pattern.html" class="mobile-nav-link">设计模式</a><a href="/design/architecture/database_consistency.html" class="mobile-nav-link">数据一致性</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></span>
+    <select id="mobile-lang-select" data-canonical="">
+      
+        <option value="zh-cn" selected>简体中文</option>
+      
+        <option value="en">English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>

@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>Webpack Plugin开发实践 | 个人博客</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://zuojiangtao.github.io/util/webpack/plugin.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="zh-cn" href="https://zuojiangtao.github.io/util/webpack/plugin">
+    
+      <link rel="alternative" hreflang="en" href="https://zuojiangtao.github.io/en/util/webpack/plugin">
+    
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-w/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard/" class="main-nav-link">开发规范</a><a href="/design/" class="main-nav-link">开发指南</a><a href="/ecology/" class="main-nav-link">前沿生态</a><a href="/util/" class="main-nav-link">开发工具</a>
+    </nav>
+    <div id="github-icon-link">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="icon" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">Webpack Plugin开发实践</h1>
+                <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Zuojiangtao/Zuojiangtao.github.io/tree/master/source/util/webpack/plugin.md" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <p>本文带你一起学习webpack的插件开发，以实际项目需求为入口，深入浅出学习webpack插件开发流程，通过学习本文让你能够开发自己的webpack插件。</p>
+<p>本文相关源代码地址: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Zuojiangtao/git-deployer-webpack-plugin">git-deployer-webpack-plugin</a>。</p>
+<blockquote>
+<p>本文以webpack5为例。</p>
+</blockquote>
+<h3 id="一、需求背景" class="article-heading"><a href="#一、需求背景" class="headerlink" title="一、需求背景"></a>一、需求背景<a class="article-anchor" href="#一、需求背景" aria-hidden="true"></a></h3><p>目前业务部门存在这样一个需求,需要一种能够将部分业务组件抽离为远程组件的方案,即一处开发多处复用。实际场景是在某个项目内将其中一部分单独抽离为远程组件,例如一些数据可视化面板可能在多个项目中使用,这确实可以减少重复开发的工作量。</p>
+<p>后续的讨论方案是将可复用的面板打包为远程组件库,在需要使用的时候动态加载。</p>
+<p>但是,这同时也带来了一个不太方便的问题,源代码存放在一个Git库中,而打包出来的远程组件库也需要Git仓库管理。虽然可以通过调整Jenkins发布流水线或者单独为远程组件库建立Git库的方式解决这个问题,但两种方案各有其不足之处。第一种方案不具有很强的通用性,并且不是所有开发人员都具备这方面的能力;第二种方案略显繁琐,需要开发人员将编译后的组件库lib包单独拷贝到新Git仓库后再上传。每次组件库有更新,都需要重复此过程,既费时又易出错。</p>
+<p>因此,我想如果能在编译远程组件库后自动将编译得到的lib包上传到Git远程仓库,那就很理想。首先想到的就是之前使用过的Hexo,通过deploy命令将本地文件生成并上传到GitHub。那么,如果自己编写一个Webpack插件,在编译阶段完成后执行这个过程,是不是个不错的主意呢?</p>
+<h3 id="二、webpack插件开发介绍" class="article-heading"><a href="#二、webpack插件开发介绍" class="headerlink" title="二、webpack插件开发介绍"></a>二、webpack插件开发介绍<a class="article-anchor" href="#二、webpack插件开发介绍" aria-hidden="true"></a></h3><h4 id="1-官方文档" class="article-heading"><a href="#1-官方文档" class="headerlink" title="1. 官方文档"></a>1. 官方文档<a class="article-anchor" href="#1-官方文档" aria-hidden="true"></a></h4><p>这里是官方介绍：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://webpack.docschina.org/contribute/writing-a-plugin/#creating-a-plugin">自定义插件</a></p>
+<h4 id="2-重要知识点" class="article-heading"><a href="#2-重要知识点" class="headerlink" title="2. 重要知识点"></a>2. 重要知识点<a class="article-anchor" href="#2-重要知识点" aria-hidden="true"></a></h4><p>webpack 插件由以下组成:</p>
+<ol>
+<li>一个 JavaScript 命名函数或 JavaScript 类。</li>
+<li>在插件函数的 prototype 上定义一个 apply 方法。</li>
+<li>指定一个绑定到 webpack 自身的事件钩子。</li>
+<li>处理 webpack 内部实例的特定数据。</li>
+<li>功能完成后调用 webpack 提供的回调。</li>
+</ol>
+<p><code>Compiler</code> 它扩展自 <code>Tapable</code> 类，设置了一系列事件钩子和各种配置参数，并定义了 webpack 诸如启动编译、观测文件变动、将编译结果文件写入本地等一系列核心方法。</p>
+<p>常见事件钩子介绍：</p>
+<ul>
+<li>beforeRun：在编译器开始读取 records 之前执行;</li>
+<li>run：在读取 records 之前;</li>
+<li>thisCompilation：在 compilation 初始化时执行;</li>
+<li>compilation：在 compilation 创建之后执行;</li>
+<li>make：在 complication 完成之前执行;</li>
+<li>afterCompilation：在 compilation 完成后执行;</li>
+<li>emit：在生成文件到 output 目录之前执行;</li>
+<li>afterEmit：在生成文件到 output 目录之后执行;</li>
+<li>done：在 compilation 完成之后执行;</li>
+</ul>
+<p><code>Compilation</code> 类扩展(extend)自 <code>Tapable</code>，并提供了以下生命周期钩子:</p>
+<ul>
+<li>addChunk</li>
+<li><code>addEntry</code></li>
+<li>deleteAsset</li>
+<li>buildModule</li>
+<li>optimize</li>
+</ul>
+<h4 id="3-需求分析" class="article-heading"><a href="#3-需求分析" class="headerlink" title="3. 需求分析"></a>3. 需求分析<a class="article-anchor" href="#3-需求分析" aria-hidden="true"></a></h4><p>根据上述文档介绍，我们可以将所需实现的功能锁定为编译成功并输出assets之后的阶段——即<code>afterEmit</code>之后的钩子。在这里，我们选择使用<code>done</code>钩子。<br>接下来，我们需要分析的是等待编译完成并将静态资源上传到指定的Git远程仓库。为此，我们只需要使用<code>compiler</code>即可。<br>基本框架已经确定了。根据文档，在一个命名函数或类内应用 <code>apply</code> 方法，并在 compiler 的<code>done</code>钩子期间应用我们的业务逻辑。然后，针对不同的场景，可以将这些场景参数化，并将参数传递到业务逻辑函数中。<br>至于业务逻辑，即读取并复制指定文件到<code>.deploy_git</code>中，并手动写入Git命令上传。此外，需要对空值进行判断。</p>
+<h3 id="三、需求实现" class="article-heading"><a href="#三、需求实现" class="headerlink" title="三、需求实现"></a>三、需求实现<a class="article-anchor" href="#三、需求实现" aria-hidden="true"></a></h3><h4 id="1-基础架构" class="article-heading"><a href="#1-基础架构" class="headerlink" title="1. 基础架构"></a>1. 基础架构<a class="article-anchor" href="#1-基础架构" aria-hidden="true"></a></h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * GitDeployerWebpackPlugin</span></span><br><span class="line"><span class="comment"> * 一个将指定文件推送到Git远程仓库的webpack插件。</span></span><br><span class="line"><span class="comment"> * A webpack plugin that pushes specified files to a Git remote repository.</span></span><br><span class="line"><span class="comment"> **/</span></span><br><span class="line"><span class="keyword">const</span> deployer = <span class="built_in">require</span>(<span class="string">&#x27;./lib/deployer&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">PLUGIN_ID</span> = <span class="string">&#x27;git-deployer-webpack-plugin&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">GitDeployerWebpackPlugin</span> &#123;</span><br><span class="line">  <span class="title function_">constructor</span>(<span class="params">options</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">options</span> = options</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">apply</span>(<span class="params">compiler</span>) &#123;</span><br><span class="line">    compiler.<span class="property">hooks</span>.<span class="property">done</span>.<span class="title function_">tap</span>(<span class="variable constant_">PLUGIN_ID</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="title function_">deployer</span>(<span class="variable language_">this</span>.<span class="property">options</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="title class_">GitDeployerWebpackPlugin</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-业务逻辑编写" class="article-heading"><a href="#2-业务逻辑编写" class="headerlink" title="2. 业务逻辑编写"></a>2. 业务逻辑编写<a class="article-anchor" href="#2-业务逻辑编写" aria-hidden="true"></a></h4><p>详细代码请看：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Zuojiangtao/git-deployer-webpack-plugin/blob/main/lib/deployer.js">git-deployer-webpack-plugin&#x2F;lib &#x2F;deployer.js</a>。</p>
+<p>通过阅读源代码，可以发现代码逻辑很简单，就是将制定文件下的内容拷贝到 <code>.deploy_git</code> 下，并写出git命令将这些文件推送到远程git仓库指定分支。</p>
+<h4 id="3-验证" class="article-heading"><a href="#3-验证" class="headerlink" title="3. 验证"></a>3. 验证<a class="article-anchor" href="#3-验证" aria-hidden="true"></a></h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">// 先建立软链接</span><br><span class="line">yarn link</span><br><span class="line"></span><br><span class="line">// 然后在测试项目中使用</span><br><span class="line">yarn link &quot;git-deployer-webpack-plugin&quot;</span><br><span class="line"></span><br><span class="line">// 然后在测试项目运行编译命令</span><br><span class="line">yarn run lib</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-发布npm包" class="article-heading"><a href="#4-发布npm包" class="headerlink" title="4. 发布npm包"></a>4. 发布npm包<a class="article-anchor" href="#4-发布npm包" aria-hidden="true"></a></h4><p>发布npm包不在此赘述。发布后可在npm上查看 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.npmjs.com/package/git-deployer-webpack-plugin">git-deployer-webpack-plugin</a> 或在npm上搜索 <code>git-deployer-webpack-plugin</code>查看详情。</p>
+<h3 id="四、项目中使用plugin" class="article-heading"><a href="#四、项目中使用plugin" class="headerlink" title="四、项目中使用plugin"></a>四、项目中使用plugin<a class="article-anchor" href="#四、项目中使用plugin" aria-hidden="true"></a></h3><h4 id="1-创建编译入口文件" class="article-heading"><a href="#1-创建编译入口文件" class="headerlink" title="1. 创建编译入口文件"></a>1. 创建编译入口文件<a class="article-anchor" href="#1-创建编译入口文件" aria-hidden="true"></a></h4><p>为了和正常编译 <code>build</code> 命令区分，要创建一个新的编译入口文件并将需要暴漏的组件注册。</p>
+<p>根目录创建 <code>packages/index.js</code> 文件，在此文件内将需要暴漏的组件引入并注册。</p>
+<p><img src="/../../images/webpack/project_structure.png" alt="project_structure"></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// package/index.js</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">BarChart</span> <span class="keyword">from</span> <span class="string">&#x27;../src/components/BarChart&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">LineChart</span> <span class="keyword">from</span> <span class="string">&#x27;../src/components/LineChart&#x27;</span></span><br><span class="line"><span class="comment">// 组件集合，用于遍历</span></span><br><span class="line"><span class="keyword">const</span> components = [<span class="title class_">BarChart</span>, <span class="title class_">LineChart</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义 install 方法</span></span><br><span class="line"><span class="keyword">const</span> install = <span class="keyword">function</span> (<span class="params">Vue</span>) &#123;</span><br><span class="line">  <span class="keyword">if</span> (install.<span class="property">installed</span>) <span class="keyword">return</span></span><br><span class="line">  <span class="comment">// 遍历注册全局组件</span></span><br><span class="line">  components.<span class="title function_">map</span>(<span class="function"><span class="params">component</span> =&gt;</span> <span class="title class_">Vue</span>.<span class="title function_">component</span>(component.<span class="property">name</span>, component))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断是否是直接引入文件</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="variable language_">window</span> !== <span class="string">&#x27;undefined&#x27;</span> &amp;&amp; <span class="variable language_">window</span>.<span class="property">Vue</span>) &#123;</span><br><span class="line">  <span class="title function_">install</span>(<span class="variable language_">window</span>.<span class="property">Vue</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  install, <span class="comment">// 导出的对象必须具备一个 install 方法</span></span><br><span class="line">  ...components, <span class="comment">// 组件列表</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>是否在根目录创建取决于你的打包编译命令的入口文件路径。我这里这样做为了醒目区分。</p>
+<h4 id="2-vue项目命令更改" class="article-heading"><a href="#2-vue项目命令更改" class="headerlink" title="2. vue项目命令更改"></a>2. vue项目命令更改<a class="article-anchor" href="#2-vue项目命令更改" aria-hidden="true"></a></h4><blockquote>
+<p>@vue&#x2F;cli有3种构建目标，除了常用的应用构建，还有库构建和web components组件2种。具体见官方：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://cli.vuejs.org/zh/guide/build-targets.html">构建目标</a>。</p>
+</blockquote>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="attr">&quot;script&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;lib&quot;</span><span class="punctuation">:</span> <span class="string">&quot;vue-cli-service build --target lib --name ikun --dest lib packages/index.js&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>我这里使用了lib库构建，具体使用哪种构建目标应该结合你自己的业务。命令也是可以各自命名，如：<code>build:lib</code>, <code>deploy</code>等命令。</p>
+<h4 id="3-项目中使用" class="article-heading"><a href="#3-项目中使用" class="headerlink" title="3. 项目中使用"></a>3. 项目中使用<a class="article-anchor" href="#3-项目中使用" aria-hidden="true"></a></h4><p>安装依赖：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install git-deployer-webpack-plugin -D</span><br></pre></td></tr></table></figure>
+
+<p>webpack配置：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// vue.config.js</span></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">GitDeployerWebpackPlugin</span> = <span class="built_in">require</span>(<span class="string">&#x27;git-deployer-webpack-plugin&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// ...</span></span><br><span class="line">configureWebpack = &#123;</span><br><span class="line">    <span class="attr">plugins</span>: [</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">GitDeployerWebpackPlugin</span>(&#123;</span><br><span class="line">            <span class="attr">type</span>: <span class="string">&#x27;git&#x27;</span>,</span><br><span class="line">            <span class="attr">repo</span>: <span class="string">&#x27;/*your gitlab repo url*/&#x27;</span>, <span class="comment">// git url</span></span><br><span class="line">            <span class="attr">branch</span>: <span class="string">&#x27;master&#x27;</span>, <span class="comment">// 指定上传目标分支</span></span><br><span class="line">            <span class="attr">public_dir</span>: <span class="string">&#x27;lib&#x27;</span>, <span class="comment">// 指定本地需要上传的文件夹name</span></span><br><span class="line">        &#125;),</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// ...</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="4-运行编译命令" class="article-heading"><a href="#4-运行编译命令" class="headerlink" title="4. 运行编译命令"></a>4. 运行编译命令<a class="article-anchor" href="#4-运行编译命令" aria-hidden="true"></a></h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm run lib</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../../images/webpack/run_lib.png" alt="console"></p>
+<p>可以看到，在编译成功后会自动将代码拷贝到 <code>.deploy_git</code> 文件下，自动将编译包推送到制定git远程仓库。</p>
+<blockquote>
+<p>在运行库构建模式时可能会报错，这是@vue&#x2F;cli改写了webpack导致的，不影响代码推送。</p>
+</blockquote>
+<h4 id="5-查看git仓库验证" class="article-heading"><a href="#5-查看git仓库验证" class="headerlink" title="5. 查看git仓库验证"></a>5. 查看git仓库验证<a class="article-anchor" href="#5-查看git仓库验证" aria-hidden="true"></a></h4><p><img src="/../../images/webpack/lib_result.png" alt="gitlab"></p>
+<h3 id="五、总结" class="article-heading"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结<a class="article-anchor" href="#五、总结" aria-hidden="true"></a></h3><p>通过学习Webpack的编译阶段及其生命周期，我们了解到可以选择合适的阶段来满足自身业务需求，并将其应用于项目中。<br>本文实现了一个Webpack插件，通过其可将指定文件上传至Git远程仓库，以满足将项目中部分组件抽离为公用组件库，将其编译包上传至新的Git仓库，并流水线发布为公用组件库的需求。<br>通过之前的需求开发，你也明白了，除了满足项目需求之外，该插件在其他需要将文件上传Git的场景中同样适用。</p>
+<h3 id="资料参考" class="article-heading"><a href="#资料参考" class="headerlink" title="资料参考"></a>资料参考<a class="article-anchor" href="#资料参考" aria-hidden="true"></a></h3><ul>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://webpack.docschina.org/">webpack中文</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://cli.vuejs.org/zh/guide/build-targets.html">Vue Cli——构建目标</a></li>
+</ul>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2024-10-23T03:38:37.830Z" itemprop="dateModified">上次更新：2024-10-23</time>
+                <a href="index.html" class="article-footer-next" title="概述"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E9%9C%80%E6%B1%82%E8%83%8C%E6%99%AF"><span class="toc-text">一、需求背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81webpack%E6%8F%92%E4%BB%B6%E5%BC%80%E5%8F%91%E4%BB%8B%E7%BB%8D"><span class="toc-text">二、webpack插件开发介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3"><span class="toc-text">1. 官方文档</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E9%87%8D%E8%A6%81%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">2. 重要知识点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="toc-text">3. 需求分析</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E9%9C%80%E6%B1%82%E5%AE%9E%E7%8E%B0"><span class="toc-text">三、需求实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%84"><span class="toc-text">1. 基础架构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%B8%9A%E5%8A%A1%E9%80%BB%E8%BE%91%E7%BC%96%E5%86%99"><span class="toc-text">2. 业务逻辑编写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E9%AA%8C%E8%AF%81"><span class="toc-text">3. 验证</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%8F%91%E5%B8%83npm%E5%8C%85"><span class="toc-text">4. 发布npm包</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8plugin"><span class="toc-text">四、项目中使用plugin</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E7%BC%96%E8%AF%91%E5%85%A5%E5%8F%A3%E6%96%87%E4%BB%B6"><span class="toc-text">1. 创建编译入口文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-vue%E9%A1%B9%E7%9B%AE%E5%91%BD%E4%BB%A4%E6%9B%B4%E6%94%B9"><span class="toc-text">2. vue项目命令更改</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8"><span class="toc-text">3. 项目中使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E8%BF%90%E8%A1%8C%E7%BC%96%E8%AF%91%E5%91%BD%E4%BB%A4"><span class="toc-text">4. 运行编译命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E6%9F%A5%E7%9C%8Bgit%E4%BB%93%E5%BA%93%E9%AA%8C%E8%AF%81"><span class="toc-text">5. 查看git仓库验证</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%80%BB%E7%BB%93"><span class="toc-text">五、总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%84%E6%96%99%E5%8F%82%E8%80%83"><span class="toc-text">资料参考</span></a></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">开始使用</strong><a href="/util/index.html" class="sidebar-link">概述</a><strong class="sidebar-title">Webpack</strong><a href="/util/webpack/plugin.html" class="sidebar-link current">webpack plugin开发实践</a><strong class="sidebar-title">YApi</strong><a href="/util/yapi/guide.html" class="sidebar-link">YApi文档</a><strong class="sidebar-title">Sentry</strong><a href="/util/sentry/guide.html" class="sidebar-link">Sentry指南</a>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2024 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuo.jiangtao@h3c.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard/" class="mobile-nav-link">开发规范</a><a href="/design/" class="mobile-nav-link">开发指南</a><a href="/ecology/" class="mobile-nav-link">前沿生态</a><a href="/util/" class="mobile-nav-link">开发工具</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">开始使用</strong><a href="/util/index.html" class="mobile-nav-link">概述</a><strong class="mobile-nav-title">Webpack</strong><a href="/util/webpack/plugin.html" class="mobile-nav-link current">webpack plugin开发实践</a><strong class="mobile-nav-title">YApi</strong><a href="/util/yapi/guide.html" class="mobile-nav-link">YApi文档</a><strong class="mobile-nav-title">Sentry</strong><a href="/util/sentry/guide.html" class="mobile-nav-link">Sentry指南</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></span>
+    <select id="mobile-lang-select" data-canonical="">
+      
+        <option value="zh-cn" selected>简体中文</option>
+      
+        <option value="en">English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>

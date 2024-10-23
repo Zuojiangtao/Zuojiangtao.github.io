@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>注释规范 | 个人博客</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://zuojiangtao.github.io/standard/css/note.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="zh-cn" href="https://zuojiangtao.github.io/standard/css/note">
+    
+      <link rel="alternative" hreflang="en" href="https://zuojiangtao.github.io/en/standard/css/note">
+    
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-w/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard/" class="main-nav-link">开发规范</a><a href="/design/" class="main-nav-link">开发指南</a><a href="/ecology/" class="main-nav-link">前沿生态</a><a href="/util/" class="main-nav-link">开发工具</a>
+    </nav>
+    <div id="github-icon-link">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="icon" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">注释规范</h1>
+                <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Zuojiangtao/Zuojiangtao.github.io/tree/master/source/standard/css/note.md" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <blockquote>
+<p>Comments begin with the characters <code>/*</code> and end with the characters <code>*/</code>. They may occur anywhere outside other tokens, and their contents have no influence on the rendering. Comments may not be nested.</p>
+</blockquote>
+<ul>
+<li>注释以字符 <code>/*</code> 开始，以字符 <code>*/</code> 结束</li>
+<li>注释不能嵌套</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*Comment Text*/</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="团队约定" class="article-heading"><a href="#团队约定" class="headerlink" title="团队约定"></a>团队约定<a class="article-anchor" href="#团队约定" aria-hidden="true"></a></h3><h4 id="单行注释" class="article-heading"><a href="#单行注释" class="headerlink" title="单行注释"></a>单行注释<a class="article-anchor" href="#单行注释" aria-hidden="true"></a></h4><p>注释内容第一个字符和最后一个字符都是一个空格字符，单独占一行，行与行之间相隔一行</p>
+<p><em>推荐：</em></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* Comment Text */</span></span><br><span class="line"><span class="selector-class">.geely</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/* Comment Text */</span></span><br><span class="line"><span class="selector-class">.geely</span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><em>不推荐：</em></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*Comment Text*/</span></span><br><span class="line"><span class="selector-class">.geely</span>&#123;</span><br><span class="line">	<span class="attribute">display</span>: block;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.geely</span>&#123;</span><br><span class="line">	<span class="attribute">display</span>: block;<span class="comment">/*Comment Text*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="模块注释" class="article-heading"><a href="#模块注释" class="headerlink" title="模块注释"></a>模块注释<a class="article-anchor" href="#模块注释" aria-hidden="true"></a></h4><p>注释内容第一个字符和最后一个字符都是一个空格字符，<code>/*</code> 与 模块信息描述占一行，多个横线分隔符<code>-</code>与<code>*/</code>占一行，行与行之间相隔两行</p>
+<p><em>推荐：</em></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* Module A</span></span><br><span class="line"><span class="comment">---------------------------------------------------------------- */</span></span><br><span class="line"><span class="selector-class">.mod_a</span> &#123;&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/* Module B</span></span><br><span class="line"><span class="comment">---------------------------------------------------------------- */</span></span><br><span class="line"><span class="selector-class">.mod_b</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><em>不推荐：</em></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="comment">/* Module A ---------------------------------------------------- */</span></span><br><span class="line"><span class="selector-class">.mod_a</span> &#123;&#125;</span><br><span class="line"><span class="comment">/* Module B ---------------------------------------------------- */</span></span><br><span class="line"><span class="selector-class">.mod_b</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="文件信息注释" class="article-heading"><a href="#文件信息注释" class="headerlink" title="文件信息注释"></a>文件信息注释<a class="article-anchor" href="#文件信息注释" aria-hidden="true"></a></h4><p>在样式文件编码声明 <code>@charset</code> 语句下面注明页面名称、作者、创建日期等信息</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@charset</span> <span class="string">&quot;UTF-8&quot;</span>;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @desc File Info</span></span><br><span class="line"><span class="comment"> * @author Author Name</span></span><br><span class="line"><span class="comment"> * @date 2015-10-10</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+<p>更多关于CSS注释：<a target="_blank" rel="noopener external nofollow noreferrer" href="http://www.w3.org/TR/2011/REC-CSS2-20110607/syndata.html#comments">#Comments</a></p>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2024-10-23T03:38:37.813Z" itemprop="dateModified">上次更新：2024-10-23</time>
+                <a href="index.html" class="article-footer-next" title="概述"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%A2%E9%98%9F%E7%BA%A6%E5%AE%9A"><span class="toc-text">团队约定</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%95%E8%A1%8C%E6%B3%A8%E9%87%8A"><span class="toc-text">单行注释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E6%B3%A8%E9%87%8A"><span class="toc-text">模块注释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E4%BF%A1%E6%81%AF%E6%B3%A8%E9%87%8A"><span class="toc-text">文件信息注释</span></a></li></ol></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">开始使用</strong><a href="/standard/index.html" class="sidebar-link">概述</a><strong class="sidebar-title">HTML 规范</strong><a href="/standard/html/code.html" class="sidebar-link">代码规范</a><a href="/standard/html/note.html" class="sidebar-link">注释规范</a><a href="/standard/html/webapp.html" class="sidebar-link">WebApp Meta</a><a href="/standard/html/template.html" class="sidebar-link">文件模版</a><strong class="sidebar-title">CSS 规范</strong><a href="/standard/css/code.html" class="sidebar-link">代码规范</a><a href="/standard/css/note.html" class="sidebar-link current">注释规范</a><a href="/standard/css/less.html" class="sidebar-link">LESS 规范</a><a href="/standard/css/reset.html" class="sidebar-link">重置样式</a><a href="/standard/css/query.html" class="sidebar-link">媒体查询</a><a href="/standard/css/webkit.html" class="sidebar-link">浏览器兼容性</a><strong class="sidebar-title">javascript 规范</strong><a href="/standard/js/code.html" class="sidebar-link">代码规范</a><a href="/standard/js/language.html" class="sidebar-link">语法规范</a><strong class="sidebar-title">图片规范</strong><a href="/standard/image/format.html" class="sidebar-link">图片格式</a><a href="/standard/image/size.html" class="sidebar-link">图片大小</a><a href="/standard/image/quality.html" class="sidebar-link">图片质量</a><a href="/standard/image/import.html" class="sidebar-link">图片引入</a><strong class="sidebar-title">命名规范</strong><a href="/standard/name/dir.html" class="sidebar-link">目录命名</a><a href="/standard/name/image.html" class="sidebar-link">图片命名</a><a href="/standard/name/htmlcss.html" class="sidebar-link">HTML/CSS 命名</a><a href="/standard/name/classname.html" class="sidebar-link">ClassName 命名</a><strong class="sidebar-title">前端开发公约</strong><a href="/standard/project/vue.html" class="sidebar-link">vue开发规范</a><a href="/standard/project/react.html" class="sidebar-link">react开发规范</a><a href="/standard/project/structure.html" class="sidebar-link">代码结构</a><a href="/standard/project/rule.html" class="sidebar-link">项目开发约定</a><a href="/standard/project/ci_cd.html" class="sidebar-link">持续集成</a><a href="/standard/project/template.html" class="sidebar-link">模板工程</a>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2024 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuo.jiangtao@h3c.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard/" class="mobile-nav-link">开发规范</a><a href="/design/" class="mobile-nav-link">开发指南</a><a href="/ecology/" class="mobile-nav-link">前沿生态</a><a href="/util/" class="mobile-nav-link">开发工具</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">开始使用</strong><a href="/standard/index.html" class="mobile-nav-link">概述</a><strong class="mobile-nav-title">HTML 规范</strong><a href="/standard/html/code.html" class="mobile-nav-link">代码规范</a><a href="/standard/html/note.html" class="mobile-nav-link">注释规范</a><a href="/standard/html/webapp.html" class="mobile-nav-link">WebApp Meta</a><a href="/standard/html/template.html" class="mobile-nav-link">文件模版</a><strong class="mobile-nav-title">CSS 规范</strong><a href="/standard/css/code.html" class="mobile-nav-link">代码规范</a><a href="/standard/css/note.html" class="mobile-nav-link current">注释规范</a><a href="/standard/css/less.html" class="mobile-nav-link">LESS 规范</a><a href="/standard/css/reset.html" class="mobile-nav-link">重置样式</a><a href="/standard/css/query.html" class="mobile-nav-link">媒体查询</a><a href="/standard/css/webkit.html" class="mobile-nav-link">浏览器兼容性</a><strong class="mobile-nav-title">javascript 规范</strong><a href="/standard/js/code.html" class="mobile-nav-link">代码规范</a><a href="/standard/js/language.html" class="mobile-nav-link">语法规范</a><strong class="mobile-nav-title">图片规范</strong><a href="/standard/image/format.html" class="mobile-nav-link">图片格式</a><a href="/standard/image/size.html" class="mobile-nav-link">图片大小</a><a href="/standard/image/quality.html" class="mobile-nav-link">图片质量</a><a href="/standard/image/import.html" class="mobile-nav-link">图片引入</a><strong class="mobile-nav-title">命名规范</strong><a href="/standard/name/dir.html" class="mobile-nav-link">目录命名</a><a href="/standard/name/image.html" class="mobile-nav-link">图片命名</a><a href="/standard/name/htmlcss.html" class="mobile-nav-link">HTML/CSS 命名</a><a href="/standard/name/classname.html" class="mobile-nav-link">ClassName 命名</a><strong class="mobile-nav-title">前端开发公约</strong><a href="/standard/project/vue.html" class="mobile-nav-link">vue开发规范</a><a href="/standard/project/react.html" class="mobile-nav-link">react开发规范</a><a href="/standard/project/structure.html" class="mobile-nav-link">代码结构</a><a href="/standard/project/rule.html" class="mobile-nav-link">项目开发约定</a><a href="/standard/project/ci_cd.html" class="mobile-nav-link">持续集成</a><a href="/standard/project/template.html" class="mobile-nav-link">模板工程</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></span>
+    <select id="mobile-lang-select" data-canonical="">
+      
+        <option value="zh-cn" selected>简体中文</option>
+      
+        <option value="en">English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>

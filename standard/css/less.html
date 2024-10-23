@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>LESS规范 | 个人博客</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://zuojiangtao.github.io/standard/css/less.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="zh-cn" href="https://zuojiangtao.github.io/standard/css/less">
+    
+      <link rel="alternative" hreflang="en" href="https://zuojiangtao.github.io/en/standard/css/less">
+    
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-w/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard/" class="main-nav-link">开发规范</a><a href="/design/" class="main-nav-link">开发指南</a><a href="/ecology/" class="main-nav-link">前沿生态</a><a href="/util/" class="main-nav-link">开发工具</a>
+    </nav>
+    <div id="github-icon-link">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="icon" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">LESS规范</h1>
+                <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Zuojiangtao/Zuojiangtao.github.io/tree/master/source/standard/css/less.md" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <h3 id="LESS" class="article-heading"><a href="#LESS" class="headerlink" title="LESS"></a>LESS<a class="article-anchor" href="#LESS" aria-hidden="true"></a></h3><p>Less 是一门 CSS 预处理语言，它扩展了 CSS 语言，增加了变量、Mixin、函数等特性，使 CSS 更易维护和扩展。<br>Less 可以运行在 Node 或浏览器端。</p>
+<p>更详细的用法请阅读 LESS 官网文档：<a target="_blank" rel="noopener external nofollow noreferrer" href="http://lesscss.cn/">DOCUMENTATION</a></p>
+<h3 id="团队约定" class="article-heading"><a href="#团队约定" class="headerlink" title="团队约定"></a>团队约定<a class="article-anchor" href="#团队约定" aria-hidden="true"></a></h3><p>虽然CSS预处理语言有LESS&#x2F;SASS&#x2F;STYLUS等等，但考虑到 Ant Design Vue官方组件使用的是Less, 为保持代码一致性，请在项目只使用Less进行样式代码编写</p>
+<h3 id="编码" class="article-heading"><a href="#编码" class="headerlink" title="编码"></a>编码<a class="article-anchor" href="#编码" aria-hidden="true"></a></h3><p>使用UTF-8编码。不得（MUST NOT）包含BOM信息。</p>
+<h3 id="代码组织" class="article-heading"><a href="#代码组织" class="headerlink" title="代码组织"></a>代码组织<a class="article-anchor" href="#代码组织" aria-hidden="true"></a></h3><p>代码必须（MUST）按如下形式按顺序组织：</p>
+<p>@import<br>变量声明<br>样式声明</p>
+<figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@import</span><span class="string">&quot;est/all.less&quot;</span>;</span><br><span class="line"><span class="variable">@default-text-color:</span><span class="number">#333</span>;</span><br><span class="line"><span class="selector-class">.page</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">960px</span>;</span><br><span class="line">    <span class="attribute">margin</span>:<span class="number">0</span>auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>@import</code> 语句<br><code>@import</code> 语句引用的文件必须（MUST）写在一对引号内，<code>.less</code> 后缀不得（MUST NOT）省略（与引入 CSS 文件时的路径格式一致）。引号使用 <code>&#39;</code> 和 <code>&quot;</code> 均可，但在同一项目内必须（MUST）统一。</p>
+<p>正例：</p>
+<figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@import</span><span class="string">&quot;est/all.less&quot;</span>;</span><br><span class="line"><span class="keyword">@import</span><span class="string">&quot;my/mixins.less&quot;</span>;</span><br></pre></td></tr></table></figure>
+<p>反例：</p>
+<figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="keyword">@import</span><span class="string">&#x27;est/all&#x27;</span>;</span><br><span class="line"><span class="keyword">@import</span><span class="string">&quot;my/mixins.less&quot;</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="空格" class="article-heading"><a href="#空格" class="headerlink" title="空格"></a>空格<a class="article-anchor" href="#空格" aria-hidden="true"></a></h3><h4 id="属性、变量" class="article-heading"><a href="#属性、变量" class="headerlink" title="属性、变量"></a>属性、变量<a class="article-anchor" href="#属性、变量" aria-hidden="true"></a></h4><p>选择器和 <code>&#123;</code> 之间必须（MUST）保留一个空格。</p>
+<p>属性名后的冒号（<code>:</code>）与属性值之间必须（MUST）保留一个空格，冒号前不得（MUST NOT）保留空格。</p>
+<p>定义变量时冒号（<code>:</code>）与变量值之间必须（MUST）保留一个空格，冒号前不得（MUST NOT）保留空格。</p>
+<p>在用逗号（<code>,</code>）分隔的列表（Less 函数参数列表、以 , 分隔的属性值等）中，逗号后必须（MUST）保留一个空格，逗号前不得（MUST NOT）保留空格。</p>
+<p>正例：</p>
+<figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line"><span class="variable">@w:</span><span class="number">50px</span>;</span><br><span class="line"><span class="variable">@h:</span><span class="number">30px</span>;</span><br><span class="line">    <span class="attribute">width</span>:<span class="variable">@w</span>;</span><br><span class="line">    <span class="attribute">height</span>:<span class="variable">@h</span>;</span><br><span class="line">    <span class="attribute">transition</span>: width <span class="number">1s</span>, height <span class="number">3s</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>反例：</p>
+<figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span>&#123;</span><br><span class="line"><span class="variable">@w:</span><span class="number">50px</span>;</span><br><span class="line"><span class="variable">@h:</span><span class="number">30px</span>;</span><br><span class="line">    <span class="attribute">width</span>:<span class="variable">@w</span>;</span><br><span class="line">    <span class="attribute">height </span>:<span class="variable">@h</span>;</span><br><span class="line">    <span class="attribute">color</span>: <span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>,.<span class="number">3</span>);</span><br><span class="line">    <span class="attribute">transition</span>: width <span class="number">1s</span>,height <span class="number">3s</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="运算" class="article-heading"><a href="#运算" class="headerlink" title="运算"></a>运算<a class="article-anchor" href="#运算" aria-hidden="true"></a></h4><p><code>+</code> &#x2F; <code>-</code> &#x2F; <code>*</code> &#x2F; &#x2F; 四个运算符两侧必须（MUST）保留一个空格。<code>+</code> &#x2F; <code>-</code> 两侧的操作数必须（MUST）有相同的单位，如果其中一个是变量，另一个数值必须（MUST）书写单位。</p>
+<p>正例：</p>
+<figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="variable">@a:</span><span class="number">200px</span>;</span><br><span class="line"><span class="variable">@b:</span>(<span class="variable">@a</span>+<span class="number">100px</span>)*<span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+<p>反例：</p>
+<figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="variable">@a:</span><span class="number">200px</span>;</span><br><span class="line"><span class="variable">@b:</span>(<span class="variable">@a</span>+<span class="number">100</span>)*<span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+<p>混入（Mixin）<br>Mixin 和后面的空格之间不得（MUST NOT）包含空格。在给 mixin 传递参数时，在参数分隔符（, &#x2F; ;）后必须（MUST）保留一个空格：</p>
+<p>正例：</p>
+<figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line"><span class="selector-class">.size</span>(<span class="number">30px</span>,<span class="number">20px</span>);</span><br><span class="line"><span class="selector-class">.clearfix</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>反例：</p>
+<figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line"><span class="selector-class">.size</span>(<span class="number">30px</span>,<span class="number">20px</span>);</span><br><span class="line"><span class="selector-class">.clearfix</span> ();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="选择器" class="article-heading"><a href="#选择器" class="headerlink" title="选择器"></a>选择器<a class="article-anchor" href="#选择器" aria-hidden="true"></a></h4><p>当多个选择器共享一个声明块时，每个选择器声明必须（MUST）独占一行。</p>
+<p>正例：</p>
+<figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">h1</span>,</span><br><span class="line"><span class="selector-tag">h2</span>,</span><br><span class="line"><span class="selector-tag">h3</span> &#123;</span><br><span class="line">    <span class="attribute">font-weight</span>:<span class="number">700</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>反例：</p>
+<figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">h1</span>, <span class="selector-tag">h2</span>, <span class="selector-tag">h3</span> &#123;</span><br><span class="line">    <span class="attribute">font-weight</span>:<span class="number">700</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Class 命名不得以样式信息进行描述，如 .float-right、text-red 等。</p>
+<h3 id="省略与缩写" class="article-heading"><a href="#省略与缩写" class="headerlink" title="省略与缩写"></a>省略与缩写<a class="article-anchor" href="#省略与缩写" aria-hidden="true"></a></h3><h4 id="缩写" class="article-heading"><a href="#缩写" class="headerlink" title="缩写"></a>缩写<a class="article-anchor" href="#缩写" aria-hidden="true"></a></h4><p>多个属性定义可以使用缩写时， 尽量（SHOULD）使用缩写。缩写更清晰字节数更少。常见缩写有 <code>margin</code>、<code>border</code>、<code>padding</code>、<code>font</code>、<code>list-style</code> 等。在书写时必须（MUST）考量缩写展开后是否有不需要覆盖的属性内容被修改，从而带来副作用。</p>
+<h4 id="数值" class="article-heading"><a href="#数值" class="headerlink" title="数值"></a>数值<a class="article-anchor" href="#数值" aria-hidden="true"></a></h4><p>对于处于 <code>(0, 1)</code> 范围内的数值，小数点前的 <code>0</code>可以（MAY）省略，同一项目中必须（MUST）保持一致。</p>
+<p>正例：</p>
+<figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="attribute">transition-duration</span>:.<span class="number">5s</span>,.<span class="number">7s</span>;</span><br></pre></td></tr></table></figure>
+<p>反例：</p>
+<figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="attribute">transition-duration</span>:<span class="number">0.5s</span>,.<span class="number">7s</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="0-值" class="article-heading"><a href="#0-值" class="headerlink" title="0 值"></a>0 值<a class="article-anchor" href="#0-值" aria-hidden="true"></a></h4><p>当属性值为 0 时，必须（MUST）省略可省的单位（长度单位如 <code>px</code>、<code>em</code>，不包括时间、角度等如 <code>s</code>、<code>deg</code>）。</p>
+<p>正例：</p>
+<figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="attribute">margin-top</span>:<span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+<p>反例：</p>
+<figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="attribute">margin-top</span>:<span class="number">0px</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="颜色" class="article-heading"><a href="#颜色" class="headerlink" title="颜色"></a>颜色<a class="article-anchor" href="#颜色" aria-hidden="true"></a></h4><p>颜色定义必须（MUST）使用 <code>#rrggbb</code> 格式定义，并在可能时尽量（SHOULD）缩写为 <code>#rgb</code> 形式，且避免直接使用颜色名称与 <code>rgb()</code> 表达式。</p>
+<p>正例：</p>
+<figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="attribute">border-color</span>:<span class="number">#f00</span>;</span><br><span class="line"><span class="attribute">color</span>:<span class="number">#fefefe</span>;</span><br></pre></td></tr></table></figure>
+<p>反例：</p>
+<figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="attribute">border-color</span>: red;</span><br><span class="line"><span class="attribute">color</span>: <span class="built_in">rgb</span>(<span class="number">254</span>,<span class="number">254</span>,<span class="number">254</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="私有属性前缀" class="article-heading"><a href="#私有属性前缀" class="headerlink" title="私有属性前缀"></a>私有属性前缀<a class="article-anchor" href="#私有属性前缀" aria-hidden="true"></a></h4><p>同一属性有不同私有前缀的，尽量（SHOULD）按前缀长度降序书写，标准形式必须（MUST）写在最后。且这一组属性以第一条的位置为准，尽量（SHOULD）按冒号的位置对齐。</p>
+<p>正例：</p>
+<figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line">-webkit-<span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">30deg</span>);</span><br><span class="line">-moz-<span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">30deg</span>);</span><br><span class="line">-ms-<span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">30deg</span>);</span><br><span class="line">-o-<span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">30deg</span>);</span><br><span class="line">            <span class="attribute">transform</span>: <span class="built_in">rotate</span>(<span class="number">30deg</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="其他" class="article-heading"><a href="#其他" class="headerlink" title="其他"></a>其他<a class="article-anchor" href="#其他" aria-hidden="true"></a></h4><p>可以（MAY）在无其他更好解决办法时使用 CSS hack，并且尽量（SHOULD）使用简单的属性名 hack 如 <code>_zoom</code>、<code>*margin</code>。</p>
+<p>可以（MAY）但谨慎使用 IE 滤镜。需要注意的是，IE 滤镜中图片的 URL 是以页面路径作为相对目录，而不是 CSS 文件路径。</p>
+<p>嵌套和缩进<br>必须（MUST）采用 4 个空格为一次缩进， 不得（MUST NOT）采用 TAB 作为缩进。</p>
+<p>嵌套的声明块前必须（MUST）增加一次缩进，有多个声明块共享命名空间时尽量（SHOULD）嵌套书写，避免选择器的重复。</p>
+<p>但是需注意的是，尽量（SHOULD）仅在必须区分上下文时才引入嵌套关系（在嵌套书写前先考虑如果不能嵌套，会如何书写选择器）。</p>
+<p>正例：</p>
+<figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.main</span> &#123;</span><br><span class="line"><span class="selector-class">.title</span> &#123;</span><br><span class="line">        <span class="attribute">font-weight</span>:<span class="number">700</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.content</span> &#123;</span><br><span class="line">        <span class="attribute">line-height</span>:<span class="number">1.5</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.warning</span> &#123;</span><br><span class="line">        <span class="attribute">font-weight</span>:<span class="number">700</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-id">#comment</span><span class="selector-pseudo">:invalid</span> &#123;</span><br><span class="line">    <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>反例：</p>
+<figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.main</span> <span class="selector-class">.title</span> &#123;</span><br><span class="line">  <span class="attribute">font-weight</span>:<span class="number">700</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.main</span> <span class="selector-class">.content</span> &#123;</span><br><span class="line">  <span class="attribute">line-height</span>:<span class="number">1.5</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.main</span> &#123;</span><br><span class="line"><span class="selector-class">.warning</span> &#123;</span><br><span class="line">  <span class="attribute">font-weight</span>:<span class="number">700</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.comment-form</span> &#123;</span><br><span class="line"><span class="selector-id">#comment</span><span class="selector-pseudo">:invalid</span> &#123;</span><br><span class="line">      <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="变量" class="article-heading"><a href="#变量" class="headerlink" title="变量"></a>变量<a class="article-anchor" href="#变量" aria-hidden="true"></a></h3><p>Less 的变量值总是以同一作用域下最后一个同名变量为准，务必注意后面的设定会覆盖所有之前的设定。</p>
+<p>变量命名必须（MUST）采用 @foo-bar 形式，不得（MUST NOT）使用 @fooBar 形式。</p>
+<p>正例：</p>
+<figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="variable">@sidebar-width:</span><span class="number">200px</span>;</span><br><span class="line"><span class="variable">@width:</span><span class="number">800px</span>;</span><br></pre></td></tr></table></figure>
+<p>反例：</p>
+<figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="variable">@sidebarWidth:</span><span class="number">200px</span>;</span><br><span class="line"><span class="variable">@width:</span><span class="number">800px</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="继承" class="article-heading"><a href="#继承" class="headerlink" title="继承"></a>继承<a class="article-anchor" href="#继承" aria-hidden="true"></a></h3><p>使用继承时，如果在声明块内书写 :extend 语句，必须（MUST）写在开头：</p>
+<p>正例：</p>
+<figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.sub</span>&#123;</span><br><span class="line"><span class="selector-tag">&amp;</span>:<span class="selector-tag">extend</span>(.mod all);</span><br><span class="line">    <span class="attribute">color</span>: red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>反例：</p>
+<figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.sub</span>&#123;</span><br><span class="line">    <span class="attribute">color</span>: red;</span><br><span class="line"><span class="selector-tag">&amp;</span>:<span class="selector-tag">extend</span>(.mod all);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="混入（Mixin）" class="article-heading"><a href="#混入（Mixin）" class="headerlink" title="混入（Mixin）"></a>混入（Mixin）<a class="article-anchor" href="#混入（Mixin）" aria-hidden="true"></a></h3><p>在定义 mixin 时，如果 mixin 名称不是一个需要使用的 className，必须（MUST）加上括号，否则即使不被调用也会输出到 CSS 中。</p>
+<p>正例：</p>
+<figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.big-text</span>()&#123;</span><br><span class="line">    <span class="attribute">font-size</span>:<span class="number">2em</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">h3</span> &#123;</span><br><span class="line"><span class="selector-class">.big-text</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>反例：</p>
+<figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.big-text</span> &#123;</span><br><span class="line">    <span class="attribute">font-size</span>:<span class="number">2em</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">h3</span> &#123;</span><br><span class="line"><span class="selector-class">.big-text</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果混入的是本身不输出内容的 mixin，必须（MUST）在 mixin 后添加括号（即使不传参数），以区分这是否是一个 className（修改以后是否会影响 HTML）。</p>
+<p>正例：</p>
+<figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line"><span class="selector-class">.clearfix</span>();</span><br><span class="line"><span class="selector-class">.size</span>(<span class="number">20px</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>反例：</p>
+<figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line"><span class="selector-class">.clearfix</span>;</span><br><span class="line"><span class="selector-class">.size</span> (<span class="number">20px</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Mixin 的参数分隔符使用 , 和 ; 均可，但在同一项目中必须（MUST）保持统一。</p>
+<h3 id="命名空间" class="article-heading"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间<a class="article-anchor" href="#命名空间" aria-hidden="true"></a></h3><p>变量和 mixin 在命名时必须（MUST）遵循如下原则：</p>
+<ul>
+<li>一个项目只能引入一个无命名前缀的基础样式库（如 est）</li>
+<li>业务代码和其他被引入的样式代码中，变量和 mixin 必须有项目或库的前缀</li>
+</ul>
+<h3 id="字符串" class="article-heading"><a href="#字符串" class="headerlink" title="字符串"></a>字符串<a class="article-anchor" href="#字符串" aria-hidden="true"></a></h3><p>在进行字符串转义时，使用 <code>~&quot;&quot;</code> 表达式与 <code>e()</code> 函数均可，但在同一项目中必须（MUST）保持一致。</p>
+<p>字符串两侧的引号必须（MUST）使用 <code>&quot;</code>。</p>
+<h3 id="JS-表达式" class="article-heading"><a href="#JS-表达式" class="headerlink" title="JS 表达式"></a>JS 表达式<a class="article-anchor" href="#JS-表达式" aria-hidden="true"></a></h3><p>可以（MAY）使用 JS 表达式（<code>~`` </code>）生成属性值或变量，其中包含的字符串两侧的引号尽量（SHOULD）使用单引号（<code>&#39;</code>）。</p>
+<h3 id="注释" class="article-heading"><a href="#注释" class="headerlink" title="注释"></a>注释<a class="article-anchor" href="#注释" aria-hidden="true"></a></h3><p>单行注释尽量（SHOULD）使用 <code>//</code> 方式。</p>
+<figure class="highlight less"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Hide everything</span></span><br><span class="line">*&#123;</span><br><span class="line">    <span class="attribute">display</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2024-10-23T03:38:37.813Z" itemprop="dateModified">上次更新：2024-10-23</time>
+                <a href="index.html" class="article-footer-next" title="概述"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#LESS"><span class="toc-text">LESS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%A2%E9%98%9F%E7%BA%A6%E5%AE%9A"><span class="toc-text">团队约定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%96%E7%A0%81"><span class="toc-text">编码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E7%BB%84%E7%BB%87"><span class="toc-text">代码组织</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E6%A0%BC"><span class="toc-text">空格</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B1%9E%E6%80%A7%E3%80%81%E5%8F%98%E9%87%8F"><span class="toc-text">属性、变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%90%E7%AE%97"><span class="toc-text">运算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-text">选择器</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%81%E7%95%A5%E4%B8%8E%E7%BC%A9%E5%86%99"><span class="toc-text">省略与缩写</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%A9%E5%86%99"><span class="toc-text">缩写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E5%80%BC"><span class="toc-text">数值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#0-%E5%80%BC"><span class="toc-text">0 值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A2%9C%E8%89%B2"><span class="toc-text">颜色</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A7%81%E6%9C%89%E5%B1%9E%E6%80%A7%E5%89%8D%E7%BC%80"><span class="toc-text">私有属性前缀</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-text">其他</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%98%E9%87%8F"><span class="toc-text">变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF"><span class="toc-text">继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%B7%E5%85%A5%EF%BC%88Mixin%EF%BC%89"><span class="toc-text">混入（Mixin）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4"><span class="toc-text">命名空间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">字符串</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JS-%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-text">JS 表达式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E9%87%8A"><span class="toc-text">注释</span></a></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">开始使用</strong><a href="/standard/index.html" class="sidebar-link">概述</a><strong class="sidebar-title">HTML 规范</strong><a href="/standard/html/code.html" class="sidebar-link">代码规范</a><a href="/standard/html/note.html" class="sidebar-link">注释规范</a><a href="/standard/html/webapp.html" class="sidebar-link">WebApp Meta</a><a href="/standard/html/template.html" class="sidebar-link">文件模版</a><strong class="sidebar-title">CSS 规范</strong><a href="/standard/css/code.html" class="sidebar-link">代码规范</a><a href="/standard/css/note.html" class="sidebar-link">注释规范</a><a href="/standard/css/less.html" class="sidebar-link current">LESS 规范</a><a href="/standard/css/reset.html" class="sidebar-link">重置样式</a><a href="/standard/css/query.html" class="sidebar-link">媒体查询</a><a href="/standard/css/webkit.html" class="sidebar-link">浏览器兼容性</a><strong class="sidebar-title">javascript 规范</strong><a href="/standard/js/code.html" class="sidebar-link">代码规范</a><a href="/standard/js/language.html" class="sidebar-link">语法规范</a><strong class="sidebar-title">图片规范</strong><a href="/standard/image/format.html" class="sidebar-link">图片格式</a><a href="/standard/image/size.html" class="sidebar-link">图片大小</a><a href="/standard/image/quality.html" class="sidebar-link">图片质量</a><a href="/standard/image/import.html" class="sidebar-link">图片引入</a><strong class="sidebar-title">命名规范</strong><a href="/standard/name/dir.html" class="sidebar-link">目录命名</a><a href="/standard/name/image.html" class="sidebar-link">图片命名</a><a href="/standard/name/htmlcss.html" class="sidebar-link">HTML/CSS 命名</a><a href="/standard/name/classname.html" class="sidebar-link">ClassName 命名</a><strong class="sidebar-title">前端开发公约</strong><a href="/standard/project/vue.html" class="sidebar-link">vue开发规范</a><a href="/standard/project/react.html" class="sidebar-link">react开发规范</a><a href="/standard/project/structure.html" class="sidebar-link">代码结构</a><a href="/standard/project/rule.html" class="sidebar-link">项目开发约定</a><a href="/standard/project/ci_cd.html" class="sidebar-link">持续集成</a><a href="/standard/project/template.html" class="sidebar-link">模板工程</a>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2024 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuo.jiangtao@h3c.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard/" class="mobile-nav-link">开发规范</a><a href="/design/" class="mobile-nav-link">开发指南</a><a href="/ecology/" class="mobile-nav-link">前沿生态</a><a href="/util/" class="mobile-nav-link">开发工具</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">开始使用</strong><a href="/standard/index.html" class="mobile-nav-link">概述</a><strong class="mobile-nav-title">HTML 规范</strong><a href="/standard/html/code.html" class="mobile-nav-link">代码规范</a><a href="/standard/html/note.html" class="mobile-nav-link">注释规范</a><a href="/standard/html/webapp.html" class="mobile-nav-link">WebApp Meta</a><a href="/standard/html/template.html" class="mobile-nav-link">文件模版</a><strong class="mobile-nav-title">CSS 规范</strong><a href="/standard/css/code.html" class="mobile-nav-link">代码规范</a><a href="/standard/css/note.html" class="mobile-nav-link">注释规范</a><a href="/standard/css/less.html" class="mobile-nav-link current">LESS 规范</a><a href="/standard/css/reset.html" class="mobile-nav-link">重置样式</a><a href="/standard/css/query.html" class="mobile-nav-link">媒体查询</a><a href="/standard/css/webkit.html" class="mobile-nav-link">浏览器兼容性</a><strong class="mobile-nav-title">javascript 规范</strong><a href="/standard/js/code.html" class="mobile-nav-link">代码规范</a><a href="/standard/js/language.html" class="mobile-nav-link">语法规范</a><strong class="mobile-nav-title">图片规范</strong><a href="/standard/image/format.html" class="mobile-nav-link">图片格式</a><a href="/standard/image/size.html" class="mobile-nav-link">图片大小</a><a href="/standard/image/quality.html" class="mobile-nav-link">图片质量</a><a href="/standard/image/import.html" class="mobile-nav-link">图片引入</a><strong class="mobile-nav-title">命名规范</strong><a href="/standard/name/dir.html" class="mobile-nav-link">目录命名</a><a href="/standard/name/image.html" class="mobile-nav-link">图片命名</a><a href="/standard/name/htmlcss.html" class="mobile-nav-link">HTML/CSS 命名</a><a href="/standard/name/classname.html" class="mobile-nav-link">ClassName 命名</a><strong class="mobile-nav-title">前端开发公约</strong><a href="/standard/project/vue.html" class="mobile-nav-link">vue开发规范</a><a href="/standard/project/react.html" class="mobile-nav-link">react开发规范</a><a href="/standard/project/structure.html" class="mobile-nav-link">代码结构</a><a href="/standard/project/rule.html" class="mobile-nav-link">项目开发约定</a><a href="/standard/project/ci_cd.html" class="mobile-nav-link">持续集成</a><a href="/standard/project/template.html" class="mobile-nav-link">模板工程</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></span>
+    <select id="mobile-lang-select" data-canonical="">
+      
+        <option value="zh-cn" selected>简体中文</option>
+      
+        <option value="en">English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>

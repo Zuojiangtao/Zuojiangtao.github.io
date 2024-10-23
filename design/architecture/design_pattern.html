@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>23种软件设计模式 | 个人博客</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://zuojiangtao.github.io/design/architecture/design_pattern.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="zh-cn" href="https://zuojiangtao.github.io/design/architecture/design_pattern">
+    
+      <link rel="alternative" hreflang="en" href="https://zuojiangtao.github.io/en/design/architecture/design_pattern">
+    
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-w/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard/" class="main-nav-link">开发规范</a><a href="/design/" class="main-nav-link">开发指南</a><a href="/ecology/" class="main-nav-link">前沿生态</a><a href="/util/" class="main-nav-link">开发工具</a>
+    </nav>
+    <div id="github-icon-link">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="icon" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">23种软件设计模式</h1>
+                <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Zuojiangtao/Zuojiangtao.github.io/tree/master/source/design/architecture/design_pattern.md" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <h3 id="什么是设计模式" class="article-heading"><a href="#什么是设计模式" class="headerlink" title="什么是设计模式"></a>什么是设计模式<a class="article-anchor" href="#什么是设计模式" aria-hidden="true"></a></h3><p>设计模式是在软件设计中反复出现的问题的通用解决方案。它们是经过多次验证和应用的指导原则，旨在帮助软件开发人员解决特定类型的问题，提高代码的可维护性、可扩展性和重用性。</p>
+<p>设计模式是一种抽象化的思维方式，可以帮助开发人员更好地组织和设计他们的代码。它们提供了一种通用的框架，可以用于解决各种不同的软件设计问题。设计模式不是完整的代码，而是一种描述问题和解决方案之间关系的模板。</p>
+<p>设计模式并不是一成不变的法则，而是根据不同的问题和情境来决定是否使用以及如何使用。了解和应用设计模式可以帮助开发人员更好地组织代码，提高代码的可读性和可维护性，同时也有助于促进团队之间的合作和沟通。</p>
+<h3 id="分类" class="article-heading"><a href="#分类" class="headerlink" title="分类"></a>分类<a class="article-anchor" href="#分类" aria-hidden="true"></a></h3><p>创建型设计模式主要用于对象的创建和组装。这些模式通过抽象化和解耦对象的创建过程，可以使系统更加灵活和可扩展。</p>
+<p>结构型设计模式主要用于描述对象之间的关系，包括类和对象的组合、接口和继承等方面。这些模式可以帮助我们更好地组织和管理代码，提高代码的重用性和可维护性。</p>
+<p>行为型设计模式主要用于描述对象之间的通信和协作方式，包括算法、责任链、状态等方面。这些模式可以帮助我们更好地组织和管理代码，提高代码的可维护性和可扩展性。</p>
+<h3 id="图示" class="article-heading"><a href="#图示" class="headerlink" title="图示"></a>图示<a class="article-anchor" href="#图示" aria-hidden="true"></a></h3><p>用一张图简单展示下设计模式及分类。</p>
+<p><img src="https://pic3.zhimg.com/v2-1d38c56fcb3eff75f9cbc5d16b4b457e_r.jpg"></p>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2024-10-23T03:38:37.667Z" itemprop="dateModified">上次更新：2024-10-23</time>
+                <a href="index.html" class="article-footer-next" title="概述"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-text">什么是设计模式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E7%B1%BB"><span class="toc-text">分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E7%A4%BA"><span class="toc-text">图示</span></a></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">开始使用</strong><a href="/design/index.html" class="sidebar-link">概述</a><strong class="sidebar-title">设计规范指南</strong><a href="/design/design_guide.html" class="sidebar-link">中后台设计规范</a><strong class="sidebar-title">知识星球</strong><a href="/design/planet/nodejs_crawler.html" class="sidebar-link">nodejs爬虫</a><a href="/design/planet/vw_mobile.html" class="sidebar-link">移动端适配</a><a href="/design/planet/vite_cli.html" class="sidebar-link">vite前端脚手架</a><strong class="sidebar-title">软件架构</strong><a href="/design/architecture/design_pattern.html" class="sidebar-link current">设计模式</a><a href="/design/architecture/database_consistency.html" class="sidebar-link">数据一致性</a>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2024 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuo.jiangtao@h3c.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard/" class="mobile-nav-link">开发规范</a><a href="/design/" class="mobile-nav-link">开发指南</a><a href="/ecology/" class="mobile-nav-link">前沿生态</a><a href="/util/" class="mobile-nav-link">开发工具</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">开始使用</strong><a href="/design/index.html" class="mobile-nav-link">概述</a><strong class="mobile-nav-title">设计规范指南</strong><a href="/design/design_guide.html" class="mobile-nav-link">中后台设计规范</a><strong class="mobile-nav-title">知识星球</strong><a href="/design/planet/nodejs_crawler.html" class="mobile-nav-link">nodejs爬虫</a><a href="/design/planet/vw_mobile.html" class="mobile-nav-link">移动端适配</a><a href="/design/planet/vite_cli.html" class="mobile-nav-link">vite前端脚手架</a><strong class="mobile-nav-title">软件架构</strong><a href="/design/architecture/design_pattern.html" class="mobile-nav-link current">设计模式</a><a href="/design/architecture/database_consistency.html" class="mobile-nav-link">数据一致性</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></span>
+    <select id="mobile-lang-select" data-canonical="">
+      
+        <option value="zh-cn" selected>简体中文</option>
+      
+        <option value="en">English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>

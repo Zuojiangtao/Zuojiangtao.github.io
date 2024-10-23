@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>开发公约 | 个人博客</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://zuojiangtao.github.io/standard/project/rule.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="zh-cn" href="https://zuojiangtao.github.io/standard/project/rule">
+    
+      <link rel="alternative" hreflang="en" href="https://zuojiangtao.github.io/en/standard/project/rule">
+    
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-w/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard/" class="main-nav-link">开发规范</a><a href="/design/" class="main-nav-link">开发指南</a><a href="/ecology/" class="main-nav-link">前沿生态</a><a href="/util/" class="main-nav-link">开发工具</a>
+    </nav>
+    <div id="github-icon-link">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="icon" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">开发公约</h1>
+                <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Zuojiangtao/Zuojiangtao.github.io/tree/master/source/standard/project/rule.md" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <h3 id="一、编码约定" class="article-heading"><a href="#一、编码约定" class="headerlink" title="一、编码约定"></a>一、编码约定<a class="article-anchor" href="#一、编码约定" aria-hidden="true"></a></h3><ul>
+<li><font color="#ff0000">&lt;强制&gt;</font> JavaScript, *.vue，Jsx代码结尾不加分号；</li>
+<li><font color="#ff0000">&lt;强制&gt;</font> 字符串默认单引号’，不用双引号”</li>
+<li><font color="#ff0000">&lt;强制&gt;</font> LESS文件内用单引号’，不用双引号”</li>
+<li><font color="#ff0000">&lt;强制&gt;</font> 比较时只能用&#x3D;&#x3D;&#x3D;作比较，不用&#x3D;&#x3D;</li>
+<li><font color="#ff0000">&lt;强制&gt;</font> 不能用var申明变量，改用let，能用const不用let</li>
+<li><font color="#ff0000">&lt;强制&gt;</font> import组件时名称为大驼峰：ComponentImportedName</li>
+<li><font color="#0000ff">&lt;推荐&gt;</font> *.vue文件中name用大驼峰命名</li>
+<li><font color="#0000ff">&lt;推荐&gt;</font> 组件属性一般不用每个都换行定义，除非太多太长需要换行显示或系统已经配置了eslint</li>
+<li><font color="#0000ff">&lt;推荐&gt;</font> 组件行内样式style属性不能超过3个样式属性，需要单独定义样式类</li>
+<li><font color="#0000ff">&lt;推荐&gt;</font> 所有函数方法用块注释定义功能用途、参数及类型、参数说明、返回值及类型等</li>
+<li><font color="#0000ff">&lt;推荐&gt;</font> Vue组件内methods中的函数之间不能空行</li>
+<li><font color="#0000ff">&lt;推荐&gt;</font> 表单：推荐将验证描述文件rules单独用文件封装</li>
+<li><font color="#0000ff">&lt;推荐&gt;</font> 表格：所有表格列columns单独用文件封装</li>
+<li><font color="#0000ff">&lt;推荐&gt;</font> 文件引用：所有文件引用尽量采用别名路径（系统已经定义了大多数别名供使用vue.config.js），除非目录间不超过2级</li>
+<li><font color="#0000ff">&lt;推荐&gt;</font> *.vue模板文件内的样式尽量用scoped来限制，模块的顶层样式可以用t-xxxx 的命名来限制样式块。样式名称不要简写，尽量取名要表达的意思</li>
+<li><font color="#0000ff">&lt;推荐&gt;</font> 所有模块样式颜色均来自：<code>~@/style/antd-custom-vars.less</code> 文件，通常不需要特别定义</li>
+<li><font color="#0000ff">&lt;推荐&gt;</font> 使用reflect函数式语法代替in,typeof等命令式语法</li>
+<li><font color="#0000ff">&lt;推荐&gt;</font> 使用语义更明确的async&#x2F;await代替promise方案,是代码可读性更强</li>
+<li><font color="#0000ff">&lt;推荐&gt;</font> 多级组件交互使用provide&#x2F;inject，不推荐使用eventbus</li>
+</ul>
+<h3 id="二、http请求约定" class="article-heading"><a href="#二、http请求约定" class="headerlink" title="二、http请求约定"></a>二、http请求约定<a class="article-anchor" href="#二、http请求约定" aria-hidden="true"></a></h3><ul>
+<li>目前项目都采用token放header。</li>
+<li>项目已经封装了集成请求&#x2F;响应拦截器的方法，import request from ‘@&#x2F;utils&#x2F;request’使用。</li>
+<li>项目已经做了请求&#x2F;响应拦截器， import ‘@&#x2F;permission.js’使用。</li>
+</ul>
+<h3 id="三、API定义" class="article-heading"><a href="#三、API定义" class="headerlink" title="三、API定义"></a>三、API定义<a class="article-anchor" href="#三、API定义" aria-hidden="true"></a></h3><ul>
+<li>API定义引用已经统一定义的函数：<code>import &#123; post, get &#125; from &#39;@/api&#39;</code></li>
+<li>在页面头部定义api路径列表，并导出</li>
+</ul>
+<h3 id="五、Git提交代码注释" class="article-heading"><a href="#五、Git提交代码注释" class="headerlink" title="五、Git提交代码注释"></a>五、Git提交代码注释<a class="article-anchor" href="#五、Git提交代码注释" aria-hidden="true"></a></h3><blockquote>
+<p>Git代码提交时必须添加注释，注释需要清楚的说明所提交内容的相关信息，不能过于简单。所提交内容需要添加如下11种类型的前缀加以区分注释，一目了然就知道大概做了什么操作。<br>推荐使用vscode工具git-commit-plugin进行commit message编写</p>
+</blockquote>
+<ul>
+<li>feat：新增功能</li>
+<li>fix：bug 修复</li>
+<li>docs：文档更新</li>
+<li>style：不影响程序逻辑的代码修改(修改空白字符，格式缩进，补全缺失的分号等，没有改变代码逻辑)</li>
+<li>refactor：重构代码(既没有新增功能，也没有修复 bug)</li>
+<li>perf：性能, 体验优化</li>
+<li>test：新增测试用例或是更新现有测试</li>
+<li>build：主要目的是修改项目构建系统(例如 gulp，webpack，rollup 的配置等)的提交</li>
+<li>ci：主要目的是修改项目继续集成流程(例如 Travis，Jenkins，GitLab CI，Circle等)的提交</li>
+<li>chore：不属于以上类型的其他类型，比如构建流程, 依赖管理</li>
+<li>revert：回滚某个更早之前的提交</li>
+</ul>
+<p><strong><em>注：不能一次提交过多的文件，且文件包含各种修改内容。尽量多commit集中push。每天尽量多次push，不能长时间不提交代码，之后一次提交，这样会造成更多的冲突，也不便于代码跟进。</em></strong></p>
+<h3 id="六、UI库使用" class="article-heading"><a href="#六、UI库使用" class="headerlink" title="六、UI库使用"></a>六、UI库使用<a class="article-anchor" href="#六、UI库使用" aria-hidden="true"></a></h3><p>暂定使用ant-design-vue作为小组业务开发的通用UI库。目前版本为vue2版本<a href="mailto:&#x61;&#110;&#x74;&#x2d;&#x64;&#x65;&#x73;&#x69;&#x67;&#x6e;&#45;&#x76;&#117;&#101;&#64;&#x31;&#x2e;&#x37;&#x2e;&#56;" rel="external nofollow noreferrer">&#x61;&#110;&#x74;&#x2d;&#x64;&#x65;&#x73;&#x69;&#x67;&#x6e;&#45;&#x76;&#117;&#101;&#64;&#x31;&#x2e;&#x37;&#x2e;&#56;</a>.</p>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2024-10-23T03:38:37.824Z" itemprop="dateModified">上次更新：2024-10-23</time>
+                <a href="index.html" class="article-footer-next" title="概述"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E7%BC%96%E7%A0%81%E7%BA%A6%E5%AE%9A"><span class="toc-text">一、编码约定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81http%E8%AF%B7%E6%B1%82%E7%BA%A6%E5%AE%9A"><span class="toc-text">二、http请求约定</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81API%E5%AE%9A%E4%B9%89"><span class="toc-text">三、API定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81Git%E6%8F%90%E4%BA%A4%E4%BB%A3%E7%A0%81%E6%B3%A8%E9%87%8A"><span class="toc-text">五、Git提交代码注释</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AD%E3%80%81UI%E5%BA%93%E4%BD%BF%E7%94%A8"><span class="toc-text">六、UI库使用</span></a></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">开始使用</strong><a href="/standard/index.html" class="sidebar-link">概述</a><strong class="sidebar-title">HTML 规范</strong><a href="/standard/html/code.html" class="sidebar-link">代码规范</a><a href="/standard/html/note.html" class="sidebar-link">注释规范</a><a href="/standard/html/webapp.html" class="sidebar-link">WebApp Meta</a><a href="/standard/html/template.html" class="sidebar-link">文件模版</a><strong class="sidebar-title">CSS 规范</strong><a href="/standard/css/code.html" class="sidebar-link">代码规范</a><a href="/standard/css/note.html" class="sidebar-link">注释规范</a><a href="/standard/css/less.html" class="sidebar-link">LESS 规范</a><a href="/standard/css/reset.html" class="sidebar-link">重置样式</a><a href="/standard/css/query.html" class="sidebar-link">媒体查询</a><a href="/standard/css/webkit.html" class="sidebar-link">浏览器兼容性</a><strong class="sidebar-title">javascript 规范</strong><a href="/standard/js/code.html" class="sidebar-link">代码规范</a><a href="/standard/js/language.html" class="sidebar-link">语法规范</a><strong class="sidebar-title">图片规范</strong><a href="/standard/image/format.html" class="sidebar-link">图片格式</a><a href="/standard/image/size.html" class="sidebar-link">图片大小</a><a href="/standard/image/quality.html" class="sidebar-link">图片质量</a><a href="/standard/image/import.html" class="sidebar-link">图片引入</a><strong class="sidebar-title">命名规范</strong><a href="/standard/name/dir.html" class="sidebar-link">目录命名</a><a href="/standard/name/image.html" class="sidebar-link">图片命名</a><a href="/standard/name/htmlcss.html" class="sidebar-link">HTML/CSS 命名</a><a href="/standard/name/classname.html" class="sidebar-link">ClassName 命名</a><strong class="sidebar-title">前端开发公约</strong><a href="/standard/project/vue.html" class="sidebar-link">vue开发规范</a><a href="/standard/project/react.html" class="sidebar-link">react开发规范</a><a href="/standard/project/structure.html" class="sidebar-link">代码结构</a><a href="/standard/project/rule.html" class="sidebar-link current">项目开发约定</a><a href="/standard/project/ci_cd.html" class="sidebar-link">持续集成</a><a href="/standard/project/template.html" class="sidebar-link">模板工程</a>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2024 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuo.jiangtao@h3c.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard/" class="mobile-nav-link">开发规范</a><a href="/design/" class="mobile-nav-link">开发指南</a><a href="/ecology/" class="mobile-nav-link">前沿生态</a><a href="/util/" class="mobile-nav-link">开发工具</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">开始使用</strong><a href="/standard/index.html" class="mobile-nav-link">概述</a><strong class="mobile-nav-title">HTML 规范</strong><a href="/standard/html/code.html" class="mobile-nav-link">代码规范</a><a href="/standard/html/note.html" class="mobile-nav-link">注释规范</a><a href="/standard/html/webapp.html" class="mobile-nav-link">WebApp Meta</a><a href="/standard/html/template.html" class="mobile-nav-link">文件模版</a><strong class="mobile-nav-title">CSS 规范</strong><a href="/standard/css/code.html" class="mobile-nav-link">代码规范</a><a href="/standard/css/note.html" class="mobile-nav-link">注释规范</a><a href="/standard/css/less.html" class="mobile-nav-link">LESS 规范</a><a href="/standard/css/reset.html" class="mobile-nav-link">重置样式</a><a href="/standard/css/query.html" class="mobile-nav-link">媒体查询</a><a href="/standard/css/webkit.html" class="mobile-nav-link">浏览器兼容性</a><strong class="mobile-nav-title">javascript 规范</strong><a href="/standard/js/code.html" class="mobile-nav-link">代码规范</a><a href="/standard/js/language.html" class="mobile-nav-link">语法规范</a><strong class="mobile-nav-title">图片规范</strong><a href="/standard/image/format.html" class="mobile-nav-link">图片格式</a><a href="/standard/image/size.html" class="mobile-nav-link">图片大小</a><a href="/standard/image/quality.html" class="mobile-nav-link">图片质量</a><a href="/standard/image/import.html" class="mobile-nav-link">图片引入</a><strong class="mobile-nav-title">命名规范</strong><a href="/standard/name/dir.html" class="mobile-nav-link">目录命名</a><a href="/standard/name/image.html" class="mobile-nav-link">图片命名</a><a href="/standard/name/htmlcss.html" class="mobile-nav-link">HTML/CSS 命名</a><a href="/standard/name/classname.html" class="mobile-nav-link">ClassName 命名</a><strong class="mobile-nav-title">前端开发公约</strong><a href="/standard/project/vue.html" class="mobile-nav-link">vue开发规范</a><a href="/standard/project/react.html" class="mobile-nav-link">react开发规范</a><a href="/standard/project/structure.html" class="mobile-nav-link">代码结构</a><a href="/standard/project/rule.html" class="mobile-nav-link current">项目开发约定</a><a href="/standard/project/ci_cd.html" class="mobile-nav-link">持续集成</a><a href="/standard/project/template.html" class="mobile-nav-link">模板工程</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></span>
+    <select id="mobile-lang-select" data-canonical="">
+      
+        <option value="zh-cn" selected>简体中文</option>
+      
+        <option value="en">English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>

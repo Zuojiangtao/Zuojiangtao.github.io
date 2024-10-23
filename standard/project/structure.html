@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>项目代码目录结构 | 个人博客</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://zuojiangtao.github.io/standard/project/structure.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="zh-cn" href="https://zuojiangtao.github.io/standard/project/structure">
+    
+      <link rel="alternative" hreflang="en" href="https://zuojiangtao.github.io/en/standard/project/structure">
+    
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-w/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard/" class="main-nav-link">开发规范</a><a href="/design/" class="main-nav-link">开发指南</a><a href="/ecology/" class="main-nav-link">前沿生态</a><a href="/util/" class="main-nav-link">开发工具</a>
+    </nav>
+    <div id="github-icon-link">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="icon" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">项目代码目录结构</h1>
+                <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Zuojiangtao/Zuojiangtao.github.io/tree/master/source/standard/project/structure.md" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">── project-name</span><br><span class="line">   ├── .husky                       Git 提交规范文件</span><br><span class="line">   ├── deploy                       部署nginx相关设置</span><br><span class="line">   ├── public                       项目公共目录</span><br><span class="line">   │   ├── favicon.ico                  Favourite 图标</span><br><span class="line">   │   └── index.html                   页面入口 HTML 模板</span><br><span class="line">   ├── src                          项目源码目录</span><br><span class="line">   │   ├── api                          把所有请求数据的接口，按照模块在单独的JS文件中</span><br><span class="line">   │   │   ├── home.js                      首页接口</span><br><span class="line">   │   │   ├── detail.js                    详情页接口，等等</span><br><span class="line">   │   │   ···</span><br><span class="line">   │   ├── assets                       静态资源目录，公共的静态资源，图片，字体等</span><br><span class="line">   │   │   ├── icons                        字体资源</span><br><span class="line">   │   │   ├── images                       图片资源</span><br><span class="line">   │   │   ···</span><br><span class="line">   │   ├── components                   公共组件目录</span><br><span class="line">   │   │   ├── confirm                      弹框组件</span><br><span class="line">   │   │   │   └── index.vue</span><br><span class="line">   │   │   ├── scroll                       局部内容滚动组件</span><br><span class="line">   │   │   │   └── index.vue</span><br><span class="line">   │   │   ···</span><br><span class="line">   |   ├── config                       项目全局配置信息</span><br><span class="line">   |   |   ├── defaultSetting.js            ant design vue 项目默认配置项</span><br><span class="line">   |   |   ├── router.config.js             项目路由配置信息</span><br><span class="line">   |   |—— core                         全局指令，插件，缓存等</span><br><span class="line">   |   |   ├── directives                   自定义指令文件目录</span><br><span class="line">   |   |       ├── action.js                    Action 权限指令</span><br><span class="line">   |   |   ├── bootstrap.js                 执行项目启动时必须要用到的配置信息及缓存</span><br><span class="line">   |   |   ├── icons.js                     统一管理的自定义图标加载表</span><br><span class="line">   |   |   ├── lay<span class="emphasis">_use.js                   Ant Design Vue 组件懒加载，以及定义的全局组件注册</span></span><br><span class="line"><span class="emphasis">   |   |   ├── use.js                       Vue插件注册入口文件</span></span><br><span class="line"><span class="emphasis">   |   ├── data                         常量，全局数据</span></span><br><span class="line"><span class="emphasis">   |   │   ├── address.js                   省市区全量数据</span></span><br><span class="line"><span class="emphasis">   |   ├── layouts                      布局组件目录</span></span><br><span class="line"><span class="emphasis">   |   │   ├── BasicLayout.less             基础布局样式文件</span></span><br><span class="line"><span class="emphasis">   |   │   ├── BasicLayout.vue              基础布局组件</span></span><br><span class="line"><span class="emphasis">   |   │   ├── BlankLayout.vue              备选的自定义布局组件，空文件</span></span><br><span class="line"><span class="emphasis">   |   │   ├── index.js                     布局组件整体module输出文件</span></span><br><span class="line"><span class="emphasis">   |   │   ├── PageView.vue                 全局封装的page-header-wrapper组件，包含面包屑等元素</span></span><br><span class="line"><span class="emphasis">   |   │   ├── RouteView.vue                全局封装的路由跳转组件，可进行页面缓存及multitab（multitab是项目中自定义的顶部导航组件）的设置</span></span><br><span class="line"><span class="emphasis">   |   │   ├── UserLayout.vue               用户登录页面的布局组件</span></span><br><span class="line"><span class="emphasis">   |   │   ...</span></span><br><span class="line"><span class="emphasis">   │   ├── locales                      国际化语言配置</span></span><br><span class="line"><span class="emphasis">   |   │   ├── lang                         语言文件列表</span></span><br><span class="line"><span class="emphasis">   |   │       ├── en-US.js                     英文</span></span><br><span class="line"><span class="emphasis">   |   │       ├── zh-CN.js                     中文</span></span><br><span class="line"><span class="emphasis">   |   │   ├── index.js                     整体module输出文件</span></span><br><span class="line"><span class="emphasis">   │   │   ···</span></span><br><span class="line"><span class="emphasis">   │   ├── mixins                       公共的mixin混合文件</span></span><br><span class="line"><span class="emphasis">   │   │   ├── BreadMixin.js                面包屑混入，通过约定路由参数breadcrumbName自定义面包屑末尾名称</span></span><br><span class="line"><span class="emphasis">   │   │   ├── TableMixin.js                表格页面混入，定义通用的增删改查等操作，与FormMixin.js共同使用快速建立页面模板，与FormMixin.js文件存在一定程度的耦合</span></span><br><span class="line"><span class="emphasis">   │   │   ├── FormMixin.js                 表单面混入，定义通用的表单操作</span></span><br><span class="line"><span class="emphasis">   │   │   ···</span></span><br><span class="line"><span class="emphasis">   │   ├── mock                         mock文件目录，通过环境变量process.env.VUE_</span>APP<span class="emphasis">_PREVIEW开启</span></span><br><span class="line"><span class="emphasis">   │   │   ···</span></span><br><span class="line"><span class="emphasis">   │   ├── router                       路由配置目录</span></span><br><span class="line"><span class="emphasis">   │   │   ├── generator-routers.js         通过用户角色和权限动态添加，删除菜单及路由信息</span></span><br><span class="line"><span class="emphasis">   │   │   ···</span></span><br><span class="line"><span class="emphasis">   │   ├── store                        数据中心</span></span><br><span class="line"><span class="emphasis">   │   │   ├── modules                      store模块目录</span></span><br><span class="line"><span class="emphasis">   │   │   │   └── app.js                       app全局配置数据</span></span><br><span class="line"><span class="emphasis">   │   │   │   └── user.js                      用户数据</span></span><br><span class="line"><span class="emphasis">   │   │   │   ...</span></span><br><span class="line"><span class="emphasis">   │   │   ├── app-mixin.js                 app全局配置数据混入，主要是geely-design的布局信息</span></span><br><span class="line"><span class="emphasis">   │   │   ├── device-mixin.js              设备信息数据混入</span></span><br><span class="line"><span class="emphasis">   │   │   ├── i18n-mixin.js                国际化信息数据混入</span></span><br><span class="line"><span class="emphasis">   │   │   ├── mutation-types.js            定义 Mutations 的类型</span></span><br><span class="line"><span class="emphasis">   │   │   ├── getters.js                   获取数据的方法定义</span></span><br><span class="line"><span class="emphasis">   │   │   └── index.js                     数据中心入口文件</span></span><br><span class="line"><span class="emphasis">   │   │   ...</span></span><br><span class="line"><span class="emphasis">   │   ├── style                        全局样式目录</span></span><br><span class="line"><span class="emphasis">   │   │   ├── global.less                  公共样式信息</span></span><br><span class="line"><span class="emphasis">   │   │   ···</span></span><br><span class="line"><span class="emphasis">   │   ├── utils                        通用脚本文件</span></span><br><span class="line"><span class="emphasis">   │   │   ├── axios                        axios文件封装</span></span><br><span class="line"><span class="emphasis">   │   │   ···</span></span><br><span class="line"><span class="emphasis">   │   ├── views                        页面目录，所有业务逻辑的页面都应该放这里</span></span><br><span class="line"><span class="emphasis">   │   │   ├── home                         应用首页</span></span><br><span class="line"><span class="emphasis">   │   │   │   └── index.vue</span></span><br><span class="line"><span class="emphasis">   │   │   ···</span></span><br><span class="line"><span class="emphasis">   │   ├── main.js                      入口js文件</span></span><br><span class="line"><span class="emphasis">   │   ├── App.vue                      根组件</span></span><br><span class="line"><span class="emphasis">   │   └── permission.js                权限判断及路由拦截器</span></span><br><span class="line"><span class="emphasis">   ├── .browserslistrc               浏览器相关设置</span></span><br><span class="line"><span class="emphasis">   ├── .editorconfig                 编辑器相关设置</span></span><br><span class="line"><span class="emphasis">   ├── .env.development              Vue 开发环境的配置</span></span><br><span class="line"><span class="emphasis">   ├── .env.production               Vue 生成环境的配置</span></span><br><span class="line"><span class="emphasis">   ├── .eslintignore                 Eslint 配置忽略文件</span></span><br><span class="line"><span class="emphasis">   ├── .eslintrc.js                  Eslint 配置文件</span></span><br><span class="line"><span class="emphasis">   ├── .gitignore                    Git 忽略文件</span></span><br><span class="line"><span class="emphasis">   ├── .prettierignore               prettier 忽略文件</span></span><br><span class="line"><span class="emphasis">   ├── .prettierrc                   prettier 配置文件</span></span><br><span class="line"><span class="emphasis">   ├── Dockerfile                    Docker 配置文件</span></span><br><span class="line"><span class="emphasis">   ├── Jenkinsfile                   Jenkins 配置文件</span></span><br><span class="line"><span class="emphasis">   ├── LICENSE                       LICENSE</span></span><br><span class="line"><span class="emphasis">   ├── README.md                     README.md</span></span><br><span class="line"><span class="emphasis">   ├── babel.config.js               Babel 配置文件</span></span><br><span class="line"><span class="emphasis">   ├── commitlint.config.js          Git 提交commit钩子类型设置</span></span><br><span class="line"><span class="emphasis">   ├── jsconfig.json                 JS 功能配置文件</span></span><br><span class="line"><span class="emphasis">   ├── package.json                  包依赖文件</span></span><br><span class="line"><span class="emphasis">   └── vue.config.js                 vue/cli 项目脚手架配置</span></span><br></pre></td></tr></table></figure>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2024-10-23T03:38:37.825Z" itemprop="dateModified">上次更新：2024-10-23</time>
+                <a href="index.html" class="article-footer-next" title="概述"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">开始使用</strong><a href="/standard/index.html" class="sidebar-link">概述</a><strong class="sidebar-title">HTML 规范</strong><a href="/standard/html/code.html" class="sidebar-link">代码规范</a><a href="/standard/html/note.html" class="sidebar-link">注释规范</a><a href="/standard/html/webapp.html" class="sidebar-link">WebApp Meta</a><a href="/standard/html/template.html" class="sidebar-link">文件模版</a><strong class="sidebar-title">CSS 规范</strong><a href="/standard/css/code.html" class="sidebar-link">代码规范</a><a href="/standard/css/note.html" class="sidebar-link">注释规范</a><a href="/standard/css/less.html" class="sidebar-link">LESS 规范</a><a href="/standard/css/reset.html" class="sidebar-link">重置样式</a><a href="/standard/css/query.html" class="sidebar-link">媒体查询</a><a href="/standard/css/webkit.html" class="sidebar-link">浏览器兼容性</a><strong class="sidebar-title">javascript 规范</strong><a href="/standard/js/code.html" class="sidebar-link">代码规范</a><a href="/standard/js/language.html" class="sidebar-link">语法规范</a><strong class="sidebar-title">图片规范</strong><a href="/standard/image/format.html" class="sidebar-link">图片格式</a><a href="/standard/image/size.html" class="sidebar-link">图片大小</a><a href="/standard/image/quality.html" class="sidebar-link">图片质量</a><a href="/standard/image/import.html" class="sidebar-link">图片引入</a><strong class="sidebar-title">命名规范</strong><a href="/standard/name/dir.html" class="sidebar-link">目录命名</a><a href="/standard/name/image.html" class="sidebar-link">图片命名</a><a href="/standard/name/htmlcss.html" class="sidebar-link">HTML/CSS 命名</a><a href="/standard/name/classname.html" class="sidebar-link">ClassName 命名</a><strong class="sidebar-title">前端开发公约</strong><a href="/standard/project/vue.html" class="sidebar-link">vue开发规范</a><a href="/standard/project/react.html" class="sidebar-link">react开发规范</a><a href="/standard/project/structure.html" class="sidebar-link current">代码结构</a><a href="/standard/project/rule.html" class="sidebar-link">项目开发约定</a><a href="/standard/project/ci_cd.html" class="sidebar-link">持续集成</a><a href="/standard/project/template.html" class="sidebar-link">模板工程</a>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2024 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuo.jiangtao@h3c.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard/" class="mobile-nav-link">开发规范</a><a href="/design/" class="mobile-nav-link">开发指南</a><a href="/ecology/" class="mobile-nav-link">前沿生态</a><a href="/util/" class="mobile-nav-link">开发工具</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">开始使用</strong><a href="/standard/index.html" class="mobile-nav-link">概述</a><strong class="mobile-nav-title">HTML 规范</strong><a href="/standard/html/code.html" class="mobile-nav-link">代码规范</a><a href="/standard/html/note.html" class="mobile-nav-link">注释规范</a><a href="/standard/html/webapp.html" class="mobile-nav-link">WebApp Meta</a><a href="/standard/html/template.html" class="mobile-nav-link">文件模版</a><strong class="mobile-nav-title">CSS 规范</strong><a href="/standard/css/code.html" class="mobile-nav-link">代码规范</a><a href="/standard/css/note.html" class="mobile-nav-link">注释规范</a><a href="/standard/css/less.html" class="mobile-nav-link">LESS 规范</a><a href="/standard/css/reset.html" class="mobile-nav-link">重置样式</a><a href="/standard/css/query.html" class="mobile-nav-link">媒体查询</a><a href="/standard/css/webkit.html" class="mobile-nav-link">浏览器兼容性</a><strong class="mobile-nav-title">javascript 规范</strong><a href="/standard/js/code.html" class="mobile-nav-link">代码规范</a><a href="/standard/js/language.html" class="mobile-nav-link">语法规范</a><strong class="mobile-nav-title">图片规范</strong><a href="/standard/image/format.html" class="mobile-nav-link">图片格式</a><a href="/standard/image/size.html" class="mobile-nav-link">图片大小</a><a href="/standard/image/quality.html" class="mobile-nav-link">图片质量</a><a href="/standard/image/import.html" class="mobile-nav-link">图片引入</a><strong class="mobile-nav-title">命名规范</strong><a href="/standard/name/dir.html" class="mobile-nav-link">目录命名</a><a href="/standard/name/image.html" class="mobile-nav-link">图片命名</a><a href="/standard/name/htmlcss.html" class="mobile-nav-link">HTML/CSS 命名</a><a href="/standard/name/classname.html" class="mobile-nav-link">ClassName 命名</a><strong class="mobile-nav-title">前端开发公约</strong><a href="/standard/project/vue.html" class="mobile-nav-link">vue开发规范</a><a href="/standard/project/react.html" class="mobile-nav-link">react开发规范</a><a href="/standard/project/structure.html" class="mobile-nav-link current">代码结构</a><a href="/standard/project/rule.html" class="mobile-nav-link">项目开发约定</a><a href="/standard/project/ci_cd.html" class="mobile-nav-link">持续集成</a><a href="/standard/project/template.html" class="mobile-nav-link">模板工程</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></span>
+    <select id="mobile-lang-select" data-canonical="">
+      
+        <option value="zh-cn" selected>简体中文</option>
+      
+        <option value="en">English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>

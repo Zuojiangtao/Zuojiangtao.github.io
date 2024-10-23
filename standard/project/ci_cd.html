@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>CI/CD | 个人博客</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://zuojiangtao.github.io/standard/project/ci_cd.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="zh-cn" href="https://zuojiangtao.github.io/standard/project/ci_cd">
+    
+      <link rel="alternative" hreflang="en" href="https://zuojiangtao.github.io/en/standard/project/ci_cd">
+    
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-w/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard/" class="main-nav-link">开发规范</a><a href="/design/" class="main-nav-link">开发指南</a><a href="/ecology/" class="main-nav-link">前沿生态</a><a href="/util/" class="main-nav-link">开发工具</a>
+    </nav>
+    <div id="github-icon-link">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="icon" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">CI/CD</h1>
+                <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Zuojiangtao/Zuojiangtao.github.io/tree/master/source/standard/project/ci_cd.md" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <h3 id="前端CI-x2F-CD-相关文件" class="article-heading"><a href="#前端CI-x2F-CD-相关文件" class="headerlink" title="前端CI&#x2F;CD 相关文件"></a>前端CI&#x2F;CD 相关文件<a class="article-anchor" href="#前端CI-x2F-CD-相关文件" aria-hidden="true"></a></h3><h4 id="1-Jenkinsfile" class="article-heading"><a href="#1-Jenkinsfile" class="headerlink" title="1. Jenkinsfile"></a>1. Jenkinsfile<a class="article-anchor" href="#1-Jenkinsfile" aria-hidden="true"></a></h4><blockquote>
+<p>目前五个步骤：代码拉取+分支切换 -&gt; 依赖包安装+项目打包 -&gt; docker容器打包 -&gt; docker容器发布 -&gt; 将docker部署到k8s服务上（该步骤可沿用，修改环境变量即可）</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pipeline &#123;</span><br><span class="line">  agent &#123;</span><br><span class="line">    node &#123;</span><br><span class="line">      label &#x27;nodejs&#x27;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">    parameters &#123;</span><br><span class="line">        string(name:&#x27;TAG_NAME&#x27;,defaultValue: &#x27;&#x27;,description:&#x27;&#x27;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    environment &#123;</span><br><span class="line">        DOCKER_CREDENTIAL_ID = &#x27;harbor-admin&#x27;</span><br><span class="line">        GITHUB_CREDENTIAL_ID = &#x27;gitlab-csz&#x27;</span><br><span class="line">        KUBECONFIG_DEV_A_ID = &#x27;kubeconfig-dev-active&#x27;</span><br><span class="line">        REPLICAS = 2</span><br><span class="line">        REGISTRY = &#x27;harbor.XXXX.com&#x27;</span><br><span class="line">        IMAGE_PULL_SECRET = &#x27;harbor90&#x27;</span><br><span class="line">        DOCKERHUB_NAMESPACE = &#x27;iot&#x27;</span><br><span class="line">        GITHUB_ACCOUNT = &#x27;kubesphere&#x27;</span><br><span class="line">        SONAR_CREDENTIAL_ID = &#x27;sonar-token&#x27;</span><br><span class="line">        BRANCH_NAME = &#x27;master&#x27;</span><br><span class="line">        K8S_NAMESPACES = &#x27;workSpaceName&#x27;</span><br><span class="line">        APP_NAME = &#x27;projectName&#x27;</span><br><span class="line">        COMPONENT = &#x27;projectName&#x27;</span><br><span class="line">        TIER = &#x27;projectName&#x27;</span><br><span class="line">    &#125;</span><br><span class="line">    stages &#123;</span><br><span class="line">        stage (&#x27;checkout scm&#x27;) &#123;</span><br><span class="line">            steps &#123;</span><br><span class="line">                checkout(scm)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        stage (&#x27;npm install &amp; build&#x27;) &#123;</span><br><span class="line">            steps &#123;</span><br><span class="line">                container (&#x27;nodejs&#x27;) &#123;</span><br><span class="line">                    sh &#x27;npm -v&#x27;</span><br><span class="line">                    // 设置私有node地址</span><br><span class="line">                    sh &#x27;npm config set registry http://AAAA.BBBB.CCCC:DDDD/repository/npm/&#x27;</span><br><span class="line">                    sh &#x27;npm get registry&#x27;</span><br><span class="line">                    sh &#x27;npm install&#x27;</span><br><span class="line">                    sh &#x27;npm run build&#x27;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        stage (&#x27;docker build &amp; push&#x27;) &#123;</span><br><span class="line">            steps &#123;</span><br><span class="line">                container (&#x27;nodejs&#x27;) &#123;</span><br><span class="line">                    sh &#x27;docker build --no-cache -f Dockerfile -t $REGISTRY/$DOCKERHUB_NAMESPACE/$APP_NAME:SNAPSHOT-$BRANCH_NAME-$BUILD_NUMBER .&#x27;</span><br><span class="line">                    withCredentials([usernamePassword(passwordVariable : &#x27;DOCKER_PASSWORD&#x27; ,usernameVariable : &#x27;DOCKER_USERNAME&#x27; ,credentialsId : &quot;$DOCKER_CREDENTIAL_ID&quot; ,)]) &#123;</span><br><span class="line">                        sh &#x27;echo &quot;$DOCKER_PASSWORD&quot; | docker login $REGISTRY -u &quot;$DOCKER_USERNAME&quot; --password-stdin&#x27;</span><br><span class="line">                        sh &#x27;docker push  $REGISTRY/$DOCKERHUB_NAMESPACE/$APP_NAME:SNAPSHOT-$BRANCH_NAME-$BUILD_NUMBER&#x27;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        stage(&#x27;push latest&#x27;)&#123;</span><br><span class="line">           steps&#123;</span><br><span class="line">                container (&#x27;nodejs&#x27;) &#123;</span><br><span class="line">                  sh &#x27;docker tag  $REGISTRY/$DOCKERHUB_NAMESPACE/$APP_NAME:SNAPSHOT-$BRANCH_NAME-$BUILD_NUMBER $REGISTRY/$DOCKERHUB_NAMESPACE/$APP_NAME:latest &#x27;</span><br><span class="line">                  sh &#x27;docker push  $REGISTRY/$DOCKERHUB_NAMESPACE/$APP_NAME:latest &#x27;</span><br><span class="line">                &#125;</span><br><span class="line">           &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        stage(&#x27;deploy to K8S&#x27;) &#123;</span><br><span class="line">          steps &#123;</span><br><span class="line">            kubernetesDeploy(configs: &#x27;deploy/web/**&#x27;, enableConfigSubstitution: true, kubeconfigId: &quot;$KUBECONFIG_DEV_A_ID&quot;)</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-Dockerfile" class="article-heading"><a href="#2-Dockerfile" class="headerlink" title="2. Dockerfile"></a>2. Dockerfile<a class="article-anchor" href="#2-Dockerfile" aria-hidden="true"></a></h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">Docker地址及路径</span></span><br><span class="line">FROM hub.cloud.XXXX.com/projectName/library/nginx:lastest</span><br><span class="line"></span><br><span class="line">WORKDIR /usr/share/nginx/html</span><br><span class="line">COPY deploy/default.conf /etc/nginx/conf.d/</span><br><span class="line">COPY dist/ /usr/share/nginx/html</span><br><span class="line">EXPOSE 80</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-nginx配置文件default-conf" class="article-heading"><a href="#3-nginx配置文件default-conf" class="headerlink" title="3. nginx配置文件default.conf"></a>3. nginx配置文件default.conf<a class="article-anchor" href="#3-nginx配置文件default-conf" aria-hidden="true"></a></h4><blockquote>
+<p>文件放在Dockerfile里指定的目录下，该文件只需修改反向代理地址即可，其他部分可沿用</p>
+</blockquote>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">开启gzip</span></span><br><span class="line">gzip on;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">启用gzip压缩的最小文件；小于设置值的文件将不会被压缩</span></span><br><span class="line">gzip_min_length 1k;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">gzip 压缩级别 1-10</span></span><br><span class="line">gzip_comp_level 6;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">进行压缩的文件类型。</span></span><br><span class="line">gzip_types text/plain application/javascript application/x-javascript text/css application/xml text/javascript application/x-httpd-php image/jpeg image/gif image/png;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">是否在http header中添加Vary: Accept-Encoding，建议开启</span></span><br><span class="line">gzip_vary on;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    server_name  localhost;</span><br><span class="line"></span><br><span class="line">    #charset koi8-r;</span><br><span class="line">    #access_log  /var/log/nginx/host.access.log  main;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        root   /usr/share/nginx/html;</span><br><span class="line">        index  index.html index.htm;</span><br><span class="line">        try_files $uri $uri/ /index.html;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    location /api/v1/ &#123;</span><br><span class="line">        proxy_pass http://www.baidu.com/api/v1/;</span><br><span class="line">        client_max_body_size 8M;</span><br><span class="line">        client_body_buffer_size 8M;</span><br><span class="line">        fastcgi_intercept_errors on;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    #error_page  404              /404.html;</span><br><span class="line"></span><br><span class="line">    # redirect server error pages to the static page /50x.html</span><br><span class="line">    #</span><br><span class="line">    error_page   500 502 503 504  /50x.html;</span><br><span class="line">    location = /50x.html &#123;</span><br><span class="line">        root   /usr/share/nginx/html;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2024-10-23T03:38:37.823Z" itemprop="dateModified">上次更新：2024-10-23</time>
+                <a href="index.html" class="article-footer-next" title="概述"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E7%AB%AFCI-x2F-CD-%E7%9B%B8%E5%85%B3%E6%96%87%E4%BB%B6"><span class="toc-text">前端CI&#x2F;CD 相关文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Jenkinsfile"><span class="toc-text">1. Jenkinsfile</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Dockerfile"><span class="toc-text">2. Dockerfile</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-nginx%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6default-conf"><span class="toc-text">3. nginx配置文件default.conf</span></a></li></ol></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">开始使用</strong><a href="/standard/index.html" class="sidebar-link">概述</a><strong class="sidebar-title">HTML 规范</strong><a href="/standard/html/code.html" class="sidebar-link">代码规范</a><a href="/standard/html/note.html" class="sidebar-link">注释规范</a><a href="/standard/html/webapp.html" class="sidebar-link">WebApp Meta</a><a href="/standard/html/template.html" class="sidebar-link">文件模版</a><strong class="sidebar-title">CSS 规范</strong><a href="/standard/css/code.html" class="sidebar-link">代码规范</a><a href="/standard/css/note.html" class="sidebar-link">注释规范</a><a href="/standard/css/less.html" class="sidebar-link">LESS 规范</a><a href="/standard/css/reset.html" class="sidebar-link">重置样式</a><a href="/standard/css/query.html" class="sidebar-link">媒体查询</a><a href="/standard/css/webkit.html" class="sidebar-link">浏览器兼容性</a><strong class="sidebar-title">javascript 规范</strong><a href="/standard/js/code.html" class="sidebar-link">代码规范</a><a href="/standard/js/language.html" class="sidebar-link">语法规范</a><strong class="sidebar-title">图片规范</strong><a href="/standard/image/format.html" class="sidebar-link">图片格式</a><a href="/standard/image/size.html" class="sidebar-link">图片大小</a><a href="/standard/image/quality.html" class="sidebar-link">图片质量</a><a href="/standard/image/import.html" class="sidebar-link">图片引入</a><strong class="sidebar-title">命名规范</strong><a href="/standard/name/dir.html" class="sidebar-link">目录命名</a><a href="/standard/name/image.html" class="sidebar-link">图片命名</a><a href="/standard/name/htmlcss.html" class="sidebar-link">HTML/CSS 命名</a><a href="/standard/name/classname.html" class="sidebar-link">ClassName 命名</a><strong class="sidebar-title">前端开发公约</strong><a href="/standard/project/vue.html" class="sidebar-link">vue开发规范</a><a href="/standard/project/react.html" class="sidebar-link">react开发规范</a><a href="/standard/project/structure.html" class="sidebar-link">代码结构</a><a href="/standard/project/rule.html" class="sidebar-link">项目开发约定</a><a href="/standard/project/ci_cd.html" class="sidebar-link current">持续集成</a><a href="/standard/project/template.html" class="sidebar-link">模板工程</a>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2024 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuo.jiangtao@h3c.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard/" class="mobile-nav-link">开发规范</a><a href="/design/" class="mobile-nav-link">开发指南</a><a href="/ecology/" class="mobile-nav-link">前沿生态</a><a href="/util/" class="mobile-nav-link">开发工具</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">开始使用</strong><a href="/standard/index.html" class="mobile-nav-link">概述</a><strong class="mobile-nav-title">HTML 规范</strong><a href="/standard/html/code.html" class="mobile-nav-link">代码规范</a><a href="/standard/html/note.html" class="mobile-nav-link">注释规范</a><a href="/standard/html/webapp.html" class="mobile-nav-link">WebApp Meta</a><a href="/standard/html/template.html" class="mobile-nav-link">文件模版</a><strong class="mobile-nav-title">CSS 规范</strong><a href="/standard/css/code.html" class="mobile-nav-link">代码规范</a><a href="/standard/css/note.html" class="mobile-nav-link">注释规范</a><a href="/standard/css/less.html" class="mobile-nav-link">LESS 规范</a><a href="/standard/css/reset.html" class="mobile-nav-link">重置样式</a><a href="/standard/css/query.html" class="mobile-nav-link">媒体查询</a><a href="/standard/css/webkit.html" class="mobile-nav-link">浏览器兼容性</a><strong class="mobile-nav-title">javascript 规范</strong><a href="/standard/js/code.html" class="mobile-nav-link">代码规范</a><a href="/standard/js/language.html" class="mobile-nav-link">语法规范</a><strong class="mobile-nav-title">图片规范</strong><a href="/standard/image/format.html" class="mobile-nav-link">图片格式</a><a href="/standard/image/size.html" class="mobile-nav-link">图片大小</a><a href="/standard/image/quality.html" class="mobile-nav-link">图片质量</a><a href="/standard/image/import.html" class="mobile-nav-link">图片引入</a><strong class="mobile-nav-title">命名规范</strong><a href="/standard/name/dir.html" class="mobile-nav-link">目录命名</a><a href="/standard/name/image.html" class="mobile-nav-link">图片命名</a><a href="/standard/name/htmlcss.html" class="mobile-nav-link">HTML/CSS 命名</a><a href="/standard/name/classname.html" class="mobile-nav-link">ClassName 命名</a><strong class="mobile-nav-title">前端开发公约</strong><a href="/standard/project/vue.html" class="mobile-nav-link">vue开发规范</a><a href="/standard/project/react.html" class="mobile-nav-link">react开发规范</a><a href="/standard/project/structure.html" class="mobile-nav-link">代码结构</a><a href="/standard/project/rule.html" class="mobile-nav-link">项目开发约定</a><a href="/standard/project/ci_cd.html" class="mobile-nav-link current">持续集成</a><a href="/standard/project/template.html" class="mobile-nav-link">模板工程</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></span>
+    <select id="mobile-lang-select" data-canonical="">
+      
+        <option value="zh-cn" selected>简体中文</option>
+      
+        <option value="en">English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>

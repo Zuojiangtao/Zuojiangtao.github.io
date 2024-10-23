@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>基于vite的轻量化前端脚手架 | 个人博客</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://zuojiangtao.github.io/design/planet/vite_cli.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="zh-cn" href="https://zuojiangtao.github.io/design/planet/vite_cli">
+    
+      <link rel="alternative" hreflang="en" href="https://zuojiangtao.github.io/en/design/planet/vite_cli">
+    
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-w/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard/" class="main-nav-link">开发规范</a><a href="/design/" class="main-nav-link">开发指南</a><a href="/ecology/" class="main-nav-link">前沿生态</a><a href="/util/" class="main-nav-link">开发工具</a>
+    </nav>
+    <div id="github-icon-link">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="icon" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">基于vite的轻量化前端脚手架</h1>
+                <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Zuojiangtao/Zuojiangtao.github.io/tree/master/source/design/planet/vite_cli.md" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <h3 id="前言" class="article-heading"><a href="#前言" class="headerlink" title="前言"></a>前言<a class="article-anchor" href="#前言" aria-hidden="true"></a></h3><p>在开发项目时，我们对一些重复的、有价值的功能模块希望能够沉淀下来供之后的新项目使用；在创建新项目时我们又希望能够自定义插件和功能，添加自己喜欢的插件或者业务相关的功能模块。</p>
+<p>vue&#x2F;react官方的脚手架提供了方便精简的cli创建方式，但是对有自定义需求或对业务开发提升效能还是不能完全满足的，所以还是有需要开发自己的前端脚手架的。本文带大家从零开始，开发一款自己的脚手架。</p>
+<blockquote>
+<p>本文默认大家使用过vue&#x2F;react的官方脚手架；由于是基于vite的脚手架，所以node版本需要 14.18+ 或 16+ 或 更高。</p>
+</blockquote>
+<p>先看下最终效果：<br><img src="/../../images/vite-cli/create-app.gif" alt="create-app"></p>
+<h3 id="一、官方源码解读" class="article-heading"><a href="#一、官方源码解读" class="headerlink" title="一、官方源码解读"></a>一、官方源码解读<a class="article-anchor" href="#一、官方源码解读" aria-hidden="true"></a></h3><h4 id="1-create-vue" class="article-heading"><a href="#1-create-vue" class="headerlink" title="1. create-vue"></a>1. create-vue<a class="article-anchor" href="#1-create-vue" aria-hidden="true"></a></h4><p>vue的脚手架对源码做下简单解读，具体源码可看：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/vuejs/create-vue">create-vue源码</a>。</p>
+<p>主要函数都在根目录下的 <code>index.ts</code>，主要函数是 <code>init()</code>， 把一些变量定义和判空逻辑去除，只梳理下核心业务逻辑。</p>
+<p>先是prompts收集各项指令，再是根据各项的选择拷贝对应文件，还有就是ejs文件转换，如果是启用ts要js转成ts，最后是readme文件生成和创建成功的可执行命令提示。</p>
+<p><img src="/../../images/vite-cli/create-vue-prompts.png" alt="prompts"></p>
+<p>如图：从150行开始直到314行收集各项输入指令，都赋值到result中，result将用于后续的文件拷贝和转换。</p>
+<p><img src="/../../images/vite-cli/create-vue-initial.png" alt="initial"></p>
+<p>如图：从316行开始直到494行都是文件的拷贝，拷贝函数 <code>render</code>，格式都是 <code>if() &#123; render(path) &#125;</code>，意思是如果之前配置的指令配置了需要此插件到对应的文件将其拷贝到最终生成的项目文件夹。 </p>
+<p><img src="/../../images/vite-cli/create-vue-ejs-render.png" alt="ejs-render"></p>
+<p>如图：从504行开始是对ejs文件的转换，大概逻辑是转换ejs文件并将源文件删除。</p>
+<p><img src="/../../images/vite-cli/create-vue-ts.png" alt="ts"></p>
+<p>如图：从521行到566行则是说尽可能保持js文件和ts文件的公用，如果启用ts则将js文件转换成ts文件并删除源文件。</p>
+<p><img src="/../../images/vite-cli/create-vue-pkg-manager.png" alt="pkg-manager"></p>
+<p>如图：从568行到594行则是包管理器和生成readme文件，之前prompts指令和包管理器都会生成到最终的文件。</p>
+<p><img src="/../../images/vite-cli/create-vue-info.png" alt="info"></p>
+<p>如图：最后的596行到608行则是创建项目成功的可运行指令提示了。</p>
+<p>从上面的分析可知，vue的脚手架创建是遵循：收集指令-&gt;生成文件-&gt;最终提示和readme生成的核心逻辑。</p>
+<h4 id="2-create-react-app" class="article-heading"><a href="#2-create-react-app" class="headerlink" title="2. create-react-app"></a>2. create-react-app<a class="article-anchor" href="#2-create-react-app" aria-hidden="true"></a></h4><p>再对react的脚手架对源码做下简单解读，具体源码可看：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/facebook/create-react-app/blob/main/packages/create-react-app/createReactApp.js">create-react-app源码</a>。</p>
+<p>react脚手架的主要逻辑则是在 <code>createReactApp.js</code> 文件，主要函数也是 <code>init()</code>，功能模块的逻辑则单独封装了函数，<code>createApp</code>,<code>install</code>，<code>run</code>, <code>getInstallPackage</code>等，咱们仍然看核心逻辑。</p>
+<p>create-react-app使用了 <code>commander</code> 作为指令交互的收集，仍然是先收集指令交互结果再执行后续操作。</p>
+<p><img src="/../../images/vite-cli/create-react-program.png" alt="program"><br><img src="/../../images/vite-cli/create-react-option.png" alt="option"></p>
+<p>如图：从59行到144行，典型的commander的指令交互形式的使用，将各项指令申明，并收集交互指令的参数。</p>
+<p><img src="/../../images/vite-cli/create-react-generate.png" alt="generate"></p>
+<p>如图：后续逻辑是先检测版本是否最新，再创建项目。</p>
+<p><img src="/../../images/vite-cli/create-react-createapp.png" alt="createApp"></p>
+<p>如图：<code>createApp</code> 函数从235行到331行先创建项目目录，再在对输入的参数做处理，最后执行 <code>run</code> 函数。</p>
+<h3 id="二、前置技能" class="article-heading"><a href="#二、前置技能" class="headerlink" title="二、前置技能"></a>二、前置技能<a class="article-anchor" href="#二、前置技能" aria-hidden="true"></a></h3><p>对源码分析过后，想要开发自己的脚手架还不够，需要准备一些前置技能才能够。</p>
+<h4 id="1-node的fs和path模块" class="article-heading"><a href="#1-node的fs和path模块" class="headerlink" title="1. node的fs和path模块"></a>1. node的fs和path模块<a class="article-anchor" href="#1-node的fs和path模块" aria-hidden="true"></a></h4><p>1). <strong>fs模块</strong></p>
+<p>在处理模板文件时会涉及到fs模块。fs模块是node内置的模块，用于对文件的读写操作。</p>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://nodejs.p2hp.com/api/v18/fs/">node官方文档-fs模块</a></p>
+<p>fs常用方法：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>mkdir</td>
+<td>创建目录</td>
+</tr>
+<tr>
+<td>rmdir</td>
+<td>删除目录</td>
+</tr>
+<tr>
+<td>readdir</td>
+<td>读取目录</td>
+</tr>
+<tr>
+<td>stat</td>
+<td>检测文件还是目录</td>
+</tr>
+<tr>
+<td>writeFile</td>
+<td>创建写入文件</td>
+</tr>
+<tr>
+<td>unlink</td>
+<td>删除文件</td>
+</tr>
+<tr>
+<td>readFile</td>
+<td>读取文件</td>
+</tr>
+<tr>
+<td>rename</td>
+<td>重命名&#x2F;更改存放路径</td>
+</tr>
+<tr>
+<td>appendFile</td>
+<td>追加文件</td>
+</tr>
+<tr>
+<td>createWriteStream</td>
+<td>流式写入</td>
+</tr>
+<tr>
+<td>exists</td>
+<td>判断目录是否存在</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>以上都是异步方法，同步方法在后面加Sync即可，比如同步写入文件 fs.writeFileSync()。</p>
+</blockquote>
+<p>2). <strong>path模块</strong></p>
+<p>对文件的读写都会使用到path路径。path模块也是node的内置模块，用于对文件路径的解析。</p>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://nodejs.p2hp.com/api/v18/path/">node官方文档-path模块</a></p>
+<p>path常用方法：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>join</td>
+<td>拼接路径</td>
+</tr>
+<tr>
+<td>resolve</td>
+<td>路径解析为绝对路径</td>
+</tr>
+<tr>
+<td>basename</td>
+<td>返回文件名</td>
+</tr>
+<tr>
+<td>dirname</td>
+<td>返回路径目录</td>
+</tr>
+<tr>
+<td>extname</td>
+<td>返回文件拓展名</td>
+</tr>
+<tr>
+<td>normalize</td>
+<td>规范化路径</td>
+</tr>
+</tbody></table>
+<p>我们拿其中的extname举例怎么使用：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> path <span class="keyword">from</span> <span class="string">&#x27;node:path&#x27;</span>;</span><br><span class="line"><span class="comment">// src = &#x27;/data/log.txt&#x27;</span></span><br><span class="line"><span class="keyword">const</span> extName = path.<span class="title function_">extname</span>(src);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(extname) <span class="comment">// &#x27;.txt&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>3). <strong>__dirname</strong>变量</p>
+<p>特殊文件路径: <strong>__dirname</strong> 指当前所在目录的绝对路径，可与其他路径或文件名直接拼接。比如：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> fs <span class="keyword">from</span> <span class="string">&#x27;node:fs&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> file = fs.<span class="title function_">readFile</span>(__dirname + <span class="string">&#x27;/log.txt&#x27;</span>);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(file); <span class="comment">// 这里的readFile 路径会是 -&gt; &#x27;D:\\my-project\data\log.txt&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-用到的第三方插件" class="article-heading"><a href="#2-用到的第三方插件" class="headerlink" title="2. 用到的第三方插件"></a>2. 用到的第三方插件<a class="article-anchor" href="#2-用到的第三方插件" aria-hidden="true"></a></h4><p>1). <strong>chalk</strong></p>
+<p>chalk 是一个用于给终端输出文本添加颜色的 Node.js 库。它让你可以轻松地给命令行中的输出添加各种颜色和样式，以提高可读性和美观度。</p>
+<p>chalk源码：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/chalk/chalk">chalk</a></p>
+<p>使用示例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> chalk <span class="keyword">from</span> <span class="string">&#x27;chalk&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(chalk.<span class="title function_">blue</span>(<span class="string">&#x27;Hello World!&#x27;</span>)) <span class="comment">// 直接颜色输出想要的文本</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(chalk.<span class="property">bgTellow</span>.<span class="title function_">black</span>(<span class="string">&#x27;背景黄色的演示&#x27;</span>)) <span class="comment">// 带背景色的文本</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(chalk.<span class="title function_">bold</span>(<span class="string">&#x27;字体样式&#x27;</span>)) <span class="comment">// 给文本添加样式</span></span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(chalk.<span class="property">red</span>.<span class="property">bold</span>.<span class="title function_">underline</span>(<span class="string">&#x27;组合样式&#x27;</span>)) <span class="comment">// 组合多个样式</span></span><br></pre></td></tr></table></figure>
+
+<p>2). <strong>ejs</strong></p>
+<p>EJS（Embedded JavaScript Templating）是一个简单、轻量且强大的模板引擎，用于生成 HTML 页面。它的语法基于 JavaScript，容易上手，常用于 Node.js 应用中来构建动态网页。</p>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://ejs.co/#promo">ejs官网</a> | <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/mde/ejs">ejs源码</a></p>
+<p>使用示例：</p>
+<p>先创建一个ejs文件 - template.ejs</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;title&gt;&lt;%= title %&gt;&lt;/title&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;h1&gt;Welcome, &lt;%= user %&gt;!&lt;/h1&gt;</span><br><span class="line">    &lt;ul&gt;</span><br><span class="line">        &lt;% for(let i = 0; i &lt; items.length; i++) &#123; %&gt;</span><br><span class="line">            &lt;li&gt;&lt;%= items[i] %&gt;&lt;/li&gt;</span><br><span class="line">        &lt;% &#125; %&gt;</span><br><span class="line">    &lt;/ul&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<p>再渲染模板</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> ejs = <span class="built_in">require</span>(<span class="string">&#x27;ejs&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">&#x27;fs&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> templateString = fs.<span class="title function_">readFileSync</span>(<span class="string">&#x27;template.ejs&#x27;</span>, <span class="string">&#x27;utf-8&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> data = &#123;</span><br><span class="line">    <span class="attr">title</span>: <span class="string">&#x27;My EJS Page&#x27;</span>,</span><br><span class="line">    <span class="attr">user</span>: <span class="string">&#x27;John Doe&#x27;</span>,</span><br><span class="line">    <span class="attr">items</span>: [<span class="string">&#x27;Item 1&#x27;</span>, <span class="string">&#x27;Item 2&#x27;</span>, <span class="string">&#x27;Item 3&#x27;</span>]</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> html = ejs.<span class="title function_">render</span>(templateString, data);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(html);</span><br></pre></td></tr></table></figure>
+
+<p>这样最后会得到一个最终的html文件，其中的变量会被替换为传入的data变量值。</p>
+<p>3). <strong>prompts</strong></p>
+<p>prompts 是一个轻量级的 Node.js 库，用于在命令行中进行交互式询问和获取用户输入。它支持多种类型的提示，包括文本、选择、确认、多选等，适用于需要与用户进行互动的命令行工具或脚本。</p>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/terkelg/prompts">prompts源码</a></p>
+<p>使用示例：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> prompts <span class="keyword">from</span> <span class="string">&#x27;prompts&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> questions = [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;text&#x27;</span>,</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&#x27;name&#x27;</span>,</span><br><span class="line">        <span class="attr">message</span>: <span class="string">&#x27;What is your name?&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;number&#x27;</span>,</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&#x27;age&#x27;</span>,</span><br><span class="line">        <span class="attr">message</span>: <span class="string">&#x27;How old are you?&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">];</span><br><span class="line"></span><br><span class="line">(<span class="title function_">async</span> () =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> responses = <span class="keyword">await</span> <span class="title function_">prompts</span>(questions);</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(responses);</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+
+<p>4). <strong>tsup</strong></p>
+<p>tsup 是一个用于构建 TypeScript 项目的打包工具。它致力于快速、简洁地打包 TypeScript 代码，并可以使用现代 ES 模块、CommonJS 以及 UMD 格式输出。tsup 是基于 esbuild 构建的，因而具备非常高的构建速度和良好的性能。</p>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://tsup.egoist.dev/">tsup文档</a> | <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/egoist/tsup">tsup源码</a></p>
+<p>tsup的使用很简单，几乎可以做到零配置构建。在 <code>package.json</code> build字段配置 <code>&quot;build&quot;: &quot;tsup&quot;</code> 即可，如果需要自定义可在根目录增加 <code>tsup.config.ts</code> 来做额外配置。</p>
+<p>具体配置字段可参考 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.jsdocs.io/package/tsup">tsup 配置文档</a>。</p>
+<p>图里为截取其中一些配置字段：</p>
+<p><img src="/../../images/vite-cli/tsup.png" alt="tsup"></p>
+<h3 id="三、cli开发流程" class="article-heading"><a href="#三、cli开发流程" class="headerlink" title="三、cli开发流程"></a>三、cli开发流程<a class="article-anchor" href="#三、cli开发流程" aria-hidden="true"></a></h3><h4 id="1-插件选择" class="article-heading"><a href="#1-插件选择" class="headerlink" title="1. 插件选择"></a>1. 插件选择<a class="article-anchor" href="#1-插件选择" aria-hidden="true"></a></h4><p>使用prompts来收集各项的参数，代替commander、inquirer等复杂命令行交互的方式。</p>
+<h4 id="2-文件结构" class="article-heading"><a href="#2-文件结构" class="headerlink" title="2. 文件结构"></a>2. 文件结构<a class="article-anchor" href="#2-文件结构" aria-hidden="true"></a></h4><p><img src="/../../images/vite-cli/vite-starter-dictionary.png" alt="dictionary"></p>
+<p>如图：主要看 <code>src</code>, <code>template</code>, <code>locales</code> 和 <code>package.json</code> 文件，src下是主要的逻辑，locales是国家化多语言字段，template是各项的配置文件，package.json则是基础发布的包和脚手架启动命令。</p>
+<blockquote>
+<p>package.json文件的files字段是发布时将要上传的文件名列表，bin字段是运行命令。</p>
+</blockquote>
+<h4 id="3-代码逻辑" class="article-heading"><a href="#3-代码逻辑" class="headerlink" title="3. 代码逻辑"></a>3. 代码逻辑<a class="article-anchor" href="#3-代码逻辑" aria-hidden="true"></a></h4><p>根据上面的vue&#x2F;react的脚手架源码分析，可以确定下脚手架的逻辑：1. 先收集各项指令参数； 2. 根据收集的参数生成或转换对应文件； 3. 结束创建并提示可执行命令。</p>
+<p>这样一个轻量级的脚手架大致的逻辑架构就有了，整个项目分为start启动模块、setting收集prompts交互指令参数模块、create创建项目文件和成功提示可执行模块。</p>
+<p>具体流程及各项参数图示：</p>
+<p><img src="/../../images/vite-cli/vite-starter-architecture.png" alt="architecture"></p>
+<p>1). index.ts</p>
+<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env node</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> start <span class="keyword">from</span> <span class="string">&#x27;./core/start&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> setting <span class="keyword">from</span> <span class="string">&#x27;./core/setting&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> create <span class="keyword">from</span> <span class="string">&#x27;./core/create&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> info <span class="keyword">from</span> <span class="string">&#x27;./core/info&#x27;</span>;</span><br><span class="line"></span><br><span class="line">(<span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">initViteStarterCommand</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="comment">// start</span></span><br><span class="line">    <span class="keyword">const</span> lang = <span class="keyword">await</span> <span class="title function_">start</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// setting</span></span><br><span class="line">    <span class="keyword">const</span> options = <span class="keyword">await</span> <span class="title function_">setting</span>(lang);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// create</span></span><br><span class="line">    <span class="keyword">await</span> <span class="title function_">create</span>(lang, options);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// install</span></span><br><span class="line">    <span class="keyword">await</span> <span class="title function_">info</span>(lang, options);</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+
+<p>第一行的 <code>#!/usr/bin/env node</code> 意思是以node环境来执行，<strong>不要删除</strong>。后续则是切分的各模块函数执行。</p>
+<p>2). start模块</p>
+<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> prompts <span class="keyword">from</span> <span class="string">&#x27;prompts&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="variable constant_">LANGUAGE</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;@/config/compile.config&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> chalk <span class="keyword">from</span> <span class="string">&#x27;chalk&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">start</span>(<span class="params"></span>): <span class="title class_">Promise</span>&lt;prompts.<span class="property">Answers</span>&lt;<span class="built_in">any</span>&gt;&gt; &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>();</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;A vite-based front-end startup template generator.&#x27;</span>);</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>();</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(</span><br><span class="line">    chalk.<span class="title function_">red</span>(<span class="string">&#x27;Note: This cli is built based on vite, and the node version requires 14.18+ or 16+ or higher&#x27;</span>),</span><br><span class="line">  );</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>();</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">await</span> <span class="title function_">prompts</span>([</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">type</span>: <span class="string">&#x27;select&#x27;</span>,</span><br><span class="line">      <span class="attr">name</span>: <span class="string">&#x27;language&#x27;</span>,</span><br><span class="line">      <span class="attr">message</span>: <span class="string">&#x27;Select your language:&#x27;</span>,</span><br><span class="line">      <span class="attr">choices</span>: <span class="variable constant_">LANGUAGE</span>.<span class="title function_">map</span>(<span class="function"><span class="params">framework</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">          <span class="attr">title</span>: framework.<span class="property">label</span>,</span><br><span class="line">          <span class="attr">value</span>: framework.<span class="property">value</span>,</span><br><span class="line">        &#125;;</span><br><span class="line">      &#125;),</span><br><span class="line">    &#125;,</span><br><span class="line">  ]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个模块很简单，就是开始执行先给个提示，然后prompts选择语言，并且要return出去给后续的模块使用。</p>
+<p>3). setting模块</p>
+<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> path <span class="keyword">from</span> <span class="string">&#x27;node:path&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> fs <span class="keyword">from</span> <span class="string">&#x27;node:fs&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> prompts <span class="keyword">from</span> <span class="string">&#x27;prompts&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">setOption</span>(<span class="params"><span class="attr">lang</span>: <span class="built_in">object</span></span>): <span class="title class_">Promise</span>&lt;<span class="title class_">Options</span>&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> language = <span class="title function_">getLanguage</span>(lang.<span class="property">language</span>);</span><br><span class="line">    <span class="keyword">const</span> result = <span class="keyword">await</span> <span class="title function_">prompts</span>([</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">type</span>: <span class="string">&#x27;text&#x27;</span>,</span><br><span class="line">            <span class="attr">name</span>: <span class="string">&#x27;projectName&#x27;</span>,</span><br><span class="line">            <span class="attr">message</span>: language.<span class="property">projectName</span>.<span class="property">message</span>,</span><br><span class="line">            <span class="attr">initial</span>: <span class="variable constant_">DEFAULT_PROJECT_NAME</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="comment">// 其他条目指令收集</span></span><br><span class="line">    ])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>本模块是将各项指令的交互参数给收集起来，最终也要return出去给创建模块使用。这里只用创建项目的名称做演示。</p>
+<p>4). setting设置</p>
+<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> path <span class="keyword">from</span> <span class="string">&#x27;node:path&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> fs <span class="keyword">from</span> <span class="string">&#x27;node:fs&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> chalk <span class="keyword">from</span> <span class="string">&#x27;chalk&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; copyTemplate &#125; <span class="keyword">from</span> <span class="string">&#x27;@/utils/copyTemplate&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; ejsRender &#125; <span class="keyword">from</span> <span class="string">&#x27;@/utils/ejsRender&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="variable constant_">DEFAULT_PROJECT_NAME</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;@/config/compile.config&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; getLanguage &#125; <span class="keyword">from</span> <span class="string">&#x27;@/utils/getLanguage&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">recursiveDeleteFolder</span>(<span class="params">filePath</span>) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> fileName <span class="keyword">of</span> fs.<span class="title function_">readdirSync</span>(filePath)) &#123;</span><br><span class="line">        <span class="keyword">const</span> fullPath = path.<span class="title function_">resolve</span>(filePath, fileName);</span><br><span class="line">        <span class="keyword">if</span> (fs.<span class="title function_">lstatSync</span>(fullPath).<span class="title function_">isDirectory</span>()) &#123;</span><br><span class="line">            <span class="title function_">recursiveDeleteFolder</span>(fullPath);</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        fs.<span class="title function_">unlinkSync</span>(fullPath);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">create</span>(<span class="params"><span class="attr">lang</span>: <span class="built_in">object</span>, <span class="attr">options</span>: <span class="title class_">Options</span></span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> &#123;</span><br><span class="line">        projectName,</span><br><span class="line">        <span class="attr">overwrite</span>: shouldOverwrite,</span><br><span class="line">        framework,</span><br><span class="line">        <span class="attr">useEslint</span>: needsEslint,</span><br><span class="line">        <span class="attr">usePrettier</span>: needsPrettier,</span><br><span class="line">        <span class="attr">useHusky</span>: needsHusky,</span><br><span class="line">    &#125; = options;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> name = projectName || <span class="variable constant_">DEFAULT_PROJECT_NAME</span>;</span><br><span class="line">    <span class="keyword">const</span> filePath = path.<span class="title function_">resolve</span>(process.<span class="title function_">cwd</span>(), name);</span><br><span class="line">    <span class="keyword">const</span> language = <span class="title function_">getLanguage</span>(lang.<span class="property">language</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ================= generate info =================</span></span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>();</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(chalk.<span class="title function_">cyan</span>(<span class="string">`<span class="subst">$&#123;language.infos.scaffolding&#125;</span> ...`</span>));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ================= overwrite =================</span></span><br><span class="line">    <span class="keyword">if</span> (fs.<span class="title function_">existsSync</span>(filePath) &amp;&amp; shouldOverwrite) &#123;</span><br><span class="line">        <span class="title function_">recursiveDeleteFolder</span>(filePath);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> (!fs.<span class="title function_">existsSync</span>(filePath)) &#123;</span><br><span class="line">        fs.<span class="title function_">mkdirSync</span>(filePath);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ================= copy template =================</span></span><br><span class="line">    <span class="comment">// ========= base =========</span></span><br><span class="line">    <span class="keyword">await</span> <span class="title function_">copyTemplate</span>(path.<span class="title function_">resolve</span>(__dirname, <span class="string">&#x27;../template/base&#x27;</span>), filePath);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ================= ejs render =================</span></span><br><span class="line">    <span class="comment">// ========= base =========</span></span><br><span class="line">    <span class="keyword">await</span> <span class="title function_">ejsRender</span>(path.<span class="title function_">resolve</span>(__dirname, <span class="string">&#x27;../template/base&#x27;</span>), filePath, options);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个模块是根据收集的参数来创建文件及转换ejs文件，这里只拿base文件的拷贝和ejs转换来做示例。</p>
+<p>5). info模块</p>
+<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> chalk <span class="keyword">from</span> <span class="string">&#x27;chalk&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; getLanguage &#125; <span class="keyword">from</span> <span class="string">&#x27;@/utils/getLanguage&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">showGenerationInfo</span>(<span class="params"><span class="attr">lang</span>: <span class="built_in">object</span>, <span class="attr">option</span>: <span class="title class_">Options</span></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; projectName, packageManager &#125; = option;</span><br><span class="line">  <span class="keyword">const</span> language = <span class="title function_">getLanguage</span>(lang.<span class="property">language</span>);</span><br><span class="line"></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">`\n<span class="subst">$&#123;chalk.cyan(language.infos.done)&#125;</span>\n`</span>);</span><br><span class="line"></span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(chalk.<span class="title function_">green</span>(<span class="string">`  cd <span class="subst">$&#123;projectName&#125;</span>`</span>));</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(chalk.<span class="title function_">green</span>(<span class="string">`  <span class="subst">$&#123;packageManager&#125;</span> install`</span>));</span><br><span class="line">  <span class="keyword">if</span> (packageManager === <span class="string">&#x27;npm&#x27;</span>) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(chalk.<span class="title function_">green</span>(<span class="string">`  <span class="subst">$&#123;packageManager&#125;</span> run dev`</span>));</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(chalk.<span class="title function_">green</span>(<span class="string">`  <span class="subst">$&#123;packageManager&#125;</span> dev`</span>));</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个模块是最终完成给出提示，接下来可以执行 <code>npm install</code>, <code>npm run dev</code> 等操作的指令。</p>
+<p>6). 其他函数</p>
+<p>文件拷贝函数，对文件夹进行一个递归，直到目标文件不是一个文件夹或目录，ejs文件则跳过，json文件针对性处理，其他文件做个拷贝。</p>
+<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * copy template without ejs file</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">string</span>&#125; <span class="variable">src</span> - source filename to copy</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">string</span>&#125; <span class="variable">dest</span> - destination filename of the copy operation</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">function</span>&#125; [callback]</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns</span> &#123;<span class="type">Promise</span>&#125;</span></span><br><span class="line"><span class="comment"> * */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">copyTemplate</span>(<span class="params"><span class="attr">src</span>: <span class="built_in">string</span>, <span class="attr">dest</span>: <span class="built_in">string</span>, <span class="attr">callback</span>: <span class="built_in">void</span></span>): <span class="title class_">Promise</span>&lt;<span class="built_in">void</span>&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> fileName = path.<span class="title function_">basename</span>(src);</span><br><span class="line">  <span class="keyword">const</span> extName = path.<span class="title function_">extname</span>(src);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (fs.<span class="title function_">statSync</span>(src).<span class="title function_">isDirectory</span>()) &#123;</span><br><span class="line">    <span class="comment">// ================= skip node_modules file =================</span></span><br><span class="line">    <span class="keyword">if</span> (fileName === <span class="string">&#x27;node_modules&#x27;</span>) <span class="keyword">return</span>;</span><br><span class="line">    fs.<span class="title function_">mkdirSync</span>(dest, &#123; <span class="attr">recursive</span>: <span class="literal">true</span> &#125;);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> file <span class="keyword">of</span> fs.<span class="title function_">readdirSync</span>(src)) &#123;</span><br><span class="line">      <span class="keyword">await</span> <span class="title function_">copyTemplate</span>(path.<span class="title function_">resolve</span>(src, file), path.<span class="title function_">resolve</span>(dest, file), callback);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ================= skip ejs file =================</span></span><br><span class="line">  <span class="keyword">if</span> (extName === <span class="string">&#x27;.ejs&#x27;</span>) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ================= json file copy =================</span></span><br><span class="line">  <span class="keyword">const</span> <span class="title function_">jsonWriteFile</span> = dest =&gt; &#123;</span><br><span class="line">    <span class="keyword">const</span> existing = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(fs.<span class="title function_">readFileSync</span>(dest, <span class="string">&#x27;utf8&#x27;</span>));</span><br><span class="line">    <span class="keyword">const</span> newPackage = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(fs.<span class="title function_">readFileSync</span>(src, <span class="string">&#x27;utf8&#x27;</span>));</span><br><span class="line">    <span class="keyword">return</span> <span class="title function_">deepMerge</span>(existing, newPackage);</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (fileName === <span class="string">&#x27;package.json&#x27;</span> &amp;&amp; fs.<span class="title function_">existsSync</span>(dest)) &#123;</span><br><span class="line">    <span class="keyword">const</span> pkg = <span class="title function_">jsonWriteFile</span>(dest);</span><br><span class="line">    fs.<span class="title function_">writeFileSync</span>(dest, <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(<span class="title function_">sortDependencies</span>(pkg), <span class="literal">null</span>, <span class="number">2</span>) + <span class="string">&#x27;\n&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (fileName === <span class="string">&#x27;extensions.json&#x27;</span> &amp;&amp; fs.<span class="title function_">existsSync</span>(dest)) &#123;</span><br><span class="line">    <span class="keyword">const</span> extensions = <span class="title function_">jsonWriteFile</span>(dest);</span><br><span class="line">    fs.<span class="title function_">writeFileSync</span>(dest, <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(extensions, <span class="literal">null</span>, <span class="number">2</span>) + <span class="string">&#x27;\n&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (fileName === <span class="string">&#x27;settings.json&#x27;</span> &amp;&amp; fs.<span class="title function_">existsSync</span>(dest)) &#123;</span><br><span class="line">    <span class="keyword">const</span> settings = <span class="title function_">jsonWriteFile</span>(dest);</span><br><span class="line">    fs.<span class="title function_">writeFileSync</span>(dest, <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(settings, <span class="literal">null</span>, <span class="number">2</span>) + <span class="string">&#x27;\n&#x27;</span>);</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ================= other file copy =================</span></span><br><span class="line">  fs.<span class="title function_">copyFileSync</span>(src, dest);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>ejs转换函数，同样的要递归处理文件夹，保证所有路径下的ejs都被覆盖到，然后render内置函数转换就行了，最后做个格式美化。</p>
+<figure class="highlight ts"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * transform ejs file to outfile</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">string</span>&#125; <span class="variable">src</span> - source file path</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">string</span>&#125; <span class="variable">dest</span> - destination filename of the ejs render operation</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> &#123;<span class="type">Options</span>&#125; <span class="variable">options</span> - render options</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@returns</span> &#123;<span class="type">Promise</span>&#125;</span></span><br><span class="line"><span class="comment"> * */</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">ejsRender</span>(<span class="params"><span class="attr">src</span>: <span class="built_in">string</span>, <span class="attr">dest</span>: <span class="built_in">string</span>, <span class="attr">options</span>: <span class="title class_">Options</span></span>): <span class="title class_">Promise</span>&lt;<span class="built_in">void</span>&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> fileName = path.<span class="title function_">basename</span>(src);</span><br><span class="line">  <span class="keyword">const</span> extName = path.<span class="title function_">extname</span>(src).<span class="title function_">replace</span>(<span class="regexp">/[.]/g</span>, <span class="string">&#x27;&#x27;</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (fs.<span class="title function_">statSync</span>(src).<span class="title function_">isDirectory</span>()) &#123;</span><br><span class="line">    <span class="keyword">if</span> (fileName === <span class="string">&#x27;node_modules&#x27;</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="comment">// !fs.statSync(dest).isDirectory() &amp;&amp; fs.mkdirSync(dest, &#123; recursive: true &#125;);</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> file <span class="keyword">of</span> fs.<span class="title function_">readdirSync</span>(src)) &#123;</span><br><span class="line">      <span class="keyword">await</span> <span class="title function_">ejsRender</span>(path.<span class="title function_">resolve</span>(src, file), path.<span class="title function_">resolve</span>(dest, file), options);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ================= skip not ejs file =================</span></span><br><span class="line">  <span class="keyword">if</span> (extName !== <span class="string">&#x27;ejs&#x27;</span>) <span class="keyword">return</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">let</span> prettierCode = <span class="literal">null</span>;</span><br><span class="line">    <span class="comment">// 需要转换的ejs文件</span></span><br><span class="line">    <span class="keyword">const</span> ejsFilePath = path.<span class="title function_">resolve</span>(src);</span><br><span class="line">    <span class="comment">// 转换后的文件</span></span><br><span class="line">    <span class="keyword">const</span> outputFilePath = path.<span class="title function_">resolve</span>(dest.<span class="title function_">split</span>(<span class="string">&#x27;.ejs&#x27;</span>)[<span class="number">0</span>]);</span><br><span class="line">    <span class="comment">// buffer code</span></span><br><span class="line">    <span class="keyword">const</span> templateBufferCode = <span class="keyword">await</span> fs.<span class="title function_">readFileSync</span>(ejsFilePath);</span><br><span class="line">    <span class="comment">// ejs render code</span></span><br><span class="line">    <span class="keyword">const</span> code = ejs.<span class="title function_">render</span>(templateBufferCode.<span class="title function_">toString</span>(), &#123; options &#125;);</span><br><span class="line">    <span class="comment">// 获取后缀</span></span><br><span class="line">    <span class="keyword">const</span> _extname = path.<span class="title function_">extname</span>(dest.<span class="title function_">split</span>(<span class="string">&#x27;.ejs&#x27;</span>)[<span class="number">0</span>]).<span class="title function_">replace</span>(<span class="regexp">/[.]/g</span>, <span class="string">&#x27;&#x27;</span>);</span><br><span class="line">    <span class="comment">// outputPath</span></span><br><span class="line">    <span class="keyword">const</span> opts = <span class="keyword">await</span> prettier.<span class="title function_">resolveConfig</span>(src);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="keyword">switch</span> (_extname) &#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;ts&#x27;</span>:</span><br><span class="line">          prettierCode = <span class="keyword">await</span> prettier.<span class="title function_">format</span>(code, &#123;</span><br><span class="line">            <span class="attr">parser</span>: <span class="string">&#x27;typescript&#x27;</span>,</span><br><span class="line">            ...opts,</span><br><span class="line">          &#125;);</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;tsx&#x27;</span>:</span><br><span class="line">          prettierCode = <span class="keyword">await</span> prettier.<span class="title function_">format</span>(code, &#123;</span><br><span class="line">            <span class="attr">parser</span>: <span class="string">&#x27;babel&#x27;</span>,</span><br><span class="line">            ...opts,</span><br><span class="line">          &#125;);</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;jsx&#x27;</span>:</span><br><span class="line">          prettierCode = <span class="keyword">await</span> prettier.<span class="title function_">format</span>(code, &#123;</span><br><span class="line">            <span class="attr">parser</span>: <span class="string">&#x27;babel&#x27;</span>,</span><br><span class="line">            ...opts,</span><br><span class="line">          &#125;);</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;js&#x27;</span>:</span><br><span class="line">          prettierCode = <span class="keyword">await</span> prettier.<span class="title function_">format</span>(code, &#123;</span><br><span class="line">            <span class="attr">parser</span>: <span class="string">&#x27;babel&#x27;</span>,</span><br><span class="line">            ...opts,</span><br><span class="line">          &#125;);</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">&#x27;&#x27;</span>:</span><br><span class="line">          prettierCode = code;</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        <span class="attr">default</span>:</span><br><span class="line">          prettierCode = <span class="keyword">await</span> prettier.<span class="title function_">format</span>(code, &#123; <span class="attr">parser</span>: _extname &#125;);</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(err);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 文件写入</span></span><br><span class="line">    fs.<span class="title function_">writeFileSync</span>(outputFilePath, prettierCode);</span><br><span class="line">    <span class="comment">// fs.unlinkSync(ejsFilePath);</span></span><br><span class="line">  &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">error</span>(e);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-本地开发和测试" class="article-heading"><a href="#4-本地开发和测试" class="headerlink" title="4. 本地开发和测试"></a>4. 本地开发和测试<a class="article-anchor" href="#4-本地开发和测试" aria-hidden="true"></a></h4><p>在开发过程中一般来说是需要build构建后再执行来看效果的，这样比较繁琐。但是使用tsup可以通过添加 <code>--watch</code> 来实时监听代码编译，这样方便我们的开发。具体做法可在 <code>package.json</code> 添加命令 <code>&quot;dev&quot;: &quot;pnpm run build --watch&quot;</code>。<br>这样可以在开发时开2个窗口，一个运行 dev 来监听代码变化，一个用来测试更改的代码是否有效。</p>
+<p><img src="/../../images/vite-cli/vite-starter-terminal.png" alt="terminal"></p>
+<p>如图，local窗口运行 <code>pnpm dev</code> 来监听代码变化，local2窗口则在代码执行完执行node命令运行 <code>node dist/index.js</code> 查看最终效果。这样代码有更新直接在local2查看更改效果。</p>
+<h3 id="四、npm发布及效果" class="article-heading"><a href="#四、npm发布及效果" class="headerlink" title="四、npm发布及效果"></a>四、npm发布及效果<a class="article-anchor" href="#四、npm发布及效果" aria-hidden="true"></a></h3><h4 id="1-npm发布" class="article-heading"><a href="#1-npm发布" class="headerlink" title="1. npm发布"></a>1. npm发布<a class="article-anchor" href="#1-npm发布" aria-hidden="true"></a></h4><p>npm发布需要自己的账号才可以，可以到npm官方网站申请：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.npmjs.com/">npm</a></p>
+<p>有了自己的账号后，先在脚手架根目录 <code>npm login</code> 登录，输入账号和密码，然后<strong>将脚手架项目构建后运行</strong> <code>npm publish</code> 这步就可以发布成功了，在发布时可能要验证码，验证码发送申请账号时填写的邮箱。最后再 <code>npm logout</code>退出。</p>
+<p>发布后在npm官网自己的账号下可以看到已经发布的包。</p>
+<h4 id="2-最终效果" class="article-heading"><a href="#2-最终效果" class="headerlink" title="2. 最终效果"></a>2. 最终效果<a class="article-anchor" href="#2-最终效果" aria-hidden="true"></a></h4><p>在终端命令运行 <code>npx vite-template-starter@latest</code> 执行然后自行选择，最终效果：</p>
+<p><img src="/../../images/vite-cli/demo.png" alt="demo"></p>
+<p>打开代码看下：</p>
+<p><img src="/../../images/vite-cli/demo-code.png" alt="demo-code"></p>
+<p>安装依赖并运行，最终效果：</p>
+<p><img src="/../../images/vite-cli/preview.png" alt="preview"></p>
+<h3 id="最后" class="article-heading"><a href="#最后" class="headerlink" title="最后"></a>最后<a class="article-anchor" href="#最后" aria-hidden="true"></a></h3><p>这个脚手架尽可能的精简，做到只做必要的流程和参数，没有把安装依赖步骤和各种颜色样式美化加入进去。</p>
+<p>看完这篇文章，我想大家应该可以按照自己的需求建立一个自己的前端脚手架。</p>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2024-10-23T03:38:37.669Z" itemprop="dateModified">上次更新：2024-10-23</time>
+                <a href="index.html" class="article-footer-next" title="概述"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%AE%98%E6%96%B9%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB"><span class="toc-text">一、官方源码解读</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-create-vue"><span class="toc-text">1. create-vue</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-create-react-app"><span class="toc-text">2. create-react-app</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E5%89%8D%E7%BD%AE%E6%8A%80%E8%83%BD"><span class="toc-text">二、前置技能</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-node%E7%9A%84fs%E5%92%8Cpath%E6%A8%A1%E5%9D%97"><span class="toc-text">1. node的fs和path模块</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%94%A8%E5%88%B0%E7%9A%84%E7%AC%AC%E4%B8%89%E6%96%B9%E6%8F%92%E4%BB%B6"><span class="toc-text">2. 用到的第三方插件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81cli%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B"><span class="toc-text">三、cli开发流程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%8F%92%E4%BB%B6%E9%80%89%E6%8B%A9"><span class="toc-text">1. 插件选择</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="toc-text">2. 文件结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E4%BB%A3%E7%A0%81%E9%80%BB%E8%BE%91"><span class="toc-text">3. 代码逻辑</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E6%9C%AC%E5%9C%B0%E5%BC%80%E5%8F%91%E5%92%8C%E6%B5%8B%E8%AF%95"><span class="toc-text">4. 本地开发和测试</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81npm%E5%8F%91%E5%B8%83%E5%8F%8A%E6%95%88%E6%9E%9C"><span class="toc-text">四、npm发布及效果</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-npm%E5%8F%91%E5%B8%83"><span class="toc-text">1. npm发布</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%9C%80%E7%BB%88%E6%95%88%E6%9E%9C"><span class="toc-text">2. 最终效果</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E5%90%8E"><span class="toc-text">最后</span></a></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">开始使用</strong><a href="/design/index.html" class="sidebar-link">概述</a><strong class="sidebar-title">设计规范指南</strong><a href="/design/design_guide.html" class="sidebar-link">中后台设计规范</a><strong class="sidebar-title">知识星球</strong><a href="/design/planet/nodejs_crawler.html" class="sidebar-link">nodejs爬虫</a><a href="/design/planet/vw_mobile.html" class="sidebar-link">移动端适配</a><a href="/design/planet/vite_cli.html" class="sidebar-link current">vite前端脚手架</a><strong class="sidebar-title">软件架构</strong><a href="/design/architecture/design_pattern.html" class="sidebar-link">设计模式</a><a href="/design/architecture/database_consistency.html" class="sidebar-link">数据一致性</a>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2024 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuo.jiangtao@h3c.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard/" class="mobile-nav-link">开发规范</a><a href="/design/" class="mobile-nav-link">开发指南</a><a href="/ecology/" class="mobile-nav-link">前沿生态</a><a href="/util/" class="mobile-nav-link">开发工具</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">开始使用</strong><a href="/design/index.html" class="mobile-nav-link">概述</a><strong class="mobile-nav-title">设计规范指南</strong><a href="/design/design_guide.html" class="mobile-nav-link">中后台设计规范</a><strong class="mobile-nav-title">知识星球</strong><a href="/design/planet/nodejs_crawler.html" class="mobile-nav-link">nodejs爬虫</a><a href="/design/planet/vw_mobile.html" class="mobile-nav-link">移动端适配</a><a href="/design/planet/vite_cli.html" class="mobile-nav-link current">vite前端脚手架</a><strong class="mobile-nav-title">软件架构</strong><a href="/design/architecture/design_pattern.html" class="mobile-nav-link">设计模式</a><a href="/design/architecture/database_consistency.html" class="mobile-nav-link">数据一致性</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></span>
+    <select id="mobile-lang-select" data-canonical="">
+      
+        <option value="zh-cn" selected>简体中文</option>
+      
+        <option value="en">English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>
