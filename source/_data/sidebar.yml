@@ -46,6 +46,7 @@ design:
   architecture:
     design_pattern: architecture/design_pattern.html
     database_consistency: architecture/database_consistency.html
+    diagram: architecture/diagram.html
 
 ecology:
   getting_started:

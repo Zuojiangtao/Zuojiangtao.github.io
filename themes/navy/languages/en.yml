@@ -63,6 +63,7 @@ sidebar:
     architecture: 软件架构
     design_pattern: 设计模式
     database_consistency: 数据一致性
+    diagram: UML图
   ecology:
     getting_started: 开始使用
     overview: 概述
