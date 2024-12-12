@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://zuojiangtao.github.io/</loc>
+    
+    <lastmod>2024-11-25</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://zuojiangtao.github.io/design/architecture/diagram</loc>
+    
+    <lastmod>2024-11-18</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://zuojiangtao.github.io/util/webpack/plugin</loc>
     
     <lastmod>2024-10-23</lastmod>
@@ -38,7 +56,7 @@
   </url>
   
   <url>
-    <loc>https://zuojiangtao.github.io/standard/project/vue</loc>
+    <loc>https://zuojiangtao.github.io/standard/project/template</loc>
     
     <lastmod>2024-10-23</lastmod>
     
@@ -47,7 +65,7 @@
   </url>
   
   <url>
-    <loc>https://zuojiangtao.github.io/standard/project/template</loc>
+    <loc>https://zuojiangtao.github.io/standard/project/vue</loc>
     
     <lastmod>2024-10-23</lastmod>
     
@@ -65,7 +83,7 @@
   </url>
   
   <url>
-    <loc>https://zuojiangtao.github.io/standard/project/react</loc>
+    <loc>https://zuojiangtao.github.io/standard/project/rule</loc>
     
     <lastmod>2024-10-23</lastmod>
     
@@ -74,7 +92,7 @@
   </url>
   
   <url>
-    <loc>https://zuojiangtao.github.io/standard/project/rule</loc>
+    <loc>https://zuojiangtao.github.io/standard/project/react</loc>
     
     <lastmod>2024-10-23</lastmod>
     
@@ -92,7 +110,7 @@
   </url>
   
   <url>
-    <loc>https://zuojiangtao.github.io/standard/name/dir</loc>
+    <loc>https://zuojiangtao.github.io/standard/name/htmlcss</loc>
     
     <lastmod>2024-10-23</lastmod>
     
@@ -101,7 +119,7 @@
   </url>
   
   <url>
-    <loc>https://zuojiangtao.github.io/standard/name/htmlcss</loc>
+    <loc>https://zuojiangtao.github.io/standard/name/dir</loc>
     
     <lastmod>2024-10-23</lastmod>
     
@@ -236,7 +254,7 @@
   </url>
   
   <url>
-    <loc>https://zuojiangtao.github.io/standard/css/query</loc>
+    <loc>https://zuojiangtao.github.io/standard/css/reset</loc>
     
     <lastmod>2024-10-23</lastmod>
     
@@ -245,7 +263,7 @@
   </url>
   
   <url>
-    <loc>https://zuojiangtao.github.io/standard/css/reset</loc>
+    <loc>https://zuojiangtao.github.io/standard/css/query</loc>
     
     <lastmod>2024-10-23</lastmod>
     
@@ -281,7 +299,7 @@
   </url>
   
   <url>
-    <loc>https://zuojiangtao.github.io/</loc>
+    <loc>https://zuojiangtao.github.io/ecology/vite/plugin</loc>
     
     <lastmod>2024-10-23</lastmod>
     
@@ -291,15 +309,6 @@
   
   <url>
     <loc>https://zuojiangtao.github.io/ecology/vite/guide</loc>
-    
-    <lastmod>2024-10-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://zuojiangtao.github.io/ecology/vite/plugin</loc>
     
     <lastmod>2024-10-23</lastmod>
     
@@ -353,15 +362,6 @@
   </url>
   
   <url>
-    <loc>https://zuojiangtao.github.io/design/planet/nodejs_crawler</loc>
-    
-    <lastmod>2024-10-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://zuojiangtao.github.io/design/planet/vite_cli</loc>
     
     <lastmod>2024-10-23</lastmod>
@@ -371,7 +371,7 @@
   </url>
   
   <url>
-    <loc>https://zuojiangtao.github.io/design/</loc>
+    <loc>https://zuojiangtao.github.io/design/planet/nodejs_crawler</loc>
     
     <lastmod>2024-10-23</lastmod>
     
@@ -389,7 +389,7 @@
   </url>
   
   <url>
-    <loc>https://zuojiangtao.github.io/design/architecture/database_consistency</loc>
+    <loc>https://zuojiangtao.github.io/design/</loc>
     
     <lastmod>2024-10-23</lastmod>
     
@@ -406,10 +406,19 @@
     <priority>0.6</priority>
   </url>
   
+  <url>
+    <loc>https://zuojiangtao.github.io/design/architecture/database_consistency</loc>
+    
+    <lastmod>2024-10-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
 
   <url>
     <loc>https://zuojiangtao.github.io/</loc>
-    <lastmod>2024-10-23</lastmod>
+    <lastmod>2024-12-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
