@@ -1,8 +1,7 @@
 menu:
   standard: 开发规范
-  ecology: 前沿生态
-  util: 开发工具
   design: 开发指南
+  ecology: 生态系统
 
 index:
   get_started: 开始使用
@@ -70,19 +69,12 @@ sidebar:
   ecology:
     getting_started: 开始使用
     overview: 概述
-    qiankun: 微前端qiankun
-    qiankun_guide: 文档指南
-    qiankun_questions: 问题汇总
-    vite: vite
-    vite_guide: 文档指南
+    util: 开发工具
+    qiankun_guide: qiankun文档指南
+    qiankun_questions: qiankun汇总
+    vite_guide: vite文档指南
 #    vite_plugin: vite plugin开发实践
     vite_summary: vite插件汇总
-  util:
-    getting_started: 开始使用
-    overview: 概述
-    webpack: Webpack
     webpack_plugin: webpack plugin开发实践
-    yapi: YApi
     yapi_guide: YApi文档
-    sentry: Sentry
     sentry_guide: Sentry指南

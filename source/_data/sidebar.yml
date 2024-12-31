@@ -51,20 +51,12 @@ design:
 ecology:
   getting_started:
     overview: index.html
-  qiankun:
+  util:
     qiankun_guide: qiankun/guide.html
     qiankun_questions: qiankun/questions.html
-  vite:
     vite_guide: vite/guide.html
 #    vite_plugin: vite/plugin.html
     vite_summary: vite/summary.html
-
-util:
-  getting_started:
-    overview: index.html
-  webpack:
     webpack_plugin: webpack/plugin.html
-  yapi:
     yapi_guide: yapi/guide.html
-  sentry:
     sentry_guide: sentry/guide.html
