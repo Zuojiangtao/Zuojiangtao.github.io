@@ -60,3 +60,4 @@ ecology:
     webpack_plugin: webpack/plugin.html
     yapi_guide: yapi/guide.html
     sentry_guide: sentry/guide.html
+    vue_cli_rsbuild: rsbuild/vue2toRsbuild.html
