@@ -499,11 +499,11 @@ export default defineConfig({
 
 官方针对一些常用问题已经做了汇总，遇到问题可先看下：[常见问题](https://rsbuild.dev/zh/guide/faq/exceptions)
 
-- 1. 图片通过require引入失效？
+- 图片通过require引入失效？
 
 试着改为import。
 
-- 2. Failed to compile, check the errors for troubleshooting.
+- Failed to compile, check the errors for troubleshooting.
 
 这是同一个插件在 `plugins` 和 `tools.rspack` 同时更改造成冲突了，只保留一个地方的更改。
 
