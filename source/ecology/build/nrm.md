@@ -70,7 +70,7 @@ nrm del <registry>
 
 其他的命令可看 https://github.com/Pana/nrm?tab=readme-ov-file
 
-### 三、项目级npm镜像配置
+### 三、npm镜像源配置
 #### 设置全局源
 通过上述 `nrm use` 命令或直接更改本地npm仓库地址 `npm config set registry <url>`
 
