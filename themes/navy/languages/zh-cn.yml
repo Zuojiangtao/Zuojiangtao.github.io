@@ -79,3 +79,4 @@ sidebar:
     yapi_guide: YApi文档
     sentry_guide: Sentry指南
     vue_cli_rsbuild: vue/cli项目迁移到RSBuild
+    nrm: nrm-npm多镜像源切换管理工具
