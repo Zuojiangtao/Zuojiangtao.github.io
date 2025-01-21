@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>vue/cli项目迁移到Rsbuild | 个人博客</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://zuojiangtao.github.io/ecology/rsbuild/vue2toRsbuild.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="zh-cn" href="https://zuojiangtao.github.io/ecology/rsbuild/vue2toRsbuild">
+    
+      <link rel="alternative" hreflang="en" href="https://zuojiangtao.github.io/en/ecology/rsbuild/vue2toRsbuild">
+    
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-w/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard/" class="main-nav-link">开发规范</a><a href="/design/" class="main-nav-link">开发指南</a><a href="/ecology/" class="main-nav-link">生态系统</a>
+    </nav>
+    <div id="github-icon-link">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="icon" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">vue/cli项目迁移到Rsbuild</h1>
+                <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Zuojiangtao/Zuojiangtao.github.io/tree/master/source/ecology/rsbuild/vue2toRsbuild.md" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <p>公司的项目一直在膨胀，随着功能模块的增加，项目的性能表现和构建编译速度成为项目开发的瓶颈。为了对大型的历史项目进行优化，我进行了一些优化工作。<br>本文针对构建编译方面的优化工作做下记录和分享。</p>
+<h3 id="一、项目背景" class="article-heading"><a href="#一、项目背景" class="headerlink" title="一、项目背景"></a>一、项目背景<a class="article-anchor" href="#一、项目背景" aria-hidden="true"></a></h3><h4 id="1-项目架构" class="article-heading"><a href="#1-项目架构" class="headerlink" title="1. 项目架构"></a>1. 项目架构<a class="article-anchor" href="#1-项目架构" aria-hidden="true"></a></h4><p>公司有相当数量的历史项目是基于vue2和webpack5开发（vue2+and-design-vue+webpack5），使用官方构建工具 <code>@vue/cli</code> 进行构建。一个中型项目本地冷启动时间差不多20多秒，线上Jenkins流水线发布时间已达到90秒，大型和超大型项目时间更是超过2分钟。<br>为了优化构建编译时间，我对市面上的新型构建工具进行了调研。</p>
+<h4 id="2-构建工具调研" class="article-heading"><a href="#2-构建工具调研" class="headerlink" title="2. 构建工具调研"></a>2. 构建工具调研<a class="article-anchor" href="#2-构建工具调研" aria-hidden="true"></a></h4><p>现在新型的构建工具包括vite、rspack、turbopack、esbuild、rollup等。</p>
+<p>其中vite是利用原生es模块和现代浏览器特性，以esbuild和rollup为基础开发的快速启动的构建工具。<br>优点是冷启动速度很快，易于配置，支持多种前端框架，高效热更新。缺点是生态不如webpack，本地开发和生产可能不一致。</p>
+<p>Turbopack是Vercel团队推出的 JavaScript 打包器，作为 Webpack 的后继者。其目标是提供超高速的开发体验和构建速度。<br>优点是极快的构建速度，与webpack兼容性好，对使用vercel发布的项目有更好支持。缺点是生态不足，且团队偏向于vercel本身的投入。</p>
+<p>Esbuild 是一个用 Go 语言编写的 JavaScript 和 TypeScript 打包工具，以其惊人的构建速度而著称。<br>优点是构建速度快，简单的api易于使用。缺点是生态方面不如其他构建工具，一些高级复杂特性需要第三方支持。</p>
+<p>Rollup 是一个 JavaScript 模块打包器，专注于 ES6 模块。它常用于构建库和应用，以生成高效的、可优化的代码。<br>优点是构建包更小，灵活的插件系统，更擅长构建js库。缺点是开发体验不如vite或webpack，配置繁琐。</p>
+<p>Rspack 是一个由字节跳动开发的 JavaScript 打包工具，旨在提供比 Webpack 更快的构建速度。它的设计目标是兼容 Webpack 的生态系统，同时提升性能。<br>优点是兼容webpack，更易迁移，用Rust重写webpack，速度快，在大型项目表现更好，技术团队对issue相应快。缺点是刚刚开源，一些插件和文档需要持续完善。</p>
+<blockquote>
+<p>以上比较来自各构建工具官网介绍和ai支持。</p>
+</blockquote>
+<p>根据我们部门历史项目中后台管理系统的占比大的性质，结合开发人员素质和对迁移的难度，我选择了Rsbuild作为新的构建工具。</p>
+<h4 id="3-Rsbuild介绍" class="article-heading"><a href="#3-Rsbuild介绍" class="headerlink" title="3. Rsbuild介绍"></a>3. Rsbuild介绍<a class="article-anchor" href="#3-Rsbuild介绍" aria-hidden="true"></a></h4><p>那么Rsbuild与Rspack有什么关系呢？Rspack是一个基于Rust重写webpack的高性能构建工具，而Rsbuild是基于Rspack的有预设配置的开箱即用的构建工具。<br>可以把Rspack类比webpack，把Rsbuild类比为一个现代化的 Create React App 或 Vue CLI。</p>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://rsbuild.dev/zh/index">Rsbuild官网</a></p>
+<blockquote>
+<p>从Vue&#x2F;cli迁移：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://rsbuild.dev/zh/guide/migration/vue-cli">https://rsbuild.dev/zh/guide/migration/vue-cli</a></p>
+</blockquote>
+<h3 id="二、迁移步骤" class="article-heading"><a href="#二、迁移步骤" class="headerlink" title="二、迁移步骤"></a>二、迁移步骤<a class="article-anchor" href="#二、迁移步骤" aria-hidden="true"></a></h3><p>官方的迁移指南比较简单，针对我们项目的技术栈和特点。整理下比较完善的步骤：</p>
+<h4 id="1-node版本" class="article-heading"><a href="#1-node版本" class="headerlink" title="1. node版本"></a>1. node版本<a class="article-anchor" href="#1-node版本" aria-hidden="true"></a></h4><p>请保证node版本 &gt;&#x3D; 16，推荐安装nvm来管理各个版本的node。</p>
+<p><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/nvm-sh/nvm">node版本管理工具-nvm</a></p>
+<h4 id="2-基础配置更改" class="article-heading"><a href="#2-基础配置更改" class="headerlink" title="2. 基础配置更改"></a>2. 基础配置更改<a class="article-anchor" href="#2-基础配置更改" aria-hidden="true"></a></h4><p>1） <strong>依赖替换</strong></p>
+<p>移除之前的vue&#x2F;cli脚手架相关的依赖、core-js依赖和babel相关依赖。安装Rsbuild的相关依赖和插件。</p>
+<p>移除 Vue CLI 的依赖：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pnpm remove @vue/cli-service @vue/cli-plugin-babel @vue/cli-plugin-eslint core-js</span><br></pre></td></tr></table></figure>
+<p>安装 Rsbuild 的依赖：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">pnpm add @rsbuild/core @rsbuild/plugin-vue -D</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：vue2的版本至少要升级到2.7。<a target="_blank" rel="noopener external nofollow noreferrer" href="https://rsbuild.dev/zh/guide/framework/vue#%E5%9C%A8%E5%B7%B2%E6%9C%89%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8-vue-2">在已有项目中使用-vue2</a></p>
+</blockquote>
+<p>最后的依赖配置如下：</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;dependencies&quot;</span> <span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;vue&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2.7.16&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;devDependencies&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;@rsbuild/core&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.1.13&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;@rsbuild/plugin-babel&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.0.3&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;@rsbuild/plugin-less&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.1.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;@rsbuild/plugin-vue2&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.0.2&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;@rsbuild/plugin-vue2-jsx&quot;</span><span class="punctuation">:</span> <span class="string">&quot;^1.0.3&quot;</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;vue-template-compiler&quot;</span><span class="punctuation">:</span> <span class="string">&quot;2.7.16&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>2） <strong>启动脚本</strong></p>
+<p>之前的 <code>vue-cli-serve</code> 命令改为Rsbuild的CLI命令： <code>rsbuild</code>。</p>
+<blockquote>
+<p>由于Rsbuild 未集成 ESLint，因此没有提供用于替换 <code>vue-cli-service lint</code> 的命令，你可以直接使用 ESLint 的 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://eslint.org/docs/latest/use/command-line-interface">CLI 命令</a> 作为替代。</p>
+</blockquote>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">-    <span class="attr">&quot;serve&quot;</span><span class="punctuation">:</span> <span class="string">&quot;vue-cli-service serve&quot;</span><span class="punctuation">,</span></span><br><span class="line">-    <span class="attr">&quot;build:sit&quot;</span><span class="punctuation">:</span> <span class="string">&quot;vue-cli-service build --mode sit&quot;</span><span class="punctuation">,</span></span><br><span class="line">-    <span class="attr">&quot;build&quot;</span><span class="punctuation">:</span> <span class="string">&quot;vue-cli-service build&quot;</span><span class="punctuation">,</span></span><br><span class="line">-    <span class="attr">&quot;lint&quot;</span><span class="punctuation">:</span> <span class="string">&quot;vue-cli-service lint&quot;</span><span class="punctuation">,</span></span><br><span class="line">-    <span class="attr">&quot;report&quot;</span><span class="punctuation">:</span> <span class="string">&quot;vue-cli-service build --report&quot;</span><span class="punctuation">,</span></span><br><span class="line">+    <span class="attr">&quot;serve&quot;</span><span class="punctuation">:</span> <span class="string">&quot;rsbuild dev&quot;</span><span class="punctuation">,</span></span><br><span class="line">+    <span class="attr">&quot;build:sit&quot;</span><span class="punctuation">:</span> <span class="string">&quot;rsbuild build --env-mode sit&quot;</span><span class="punctuation">,</span></span><br><span class="line">+    <span class="attr">&quot;build&quot;</span><span class="punctuation">:</span> <span class="string">&quot;rsbuild build&quot;</span><span class="punctuation">,</span></span><br><span class="line">+    <span class="attr">&quot;lint&quot;</span><span class="punctuation">:</span> <span class="string">&quot;npx eslint lint&quot;</span><span class="punctuation">,</span></span><br><span class="line">+    <span class="attr">&quot;report&quot;</span><span class="punctuation">:</span> <span class="string">&quot;cross-env BUNDLE_ANALYZE=true rsbuild build --report&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>3） <strong>创建rsbuild.config文件</strong></p>
+<p>在项目根目录下创建Rsbuild的配置文件 <code>rsbuild.config.js</code></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; defineConfig &#125; <span class="keyword">from</span> <span class="string">&#x27;@rsbuild/core&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; pluginVue &#125; <span class="keyword">from</span> <span class="string">&#x27;@rsbuild/plugin-vue&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">  <span class="attr">plugins</span>: [<span class="title function_">pluginVue</span>()],</span><br><span class="line">  <span class="attr">source</span>: &#123;</span><br><span class="line">    <span class="comment">// 指定入口文件</span></span><br><span class="line">    <span class="attr">entry</span>: &#123;</span><br><span class="line">      <span class="attr">index</span>: <span class="string">&#x27;./src/main.js&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>这个vue3的版本的，我们的老项目是vue2的，因此vue插件应该使用 <code>import &#123; pluginVue2 &#125; from &#39;@rsbuild/plugin-vue2&#39;</code>。</p>
+</blockquote>
+<p>4） <strong>HTML更改</strong></p>
+<p>将 <code>public/index.html</code> 文件更改并作为入口文件模板。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">-  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;icon&quot;</span> <span class="attr">href</span>=<span class="string">&quot;&lt;%= BASE_URL %&gt;favicon.ico&quot;</span>&gt;</span></span><br><span class="line">+  <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;icon&quot;</span> <span class="attr">href</span>=<span class="string">&quot;&lt;%= assetPrefix %&gt;/favicon.ico&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意 <code>&lt;%= assetPrefix %&gt;/</code> 最后有个斜杠 “&#x2F;“。</p>
+</blockquote>
+<p>rsbuild.config更改模板：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">  <span class="attr">html</span>: &#123;</span><br><span class="line">    <span class="attr">template</span>: <span class="string">&#x27;./public/index.html&#x27;</span>,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>5） <strong>环境变量统一配置</strong></p>
+<p>Rsbuild的环境变量默认注入 <code>PUBLIC_</code>, 针对vue2的老项目，要统一更改。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; defineConfig, loadEnv &#125; <span class="keyword">from</span> <span class="string">&#x27;@rsbuild/core&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; publicVars &#125; = <span class="title function_">loadEnv</span>(&#123; <span class="attr">prefixes</span>: [<span class="string">&#x27;VUE_APP_&#x27;</span>] &#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">  <span class="attr">source</span>: &#123;</span><br><span class="line">    <span class="attr">define</span>: publicVars,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>之后在代码里如果想要使用之前的全局变量可直接使用 <code>process.env</code> 或 <code>import.meta.env</code>。</p>
+<p>如果将publicVars打印，我们可以得到：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&#123;                                                  </span><br><span class="line">  <span class="string">&#x27;import.meta.env.VUE_APP_API_BASE_URL&#x27;</span>: <span class="string">&#x27;&quot;/api&quot;&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;process.env.VUE_APP_API_BASE_URL&#x27;</span>: <span class="string">&#x27;&quot;/api&quot;&#x27;</span>,    </span><br><span class="line">  <span class="string">&#x27;import.meta.env.VUE_APP_ENVIRONMENT&#x27;</span>: <span class="string">&#x27;&quot;dev&quot;&#x27;</span>,  </span><br><span class="line">  <span class="string">&#x27;process.env.VUE_APP_ENVIRONMENT&#x27;</span>: <span class="string">&#x27;&quot;dev&quot;&#x27;</span>,      </span><br><span class="line">  <span class="string">&#x27;import.meta.env.VUE_APP_PREVIEW&#x27;</span>: <span class="string">&#x27;&quot;true&quot;&#x27;</span>,     </span><br><span class="line">  <span class="string">&#x27;process.env.VUE_APP_PREVIEW&#x27;</span>: <span class="string">&#x27;&quot;true&quot;&#x27;</span>,         </span><br><span class="line">  <span class="string">&#x27;import.meta.env.VUE_APP_SENTRY_DSN&#x27;</span>: <span class="string">&#x27;&quot;&quot;&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;process.env.VUE_APP_SENTRY_DSN&#x27;</span>: <span class="string">&#x27;&quot;&quot;&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;import.meta.env.VUE_APP_SENTRY_SITE_DOMAIN&#x27;</span>: <span class="string">&#x27;&quot;&quot;&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;process.env.VUE_APP_SENTRY_SITE_DOMAIN&#x27;</span>: <span class="string">&#x27;&quot;&quot;&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;import.meta.env.VUE_APP_SERVICE_PROXY&#x27;</span>: <span class="string">&#x27;&quot;http://api-ts.com/v1&quot;&#x27;</span>,</span><br><span class="line">  <span class="string">&#x27;process.env.VUE_APP_SERVICE_PROXY&#x27;</span>: <span class="string">&#x27;&quot;http://api-ts.com/v1&quot;&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：上面的有一些变量是空字符串，即使一些变量只在生产环境使用也要在.env文件配置空变量，否则会报错，如：<code>VUE_APP_SENTRY_DSN</code>，只在生产环境使用sentry，但是也要在.env文件配置空变量。</p>
+</blockquote>
+<p>6） 删除多余文件</p>
+<p>将之前的 <code>vue.config.js</code> 和 <code>babel.config.js</code> 删除。</p>
+<h4 id="3-webpack插件兼容" class="article-heading"><a href="#3-webpack插件兼容" class="headerlink" title="3. webpack插件兼容"></a>3. webpack插件兼容<a class="article-anchor" href="#3-webpack插件兼容" aria-hidden="true"></a></h4><p>由于 Rsbuild 内置了一些常见的 loader 和 plugin，所以你可以移除以下依赖和相关的配置，这会显著提升项目的依赖安装速度。</p>
+<ul>
+<li>css-loader</li>
+<li>babel-loader</li>
+<li>style-loader</li>
+<li>postcss-loader</li>
+<li>html-webpack-plugin</li>
+<li>mini-css-extract-plugin</li>
+<li>autoprefixer</li>
+<li>@babel&#x2F;core</li>
+<li>@babel&#x2F;preset-env</li>
+<li>@babel&#x2F;preset-typescript</li>
+<li>@babel&#x2F;runtime</li>
+</ul>
+<p>另外Rsbuild官方提供了一些插件，可以直接替换webpack的插件：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://rsbuild.dev/zh/plugins/list/index">Rsbuild 插件</a></p>
+<h4 id="4-其他优化" class="article-heading"><a href="#4-其他优化" class="headerlink" title="4. 其他优化"></a>4. 其他优化<a class="article-anchor" href="#4-其他优化" aria-hidden="true"></a></h4><p>1）<strong>less兼容</strong></p>
+<p>上面已经安装了 <code>@rsbuild/plugin-less</code> ，在plugins加入pluginLess即可。但是因为Rsbuild内置了lessV4版本，所以版本不一致会报错。<br>注意：如果你的项目less版本小于4。需要配置自己的less实际安装版本。用implementation指定。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; defineConfig, loadEnv &#125; <span class="keyword">from</span> <span class="string">&#x27;@rsbuild/core&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; pluginLess &#125; <span class="keyword">from</span> <span class="string">&#x27;@rsbuild/plugin-less&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">    <span class="attr">plugins</span>: [</span><br><span class="line">        <span class="title function_">pluginLess</span>(&#123;</span><br><span class="line">            <span class="attr">lessLoaderOptions</span>: &#123;</span><br><span class="line">                <span class="attr">implementation</span>: <span class="built_in">require</span>(<span class="string">&#x27;less&#x27;</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    ],</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>2）<strong>样式穿透</strong></p>
+<p>将全局的样式穿透 <code>/deep/</code> 改为 <code>::v-deep</code>，确保在scoped的style标签下。</p>
+<p>3） <strong>开发模式</strong></p>
+<p>按着之前的vue2项目的.env配置多环境打包，在Rsbuild下可以使用 <code>envMode</code> 参数来区分各环境。</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;test&quot;</span><span class="punctuation">:</span> <span class="string">&quot;rsbuild build --env-mode test&quot;</span></span><br><span class="line">  <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>在编译命令指定当前模式，在rsbuild.config.js中可直接通过 <code>envMode</code> 字段来确定当前模式，可进一步对各个环境编译做区分。</p>
+<p>4） <strong>jsx&#x2F;babel</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; defineConfig &#125; <span class="keyword">from</span> <span class="string">&#x27;@rsbuild/core&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; pluginVue2 &#125; <span class="keyword">from</span> <span class="string">&#x27;@rsbuild/plugin-vue2&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; pluginVue2Jsx &#125; <span class="keyword">from</span> <span class="string">&#x27;@rsbuild/plugin-vue2-jsx&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; pluginBabel &#125; <span class="keyword">from</span> <span class="string">&#x27;@rsbuild/plugin-babel&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">    <span class="attr">plugins</span>: [</span><br><span class="line">        <span class="title function_">pluginVue2</span>(),</span><br><span class="line">        <span class="title function_">pluginVue2Jsx</span>(),</span><br><span class="line">        <span class="title function_">pluginBabel</span>()</span><br><span class="line">    ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>5） <strong>删除console打印</strong></p>
+<p>在performance字段下可以直接配置。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; defineConfig &#125; <span class="keyword">from</span> <span class="string">&#x27;@rsbuild/core&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">    <span class="attr">performance</span>: &#123;</span><br><span class="line">        <span class="attr">removeConsole</span>: <span class="literal">true</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>6） <strong>移除moment语言包</strong></p>
+<p>和删除console一样，在performance字段下可以直接配置。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; defineConfig &#125; <span class="keyword">from</span> <span class="string">&#x27;@rsbuild/core&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">    <span class="attr">performance</span>: &#123;</span><br><span class="line">        <span class="attr">removeMomentLocale</span>: <span class="literal">true</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>7） <strong>按需引入UI库</strong></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; defineConfig &#125; <span class="keyword">from</span> <span class="string">&#x27;@rsbuild/core&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">    <span class="attr">source</span>: &#123;</span><br><span class="line">        <span class="attr">transformImport</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">libraryName</span>: <span class="string">&#x27;ant-design-vue&#x27;</span>,</span><br><span class="line">                <span class="attr">libraryDirectory</span>: <span class="string">&#x27;es&#x27;</span>,</span><br><span class="line">                <span class="attr">style</span>: <span class="literal">true</span>,</span><br><span class="line">            &#125;,</span><br><span class="line">        ],</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>8） 生产环境cdn</p>
+<p>对生产环境的一些依赖可以使用cdn，配置如下：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; defineConfig, loadEnv &#125; <span class="keyword">from</span> <span class="string">&#x27;@rsbuild/core&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> assetsCDN = &#123;</span><br><span class="line">    <span class="comment">// rspack build externals</span></span><br><span class="line">    <span class="attr">externals</span>: &#123;</span><br><span class="line">        <span class="attr">vue</span>: <span class="string">&#x27;Vue&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;vue-router&#x27;</span>: <span class="string">&#x27;VueRouter&#x27;</span>,</span><br><span class="line">        <span class="attr">vuex</span>: <span class="string">&#x27;Vuex&#x27;</span>,</span><br><span class="line">        <span class="attr">axios</span>: <span class="string">&#x27;axios&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">css</span>: [],</span><br><span class="line">    <span class="comment">// https://unpkg.com/browse/vue@2.6.10/</span></span><br><span class="line">    <span class="attr">js</span>: [</span><br><span class="line">        <span class="string">&#x27;//cdnjs.h3c.com/npm/vue@2.7.16/dist/vue.min.js&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;//cdn.jsdelivr.net/npm/vue-router@3.6.5/dist/vue-router.min.js&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;//cdn.jsdelivr.net/npm/vuex@4.1.0/dist/vuex.global.min.js&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;//cdn.jsdelivr.net/npm/axios@1.7.9/dist/axios.min.js&#x27;</span>,</span><br><span class="line">    ],</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">    <span class="attr">html</span>: &#123;</span><br><span class="line">        <span class="attr">template</span>: <span class="string">&#x27;./public/index.html&#x27;</span>,</span><br><span class="line">        <span class="attr">templateParameters</span>: &#123;</span><br><span class="line">            <span class="attr">title</span>: <span class="string">&#x27;title&#x27;</span>,</span><br><span class="line">            <span class="attr">cdn</span>: assetsCDN,</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>templateParameters可定义模板中的参数我们增加cdn字段和title字段，此时的html也要更改，<code>htmlWebpackPlugin.options</code> 直接删掉，更改后如下：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">- <span class="tag">&lt;<span class="name">title</span>&gt;</span>&lt;%= htmlWebpackPlugin.options.title %&gt;<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">+ <span class="tag">&lt;<span class="name">title</span>&gt;</span>&lt;%= title %&gt;<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- require cdn assets css --&gt;</span></span><br><span class="line">- &lt;% for (var i in htmlWebpackPlugin.options.cdn &amp;&amp; htmlWebpackPlugin.options.cdn.css) &#123; %&gt;</span><br><span class="line">- <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;&lt;%= htmlWebpackPlugin.options.cdn.css[i] %&gt;&quot;</span> /&gt;</span></span><br><span class="line">+ &lt;% for (var i in cdn &amp;&amp; cdn.css) &#123; %&gt;</span><br><span class="line">+ <span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">href</span>=<span class="string">&quot;&lt;%= cdn.css[i] %&gt;&quot;</span> /&gt;</span></span><br><span class="line">&lt;% &#125; %&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- require cdn assets js --&gt;</span></span><br><span class="line">- &lt;% for (var i in htmlWebpackPlugin.options.cdn &amp;&amp; htmlWebpackPlugin.options.cdn.js) &#123; %&gt;</span><br><span class="line">- <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;&lt;%= htmlWebpackPlugin.options.cdn.js[i] %&gt;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">+ &lt;% for (var i in cdn &amp;&amp; cdn.js) &#123; %&gt;</span><br><span class="line">+ <span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span> <span class="attr">src</span>=<span class="string">&quot;&lt;%= cdn.js[i] %&gt;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">&lt;% &#125; %&gt;</span><br><span class="line"><span class="comment">&lt;!-- built files will be auto injected --&gt;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>更多优化可参考官网: <a target="_blank" rel="noopener external nofollow noreferrer" href="https://rsbuild.dev/zh/guide/optimization/build-performance">提升构建性能</a></p>
+</blockquote>
+<h4 id="5-完整的rsbuild-config配置" class="article-heading"><a href="#5-完整的rsbuild-config配置" class="headerlink" title="5. 完整的rsbuild.config配置"></a>5. 完整的rsbuild.config配置<a class="article-anchor" href="#5-完整的rsbuild-config配置" aria-hidden="true"></a></h4><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; defineConfig, loadEnv &#125; <span class="keyword">from</span> <span class="string">&#x27;@rsbuild/core&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; pluginVue2 &#125; <span class="keyword">from</span> <span class="string">&#x27;@rsbuild/plugin-vue2&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; pluginVue2Jsx &#125; <span class="keyword">from</span> <span class="string">&#x27;@rsbuild/plugin-vue2-jsx&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; pluginBabel &#125; <span class="keyword">from</span> <span class="string">&#x27;@rsbuild/plugin-babel&#x27;</span></span><br><span class="line"><span class="keyword">import</span> &#123; pluginLess &#125; <span class="keyword">from</span> <span class="string">&#x27;@rsbuild/plugin-less&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> isProd = process.<span class="property">env</span>.<span class="property">NODE_ENV</span> === <span class="string">&#x27;production&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; publicVars &#125; = <span class="title function_">loadEnv</span>(&#123; <span class="attr">prefixes</span>: [<span class="string">&#x27;VUE_APP_&#x27;</span>] &#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> assetsCDN = &#123;</span><br><span class="line">    <span class="comment">// rspack build externals</span></span><br><span class="line">    <span class="attr">externals</span>: &#123;</span><br><span class="line">        <span class="attr">vue</span>: <span class="string">&#x27;Vue&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;vue-router&#x27;</span>: <span class="string">&#x27;VueRouter&#x27;</span>,</span><br><span class="line">        <span class="attr">vuex</span>: <span class="string">&#x27;Vuex&#x27;</span>,</span><br><span class="line">        <span class="attr">axios</span>: <span class="string">&#x27;axios&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">css</span>: [],</span><br><span class="line">    <span class="comment">// https://unpkg.com/browse/vue@2.6.10/</span></span><br><span class="line">    <span class="attr">js</span>: [</span><br><span class="line">        <span class="string">&#x27;//cdnjs.h3c.com/npm/vue@2.7.16/dist/vue.min.js&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;//cdn.jsdelivr.net/npm/vue-router@3.6.5/dist/vue-router.min.js&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;//cdn.jsdelivr.net/npm/vuex@4.1.0/dist/vuex.global.min.js&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;//cdn.jsdelivr.net/npm/axios@1.7.9/dist/axios.min.js&#x27;</span>,</span><br><span class="line">    ],</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title function_">defineConfig</span>(&#123;</span><br><span class="line">    <span class="attr">plugins</span>: [</span><br><span class="line">        <span class="title function_">pluginVue2</span>(),</span><br><span class="line">        <span class="title function_">pluginVue2Jsx</span>(),</span><br><span class="line">        <span class="title function_">pluginBabel</span>(),</span><br><span class="line">        <span class="title function_">pluginLess</span>(&#123;</span><br><span class="line">            <span class="attr">lessLoaderOptions</span>: &#123;</span><br><span class="line">                <span class="attr">lessOptions</span>: &#123;</span><br><span class="line">                    <span class="attr">modifyVars</span>: &#123;</span><br><span class="line">                        <span class="comment">// less vars，customize ant design theme</span></span><br><span class="line">                        <span class="string">&#x27;primary-color&#x27;</span>: <span class="string">&#x27;#2a50d7&#x27;</span>,</span><br><span class="line">                        <span class="string">&#x27;success-color&#x27;</span>: <span class="string">&#x27;#22835a&#x27;</span>,</span><br><span class="line">                        <span class="string">&#x27;warning-color&#x27;</span>: <span class="string">&#x27;#e37318&#x27;</span>,</span><br><span class="line">                        <span class="string">&#x27;error-color&#x27;</span>: <span class="string">&#x27;#ca483e&#x27;</span>,</span><br><span class="line">                        <span class="string">&#x27;border-radius-base&#x27;</span>: <span class="string">&#x27;4px&#x27;</span>,</span><br><span class="line">                        <span class="string">&#x27;box-shadow-base&#x27;</span>: <span class="string">&#x27;0 8px 16px rgba(0, 0, 0, 0.16)&#x27;</span>,</span><br><span class="line">                    &#125;,</span><br><span class="line">                    <span class="comment">// DO NOT REMOVE THIS LINE</span></span><br><span class="line">                    <span class="attr">javascriptEnabled</span>: <span class="literal">true</span>,</span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="attr">implementation</span>: <span class="built_in">require</span>(<span class="string">&#x27;less&#x27;</span>),</span><br><span class="line">            &#125;,</span><br><span class="line">        &#125;),</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">html</span>: &#123;</span><br><span class="line">        <span class="attr">template</span>: <span class="string">&#x27;./public/index.html&#x27;</span>,</span><br><span class="line">        <span class="attr">templateParameters</span>: &#123;</span><br><span class="line">            <span class="attr">title</span>: <span class="string">&#x27;title&#x27;</span>,</span><br><span class="line">            <span class="attr">cdn</span>: assetsCDN,</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">source</span>: &#123;</span><br><span class="line">        <span class="attr">entry</span>: &#123;</span><br><span class="line">            <span class="attr">index</span>: <span class="string">&#x27;./src/main.js&#x27;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">define</span>: &#123;</span><br><span class="line">            ...publicVars,</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">transformImport</span>: [</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="attr">libraryName</span>: <span class="string">&#x27;ant-design-vue&#x27;</span>,</span><br><span class="line">                <span class="attr">libraryDirectory</span>: <span class="string">&#x27;es&#x27;</span>,</span><br><span class="line">                <span class="attr">style</span>: <span class="literal">true</span>,</span><br><span class="line">            &#125;,</span><br><span class="line">        ],</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">output</span>: &#123;</span><br><span class="line">        <span class="attr">externals</span>: isProd ? assetsCDN.<span class="property">externals</span> : &#123;&#125;,</span><br><span class="line">        <span class="attr">polyfill</span>: <span class="string">&#x27;usage&#x27;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">resolve</span>: &#123;</span><br><span class="line">        <span class="attr">alias</span>: &#123;</span><br><span class="line">            <span class="string">&#x27;@&#x27;</span>: <span class="string">&#x27;./src&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;@util&#x27;</span>: <span class="string">&#x27;./src/util&#x27;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">tools</span>: &#123;</span><br><span class="line">        <span class="attr">bundlerChain</span>: <span class="function">(<span class="params">chain, &#123; CHAIN_ID &#125;</span>) =&gt;</span> &#123;</span><br><span class="line">            chain.<span class="property">module</span>.<span class="title function_">rule</span>(<span class="variable constant_">CHAIN_ID</span>.<span class="property">RULE</span>.<span class="property">SVG</span>).<span class="property">oneOfs</span>.<span class="title function_">clear</span>()</span><br><span class="line">            chain.<span class="property">module</span>.<span class="title function_">rule</span>(<span class="variable constant_">CHAIN_ID</span>.<span class="property">RULE</span>.<span class="property">SVG</span>).<span class="title function_">use</span>(<span class="string">&#x27;vue-svg-loader&#x27;</span>).<span class="title function_">loader</span>(<span class="string">&#x27;vue-svg-loader&#x27;</span>)</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">server</span>: &#123;</span><br><span class="line">        <span class="comment">// development server port 8080</span></span><br><span class="line">        <span class="attr">port</span>: <span class="number">8080</span>,</span><br><span class="line">        <span class="comment">// If you want to turn on the proxy, please remove the mockjs /src/main.jsL11</span></span><br><span class="line">        <span class="attr">proxy</span>: &#123;</span><br><span class="line">            <span class="string">&#x27;/api&#x27;</span>: &#123;</span><br><span class="line">                <span class="attr">target</span>: process.<span class="property">env</span>.<span class="property">VUE_APP_SERVICE_PROXY</span>,</span><br><span class="line">                <span class="attr">changeOrigin</span>: <span class="literal">true</span>,</span><br><span class="line">                <span class="attr">pathRewrite</span>: &#123;</span><br><span class="line">                    <span class="comment">// 表示需要rewrite重写的</span></span><br><span class="line">                    <span class="string">&#x27;^/api&#x27;</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">                &#125;,</span><br><span class="line">            &#125;,</span><br><span class="line">        &#125;,</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">performance</span>: &#123;</span><br><span class="line">        <span class="attr">chunkSplit</span>: &#123;</span><br><span class="line">            <span class="attr">strategy</span>: <span class="string">&#x27;split-by-experience&#x27;</span>,</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">removeConsole</span>: isProd ? <span class="literal">true</span> : <span class="literal">undefined</span>,</span><br><span class="line">        <span class="attr">removeMomentLocale</span>: <span class="literal">true</span>,</span><br><span class="line">        <span class="comment">// analyze功能，安装cross-env并启用下面配置</span></span><br><span class="line">        <span class="comment">// bundleAnalyze: &#123;&#125;,</span></span><br><span class="line">    &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="三、其他问题" class="article-heading"><a href="#三、其他问题" class="headerlink" title="三、其他问题"></a>三、其他问题<a class="article-anchor" href="#三、其他问题" aria-hidden="true"></a></h3><p>官方针对一些常用问题已经做了汇总，遇到问题可先看下：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://rsbuild.dev/zh/guide/faq/exceptions">常见问题</a></p>
+<ul>
+<li>图片通过require引入失效？</li>
+</ul>
+<p>试着改为import。</p>
+<ul>
+<li>Failed to compile, check the errors for troubleshooting.</li>
+</ul>
+<p>这是同一个插件在 <code>plugins</code> 和 <code>tools.rspack</code> 同时更改造成冲突了，只保留一个地方的更改。</p>
+<h3 id="参考" class="article-heading"><a href="#参考" class="headerlink" title="参考"></a>参考<a class="article-anchor" href="#参考" aria-hidden="true"></a></h3><ul>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.cnblogs.com/94pm/p/18542399">前端构建工具对比</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://juejin.cn/post/7412546558845747251">Rsbuild 1.0 发布：专为 Rspack 打造的构建工具</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://juejin.cn/post/7425598941859676170">一个关于打包工具的故事：从 webpack 迁移到 Rspack</a></li>
+</ul>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2025-01-14T01:07:29.061Z" itemprop="dateModified">上次更新：2025-01-14</time>
+                <a href="index.html" class="article-footer-next" title="概述"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E9%A1%B9%E7%9B%AE%E8%83%8C%E6%99%AF"><span class="toc-text">一、项目背景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E9%A1%B9%E7%9B%AE%E6%9E%B6%E6%9E%84"><span class="toc-text">1. 项目架构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E8%B0%83%E7%A0%94"><span class="toc-text">2. 构建工具调研</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Rsbuild%E4%BB%8B%E7%BB%8D"><span class="toc-text">3. Rsbuild介绍</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E8%BF%81%E7%A7%BB%E6%AD%A5%E9%AA%A4"><span class="toc-text">二、迁移步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-node%E7%89%88%E6%9C%AC"><span class="toc-text">1. node版本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE%E6%9B%B4%E6%94%B9"><span class="toc-text">2. 基础配置更改</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-webpack%E6%8F%92%E4%BB%B6%E5%85%BC%E5%AE%B9"><span class="toc-text">3. webpack插件兼容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%85%B6%E4%BB%96%E4%BC%98%E5%8C%96"><span class="toc-text">4. 其他优化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E5%AE%8C%E6%95%B4%E7%9A%84rsbuild-config%E9%85%8D%E7%BD%AE"><span class="toc-text">5. 完整的rsbuild.config配置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98"><span class="toc-text">三、其他问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-text">参考</span></a></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">开始使用</strong><a href="/ecology/index.html" class="sidebar-link">概述</a><strong class="sidebar-title">开发工具</strong><a href="/ecology/qiankun/guide.html" class="sidebar-link">qiankun文档指南</a><a href="/ecology/qiankun/questions.html" class="sidebar-link">qiankun汇总</a><a href="/ecology/vite/guide.html" class="sidebar-link">vite文档指南</a><a href="/ecology/vite/summary.html" class="sidebar-link">vite插件汇总</a><a href="/ecology/webpack/plugin.html" class="sidebar-link">webpack plugin开发实践</a><a href="/ecology/yapi/guide.html" class="sidebar-link">YApi文档</a><a href="/ecology/sentry/guide.html" class="sidebar-link">Sentry指南</a><a href="/ecology/rsbuild/vue2toRsbuild.html" class="sidebar-link current">vue/cli项目迁移到RSBuild</a><a href="/ecology/build/nrm.html" class="sidebar-link">npm镜像源配置</a>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2025 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuo.jiangtao@h3c.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard/" class="mobile-nav-link">开发规范</a><a href="/design/" class="mobile-nav-link">开发指南</a><a href="/ecology/" class="mobile-nav-link">生态系统</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">开始使用</strong><a href="/ecology/index.html" class="mobile-nav-link">概述</a><strong class="mobile-nav-title">开发工具</strong><a href="/ecology/qiankun/guide.html" class="mobile-nav-link">qiankun文档指南</a><a href="/ecology/qiankun/questions.html" class="mobile-nav-link">qiankun汇总</a><a href="/ecology/vite/guide.html" class="mobile-nav-link">vite文档指南</a><a href="/ecology/vite/summary.html" class="mobile-nav-link">vite插件汇总</a><a href="/ecology/webpack/plugin.html" class="mobile-nav-link">webpack plugin开发实践</a><a href="/ecology/yapi/guide.html" class="mobile-nav-link">YApi文档</a><a href="/ecology/sentry/guide.html" class="mobile-nav-link">Sentry指南</a><a href="/ecology/rsbuild/vue2toRsbuild.html" class="mobile-nav-link current">vue/cli项目迁移到RSBuild</a><a href="/ecology/build/nrm.html" class="mobile-nav-link">npm镜像源配置</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></span>
+    <select id="mobile-lang-select" data-canonical="">
+      
+        <option value="zh-cn" selected>简体中文</option>
+      
+        <option value="en">English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>
