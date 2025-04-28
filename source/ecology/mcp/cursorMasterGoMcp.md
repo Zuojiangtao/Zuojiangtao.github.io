@@ -1,4 +1,4 @@
-title: Cursor MCP智能开发前端工程
+title: Cursor+MCP，AI时代前端开发工作流
 ---
 
 ### 一、MCP介绍
