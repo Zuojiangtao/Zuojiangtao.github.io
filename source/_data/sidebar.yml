@@ -62,3 +62,4 @@ ecology:
     sentry_guide: sentry/guide.html
     vue_cli_rsbuild: rsbuild/vue2toRsbuild.html
     nrm: build/nrm.html
+    mcp_cursor: mcp/cursorMasterGoMcp.html

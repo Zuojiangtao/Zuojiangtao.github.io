@@ -80,3 +80,4 @@ sidebar:
     sentry_guide: Sentry指南
     vue_cli_rsbuild: vue/cli项目迁移到RSBuild
     nrm: npm镜像源配置
+    mcp_cursor: Cursor MCP智能开发前端
