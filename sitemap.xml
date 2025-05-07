@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://zuojiangtao.github.io/ecology/mcp/cursorMasterGoMcp</loc>
+    
+    <lastmod>2025-04-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://zuojiangtao.github.io/ecology/build/nrm</loc>
     
     <lastmod>2025-01-14</lastmod>
@@ -38,7 +47,7 @@
   </url>
   
   <url>
-    <loc>https://zuojiangtao.github.io/ecology/webpack/plugin</loc>
+    <loc>https://zuojiangtao.github.io/ecology/yapi/guide</loc>
     
     <lastmod>2024-10-23</lastmod>
     
@@ -47,7 +56,7 @@
   </url>
   
   <url>
-    <loc>https://zuojiangtao.github.io/ecology/yapi/guide</loc>
+    <loc>https://zuojiangtao.github.io/ecology/webpack/plugin</loc>
     
     <lastmod>2024-10-23</lastmod>
     
@@ -119,7 +128,7 @@
   </url>
   
   <url>
-    <loc>https://zuojiangtao.github.io/standard/name/image</loc>
+    <loc>https://zuojiangtao.github.io/standard/name/dir</loc>
     
     <lastmod>2024-10-23</lastmod>
     
@@ -137,7 +146,7 @@
   </url>
   
   <url>
-    <loc>https://zuojiangtao.github.io/standard/name/dir</loc>
+    <loc>https://zuojiangtao.github.io/standard/name/image</loc>
     
     <lastmod>2024-10-23</lastmod>
     
@@ -263,7 +272,7 @@
   </url>
   
   <url>
-    <loc>https://zuojiangtao.github.io/standard/css/reset</loc>
+    <loc>https://zuojiangtao.github.io/standard/css/query</loc>
     
     <lastmod>2024-10-23</lastmod>
     
@@ -272,7 +281,7 @@
   </url>
   
   <url>
-    <loc>https://zuojiangtao.github.io/standard/css/query</loc>
+    <loc>https://zuojiangtao.github.io/standard/css/reset</loc>
     
     <lastmod>2024-10-23</lastmod>
     
@@ -308,15 +317,6 @@
   </url>
   
   <url>
-    <loc>https://zuojiangtao.github.io/ecology/vite/summary</loc>
-    
-    <lastmod>2024-10-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://zuojiangtao.github.io/ecology/vite/guide</loc>
     
     <lastmod>2024-10-23</lastmod>
@@ -327,6 +327,15 @@
   
   <url>
     <loc>https://zuojiangtao.github.io/ecology/vite/plugin</loc>
+    
+    <lastmod>2024-10-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://zuojiangtao.github.io/ecology/vite/summary</loc>
     
     <lastmod>2024-10-23</lastmod>
     
@@ -389,15 +398,6 @@
   </url>
   
   <url>
-    <loc>https://zuojiangtao.github.io/design/</loc>
-    
-    <lastmod>2024-10-23</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://zuojiangtao.github.io/design/design_guide</loc>
     
     <lastmod>2024-10-23</lastmod>
@@ -407,7 +407,7 @@
   </url>
   
   <url>
-    <loc>https://zuojiangtao.github.io/design/architecture/database_consistency</loc>
+    <loc>https://zuojiangtao.github.io/design/</loc>
     
     <lastmod>2024-10-23</lastmod>
     
@@ -424,10 +424,19 @@
     <priority>0.6</priority>
   </url>
   
+  <url>
+    <loc>https://zuojiangtao.github.io/design/architecture/database_consistency</loc>
+    
+    <lastmod>2024-10-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
 
   <url>
     <loc>https://zuojiangtao.github.io/</loc>
-    <lastmod>2025-01-21</lastmod>
+    <lastmod>2025-05-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
