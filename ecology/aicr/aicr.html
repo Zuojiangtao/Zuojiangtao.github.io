@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>AI代码评审方案 | 个人博客</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://zuojiangtao.github.io/ecology/aicr/aicr.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="zh-cn" href="https://zuojiangtao.github.io/ecology/aicr/aicr">
+    
+      <link rel="alternative" hreflang="en" href="https://zuojiangtao.github.io/en/ecology/aicr/aicr">
+    
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-w/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard/" class="main-nav-link">开发规范</a><a href="/design/" class="main-nav-link">开发指南</a><a href="/ecology/" class="main-nav-link">生态系统</a>
+    </nav>
+    <div id="github-icon-link">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="icon" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">AI代码评审方案</h1>
+                <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Zuojiangtao/Zuojiangtao.github.io/tree/master/source/ecology/aicr/aicr.md" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <h3 id="一、需求现状" class="article-heading"><a href="#一、需求现状" class="headerlink" title="一、需求现状"></a>一、需求现状<a class="article-anchor" href="#一、需求现状" aria-hidden="true"></a></h3><p>代码审查一直是项目开发的一个重要环节，但是要花费大量时间，我们希望能够使用工具来缩短这个环节的时间，给开发人员减负。业务团队也对我们提出了这方面的需求，<br>之前的sonarqube已经不能满足各业务团队的需求，尤其是对历史项目的审查。大量的项目审查带来巨大的工作量。在ai模型和mcp服务蓬勃发展的今天，代码审查也可以借助ai的力量。</p>
+<p>在代码审查时我们关注代码的逻辑性错误、代码健壮性、安全性、性能等几个维度，在工具使用时关注文档、是否免费、能不能私有化部署、审查效率怎样。针对业务和开发的需求，我做了一些调研。</p>
+<h3 id="二、调研" class="article-heading"><a href="#二、调研" class="headerlink" title="二、调研"></a>二、调研<a class="article-anchor" href="#二、调研" aria-hidden="true"></a></h3><p>对代码的审查分为<strong>开发即时审查</strong>和<strong>代码变更审查</strong>（平台类审查）。开发即时审查主要调研了代码编辑器的插件，cursor的mcp服务插件和vscode的插件，这些插件可根据开发者自己的需求来进行评审。市面上平台类审查工具具有ai能力的审查工具包括CodeRabbit、Snyk，包括SonarQube有可以接入ai能力。</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>CodeRabbit</th>
+<th>SonarQube</th>
+<th>DeepCode&#x2F;Snyk Code</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>核心优势</td>
+<td>PR 实时交互、AI 建议</td>
+<td>多语言支持、深度静态分析</td>
+<td>安全漏洞检测、语义级 AI</td>
+</tr>
+<tr>
+<td>GitLab集成</td>
+<td>✅ 直接 Merge Request 集成</td>
+<td>✅ CI&#x2F;CD 流水线集成</td>
+<td>✅ CI&#x2F;CD 或插件集成</td>
+</tr>
+<tr>
+<td>AI 能力</td>
+<td>高（对话式 LLM）</td>
+<td>低（规则引擎为主）</td>
+<td>中高（语义分析+ML）</td>
+</tr>
+<tr>
+<td>数据隐私</td>
+<td>云端服务</td>
+<td>支持本地部署</td>
+<td>云端&#x2F;企业版本地部署</td>
+</tr>
+<tr>
+<td>成本</td>
+<td>中（按用户&#x2F;仓库）</td>
+<td>低（社区版）到高（企业版）</td>
+<td>中高（安全专项）</td>
+</tr>
+<tr>
+<td>最佳适用场景</td>
+<td>敏捷团队的 PR 交互审查</td>
+<td>严格规范的长期项目维护</td>
+<td>安全敏感的现代应用开发</td>
+</tr>
+</tbody></table>
+<p>synk的只有企业版才可以私有化部署，且它是偏重于安全方面的；CodeRabbit是云服务，不能私有化部署；而SonarQube侧重于代码的规范和规则，ai能力不足，不能最大限度使用ai的能力。而且ai定制能力受限，只能使用官方集成的，不能针对自己的项目做prompt定制。</p>
+<p>所以上面的都不能满足现有的需求，因此我又调研别的工具，找到一个开源的工具 <code>AI-Codereview-Gitlab</code>。</p>
+<h3 id="三、编辑器插件" class="article-heading"><a href="#三、编辑器插件" class="headerlink" title="三、编辑器插件"></a>三、编辑器插件<a class="article-anchor" href="#三、编辑器插件" aria-hidden="true"></a></h3><h4 id="1-cursor" class="article-heading"><a href="#1-cursor" class="headerlink" title="1. cursor"></a>1. cursor<a class="article-anchor" href="#1-cursor" aria-hidden="true"></a></h4><p>直接使用 <code>@vibesnipe/code-review-mcp</code> mcp服务插件。</p>
+<ol>
+<li><p>添加mcp配置<br><img src="/../../images/aicr/cursor-mcp-aicr.png"><br><img src="/../../images/aicr/cursor-mcp-config.png"></p>
+</li>
+<li><p>项目根目录增加 <code>.cursor/rules/project.mdc</code> 文件，内容：</p>
+<figure class="highlight text"><table><tr><td class="code"><pre><span class="line">## Slash Commands</span><br><span class="line"></span><br><span class="line">/review-staged: Use the perform_code_review tool from the code-reviewer MCP server to review staged changes. Use anthropic provider with claude-3-7-sonnet-20250219 model. Base the task description on our current conversation context and focus on code quality and best practices.</span><br><span class="line"></span><br><span class="line">/review-head: Use the perform_code_review tool from the code-reviewer MCP server to review all uncommitted changes (HEAD). Use openai provider with o3 model. Base the task description on our current conversation context and focus on code quality and best practices.</span><br><span class="line"></span><br><span class="line">/review-security: Use the perform_code_review tool from the code-reviewer MCP server to review staged changes. Use anthropic provider with claude-3-5-sonnet-20241022 model. Base the task description on our current conversation context and specifically focus on security vulnerabilities, input validation, and secure coding practices.</span><br></pre></td></tr></table></figure></li>
+</ol>
+<blockquote>
+<p>其他更多属性配置，可以看：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://www.npmjs.com/package/@vibesnipe/code-review-mcp">https://www.npmjs.com/package/@vibesnipe/code-review-mcp</a></p>
+</blockquote>
+<ol start="3">
+<li>使用方式：可输入 <code>/review-head</code>。</li>
+</ol>
+<p><img src="/../../images/aicr/cursor-code-review.png"></p>
+<blockquote>
+<p>如果你是python开发者也可以使用 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/mehmetakinn/gitlab-mcp-code-review">https://github.com/mehmetakinn/gitlab-mcp-code-review</a></p>
+</blockquote>
+<h4 id="2-vscode" class="article-heading"><a href="#2-vscode" class="headerlink" title="2. vscode"></a>2. vscode<a class="article-anchor" href="#2-vscode" aria-hidden="true"></a></h4><p>cursor需要20美元的月费，vscode上的免费插件也有不错的效果，我推荐 <code>DeepSeek R1</code>和 <code>腾讯云代码助手 CodeBuddy</code>。 这2个插件都是免费的。</p>
+<p>在添加并启用插件后，在相应的页面或组件直接右键可以看到相关的评审功能。<br><img src="/../../images/aicr/vscode-deepseek.png" alt="DeepSeek R1"><br><img src="/../../images/aicr/vscode-codebuddy.png" alt="腾讯云代码助手 CodeBuddy"></p>
+<p>腾讯的代码助手可以在函数顶部添加相关功能按钮，可快速使用。</p>
+<p>为方便使用，可以参考cursor的布局，将这2个插件移动到右侧。<br><img src="/../../images/aicr/vscode-pugin-use.png"></p>
+<blockquote>
+<p>虽然在功能ai模型上vscode的免费插件比不上cursor，但是在代码开发方面来说，可以应对绝大部分的开发场景。</p>
+</blockquote>
+<h3 id="四、AI-Codereview-Gitlab" class="article-heading"><a href="#四、AI-Codereview-Gitlab" class="headerlink" title="四、AI-Codereview-Gitlab"></a>四、AI-Codereview-Gitlab<a class="article-anchor" href="#四、AI-Codereview-Gitlab" aria-hidden="true"></a></h3><p>这是一个开源的aicr工具，<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/sunmh207/AI-Codereview-Gitlab">AI-Codereview-Gitlab</a> 是一个基于大模型的自动化代码审查工具，帮助开发团队在代码合并或提交时，快速进行智能化的审查(Code Review)，提升代码质量和开发效率。</p>
+<h4 id="1-私有化部署" class="article-heading"><a href="#1-私有化部署" class="headerlink" title="1. 私有化部署"></a>1. 私有化部署<a class="article-anchor" href="#1-私有化部署" aria-hidden="true"></a></h4><p>我们通过官方的Docker 部署方式来部署的：</p>
+<ol>
+<li>准备环境文件<ul>
+<li>克隆项目仓库 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/sunmh207/AI-Codereview-Gitlab.git</span><br><span class="line">cd AI-Codereview-Gitlab</span><br></pre></td></tr></table></figure></li>
+<li>创建配置文件<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cp conf/.env.dist conf/.env</span><br></pre></td></tr></table></figure></li>
+<li>编辑conf&#x2F;.env文件<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#大模型供应商配置,支持 zhipuai , openai , deepseek 和 ollama</span><br><span class="line">LLM_PROVIDER=deepseek</span><br><span class="line"></span><br><span class="line">#DeepSeek</span><br><span class="line">DEEPSEEK_API_KEY=&#123;YOUR_DEEPSEEK_API_KEY&#125;</span><br><span class="line"></span><br><span class="line">#支持review的文件类型(未配置的文件类型不会被审查)</span><br><span class="line">SUPPORTED_EXTENSIONS=.java,.py,.php,.yml,.vue,.go,.c,.cpp,.h,.js,.css,.md,.sql</span><br><span class="line"></span><br><span class="line">#钉钉消息推送: 0不发送钉钉消息,1发送钉钉消息</span><br><span class="line">DINGTALK_ENABLED=0</span><br><span class="line">DINGTALK_WEBHOOK_URL=&#123;YOUR_WDINGTALK_WEBHOOK_URL&#125;</span><br><span class="line"></span><br><span class="line">#Gitlab配置</span><br><span class="line">GITLAB_ACCESS_TOKEN=&#123;YOUR_GITLAB_ACCESS_TOKEN&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>启动服务 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure></li>
+<li>验证<ul>
+<li>主服务验证：<ul>
+<li>访问 <a target="_blank" rel="noopener external nofollow noreferrer" href="http://your-server-ip:5001/">http://your-server-ip:5001</a></li>
+<li>显示 “The code review server is running.” 说明服务启动成功。</li>
+</ul>
+</li>
+<li>Dashboard 验证：<ul>
+<li>访问 <a target="_blank" rel="noopener external nofollow noreferrer" href="http://your-server-ip:5002/">http://your-server-ip:5002</a></li>
+<li>看到一个审查日志页面，说明 Dashboard 启动成功。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="2-配置gitlab-webhook" class="article-heading"><a href="#2-配置gitlab-webhook" class="headerlink" title="2. 配置gitlab webhook"></a>2. 配置gitlab webhook<a class="article-anchor" href="#2-配置gitlab-webhook" aria-hidden="true"></a></h4><ol>
+<li>创建Access Token<ul>
+<li>方法一：在 GitLab 个人设置中，创建一个 Personal Access Token</li>
+<li>方法二：在 GitLab 项目设置中，创建Project Access Token<br><img src="/../../images/aicr/gitlab-access-token.png"></li>
+</ul>
+</li>
+<li>配置webhook<br>在 GitLab 项目设置中，配置 Webhook：<ul>
+<li>URL：<a target="_blank" rel="noopener external nofollow noreferrer" href="http://your-server-ip:5001/review/webhook">http://your-server-ip:5001/review/webhook</a></li>
+<li>Trigger Events：勾选 Push Events 和 Merge Request Events (不要勾选其它Event)</li>
+<li>Secret Token：上面配置的 Access Token(可选)<br><img src="/../../images/aicr/gitlab-webhook.png"></li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>请确保gitlab网络环境和本系统互通。</p>
+</blockquote>
+<h4 id="3-push触发事件" class="article-heading"><a href="#3-push触发事件" class="headerlink" title="3. push触发事件"></a>3. push触发事件<a class="article-anchor" href="#3-push触发事件" aria-hidden="true"></a></h4><p><img src="/../../images/aicr/gitlab-push.png" alt="Test"></p>
+<p>在配置好webhook后可以点击测试按钮 <code>Test</code>看下网络是否畅通。</p>
+<h4 id="4-查看审查报告" class="article-heading"><a href="#4-查看审查报告" class="headerlink" title="4. 查看审查报告"></a>4. 查看审查报告<a class="article-anchor" href="#4-查看审查报告" aria-hidden="true"></a></h4><p><img src="/../../images/aicr/gitlab-code-review-report.png" alt="审查报告"></p>
+<p>代码push后会在提交note下增加审查报告。</p>
+<h4 id="5-查看审查日志" class="article-heading"><a href="#5-查看审查日志" class="headerlink" title="5. 查看审查日志"></a>5. 查看审查日志<a class="article-anchor" href="#5-查看审查日志" aria-hidden="true"></a></h4><p><img src="/../../images/aicr/aicr-gitlab-ui.png" alt="审查日志"></p>
+<p>这个集合了日志和面板统计，也可以进行简单的筛选。从score列查看评分，针对性对代码进行优化。</p>
+<blockquote>
+<p>消息通知可以配置钉钉、飞书和企业微信，具体流程可参考官方文档。<br>局限性：现在对项目整个仓库的评审没有前端页面的配置项，暂且只能用作者给出的指令: python -m biz.cmd.review</p>
+</blockquote>
+<h3 id="五、结语" class="article-heading"><a href="#五、结语" class="headerlink" title="五、结语"></a>五、结语<a class="article-anchor" href="#五、结语" aria-hidden="true"></a></h3><p>对于普通的项目，vscode的即时审查插件(deepseek和codebuddy)和开源工具(AI-Codereview-Gitlab)就可以零预算来对项目进行审查。</p>
+<p>我自己负责的几个项目都按着这个方案做代码审查，效果还是不错的。审查报告会找出不合理的代码片段并给出建议，对不易发现的性能和安全漏洞及时发现并解决。</p>
+
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2025-06-19T03:06:07.534Z" itemprop="dateModified">上次更新：2025-06-19</time>
+                <a href="index.html" class="article-footer-next" title="概述"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E9%9C%80%E6%B1%82%E7%8E%B0%E7%8A%B6"><span class="toc-text">一、需求现状</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E8%B0%83%E7%A0%94"><span class="toc-text">二、调研</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%BC%96%E8%BE%91%E5%99%A8%E6%8F%92%E4%BB%B6"><span class="toc-text">三、编辑器插件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-cursor"><span class="toc-text">1. cursor</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-vscode"><span class="toc-text">2. vscode</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81AI-Codereview-Gitlab"><span class="toc-text">四、AI-Codereview-Gitlab</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E7%A7%81%E6%9C%89%E5%8C%96%E9%83%A8%E7%BD%B2"><span class="toc-text">1. 私有化部署</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E9%85%8D%E7%BD%AEgitlab-webhook"><span class="toc-text">2. 配置gitlab webhook</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-push%E8%A7%A6%E5%8F%91%E4%BA%8B%E4%BB%B6"><span class="toc-text">3. push触发事件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E6%9F%A5%E7%9C%8B%E5%AE%A1%E6%9F%A5%E6%8A%A5%E5%91%8A"><span class="toc-text">4. 查看审查报告</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E6%9F%A5%E7%9C%8B%E5%AE%A1%E6%9F%A5%E6%97%A5%E5%BF%97"><span class="toc-text">5. 查看审查日志</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E7%BB%93%E8%AF%AD"><span class="toc-text">五、结语</span></a></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">开始使用</strong><a href="/ecology/index.html" class="sidebar-link">概述</a><strong class="sidebar-title">开发工具</strong><a href="/ecology/qiankun/guide.html" class="sidebar-link">qiankun文档指南</a><a href="/ecology/qiankun/questions.html" class="sidebar-link">qiankun汇总</a><a href="/ecology/vite/guide.html" class="sidebar-link">vite文档指南</a><a href="/ecology/vite/summary.html" class="sidebar-link">vite插件汇总</a><a href="/ecology/webpack/plugin.html" class="sidebar-link">webpack plugin开发实践</a><a href="/ecology/yapi/guide.html" class="sidebar-link">YApi文档</a><a href="/ecology/sentry/guide.html" class="sidebar-link">Sentry指南</a><a href="/ecology/rsbuild/vue2toRsbuild.html" class="sidebar-link">vue/cli项目迁移到RSBuild</a><a href="/ecology/build/nrm.html" class="sidebar-link">npm镜像源配置</a><a href="/ecology/mcp/cursorMasterGoMcp.html" class="sidebar-link">AI时代前端开发工作流</a><a href="/ecology/aicr/aicr.html" class="sidebar-link current">AI代码评审方案</a>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2025 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuo.jiangtao@h3c.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard/" class="mobile-nav-link">开发规范</a><a href="/design/" class="mobile-nav-link">开发指南</a><a href="/ecology/" class="mobile-nav-link">生态系统</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">开始使用</strong><a href="/ecology/index.html" class="mobile-nav-link">概述</a><strong class="mobile-nav-title">开发工具</strong><a href="/ecology/qiankun/guide.html" class="mobile-nav-link">qiankun文档指南</a><a href="/ecology/qiankun/questions.html" class="mobile-nav-link">qiankun汇总</a><a href="/ecology/vite/guide.html" class="mobile-nav-link">vite文档指南</a><a href="/ecology/vite/summary.html" class="mobile-nav-link">vite插件汇总</a><a href="/ecology/webpack/plugin.html" class="mobile-nav-link">webpack plugin开发实践</a><a href="/ecology/yapi/guide.html" class="mobile-nav-link">YApi文档</a><a href="/ecology/sentry/guide.html" class="mobile-nav-link">Sentry指南</a><a href="/ecology/rsbuild/vue2toRsbuild.html" class="mobile-nav-link">vue/cli项目迁移到RSBuild</a><a href="/ecology/build/nrm.html" class="mobile-nav-link">npm镜像源配置</a><a href="/ecology/mcp/cursorMasterGoMcp.html" class="mobile-nav-link">AI时代前端开发工作流</a><a href="/ecology/aicr/aicr.html" class="mobile-nav-link current">AI代码评审方案</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></span>
+    <select id="mobile-lang-select" data-canonical="">
+      
+        <option value="zh-cn" selected>简体中文</option>
+      
+        <option value="en">English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>
