@@ -63,3 +63,4 @@ ecology:
     vue_cli_rsbuild: rsbuild/vue2toRsbuild.html
     nrm: build/nrm.html
     mcp_cursor: mcp/cursorMasterGoMcp.html
+    aicr: aicr/aicr.html
