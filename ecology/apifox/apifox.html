@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>AI对接接口文档 | 个人博客</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://zuojiangtao.github.io/ecology/apifox/apifox.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="zh-cn" href="https://zuojiangtao.github.io/ecology/apifox/apifox">
+    
+      <link rel="alternative" hreflang="en" href="https://zuojiangtao.github.io/en/ecology/apifox/apifox">
+    
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css">
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard/" class="main-nav-link">开发规范</a><a href="/design/" class="main-nav-link">开发指南</a><a href="/ecology/" class="main-nav-link">工具套组</a>
+    </nav>
+    <div id="github-icon-link">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="icon" target="_blank"><i class="fa-brands fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">AI对接接口文档</h1>
+                <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Zuojiangtao/Zuojiangtao.github.io/tree/master/source/ecology/apifox/apifox.md" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <html><head></head><body><h3 id="一、前言" class="article-heading"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言<a class="article-anchor" href="#一、前言" aria-hidden="true"></a></h3><p>传统开发在拿到接口文档后需要我们手动翻阅并将各个api封装，并且如果之后api请求参数或响应体字段改变也得手动对齐。现在我们可以使用ai工具对开发提效。目前我们团队的接口文档是生成的swagger给到前端， 所以我重点调研可以解析OpenApi或swagger的文档。最终确定了apifox-mcp-server。</p>
+<p>使用mcp服务来智能化生成或更改api，这样只需要在项目初期配置好mcp服务，之后即使文档发生更改，我们也不需要翻阅文档了。通过agent 直接调用这个mcp服务就能快速刷新代码。其业务价值就是通过ai的加持，智能化请求接口封装、注释、字段类型和页面组件变量的自动更新。</p>
+<h3 id="二、apifox-mcp-server介绍" class="article-heading"><a href="#二、apifox-mcp-server介绍" class="headerlink" title="二、apifox-mcp-server介绍"></a>二、apifox-mcp-server介绍<a class="article-anchor" href="#二、apifox-mcp-server介绍" aria-hidden="true"></a></h3><p>Apifox MCP Server，可以将 Apifox 的接口文档提供给 Cursor 等支持 AI 编程的 IDE，或其他支持 MCP 的 AI 工具。</p>
+<p>开发者可以通过此mcp服务完成以下工作：根据接口文档生成或修改代码、搜索接口文档内容。</p>
+<h4 id="1-配置" class="article-heading"><a href="#1-配置" class="headerlink" title="1. 配置"></a>1. 配置<a class="article-anchor" href="#1-配置" aria-hidden="true"></a></h4><p>系统环境：</p>
+<ul>
+<li>已安装 Node.js 环境（版本号 &gt;= 18，推荐最新的 LTS 版本）；</li>
+<li>任意一个支持 MCP 的 IDE，如cursor、codebuddy、ClaudeCode等；</li>
+</ul>
+<p>使用场景：</p>
+<ul>
+<li>通过Mcp使用Apifox项目内的API文档；</li>
+<li>通过Mcp使用公开发布的API文档；</li>
+<li>通过Mcp使用OpenAPI/Swagger文档；</li>
+</ul>
+<p>windows系统mcp配置：</p>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line"><span class="punctuation">{</span></span><br><span class="line">  <span class="attr">"mcpServers"</span><span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">    <span class="attr">"Apifox Mcp Server"</span><span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">      <span class="attr">"command"</span><span class="punctuation">:</span> <span class="string">"cmd"</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">"args"</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="string">"/c"</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">"npx"</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">"-y"</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">"apifox-mcp-server@latest"</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">"--oas=&lt;oas-url-or-path&gt;"</span></span><br><span class="line">      <span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">}</span></span><br><span class="line">  <span class="punctuation">}</span></span><br><span class="line"><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>为了项目隔离，我推荐在项目根目录下新建一个mcp.json文件。比如使用cursor开发就在根目录.cursor文件夹下新建一个mcp.json文件。</p>
+</blockquote>
+<p>swagger文档路径获取：<br>直接使用api-doc的地址，如果给到你的是一个文档网站，可在network找到。<br><img src="/../../images/apifox/swagger-api-doc.png" alt="swagger-api-doc"></p>
+<h4 id="2-使用" class="article-heading"><a href="#2-使用" class="headerlink" title="2. 使用"></a>2. 使用<a class="article-anchor" href="#2-使用" aria-hidden="true"></a></h4><ul>
+<li>“通过 MCP 获取 API 文档，然后生成 Product 及其相关模型的定义代码”</li>
+<li>“根据 API 文档，在 Product DTO 里添加 API 文档新增的几个字段”</li>
+<li>“根据 API 文档给 Product 类的每个字段都加上注释”</li>
+<li>“根据 API 文档，生成接口 /users 相关的所有 MVC 代码”</li>
+</ul>
+<h4 id="3-规则" class="article-heading"><a href="#3-规则" class="headerlink" title="3. 规则"></a>3. 规则<a class="article-anchor" href="#3-规则" aria-hidden="true"></a></h4><p>为了规范agent生成的代码，可以写规则文件来保证生成代码的质量。<br><img src="/../../images/apifox/apifox-rules.png" alt="apifox-rules"></p>
+<h4 id="4-注意事项" class="article-heading"><a href="#4-注意事项" class="headerlink" title="4. 注意事项"></a>4. 注意事项<a class="article-anchor" href="#4-注意事项" aria-hidden="true"></a></h4><ul>
+<li>apifox-mcp-server会缓存接口文档，如果接口文档有更新要指令给agent重写读取；</li>
+<li>确保你的swagger地址是可访问的，保持网络的畅通；</li>
+</ul>
+<h3 id="三、生成本地请求函数" class="article-heading"><a href="#三、生成本地请求函数" class="headerlink" title="三、生成本地请求函数"></a>三、生成本地请求函数<a class="article-anchor" href="#三、生成本地请求函数" aria-hidden="true"></a></h3><p>直接输入prompt要求agent调用此mcp服务，如：<code>@rule:mcp_apifox 根据我的配置，读取swagger的api文档及接口数量</code></p>
+<p>agent会读取文档并汇总结果：<br><img src="/../../images/apifox/apifox-get-api.png" alt="apifox-get-api"></p>
+<p>可以继续对话让其生成api请求函数，如<code>将XX模块的接口生成本地请求函数</code>.</p>
+<p>然后agent会将你指定的模块的接口都读取并生成请求函数。如图：<br><img src="/../../images/apifox/apifox-set-fun-01.png" alt="apifox-set-fun-01"><br><img src="/../../images/apifox/apifox-set-fun-02.png" alt="apifox-set-fun-02"></p>
+<h3 id="四、在页面对接接口" class="article-heading"><a href="#四、在页面对接接口" class="headerlink" title="四、在页面对接接口"></a>四、在页面对接接口<a class="article-anchor" href="#四、在页面对接接口" aria-hidden="true"></a></h3><h4 id="1-页面对接新接口" class="article-heading"><a href="#1-页面对接新接口" class="headerlink" title="1.页面对接新接口"></a>1.页面对接新接口<a class="article-anchor" href="#1-页面对接新接口" aria-hidden="true"></a></h4><p>直接通过prompt指令触发编辑器agent执行接口对接，将页面和之前定义个规则加入上下文，如图：</p>
+<p><img src="/../../images/apifox/ide-prompt.png" alt="ide-prompt"></p>
+<p>通过对比接口文档，发现大部分字段正常赋值。<br><img src="/../../images/apifox/swagger-demo-list.png" alt="swagger-demo-list"><br><img src="/../../images/apifox/ide-api-field.png" alt="ide-api-field"></p>
+<h4 id="2-文档更新刷新代码" class="article-heading"><a href="#2-文档更新刷新代码" class="headerlink" title="2.文档更新刷新代码"></a>2.文档更新刷新代码<a class="article-anchor" href="#2-文档更新刷新代码" aria-hidden="true"></a></h4><p>更新已有的接口，对齐新文档：<br><img src="/../../images/apifox/swagger-api-update.png" alt="swagger-api-update"><br><img src="/../../images/apifox/ide-api-update.png" alt="ide-api-update"></p>
+<h4 id="3-指令优化" class="article-heading"><a href="#3-指令优化" class="headerlink" title="3.指令优化"></a>3.指令优化<a class="article-anchor" href="#3-指令优化" aria-hidden="true"></a></h4><p>通过上图可以看出还是没对齐，有冗余的字段，根据大模型思考的过程我发现是mcp把所有包含“数据源”的关键字的接口字段都加入进来了，需要再精准地指出路径来优化。</p>
+<p>我的prompt是： <code>根据swagger地址配置，更新新增数据源接口POST /v1/data-source，并刷新页面的新增组件FormModel。</code></p>
+<h3 id="五、其他" class="article-heading"><a href="#五、其他" class="headerlink" title="五、其他"></a>五、其他<a class="article-anchor" href="#五、其他" aria-hidden="true"></a></h3><h4 id="1-存在的问题" class="article-heading"><a href="#1-存在的问题" class="headerlink" title="1. 存在的问题"></a>1. 存在的问题<a class="article-anchor" href="#1-存在的问题" aria-hidden="true"></a></h4><ul>
+<li>生成的请求函数或对接页面时字段有缺失的情况，不清楚是模型问题还是mcp本身解析的问题；</li>
+<li>某些复杂字段还得手动介入开发，目前mcp解析到都是简单类型的字段，复杂的业务无法实现；</li>
+</ul>
+<h4 id="2-参考" class="article-heading"><a href="#2-参考" class="headerlink" title="2. 参考"></a>2. 参考<a class="article-anchor" href="#2-参考" aria-hidden="true"></a></h4><ul>
+<li>apifox-mcp-server官方文档：<a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.apifox.com/apifox-mcp-server">Apifox Mcp Server</a></li>
+</ul>
+</body></html>
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2026-03-12T08:31:25.868Z" itemprop="dateModified">上次更新：2026-03-12</time>
+                <a href="index.html" class="article-footer-next" title="概述"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%89%8D%E8%A8%80"><span class="toc-text">一、前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81apifox-mcp-server%E4%BB%8B%E7%BB%8D"><span class="toc-text">二、apifox-mcp-server介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E9%85%8D%E7%BD%AE"><span class="toc-text">1. 配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8"><span class="toc-text">2. 使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E8%A7%84%E5%88%99"><span class="toc-text">3. 规则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-text">4. 注意事项</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E7%94%9F%E6%88%90%E6%9C%AC%E5%9C%B0%E8%AF%B7%E6%B1%82%E5%87%BD%E6%95%B0"><span class="toc-text">三、生成本地请求函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E5%9C%A8%E9%A1%B5%E9%9D%A2%E5%AF%B9%E6%8E%A5%E6%8E%A5%E5%8F%A3"><span class="toc-text">四、在页面对接接口</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E9%A1%B5%E9%9D%A2%E5%AF%B9%E6%8E%A5%E6%96%B0%E6%8E%A5%E5%8F%A3"><span class="toc-text">1.页面对接新接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%96%87%E6%A1%A3%E6%9B%B4%E6%96%B0%E5%88%B7%E6%96%B0%E4%BB%A3%E7%A0%81"><span class="toc-text">2.文档更新刷新代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%8C%87%E4%BB%A4%E4%BC%98%E5%8C%96"><span class="toc-text">3.指令优化</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%85%B6%E4%BB%96"><span class="toc-text">五、其他</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">1. 存在的问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%8F%82%E8%80%83"><span class="toc-text">2. 参考</span></a></li></ol></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">开始使用</strong><a href="/ecology/index.html" class="sidebar-link">概述</a><strong class="sidebar-title">开发工具</strong><a href="/ecology/qiankun/guide.html" class="sidebar-link">qiankun文档指南</a><a href="/ecology/qiankun/questions.html" class="sidebar-link">qiankun汇总</a><a href="/ecology/vite/guide.html" class="sidebar-link">vite文档指南</a><a href="/ecology/vite/summary.html" class="sidebar-link">vite插件汇总</a><a href="/ecology/webpack/plugin.html" class="sidebar-link">webpack plugin开发实践</a><a href="/ecology/yapi/guide.html" class="sidebar-link">YApi文档</a><a href="/ecology/sentry/guide.html" class="sidebar-link">Sentry指南</a><a href="/ecology/rsbuild/vue2toRsbuild.html" class="sidebar-link">vue/cli项目迁移到RSBuild</a><a href="/ecology/build/nrm.html" class="sidebar-link">npm镜像源配置</a><strong class="sidebar-title">ai代码开发</strong><a href="/ecology/mcp/cursorMasterGoMcp.html" class="sidebar-link">AI时代前端开发工作流</a><a href="/ecology/aicr/aicr.html" class="sidebar-link">AI代码评审方案</a><a href="/ecology/apifox/apifox.html" class="sidebar-link current">AI对接接口文档</a>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2026 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuojt2022@gmail.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa-brands fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard/" class="mobile-nav-link">开发规范</a><a href="/design/" class="mobile-nav-link">开发指南</a><a href="/ecology/" class="mobile-nav-link">工具套组</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">开始使用</strong><a href="/ecology/index.html" class="mobile-nav-link">概述</a><strong class="mobile-nav-title">开发工具</strong><a href="/ecology/qiankun/guide.html" class="mobile-nav-link">qiankun文档指南</a><a href="/ecology/qiankun/questions.html" class="mobile-nav-link">qiankun汇总</a><a href="/ecology/vite/guide.html" class="mobile-nav-link">vite文档指南</a><a href="/ecology/vite/summary.html" class="mobile-nav-link">vite插件汇总</a><a href="/ecology/webpack/plugin.html" class="mobile-nav-link">webpack plugin开发实践</a><a href="/ecology/yapi/guide.html" class="mobile-nav-link">YApi文档</a><a href="/ecology/sentry/guide.html" class="mobile-nav-link">Sentry指南</a><a href="/ecology/rsbuild/vue2toRsbuild.html" class="mobile-nav-link">vue/cli项目迁移到RSBuild</a><a href="/ecology/build/nrm.html" class="mobile-nav-link">npm镜像源配置</a><strong class="mobile-nav-title">ai代码开发</strong><a href="/ecology/mcp/cursorMasterGoMcp.html" class="mobile-nav-link">AI时代前端开发工作流</a><a href="/ecology/aicr/aicr.html" class="mobile-nav-link">AI代码评审方案</a><a href="/ecology/apifox/apifox.html" class="mobile-nav-link current">AI对接接口文档</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></span>
+    <select id="mobile-lang-select" data-canonical="">
+      
+        <option value="zh-cn" selected>简体中文</option>
+      
+        <option value="en">English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>
