@@ -108,3 +108,4 @@ agent会读取文档并汇总结果：
 
 #### 2. 参考
 - apifox-mcp-server官方文档：[Apifox Mcp Server](https://docs.apifox.com/apifox-mcp-server)
+- [Cursor + Apifox MCP Server：借助 AI 与 API 文档高效编写代码](https://apifox.com/apiskills/cursor-apifox-mcp-server/)
