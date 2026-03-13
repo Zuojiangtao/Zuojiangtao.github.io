@@ -20,6 +20,6 @@ jobs:
         env:
           CI: true
       - name: Comment PR
-        uses: marocchino/sticky-pull-request-comment@v2
+        uses: marocchino/sticky-pull-request-comment@v3
         with:
           path: public/validate_theme.txt
