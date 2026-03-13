@@ -52,17 +52,17 @@ ecology:
   getting_started:
     overview: index.html
   util:
-    qiankun_guide: qiankun/guide.html
-    qiankun_questions: qiankun/questions.html
-    vite_guide: vite/guide.html
+    qiankun_guide: utils/qiankun_guide.html
+    qiankun_questions: utils/qiankun_questions.html
+    vite_guide: utils/vite_guide.html
 #    vite_plugin: vite/plugin.html
-    vite_summary: vite/summary.html
-    webpack_plugin: webpack/plugin.html
-    yapi_guide: yapi/guide.html
-    sentry_guide: sentry/guide.html
-    vue_cli_rsbuild: rsbuild/vue2toRsbuild.html
-    nrm: build/nrm.html
+    vite_summary: utils/vite_plugin_summary.html
+    webpack_plugin: utils/webpack_plugin.html
+    yapi_guide: utils/yapi.html
+    sentry_guide: utils/sentry_guide.html
+    vue_cli_rsbuild: utils/vue2toRsbuild.html
+    nrm: utils/nrm.html
   ai_coding:
-    mcp_cursor: mcp/cursorMasterGoMcp.html
-    apifox: apifox/apifox.html
-    aicr: aicr/aicr.html
+    mcp_cursor: ai_coding/cursorMasterGoMcp.html
+    apifox: ai_coding/apifox.html
+    aicr: ai_coding/aicr.html
