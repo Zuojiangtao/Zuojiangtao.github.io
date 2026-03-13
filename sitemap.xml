@@ -56,7 +56,7 @@
   </url>
   
   <url>
-    <loc>https://zuojiangtao.github.io/standard/project/rule</loc>
+    <loc>https://zuojiangtao.github.io/standard/project/react</loc>
     
     <lastmod>2026-02-02</lastmod>
     
@@ -65,7 +65,7 @@
   </url>
   
   <url>
-    <loc>https://zuojiangtao.github.io/standard/project/react</loc>
+    <loc>https://zuojiangtao.github.io/standard/project/rule</loc>
     
     <lastmod>2026-02-02</lastmod>
     
@@ -83,7 +83,7 @@
   </url>
   
   <url>
-    <loc>https://zuojiangtao.github.io/standard/name/htmlcss</loc>
+    <loc>https://zuojiangtao.github.io/standard/name/dir</loc>
     
     <lastmod>2026-02-02</lastmod>
     
@@ -92,7 +92,7 @@
   </url>
   
   <url>
-    <loc>https://zuojiangtao.github.io/standard/name/dir</loc>
+    <loc>https://zuojiangtao.github.io/standard/name/htmlcss</loc>
     
     <lastmod>2026-02-02</lastmod>
     
@@ -137,7 +137,7 @@
   </url>
   
   <url>
-    <loc>https://zuojiangtao.github.io/standard/image/size</loc>
+    <loc>https://zuojiangtao.github.io/standard/image/import</loc>
     
     <lastmod>2026-02-02</lastmod>
     
@@ -155,7 +155,7 @@
   </url>
   
   <url>
-    <loc>https://zuojiangtao.github.io/standard/image/import</loc>
+    <loc>https://zuojiangtao.github.io/standard/image/size</loc>
     
     <lastmod>2026-02-02</lastmod>
     
@@ -218,7 +218,7 @@
   </url>
   
   <url>
-    <loc>https://zuojiangtao.github.io/standard/css/query</loc>
+    <loc>https://zuojiangtao.github.io/standard/css/note</loc>
     
     <lastmod>2026-02-02</lastmod>
     
@@ -236,7 +236,7 @@
   </url>
   
   <url>
-    <loc>https://zuojiangtao.github.io/standard/css/note</loc>
+    <loc>https://zuojiangtao.github.io/standard/css/query</loc>
     
     <lastmod>2026-02-02</lastmod>
     
@@ -272,7 +272,7 @@
   </url>
   
   <url>
-    <loc>https://zuojiangtao.github.io/ecology/webpack/plugin</loc>
+    <loc>https://zuojiangtao.github.io/ecology/vite/summary</loc>
     
     <lastmod>2026-02-02</lastmod>
     
@@ -281,7 +281,7 @@
   </url>
   
   <url>
-    <loc>https://zuojiangtao.github.io/ecology/vite/summary</loc>
+    <loc>https://zuojiangtao.github.io/ecology/webpack/plugin</loc>
     
     <lastmod>2026-02-02</lastmod>
     
@@ -317,15 +317,6 @@
   </url>
   
   <url>
-    <loc>https://zuojiangtao.github.io/ecology/rsbuild/vue2toRsbuild</loc>
-    
-    <lastmod>2026-02-02</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://zuojiangtao.github.io/ecology/qiankun/guide</loc>
     
     <lastmod>2026-02-02</lastmod>
@@ -336,6 +327,15 @@
   
   <url>
     <loc>https://zuojiangtao.github.io/ecology/qiankun/questions</loc>
+    
+    <lastmod>2026-02-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://zuojiangtao.github.io/ecology/rsbuild/vue2toRsbuild</loc>
     
     <lastmod>2026-02-02</lastmod>
     
@@ -398,15 +398,6 @@
   </url>
   
   <url>
-    <loc>https://zuojiangtao.github.io/design/planet/vite_cli</loc>
-    
-    <lastmod>2026-02-02</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://zuojiangtao.github.io/design/planet/nodejs_crawler</loc>
     
     <lastmod>2026-02-02</lastmod>
@@ -416,7 +407,7 @@
   </url>
   
   <url>
-    <loc>https://zuojiangtao.github.io/design/architecture/design_pattern</loc>
+    <loc>https://zuojiangtao.github.io/design/planet/vite_cli</loc>
     
     <lastmod>2026-02-02</lastmod>
     
@@ -426,6 +417,15 @@
   
   <url>
     <loc>https://zuojiangtao.github.io/design/design_guide</loc>
+    
+    <lastmod>2026-02-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://zuojiangtao.github.io/design/architecture/design_pattern</loc>
     
     <lastmod>2026-02-02</lastmod>
     
@@ -454,7 +454,7 @@
 
   <url>
     <loc>https://zuojiangtao.github.io/</loc>
-    <lastmod>2026-03-12</lastmod>
+    <lastmod>2026-03-13</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
