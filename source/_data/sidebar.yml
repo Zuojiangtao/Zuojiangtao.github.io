@@ -64,5 +64,5 @@ ecology:
     nrm: build/nrm.html
   ai_coding:
     mcp_cursor: mcp/cursorMasterGoMcp.html
-    aicr: aicr/aicr.html
     apifox: apifox/apifox.html
+    aicr: aicr/aicr.html

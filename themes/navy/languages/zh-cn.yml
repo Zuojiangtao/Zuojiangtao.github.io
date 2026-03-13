@@ -81,6 +81,6 @@ sidebar:
     vue_cli_rsbuild: vue/cli项目迁移到RSBuild
     nrm: npm镜像源配置
     ai_coding: ai代码开发
-    mcp_cursor: AI时代前端开发工作流
-    aicr: AI代码评审方案
+    mcp_cursor: AI设计稿生成UI
     apifox: AI对接接口文档
+    aicr: AI代码评审方案
