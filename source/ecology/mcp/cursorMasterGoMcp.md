@@ -1,4 +1,4 @@
-title: Cursor+MCP，AI时代前端开发工作流
+title: Cursor + MasterGo：AI辅助前端开发的最佳实践
 ---
 
 ### 一、MCP介绍
