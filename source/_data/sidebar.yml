@@ -63,6 +63,7 @@ ecology:
     vue_cli_rsbuild: utils/vue2toRsbuild.html
     nrm: utils/nrm.html
   ai_coding:
+    ai_design: ai_coding/mastergoAiDesign.html
     mcp_cursor: ai_coding/cursorMasterGoMcp.html
     apifox: ai_coding/apifox.html
     aicr: ai_coding/aicr.html
