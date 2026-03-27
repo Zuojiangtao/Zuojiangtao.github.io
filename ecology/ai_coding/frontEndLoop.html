@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>基于AI的前端全链路开发工作流 | 个人博客</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://zuojiangtao.github.io/ecology/ai_coding/frontEndLoop.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="zh-cn" href="https://zuojiangtao.github.io/ecology/ai_coding/frontEndLoop">
+    
+      <link rel="alternative" hreflang="en" href="https://zuojiangtao.github.io/en/ecology/ai_coding/frontEndLoop">
+    
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css">
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard/" class="main-nav-link">开发规范</a><a href="/design/" class="main-nav-link">开发指南</a><a href="/ecology/" class="main-nav-link">工具套组</a>
+    </nav>
+    <div id="github-icon-link">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="icon" target="_blank"><i class="fa-brands fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">基于AI的前端全链路开发工作流</h1>
+                <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Zuojiangtao/Zuojiangtao.github.io/tree/master/source/ecology/ai_coding/frontEndLoop.md" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <html><head></head><body><h3 id="一、前言" class="article-heading"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言<a class="article-anchor" href="#一、前言" aria-hidden="true"></a></h3><h4 id="1-开发需求背景" class="article-heading"><a href="#1-开发需求背景" class="headerlink" title="1.开发需求背景"></a>1.开发需求背景<a class="article-anchor" href="#1-开发需求背景" aria-hidden="true"></a></h4><p>现在aiCoding对开发的帮助越来越大，我们也可以用ai对自己平时的各个工作环节或流程提效。在研究各个流程后，我发现可以将前端开发的所有流程都跑通了，将各流程串联起来已经完成了前端开发的全链路闭环。本文我将各个环节的ai提效做出总结，并以项目实战来演示整个开发流程。</p>
+<h4 id="2-几个概念" class="article-heading"><a href="#2-几个概念" class="headerlink" title="2.几个概念"></a>2.几个概念<a class="article-anchor" href="#2-几个概念" aria-hidden="true"></a></h4><p>Prompt： 用户向 AI 模型输入的指令或信息集合，可输入自然语言、图片、规则、上下文和指令等，用来触发模型生成特定输出的指令集合。</p>
+<p>MCP： MCP（Model Context Protocol） 是一种开放协议，定义了 AI 模型与外部数据源、工具、服务之间的标准化交互方式，使模型能够动态获取上下文并执行实际操作（如查询数据库、调用 API），解决了大模型在实时数据与行动能力上的局限。</p>
+<p>Skill：Skill 是将完成某一类任务所需的指令、逻辑、脚本、资源等进行封装的可复用能力单元。它可以包含 prompt、调用外部工具的方式、处理流程等。当任务匹配时，AI（通常通过 Agent）可以按需加载并执行该 Skill，以提高效率和稳定性。</p>
+<p>Agent：Agent 是一个具备自主决策与执行能力的 AI 实体。它能理解复杂目标，进行任务规划，调用多个工具或 Skills，并根据执行结果进行迭代调整，直至完成目标。相比单次 Prompt 交互，Agent 拥有记忆、规划和多步骤执行的能力。</p>
+<h3 id="二、ai驱动原型设计" class="article-heading"><a href="#二、ai驱动原型设计" class="headerlink" title="二、ai驱动原型设计"></a>二、ai驱动原型设计<a class="article-anchor" href="#二、ai驱动原型设计" aria-hidden="true"></a></h3><h4 id="1-masterGo设计工具AI快搭" class="article-heading"><a href="#1-masterGo设计工具AI快搭" class="headerlink" title="1.masterGo设计工具AI快搭"></a>1.masterGo设计工具AI快搭<a class="article-anchor" href="#1-masterGo设计工具AI快搭" aria-hidden="true"></a></h4><blockquote>
+<p>我们团队采购了mastergo所以我用这个工具来演示，其他工具也有ai设计功能，比如：figma、pixso。可自行了解。</p>
+</blockquote>
+<p><img src="/../../images/mastergo-ai/config.png" alt="config"><br>从图中可以看到，下方左侧主要功能包括创建新页面、选择设计类型、选择开发语言和ui库、输入自然语言和上传本地截图等。</p>
+<p><img src="/../../images/mastergo-ai/code.png" alt="code"><br>点击<code>代码icon</code>可以在右侧预览代码。</p>
+<p><img src="/../../images/mastergo-ai/lcoal.png" alt="local"><br>点击<code>局部修改</code>可以在上方对部分区域选定，然后可以针对性修改。</p>
+<h4 id="2-使用" class="article-heading"><a href="#2-使用" class="headerlink" title="2.使用"></a>2.使用<a class="article-anchor" href="#2-使用" aria-hidden="true"></a></h4><p>如图所示，可以看到下方可以选择<code>插入到画布</code>来保存到设计稿；也可以切换开发语言框架和代码预览；右侧的输入框下方也可以选择局部不满意的地方优化。<br><img src="/../../images/mastergo-ai/result.png" alt="result"></p>
+<p>如图是设计的最终效果。<br><img src="/../../images/mastergo-ai/design.png" alt="design"></p>
+<h3 id="三、mastergo-mcp生成UI" class="article-heading"><a href="#三、mastergo-mcp生成UI" class="headerlink" title="三、mastergo-mcp生成UI"></a>三、mastergo-mcp生成UI<a class="article-anchor" href="#三、mastergo-mcp生成UI" aria-hidden="true"></a></h3><p>我使用cursor作为演示工具，其他的编辑器请按照各自的方式添加mcp。</p>
+<h4 id="1-配置" class="article-heading"><a href="#1-配置" class="headerlink" title="1.配置"></a>1.配置<a class="article-anchor" href="#1-配置" aria-hidden="true"></a></h4><p><img src="/../../images/mcp/cursor-add-mcp.png" alt="add-mcp"><br>选择 <code>MCP</code> 菜单，可点击 ‘Add new global MCP server’ 来添加自己的mcp服务器。</p>
+<p><img src="/../../images/mcp/cursor-mcp-config.png" alt="config-mcp"><br>点击进来后根据自己需求来配置，mastergo的配置如图。</p>
+<h4 id="2-使用步骤" class="article-heading"><a href="#2-使用步骤" class="headerlink" title="2.使用步骤"></a>2.使用步骤<a class="article-anchor" href="#2-使用步骤" aria-hidden="true"></a></h4><ol>
+<li><p>获取设计稿链接<br><img src="/../../images/mcp/mastergo-design-link.png" alt="design-link"><br>进入项目，如果想要开发某个页面，选择页面对应图层，右键找到 <code>复制/粘贴为</code> 选择 <code>复制容器链接</code>。</p>
+</li>
+<li><p>agent对话<br><img src="/../../images/mcp/cursor-chat-prompt.png" alt="chat-prompt"><br>粘贴复制的链接，后续编写自己的prompt，然后发送即可。</p>
+</li>
+<li><p>获取dsl<br>点击 <code>run tool</code> 执行工具，获取dsl信息。</p>
+<p> <img src="/../../images/mcp/cursor-get-dsl.png" alt="get-dsl"><br> 可以看到获取到的dsl信息是一棵json树，描述了设计稿转换信息，ai将会根据这些描述来生成代码。</p>
+<p> <img src="/../../images/mcp/cursor-chat-design.png" alt="chat-design"><br> 完整的执行工具如图展示。</p>
+</li>
+<li><p>多轮调用受限<br>在使用多轮生成后需要手动授权。</p>
+<p> <img src="/../../images/mcp/cursor-generate-auth.png" alt="generate-auth"><br> 点击图中出现的 <code>resume the conversation</code>，然后会继续构建页面代码。</p>
+</li>
+</ol>
+<blockquote>
+<p>现在的大模型上下文限制比较大，应该不太会出现这个情况了。</p>
+</blockquote>
+<h3 id="四、apifox-mcp对接接口" class="article-heading"><a href="#四、apifox-mcp对接接口" class="headerlink" title="四、apifox-mcp对接接口"></a>四、apifox-mcp对接接口<a class="article-anchor" href="#四、apifox-mcp对接接口" aria-hidden="true"></a></h3><h4 id="1-配置-1" class="article-heading"><a href="#1-配置-1" class="headerlink" title="1.配置"></a>1.配置<a class="article-anchor" href="#1-配置-1" aria-hidden="true"></a></h4><p>系统环境：</p>
+<ul>
+<li>已安装 Node.js 环境（版本号 &gt;= 18，推荐最新的 LTS 版本）；</li>
+<li>任意一个支持 MCP 的 IDE，如cursor、codebuddy、ClaudeCode等；</li>
+</ul>
+<p>使用场景：</p>
+<ul>
+<li>通过Mcp使用Apifox项目内的API文档；</li>
+<li>通过Mcp使用公开发布的API文档；</li>
+<li>通过Mcp使用OpenAPI/Swagger文档；</li>
+</ul>
+<p>windows系统mcp配置：</p>
+<figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line"><span class="punctuation">{</span></span><br><span class="line">  <span class="attr">"mcpServers"</span><span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">    <span class="attr">"Apifox Mcp Server"</span><span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">      <span class="attr">"command"</span><span class="punctuation">:</span> <span class="string">"cmd"</span><span class="punctuation">,</span></span><br><span class="line">      <span class="attr">"args"</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">        <span class="string">"/c"</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">"npx"</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">"-y"</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">"apifox-mcp-server@latest"</span><span class="punctuation">,</span></span><br><span class="line">        <span class="string">"--oas=&lt;oas-url-or-path&gt;"</span></span><br><span class="line">      <span class="punctuation">]</span></span><br><span class="line">    <span class="punctuation">}</span></span><br><span class="line">  <span class="punctuation">}</span></span><br><span class="line"><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>为了项目隔离，我推荐在项目根目录下新建一个mcp.json文件。比如使用cursor开发就在根目录.cursor文件夹下新建一个mcp.json文件。</p>
+</blockquote>
+<p>swagger文档路径获取：<br>直接使用api-doc的地址，如果给到你的是一个文档网站，可在network找到。<br><img src="/../../images/end-loop/swagger-api-docs.png" alt="swagger-api-docs"></p>
+<h4 id="2-使用步骤-1" class="article-heading"><a href="#2-使用步骤-1" class="headerlink" title="2.使用步骤"></a>2.使用步骤<a class="article-anchor" href="#2-使用步骤-1" aria-hidden="true"></a></h4><ol>
+<li><p>生成本地请求函数</p>
+<p>直接输入prompt要求agent调用此mcp服务，如：<code>@rule:mcp_apifox 根据我的配置，读取swagger的api文档及接口数量</code></p>
+<p> agent会读取文档并汇总结果：<br> <img src="/../../images/apifox/apifox-get-api.png" alt="apifox-get-api"></p>
+<p> 可以继续对话让其生成api请求函数，如<code>将XX模块的接口生成本地请求函数</code>.然后agent会将你指定的模块的接口都读取并生成请求函数。如图：<br> <img src="/../../images/apifox/apifox-set-fun-01.png" alt="apifox-set-fun-01"><br> <img src="/../../images/apifox/apifox-set-fun-02.png" alt="apifox-set-fun-02"></p>
+</li>
+<li><p>页面对接接口</p>
+<p>i. 页面对接新接口</p>
+<p>直接通过prompt指令触发编辑器agent执行接口对接，将页面和之前定义的规则加入上下文，如图：</p>
+<p><img src="/../../images/apifox/ide-prompt.png" alt="ide-prompt"></p>
+<p> 通过对比接口文档，发现大部分字段正常赋值。<br> <img src="/../../images/apifox/swagger-demo-list.png" alt="swagger-demo-list"><br> <img src="/../../images/apifox/ide-api-field.png" alt="ide-api-field"></p>
+<p> ii. 文档更新刷新代码<br> 更新已有的接口，对齐新文档：<br> <img src="/../../images/apifox/swagger-api-update.png" alt="swagger-api-update"><br> <img src="/../../images/apifox/ide-api-update.png" alt="ide-api-update"></p>
+</li>
+</ol>
+<h3 id="五、ai代码评审" class="article-heading"><a href="#五、ai代码评审" class="headerlink" title="五、ai代码评审"></a>五、ai代码评审<a class="article-anchor" href="#五、ai代码评审" aria-hidden="true"></a></h3><p>代码评审也是开发工作中会遇到的环节，而且某些场景下是非常重要的，尤其是对于安全方面。在谈论code review时我觉得应该分2个视角来看：一个视角是开发的角度，利用ai工具帮我们快速review，有问题直接就解决，极大降低人力成本，提升开发者的效能；另一个视角是从团队管理者或者说是资产所有者的角度，不信任任何未经平台审核的代码，即使开发使用了团队的规范也存在篡改的可能，因此应该要有一个平台性质的工具来做最终的code review。</p>
+<h4 id="1-code-reviewer" class="article-heading"><a href="#1-code-reviewer" class="headerlink" title="1.code-reviewer"></a>1.code-reviewer<a class="article-anchor" href="#1-code-reviewer" aria-hidden="true"></a></h4><p>这是一个skill(<a target="_blank" rel="noopener external nofollow noreferrer" href="https://skillsmp.com/skills/google-gemini-gemini-cli-gemini-skills-code-reviewer-skill-md">code-reviewer-skill</a>)，由 Google Gemini 团队推出，支持审查本地已暂存/未暂存的改动，也支持直接审查远程 PR（只需提供 PR 编号或 URL）。它会分析代码的正确性、可维护性、性能等，并给出明确结论（如批准合并或要求修改）。</p>
+<p>使用方式： <code>pnpm dlx skills add google-gemini/gemini-cli</code></p>
+<blockquote>
+<p>我个人推荐将其下载到本地项目下使用，这样可以针对自己的个人习惯或团队要求定制化更改。</p>
+</blockquote>
+<h4 id="2-ai-codereview-gitlab" class="article-heading"><a href="#2-ai-codereview-gitlab" class="headerlink" title="2.ai-codereview-gitlab"></a>2.ai-codereview-gitlab<a class="article-anchor" href="#2-ai-codereview-gitlab" aria-hidden="true"></a></h4><p>这是一个开源的aicr工具，<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/sunmh207/AI-Codereview-Gitlab">AI-Codereview-Gitlab</a> 是一个基于大模型的自动化代码审查工具，帮助开发团队在代码合并或提交时，快速进行智能化的审查(Code Review)，提升代码质量和开发效率。</p>
+<h5 id="1-私有化部署" class="article-heading"><a href="#1-私有化部署" class="headerlink" title="1. 私有化部署"></a>1. 私有化部署<a class="article-anchor" href="#1-私有化部署" aria-hidden="true"></a></h5><p>我们通过官方的Docker 部署方式来部署的：</p>
+<ol>
+<li>准备环境文件<ul>
+<li>克隆项目仓库</li>
+</ul>
+ <figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">git clone https://github.com/sunmh207/AI-Codereview-Gitlab.git</span><br><span class="line">cd AI-Codereview-Gitlab</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>创建配置文件</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">cp conf/.env.dist conf/.env</span><br></pre></td></tr></tbody></table></figure>
+<ul>
+<li>编辑conf/.env文件</li>
+</ul>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">#大模型供应商配置,支持 zhipuai , openai , deepseek 和 ollama</span><br><span class="line">LLM_PROVIDER=deepseek</span><br><span class="line"></span><br><span class="line">#DeepSeek</span><br><span class="line">DEEPSEEK_API_KEY={YOUR_DEEPSEEK_API_KEY}</span><br><span class="line"></span><br><span class="line">#支持review的文件类型(未配置的文件类型不会被审查)</span><br><span class="line">SUPPORTED_EXTENSIONS=.java,.py,.php,.yml,.vue,.go,.c,.cpp,.h,.js,.css,.md,.sql</span><br><span class="line"></span><br><span class="line">#钉钉消息推送: 0不发送钉钉消息,1发送钉钉消息</span><br><span class="line">DINGTALK_ENABLED=0</span><br><span class="line">DINGTALK_WEBHOOK_URL={YOUR_WDINGTALK_WEBHOOK_URL}</span><br><span class="line"></span><br><span class="line">#Gitlab配置</span><br><span class="line">GITLAB_ACCESS_TOKEN={YOUR_GITLAB_ACCESS_TOKEN}</span><br></pre></td></tr></tbody></table></figure></li>
+<li>启动服务 <figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></tbody></table></figure></li>
+<li>验证<ul>
+<li>主服务验证：<ul>
+<li>访问 <a target="_blank" rel="noopener external nofollow noreferrer" href="http://your-server-ip:5001/">http://your-server-ip:5001</a></li>
+<li>显示 “The code review server is running.” 说明服务启动成功。</li>
+</ul>
+</li>
+<li>Dashboard 验证：<ul>
+<li>访问 <a target="_blank" rel="noopener external nofollow noreferrer" href="http://your-server-ip:5002/">http://your-server-ip:5002</a></li>
+<li>看到一个审查日志页面，说明 Dashboard 启动成功。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h5 id="2-配置gitlab-webhook" class="article-heading"><a href="#2-配置gitlab-webhook" class="headerlink" title="2. 配置gitlab webhook"></a>2. 配置gitlab webhook<a class="article-anchor" href="#2-配置gitlab-webhook" aria-hidden="true"></a></h5><ol>
+<li>创建Access Token<ul>
+<li>方法一：在 GitLab 个人设置中，创建一个 Personal Access Token</li>
+<li>方法二：在 GitLab 项目设置中，创建Project Access Token<br><img src="/../../images/aicr/gitlab-access-token.png" alt="access-token"></li>
+</ul>
+</li>
+<li>配置webhook<br>在 GitLab 项目设置中，配置 Webhook：<ul>
+<li>URL：<a target="_blank" rel="noopener external nofollow noreferrer" href="http://your-server-ip:5001/review/webhook">http://your-server-ip:5001/review/webhook</a></li>
+<li>Trigger Events：勾选 Push Events 和 Merge Request Events (不要勾选其它Event)</li>
+<li>Secret Token：上面配置的 Access Token(可选)<br><img src="/../../images/aicr/gitlab-webhook.png" alt="gitlab-webhook"></li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>请确保gitlab网络环境和本系统互通。</p>
+</blockquote>
+<h5 id="3-push触发事件" class="article-heading"><a href="#3-push触发事件" class="headerlink" title="3. push触发事件"></a>3. push触发事件<a class="article-anchor" href="#3-push触发事件" aria-hidden="true"></a></h5><p><img src="/../../images/aicr/gitlab-push.png" alt="Test"></p>
+<p>在配置好webhook后可以点击测试按钮 <code>Test</code>看下网络是否畅通。</p>
+<h5 id="4-查看审查报告" class="article-heading"><a href="#4-查看审查报告" class="headerlink" title="4. 查看审查报告"></a>4. 查看审查报告<a class="article-anchor" href="#4-查看审查报告" aria-hidden="true"></a></h5><p><img src="/../../images/aicr/gitlab-code-review-report.png" alt="审查报告"></p>
+<p>代码push后会在提交note下增加审查报告。</p>
+<h5 id="5-查看审查日志" class="article-heading"><a href="#5-查看审查日志" class="headerlink" title="5. 查看审查日志"></a>5. 查看审查日志<a class="article-anchor" href="#5-查看审查日志" aria-hidden="true"></a></h5><p><img src="/../../images/end-loop/aicr-log.png" alt="审查日志"></p>
+<p>这个集合了日志和面板统计，也可以进行简单的筛选。从score列查看评分，针对性对代码进行优化。</p>
+<blockquote>
+<p>消息通知可以配置钉钉、飞书和企业微信，具体流程可参考官方文档。<br>局限性：现在对项目整个仓库的评审没有前端页面的配置项，暂且只能用作者给出的指令: python -m biz.cmd.review</p>
+</blockquote>
+<h4 id="3-vscode插件" class="article-heading"><a href="#3-vscode插件" class="headerlink" title="3.vscode插件"></a>3.vscode插件<a class="article-anchor" href="#3-vscode插件" aria-hidden="true"></a></h4><p>使用vscode编辑器的开发者也可以安装<code>DeepSeek R1</code>和 <code>腾讯云代码助手 CodeBuddy</code>。</p>
+<p>在添加并启用插件后，在相应的页面或组件直接右键可以看到相关的评审功能。<br><img src="/../../images/aicr/vscode-deepseek.png" alt="DeepSeek R1"><br><img src="/../../images/aicr/vscode-codebuddy.png" alt="腾讯云代码助手 CodeBuddy"></p>
+<p>腾讯的代码助手可以在函数顶部添加相关功能按钮，可快速使用。</p>
+<p>为方便使用，可以参考cursor的布局，将这2个插件移动到右侧。<br><img src="/../../images/aicr/vscode-pugin-use.png" alt="vscode-pugin-use"></p>
+<h3 id="六、项目实战" class="article-heading"><a href="#六、项目实战" class="headerlink" title="六、项目实战"></a>六、项目实战<a class="article-anchor" href="#六、项目实战" aria-hidden="true"></a></h3><h4 id="1-项目预设" class="article-heading"><a href="#1-项目预设" class="headerlink" title="1.项目预设"></a>1.项目预设<a class="article-anchor" href="#1-项目预设" aria-hidden="true"></a></h4><p>我们预设项目的环境是中后台业务系统，增删改查列表页面，这个列表页面上面有表单查询和新建功能按钮，下面是表格。点击新建和操作列的编辑可以唤起表单modal组件。</p>
+<blockquote>
+<p>可以做一个项目通用的列表设计，后续可以直接截图给大模型，只改表格的字段就行。甚至可以更进一步，将业务系统列表页面的重复性工作标准化，封装成skill。</p>
+</blockquote>
+<p>为了更细致展示整个开发流程，我将各个环节做了拆分，下面将各个环节分步展示。</p>
+<h4 id="2-设计" class="article-heading"><a href="#2-设计" class="headerlink" title="2.设计"></a>2.设计<a class="article-anchor" href="#2-设计" aria-hidden="true"></a></h4><p>在masterGo的设计文件里点击上方的ai快搭标志开启窗口并输入prompt。<br><img src="/../../images/end-loop/aikuaida-new-page.png" alt="new-page"></p>
+<p>然后点击开始创作，会得到初步的设计稿。<br><img src="/../../images/end-loop/aikuaida-design-first.png" alt="design-first"></p>
+<p>针对其进行校正，将细节补充，得到最终的设计稿。<br><img src="/../../images/end-loop/aikuaida-design-finaly.png" alt="design-finaly"></p>
+<p>点击下方的插入到画布就是最终的设计稿了。</p>
+<blockquote>
+<p>使用其他设计工具如figma的需要会员请自购，使用mcp需要token验证。</p>
+</blockquote>
+<h4 id="3-生成UI" class="article-heading"><a href="#3-生成UI" class="headerlink" title="3.生成UI"></a>3.生成UI<a class="article-anchor" href="#3-生成UI" aria-hidden="true"></a></h4><p>在设计稿选择这个页面可以复制容器链接，获取后用于生成ui代码。<br><img src="/../../images/end-loop/design-ui-url.png" alt="design-ui-url"></p>
+<p>打开你的ai编辑器，输入指令生成ui。我的指令是：</p>
+<figure class="highlight text"><table><tbody><tr><td class="code"><pre><span class="line">https://mastergo.com/goto/RCmBpTWJ?page_id=M&amp;layer_id=68:1854&amp;file=65624275281607 根据链接在项目新增消息队列模块。</span><br></pre></td></tr></tbody></table></figure>
+<p>生成代码运行效果：<br><img src="/../../images/end-loop/mastergo-mcp-ui.png" alt="mastergo-mcp-ui"></p>
+<p>看到和设计还是有差别的，尤其是上方的表单搜索，我们可以在设计稿拷贝form的容器链接继续优化。<br><img src="/../../images/end-loop/design-ui-form.png" alt="design-ui-form"></p>
+<p>继续给指令要求优化上方的form区块：</p>
+<figure class="highlight text"><table><tbody><tr><td class="code"><pre><span class="line"></span><br><span class="line">index.vue:2-36[这里我把生成的页面添加到了对话上下文]</span><br><span class="line">https://mastergo.com/goto/RCotiGtR?page_id=M&amp;layer_id=68:2584&amp;file=65624275281607 根据链接将表单搜索区块重写。</span><br></pre></td></tr></tbody></table></figure>
+
+<p>优化后的效果：<br><img src="/../../images/end-loop/mastergo-mcp-fix.png"></p>
+<blockquote>
+<p>如果你使用了figma作为设计工具，请在你使用的编辑器mcp市场自行搜索figma添加，也可以手动添加<a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/GLips/Figma-Context-MCP">Figma-Context-MCP</a>。</p>
+</blockquote>
+<h4 id="4-对接接口" class="article-heading"><a href="#4-对接接口" class="headerlink" title="4.对接接口"></a>4.对接接口<a class="article-anchor" href="#4-对接接口" aria-hidden="true"></a></h4><p>在对接接口前记得先添加apifox-mcp-server并配置你的swagger地址。<a target="_blank" rel="noopener external nofollow noreferrer" href="https://docs.apifox.com/6327891m0">通过 MCP 使用 OpenAPI/Swagger 文档</a></p>
+<p>直接通过指令要求获取你需要的模块或某个指定的接口。我的指令是：</p>
+<figure class="highlight text"><table><tbody><tr><td class="code"><pre><span class="line">根据我配置的swagger地址，将消息队列资源接口模块封装成请求函数，如果本地已有就覆盖重写。</span><br></pre></td></tr></tbody></table></figure>
+<p>封装的请求函数部分截图：<br><img src="/../../images/end-loop/apifox-fetch-func.png" alt="apifox-fetch-func"></p>
+<p>然后再对应的页面对接接口。</p>
+<figure class="highlight text"><table><tbody><tr><td class="code"><pre><span class="line">index.vue[生成的UI页面]</span><br><span class="line">将消息队列资源接口模块的分页查询虚拟主机列表接口对接。</span><br></pre></td></tr></tbody></table></figure>
+
+<p>前端显示效果：<br><img src="/../../images/end-loop/apifox-fetch-list.png" alt="apifox-fetch-list"></p>
+<p>因为我们是将环节拆分，所以各阶段是各自生成的。此时看到虽然获取到了，但是字段没和swagger响应体字段对齐，我们可以再次下指令让其使用获取的字段更新即可。</p>
+<figure class="highlight text"><table><tbody><tr><td class="code"><pre><span class="line">columns.ts[这里我将表格列字段的文件添加到对话上下文]</span><br><span class="line">将表格列的字段和swagger文档POST /cloud//v1/mq/resource/list/search 接口的响应体字段对应</span><br></pre></td></tr></tbody></table></figure>
+<p><img src="/../../images/end-loop/apifox-fetch-columns.png" alt="apifox-fetch-columns"></p>
+<h4 id="5-其他" class="article-heading"><a href="#5-其他" class="headerlink" title="5.其他"></a>5.其他<a class="article-anchor" href="#5-其他" aria-hidden="true"></a></h4><h5 id="1-生成指令" class="article-heading"><a href="#1-生成指令" class="headerlink" title="1.生成指令"></a>1.生成指令<a class="article-anchor" href="#1-生成指令" aria-hidden="true"></a></h5><p>为了展示各环节的过程，所以我将生成过程给拆分。实际上可以一口气从零生成代码的，一个简单的prompt指令模板如下：</p>
+<figure class="highlight text"><table><tbody><tr><td class="code"><pre><span class="line">根据我给出的规则和项目结构依次执行下列任务，完成前端项目的开发。</span><br><span class="line">先根据这个链接(https://mastergo.com.goto/xxx?xx)生成前端UI页面和组件；</span><br><span class="line">然后根据apifox-mcp-server服务我配置的swagger地址来获取文档，并将整个文档的模块分别封装请求函数；</span><br><span class="line">最后在生成前端页面将对应的接口对接，如果表格的columns和文档接口响应体字段不一致请按照文档更新字段。</span><br></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>根据url生成前端页面ui我演示的是一张页面的，整站生成参考官网 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://mastergo.com/file/155675508499265?page_id=8740:3698">官网全站生成教程</a>。<br>为了准确我建议页面UI的生成还是一张一张来，这样速度快而且发生错误及时更正，后续代码或者任务回退影响最小。</p>
+</blockquote>
+<h5 id="2-模型选择" class="article-heading"><a href="#2-模型选择" class="headerlink" title="2.模型选择"></a>2.模型选择<a class="article-anchor" href="#2-模型选择" aria-hidden="true"></a></h5><p>经过我多次的尝试，国外的模型claude、gemeni都可以执行，国内的deepseek也可以完成我的任务计划。其他模型我花费几天时间没有成功。<br>如果想用国外优质模型的可以使用codebuddy国际版和trae国际版，直接购买会员省心不少（也可自行购买第三方聚合中转apiKey）。codebuddy的中国版也有deekseek-v3.2模型可供大家使用。</p>
+<h5 id="3-规则和技能" class="article-heading"><a href="#3-规则和技能" class="headerlink" title="3.规则和技能"></a>3.规则和技能<a class="article-anchor" href="#3-规则和技能" aria-hidden="true"></a></h5><p>为了更高效的使用ai的能力，对于ai模型的约束和引导是必须的。目前我个人使用的多的是规则rules和技能skills。由于篇幅所限我不深入细聊细节，总之宗旨是尽可能明确、细颗粒度、对不想要的后果命令禁止，最好给出示例。</p>
+<p>分享下我使用mastergo-mcp生成列表场景UI代码的rule：</p>
+<figure class="highlight text"><table><tbody><tr><td class="code"><pre><span class="line"># 列表场景开发最佳实践</span><br><span class="line"></span><br><span class="line">## 1. 列表结构分析处理</span><br><span class="line"></span><br><span class="line">  ### 1.1 列表结构分析</span><br><span class="line"></span><br><span class="line">  在开发列表组件之前，首先需要对列表结构进行详细的分析，了解列表的数据来源、展示方式、交互需求等，为后续的开发工作奠定基础。</span><br><span class="line"></span><br><span class="line">  具体参考模板可参考路径：`src/views/permission/menu/index.vue`。</span><br><span class="line"></span><br><span class="line">  此模板中，上方为表单，下面是表格。</span><br><span class="line">  表单一般是左侧新建按钮，右侧AInput组件做模糊查询。新建功能则在同级`_components`下新建FormModel组件并且引入到列表页使用。</span><br><span class="line">  表格直接使用Atable组件，通过传入columns和dataSource属性即可实现。</span><br><span class="line">  而表格的columns属性，则需要根据数据结构进行分析，确定表格的列数、列名、列宽、列对齐方式等。</span><br><span class="line"></span><br><span class="line">  ### 1.2 各文件说明</span><br><span class="line"></span><br><span class="line">  - `index.vue`：列表页面，用于展示列表数据。</span><br><span class="line">  - `_components/FormModel.vue`：新建、编辑组件，用于处理表单数据。</span><br><span class="line">  - `_components/columns.ts`：列表列配置，用于定义表格的列数、列名、列宽、列对齐方式等。</span><br><span class="line">  - `src/hooks/useCurd.ts`：列表公共逻辑hook封装；</span><br><span class="line">  - `src/hooks/useFormModel.ts`：新建、编辑公共逻辑hook封装；</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">## 2. 列表数据处理</span><br><span class="line">  - 在使用apifox-mcp-server读取文档时，将列表的表格字段与文档的响应体字段对应；</span><br><span class="line">  - 在表格的字段UI设计有简单处理时，如badge、tooltip，可先将对应字段开发，复杂处理可直接空下或用字段值占位；</span><br><span class="line">  - 如果mastergo-mcp读取到某块设计比较复杂或有后续的交互功能，可以询问开发者，得到答复再做进一步处理；</span><br><span class="line"></span><br><span class="line">## 3. 列表交互处理</span><br><span class="line"></span><br><span class="line">  ### 3.1 新建、编辑组件</span><br><span class="line"></span><br><span class="line">  新建、编辑组件通常用于处理表单数据的增删改操作。在列表页面中，通过点击按钮可以打开新建或编辑弹窗，进行数据的输入和提交。</span><br><span class="line"></span><br><span class="line">  具体实现可参考路径：`src/views/permission/menu/_components/FormModel.vue`。</span><br><span class="line"></span><br><span class="line">  在此组件中，使用了Ant Design Vue的表单组件（如`a-form`、`a-input`等）来构建表单界面，并通过表单验证和提交逻辑来处理用户输入的数据。</span><br><span class="line"></span><br><span class="line">  ### 3.2 数据查询</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  当只有input搜索时，布局为左侧新建按钮，右侧AInput组件做模糊查询；</span><br><span class="line">  当多条目项表单查询时，按照表单布局，在上方表单，下面新建按钮。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  ### 3.3 数据删除</span><br><span class="line"></span><br><span class="line">  一般是表格的操作列会有删除按钮，点击后弹出确认框，确认后删除数据。本项目已经封装了hooks，见`src/hooks/useCurd.ts`，直接调用方法即可。</span><br><span class="line"></span><br><span class="line">## 4. 列表列处理</span><br><span class="line"></span><br><span class="line">在开发时，遇到表格列有特殊样式或字段处理，可使用插槽。具体使用方法如下：</span><br><span class="line"></span><br><span class="line">1. 在表格列配置中，为需要特殊处理的列设置`customRender`属性，指定插槽名称。</span><br><span class="line">2. 在模板中使用`&lt;template #columnKey="{ column, record }"&gt;`语法定义插槽内容。</span><br><span class="line"></span><br><span class="line">示例：</span><br><span class="line">```vue</span><br><span class="line">&lt;a-table-column title="操作" dataIndex="action"&gt;</span><br><span class="line">  &lt;template #customRender="{ record }"&gt;</span><br><span class="line">    &lt;a&gt;编辑&lt;/a&gt;</span><br><span class="line">    &lt;a&gt;删除&lt;/a&gt;</span><br><span class="line">  &lt;/template&gt;</span><br><span class="line">&lt;/a-table-column&gt;</span><br><span class="line">```</span><br><span class="line"></span><br><span class="line">## 5. 列表性能优化</span><br><span class="line"></span><br><span class="line">一般数据量不太大，直接按照上方规则，或者下面的代码示例即可。</span><br><span class="line"></span><br><span class="line">## 6. 列表代码示例</span><br><span class="line"></span><br><span class="line">### 6.1 列表页面代码</span><br><span class="line"></span><br><span class="line">  ```vue</span><br><span class="line">  &lt;template&gt;</span><br><span class="line">    &lt;div class="table-toolbar"&gt;</span><br><span class="line">      &lt;a-button type="primary" @click="formModelRef.open(0)"&gt; 新建 &lt;/a-button&gt;</span><br><span class="line">      &lt;a-input style="width: 250px" v-model:value="fuzzyContent" placeholder="请输入权限名称或编码" /&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line"></span><br><span class="line">    &lt;a-table</span><br><span class="line">      ref="table"</span><br><span class="line">      rowKey="id"</span><br><span class="line">      size="middle"</span><br><span class="line">      :scroll="{ y: calcTableScrollYHeightWithoutPagination }"</span><br><span class="line">      :dataSource="data"</span><br><span class="line">      :columns="columns"</span><br><span class="line">      :loading="loading"</span><br><span class="line">      :pagination="false"</span><br><span class="line">      @change="handlePageChange"</span><br><span class="line">    &gt;</span><br><span class="line">      &lt;template #bodyCell="{ column, record }"&gt;</span><br><span class="line">        &lt;template v-if="column.dataIndex === 'action'"&gt;</span><br><span class="line">          &lt;a @click="formModelRef.open(1, record)"&gt;编辑&lt;/a&gt;</span><br><span class="line">          &lt;a-divider type="vertical" /&gt;</span><br><span class="line">          &lt;a @click="formModelRef.open(0, record)" :disabled="record.resourceType !== 'MENU'"&gt;添加&lt;/a&gt;</span><br><span class="line">          &lt;a-divider type="vertical" /&gt;</span><br><span class="line">          &lt;a @click.prevent="showDelTableFormDialog(record.id)"&gt;删除&lt;/a&gt;</span><br><span class="line">          &lt;contextHolder /&gt;</span><br><span class="line">        &lt;/template&gt;</span><br><span class="line">      &lt;/template&gt;</span><br><span class="line">    &lt;/a-table&gt;</span><br><span class="line"></span><br><span class="line">    &lt;!-- FormPage --&gt;</span><br><span class="line">    &lt;FormModel ref="formModelRef" @submit="submitMethod" /&gt;</span><br><span class="line">  &lt;/template&gt;</span><br><span class="line"></span><br><span class="line">  &lt;script lang="ts" setup&gt;</span><br><span class="line">    import FormModel from './_components/FormModel.vue';</span><br><span class="line">    import { columns } from './_components/columns';</span><br><span class="line">    import { MenuEnum } from '@/core/enums/permissionEnum';</span><br><span class="line">    import { useMenuPermission } from '@/views/_components/useMenuPermission';</span><br><span class="line"></span><br><span class="line">    const {</span><br><span class="line">      calcTableScrollYHeightWithoutPagination,</span><br><span class="line">      formModelRef,</span><br><span class="line">      fuzzyContent,</span><br><span class="line">      data,</span><br><span class="line">      loading,</span><br><span class="line">      contextHolder,</span><br><span class="line">      showDelTableFormDialog,</span><br><span class="line">      submitMethod,</span><br><span class="line">      handlePageChange,</span><br><span class="line">    } = useMenuPermission(MenuEnum.SearchMenuType);</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">  ```</span><br><span class="line"></span><br><span class="line">### 6.2 新建组件代码</span><br><span class="line"></span><br><span class="line">  ```vue</span><br><span class="line">  &lt;template&gt;</span><br><span class="line">    &lt;a-modal</span><br><span class="line">      :title="title"</span><br><span class="line">      :open="visible"</span><br><span class="line">      :confirmLoading="confirmLoading"</span><br><span class="line">      :maskClosable="false"</span><br><span class="line">      :keyboard="false"</span><br><span class="line">      @ok="handleSubmit"</span><br><span class="line">      @cancel="handleCancel"</span><br><span class="line">    &gt;</span><br><span class="line">      &lt;a-form ref="ruleFormRef" :rules="rules" :model="form" :colon="false" v-bind="formItemLayout"&gt;</span><br><span class="line">        &lt;a-form-item label="资源类型" name="resourceType"&gt;</span><br><span class="line">          &lt;a-radio-group v-model:value="form.resourceType" :disabled="formStatus === 1"&gt;</span><br><span class="line">            &lt;a-radio :value="'MENU'"&gt; 菜单 &lt;/a-radio&gt;</span><br><span class="line">            &lt;a-radio :value="'BUTTON'"&gt; 按钮 &lt;/a-radio&gt;</span><br><span class="line">          &lt;/a-radio-group&gt;</span><br><span class="line">        &lt;/a-form-item&gt;</span><br><span class="line">        &lt;a-form-item label="上级菜单" name="parentId"&gt;</span><br><span class="line">          &lt;a-select v-model:value="form.parentId" placeholder="请输入上级菜单" :disabled="formStatus === 1"&gt;</span><br><span class="line">            &lt;a-select-option v-for="item in permissions" :key="item.value"&gt;</span><br><span class="line">              {{ item.label }}</span><br><span class="line">            &lt;/a-select-option&gt;</span><br><span class="line">          &lt;/a-select&gt;</span><br><span class="line">        &lt;/a-form-item&gt;</span><br><span class="line">        &lt;a-form-item label="资源编码" name="resourceCode"&gt;</span><br><span class="line">          &lt;a-input v-model:value="form.resourceCode" placeholder="请输入资源编码" :disabled="formStatus === 1" /&gt;</span><br><span class="line">        &lt;/a-form-item&gt;</span><br><span class="line">        &lt;a-form-item label="权限名称" name="permissionName"&gt;</span><br><span class="line">          &lt;a-input v-model:value="form.permissionName" placeholder="请输入权限名称" /&gt;</span><br><span class="line">        &lt;/a-form-item&gt;</span><br><span class="line">        &lt;a-form-item label="路由名" name="routeName" v-if="form.resourceType === 'MENU'"&gt;</span><br><span class="line">          &lt;a-input v-model:value="form.routeName" placeholder="请输入路由名" /&gt;</span><br><span class="line">        &lt;/a-form-item&gt;</span><br><span class="line">        &lt;a-form-item label="路由" name="route" v-if="form.resourceType === 'MENU'"&gt;</span><br><span class="line">          &lt;a-input v-model:value="form.route" placeholder="请输入路由" /&gt;</span><br><span class="line">        &lt;/a-form-item&gt;</span><br><span class="line">        &lt;a-form-item label="meta" name="formMeta" v-if="form.resourceType === 'MENU'"&gt;</span><br><span class="line">          &lt;a-textarea v-model:value="form.formMeta" placeholder="请按照此格式{'path': '/index', 'title': '首页'}" /&gt;</span><br><span class="line">        &lt;/a-form-item&gt;</span><br><span class="line">        &lt;a-form-item label="排序号" name="priority"&gt;</span><br><span class="line">          &lt;a-input-number v-model:value="form.priority" /&gt;</span><br><span class="line">        &lt;/a-form-item&gt;</span><br><span class="line">        &lt;a-form-item label="是否显示" name="display" v-if="form.resourceType === 'MENU'"&gt;</span><br><span class="line">          &lt;a-switch v-model:checked="form.display" /&gt;</span><br><span class="line">        &lt;/a-form-item&gt;</span><br><span class="line">      &lt;/a-form&gt;</span><br><span class="line">    &lt;/a-modal&gt;</span><br><span class="line">  &lt;/template&gt;</span><br><span class="line"></span><br><span class="line">  &lt;script lang="ts" setup&gt;</span><br><span class="line">    import { defineExpose, defineEmits } from 'vue';</span><br><span class="line">    import type { Rule } from 'ant-design-vue/es/form';</span><br><span class="line">    import { getMenuList } from '@/api/permission';</span><br><span class="line"></span><br><span class="line">    let form = reactive({</span><br><span class="line">      id: '',</span><br><span class="line">      parentId: '0',</span><br><span class="line">      resourceType: 'MENU',</span><br><span class="line">      name: '根节点',</span><br><span class="line">      priority: 0,</span><br><span class="line">      display: true,</span><br><span class="line">      meta: undefined,</span><br><span class="line">      formMeta: undefined,</span><br><span class="line">    });</span><br><span class="line">    let visible = ref&lt;boolean&gt;(false);</span><br><span class="line">    const emit = defineEmits(['submit']); // 使用 defineEmits 来定义 emit 函数</span><br><span class="line">    const { ruleFormRef, formStatus, title, confirmLoading, formItemLayout, handleSubmit, handleCancel } = useFormModel(</span><br><span class="line">      visible,</span><br><span class="line">      form,</span><br><span class="line">      emit,</span><br><span class="line">    );</span><br><span class="line">    const rules: Record&lt;string, Rule[]&gt; = {</span><br><span class="line">      resourceType: [{ required: true, message: '请输入资源类型', trigger: 'blur' }],</span><br><span class="line">      permissionName: [{ required: true, message: '请输入权限名称', trigger: 'blur' }],</span><br><span class="line">      resourceCode: [{ required: true, message: '请输入资源编码', trigger: 'blur' }],</span><br><span class="line">      parentId: [{ required: true }],</span><br><span class="line">    };</span><br><span class="line"></span><br><span class="line">    let permissions = reactive([</span><br><span class="line">      {</span><br><span class="line">        value: '0',</span><br><span class="line">        label: '根节点',</span><br><span class="line">      },</span><br><span class="line">    ]); // 角色已绑定权限列表</span><br><span class="line"></span><br><span class="line">    watch(</span><br><span class="line">      () =&gt; form.routeName,</span><br><span class="line">      val =&gt; {</span><br><span class="line">        form.formMeta = JSON.stringify({</span><br><span class="line">          title: val,</span><br><span class="line">        });</span><br><span class="line">        form.meta = {</span><br><span class="line">          title: val,</span><br><span class="line">        };</span><br><span class="line">      },</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 父组件调用并传值给formModel</span><br><span class="line">     * */</span><br><span class="line">    // 打开</span><br><span class="line">    const open = async (type, info) =&gt; {</span><br><span class="line">      visible.value = true;</span><br><span class="line">      formStatus.value = type;</span><br><span class="line">      // 新建/添加时将记录父菜单的id，用于将数据绑定到父菜单</span><br><span class="line">      if (info &amp;&amp; info.id) {</span><br><span class="line">        const { id: parentId } = info;</span><br><span class="line">        form.parentId = parentId;</span><br><span class="line">      }</span><br><span class="line">      if (type === 1) {</span><br><span class="line">        await getPermissionList();</span><br><span class="line">        const {</span><br><span class="line">          id,</span><br><span class="line">          parentId,</span><br><span class="line">          resourceType,</span><br><span class="line">          resourceCode,</span><br><span class="line">          parentPermissionName,</span><br><span class="line">          permissionName,</span><br><span class="line">          menuTitle,</span><br><span class="line">          route,</span><br><span class="line">          meta,</span><br><span class="line">          priority,</span><br><span class="line">          display,</span><br><span class="line">        } = info;</span><br><span class="line">        Object.assign(form, {</span><br><span class="line">          id,</span><br><span class="line">          parentId,</span><br><span class="line">          resourceType,</span><br><span class="line">          resourceCode,</span><br><span class="line">          parentPermissionName: parentPermissionName || '根节点',</span><br><span class="line">          permissionName,</span><br><span class="line">          routeName: menuTitle,</span><br><span class="line">          route,</span><br><span class="line">          formMeta: JSON.stringify(meta),</span><br><span class="line">          meta,</span><br><span class="line">          priority,</span><br><span class="line">          display,</span><br><span class="line">        });</span><br><span class="line">        console.log(form);</span><br><span class="line">      }</span><br><span class="line">    };</span><br><span class="line">    // 关闭</span><br><span class="line">    const close = () =&gt; handleCancel();</span><br><span class="line"></span><br><span class="line">    // 获取权限列表</span><br><span class="line">    async function getPermissionList() {</span><br><span class="line">      const params = {</span><br><span class="line">        searchType: 1, // 1: menu/button 类型</span><br><span class="line">        treeData: false, // 不获取树形结构</span><br><span class="line">      };</span><br><span class="line">      const { data } = await getMenuList(params);</span><br><span class="line">      const fetchPermissions = data</span><br><span class="line">        .filter(item =&gt; item.id !== form.id)</span><br><span class="line">        .map(item =&gt; {</span><br><span class="line">          return {</span><br><span class="line">            value: item.id,</span><br><span class="line">            label: item.menuTitle,</span><br><span class="line">          };</span><br><span class="line">        });</span><br><span class="line">      permissions = [...permissions, ...fetchPermissions];</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    defineExpose({ open, close }); // 暴露出去给父组件用</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">  ```</span><br><span class="line"></span><br><span class="line">### 6.3 表格columns文件代码</span><br><span class="line"></span><br><span class="line">  ```typescript</span><br><span class="line">  import type { TableColumnType } from 'ant-design-vue';</span><br><span class="line"></span><br><span class="line">  type TableDataType = {</span><br><span class="line">    menuTitle: string;</span><br><span class="line">    resourceCode: string;</span><br><span class="line">    resourceType: string;</span><br><span class="line">    permissionName: string;</span><br><span class="line">    priority: number;</span><br><span class="line">    display?: boolean;</span><br><span class="line">    createdTime?: string;</span><br><span class="line">    action: null;</span><br><span class="line">  };</span><br><span class="line"></span><br><span class="line">  export const columns: TableColumnType&lt;TableDataType&gt;[] = [</span><br><span class="line">    {</span><br><span class="line">      title: '菜单名称',</span><br><span class="line">      dataIndex: 'menuTitle',</span><br><span class="line">      width: 200,</span><br><span class="line">      fixed: 'left',</span><br><span class="line">    },</span><br><span class="line">    {</span><br><span class="line">      title: '编码',</span><br><span class="line">      dataIndex: 'resourceCode',</span><br><span class="line">      width: 150,</span><br><span class="line">      ellipsis: true,</span><br><span class="line">    },</span><br><span class="line">    {</span><br><span class="line">      title: '类型',</span><br><span class="line">      dataIndex: 'resourceType',</span><br><span class="line">      width: 200,</span><br><span class="line">    },</span><br><span class="line">    {</span><br><span class="line">      title: '权限名称',</span><br><span class="line">      dataIndex: 'permissionName',</span><br><span class="line">      width: 200,</span><br><span class="line">      ellipsis: true,</span><br><span class="line">    },</span><br><span class="line">    {</span><br><span class="line">      title: '排序号',</span><br><span class="line">      dataIndex: 'priority',</span><br><span class="line">      width: 200,</span><br><span class="line">    },</span><br><span class="line">    {</span><br><span class="line">      title: '是否显示',</span><br><span class="line">      dataIndex: 'display',</span><br><span class="line">      width: 200,</span><br><span class="line">    },</span><br><span class="line">    {</span><br><span class="line">      title: '创建时间',</span><br><span class="line">      dataIndex: 'createdTime',</span><br><span class="line">      width: 200,</span><br><span class="line">    },</span><br><span class="line">    {</span><br><span class="line">      title: '操作',</span><br><span class="line">      dataIndex: 'action',</span><br><span class="line">      width: 150,</span><br><span class="line">      fixed: 'right',</span><br><span class="line">    },</span><br><span class="line">  ];</span><br><span class="line">  ```</span><br></pre></td></tr></tbody></table></figure>
+
+<p>使用提升还是比较明显的，没有规则约束时ai按照自己的理解生成500行以上的代码。有了规则约束，同一个页面在效果一样的情况下生成的代码180行左右。ai自己理解开发不总是使用项目内的组件和hooks，所以要通过规则指定。</p>
+<h3 id="七、结语" class="article-heading"><a href="#七、结语" class="headerlink" title="七、结语"></a>七、结语<a class="article-anchor" href="#七、结语" aria-hidden="true"></a></h3><p>本文通过将前端开发流程做拆解，将各个环节使用的ai工具进行介绍，并以项目实战来演示纯ai驱动生成一个完整的列表页面。从原型设计到UI代码生成，再到读取swagger文档接口对接。对于项目开发有着很明显的提升，后续开发可以将重复性的工作ai托管，开发者只需要关注业务逻辑代码即可。</p>
+</body></html>
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2026-03-26T02:30:47.053Z" itemprop="dateModified">上次更新：2026-03-26</time>
+                <a href="index.html" class="article-footer-next" title="概述"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%89%8D%E8%A8%80"><span class="toc-text">一、前言</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%BC%80%E5%8F%91%E9%9C%80%E6%B1%82%E8%83%8C%E6%99%AF"><span class="toc-text">1.开发需求背景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%87%A0%E4%B8%AA%E6%A6%82%E5%BF%B5"><span class="toc-text">2.几个概念</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81ai%E9%A9%B1%E5%8A%A8%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1"><span class="toc-text">二、ai驱动原型设计</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-masterGo%E8%AE%BE%E8%AE%A1%E5%B7%A5%E5%85%B7AI%E5%BF%AB%E6%90%AD"><span class="toc-text">1.masterGo设计工具AI快搭</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8"><span class="toc-text">2.使用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81mastergo-mcp%E7%94%9F%E6%88%90UI"><span class="toc-text">三、mastergo-mcp生成UI</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E9%85%8D%E7%BD%AE"><span class="toc-text">1.配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A4"><span class="toc-text">2.使用步骤</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81apifox-mcp%E5%AF%B9%E6%8E%A5%E6%8E%A5%E5%8F%A3"><span class="toc-text">四、apifox-mcp对接接口</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E9%85%8D%E7%BD%AE-1"><span class="toc-text">1.配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8%E6%AD%A5%E9%AA%A4-1"><span class="toc-text">2.使用步骤</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81ai%E4%BB%A3%E7%A0%81%E8%AF%84%E5%AE%A1"><span class="toc-text">五、ai代码评审</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-code-reviewer"><span class="toc-text">1.code-reviewer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-ai-codereview-gitlab"><span class="toc-text">2.ai-codereview-gitlab</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E7%A7%81%E6%9C%89%E5%8C%96%E9%83%A8%E7%BD%B2"><span class="toc-text">1. 私有化部署</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E9%85%8D%E7%BD%AEgitlab-webhook"><span class="toc-text">2. 配置gitlab webhook</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-push%E8%A7%A6%E5%8F%91%E4%BA%8B%E4%BB%B6"><span class="toc-text">3. push触发事件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-%E6%9F%A5%E7%9C%8B%E5%AE%A1%E6%9F%A5%E6%8A%A5%E5%91%8A"><span class="toc-text">4. 查看审查报告</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-%E6%9F%A5%E7%9C%8B%E5%AE%A1%E6%9F%A5%E6%97%A5%E5%BF%97"><span class="toc-text">5. 查看审查日志</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-vscode%E6%8F%92%E4%BB%B6"><span class="toc-text">3.vscode插件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98"><span class="toc-text">六、项目实战</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E9%A1%B9%E7%9B%AE%E9%A2%84%E8%AE%BE"><span class="toc-text">1.项目预设</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E8%AE%BE%E8%AE%A1"><span class="toc-text">2.设计</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E7%94%9F%E6%88%90UI"><span class="toc-text">3.生成UI</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%AF%B9%E6%8E%A5%E6%8E%A5%E5%8F%A3"><span class="toc-text">4.对接接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E5%85%B6%E4%BB%96"><span class="toc-text">5.其他</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E7%94%9F%E6%88%90%E6%8C%87%E4%BB%A4"><span class="toc-text">1.生成指令</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E6%A8%A1%E5%9E%8B%E9%80%89%E6%8B%A9"><span class="toc-text">2.模型选择</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-%E8%A7%84%E5%88%99%E5%92%8C%E6%8A%80%E8%83%BD"><span class="toc-text">3.规则和技能</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E7%BB%93%E8%AF%AD"><span class="toc-text">七、结语</span></a></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">开始使用</strong><a href="/ecology/index.html" class="sidebar-link">概述</a><strong class="sidebar-title">开发工具</strong><a href="/ecology/utils/qiankun_guide.html" class="sidebar-link">qiankun使用指南</a><a href="/ecology/utils/qiankun_questions.html" class="sidebar-link">qiankun问题汇总</a><a href="/ecology/utils/vite_guide.html" class="sidebar-link">vite使用指南</a><a href="/ecology/utils/vite_plugin_summary.html" class="sidebar-link">vite插件汇总</a><a href="/ecology/utils/webpack_plugin.html" class="sidebar-link">webpack插件开发实践</a><a href="/ecology/utils/yapi.html" class="sidebar-link">YApi使用指南</a><a href="/ecology/utils/sentry_guide.html" class="sidebar-link">Sentry使用指南</a><a href="/ecology/utils/vue2toRsbuild.html" class="sidebar-link">vue/cli项目迁移到RSBuild</a><a href="/ecology/utils/nrm.html" class="sidebar-link">npm镜像源配置</a><strong class="sidebar-title">ai代码开发</strong><a href="/ecology/ai_coding/mastergoAiDesign.html" class="sidebar-link">AI驱动原型设计</a><a href="/ecology/ai_coding/cursorMasterGoMcp.html" class="sidebar-link">AI设计稿生成UI</a><a href="/ecology/ai_coding/apifox.html" class="sidebar-link">AI对接接口文档</a><a href="/ecology/ai_coding/aicr.html" class="sidebar-link">AI代码评审方案</a><a href="/ecology/ai_coding/frontEndLoop.html" class="sidebar-link current">AI前端全链路闭环开发</a>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2026 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuojt2022@gmail.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa-brands fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard/" class="mobile-nav-link">开发规范</a><a href="/design/" class="mobile-nav-link">开发指南</a><a href="/ecology/" class="mobile-nav-link">工具套组</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">开始使用</strong><a href="/ecology/index.html" class="mobile-nav-link">概述</a><strong class="mobile-nav-title">开发工具</strong><a href="/ecology/utils/qiankun_guide.html" class="mobile-nav-link">qiankun使用指南</a><a href="/ecology/utils/qiankun_questions.html" class="mobile-nav-link">qiankun问题汇总</a><a href="/ecology/utils/vite_guide.html" class="mobile-nav-link">vite使用指南</a><a href="/ecology/utils/vite_plugin_summary.html" class="mobile-nav-link">vite插件汇总</a><a href="/ecology/utils/webpack_plugin.html" class="mobile-nav-link">webpack插件开发实践</a><a href="/ecology/utils/yapi.html" class="mobile-nav-link">YApi使用指南</a><a href="/ecology/utils/sentry_guide.html" class="mobile-nav-link">Sentry使用指南</a><a href="/ecology/utils/vue2toRsbuild.html" class="mobile-nav-link">vue/cli项目迁移到RSBuild</a><a href="/ecology/utils/nrm.html" class="mobile-nav-link">npm镜像源配置</a><strong class="mobile-nav-title">ai代码开发</strong><a href="/ecology/ai_coding/mastergoAiDesign.html" class="mobile-nav-link">AI驱动原型设计</a><a href="/ecology/ai_coding/cursorMasterGoMcp.html" class="mobile-nav-link">AI设计稿生成UI</a><a href="/ecology/ai_coding/apifox.html" class="mobile-nav-link">AI对接接口文档</a><a href="/ecology/ai_coding/aicr.html" class="mobile-nav-link">AI代码评审方案</a><a href="/ecology/ai_coding/frontEndLoop.html" class="mobile-nav-link current">AI前端全链路闭环开发</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></span>
+    <select id="mobile-lang-select" data-canonical="">
+      
+        <option value="zh-cn" selected>简体中文</option>
+      
+        <option value="en">English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>
