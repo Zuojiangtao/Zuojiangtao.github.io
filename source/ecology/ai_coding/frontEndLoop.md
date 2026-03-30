@@ -5,91 +5,80 @@ title: 基于AI的前端全链路开发工作流
 
 #### 1.开发需求背景
 
-现在aiCoding对开发的帮助越来越大，我们也可以用ai对自己平时的各个工作环节或流程提效。在研究各个流程后，我发现可以将前端开发的所有流程都跑通了，将各流程串联起来已经完成了前端开发的全链路闭环。本文我将各个环节的ai提效做出总结，并以项目实战来演示整个开发流程。
+当前，AI Coding 对开发工作的帮助日益显著，我们同样可以利用 AI 技术来提升各个工作环节的效率。我将 AI 辅助前端开发的过程拆解为四个核心环节：AI 原型设计、AI 生成前端 UI 代码、AI 对接后端接口 和 AI 代码评审。本文将针对上述各个环节的 AI 提效实践进行总结，并通过一个完整的项目实战来演示整个开发流程。
 
-#### 2.几个概念
+#### 2.相关概念
 
 Prompt： 用户向 AI 模型输入的指令或信息集合，可输入自然语言、图片、规则、上下文和指令等，用来触发模型生成特定输出的指令集合。
 
-MCP： MCP（Model Context Protocol） 是一种开放协议，定义了 AI 模型与外部数据源、工具、服务之间的标准化交互方式，使模型能够动态获取上下文并执行实际操作（如查询数据库、调用 API），解决了大模型在实时数据与行动能力上的局限。
+MCP（Model Context Protocol）： 是一种开放协议，定义了 AI 模型与外部数据源、工具、服务之间的标准化交互方式，使模型能够动态获取上下文并执行实际操作（如查询数据库、调用 API），解决了大模型在实时数据与行动能力上的局限。
 
 Skill：Skill 是将完成某一类任务所需的指令、逻辑、脚本、资源等进行封装的可复用能力单元。它可以包含 prompt、调用外部工具的方式、处理流程等。当任务匹配时，AI（通常通过 Agent）可以按需加载并执行该 Skill，以提高效率和稳定性。
 
 Agent：Agent 是一个具备自主决策与执行能力的 AI 实体。它能理解复杂目标，进行任务规划，调用多个工具或 Skills，并根据执行结果进行迭代调整，直至完成目标。相比单次 Prompt 交互，Agent 拥有记忆、规划和多步骤执行的能力。
 
-### 二、ai驱动原型设计
+### 二、AI 原型设计
 
 #### 1.masterGo设计工具AI快搭
 
-> 我们团队采购了mastergo所以我用这个工具来演示，其他工具也有ai设计功能，比如：figma、pixso。可自行了解。
-
 ![config](../../images/mastergo-ai/config.png)
-从图中可以看到，下方左侧主要功能包括创建新页面、选择设计类型、选择开发语言和ui库、输入自然语言和上传本地截图等。
+从界面中可以看到，下方左侧的主要功能包括创建新页面、选择设计类型、选择开发语言和 UI 库、输入自然语言描述以及上传本地截图等。
 
 ![code](../../images/mastergo-ai/code.png)
-点击`代码icon`可以在右侧预览代码。
+点击`代码icon`可以在右侧预览生成的代码。
 
 ![local](../../images/mastergo-ai/lcoal.png)
-点击`局部修改`可以在上方对部分区域选定，然后可以针对性修改。
+点击`局部修改`可以在上方对部分区域选定，然后进行针对性修改。
 
 #### 2.使用
 
-如图所示，可以看到下方可以选择`插入到画布`来保存到设计稿；也可以切换开发语言框架和代码预览；右侧的输入框下方也可以选择局部不满意的地方优化。
+如图所示，在操作界面下方，可以选择`插入到画布`来将生成的设计保存到设计稿中；也可以切换开发语言框架并进行代码预览；右侧的输入框下方，还可以针对局部不满意的地方进行优化。
 ![result](../../images/mastergo-ai/result.png)
 
-如图是设计的最终效果。
+下图是设计完成后的最终效果。
 ![design](../../images/mastergo-ai/design.png)
 
-### 三、mastergo-mcp生成UI
-
-我使用cursor作为演示工具，其他的编辑器请按照各自的方式添加mcp。
+### 三、AI 生成前端 UI 代码
 
 #### 1.配置
 
 ![add-mcp](../../images/mcp/cursor-add-mcp.png)
-选择 `MCP` 菜单，可点击 'Add new global MCP server' 来添加自己的mcp服务器。
+在设置中选择 MCP 菜单，点击 “Add new global MCP server” 来添加自己的 MCP 服务器。
 
 ![config-mcp](../../images/mcp/cursor-mcp-config.png)
-点击进来后根据自己需求来配置，mastergo的配置如图。
+点击进入后，可根据自身需求进行配置，masterGo 的配置如图所示。
 
 #### 2.使用步骤
 
 1) 获取设计稿链接
    ![design-link](../../images/mcp/mastergo-design-link.png)
-   进入项目，如果想要开发某个页面，选择页面对应图层，右键找到 `复制/粘贴为` 选择 `复制容器链接`。
-2) agent对话
+   进入项目，如果想要开发某个页面，选择页面对应的图层，右键找到`复制/粘贴为`，选择`复制容器链接`。
+2) Agent对话
    ![chat-prompt](../../images/mcp/cursor-chat-prompt.png)
-   粘贴复制的链接，后续编写自己的prompt，然后发送即可。
-3) 获取dsl
-   点击 `run tool` 执行工具，获取dsl信息。
+   粘贴复制的链接，并编写自己的 Prompt，然后发送即可。
+3) 获取DSL
+   点击 `run tool` 执行工具，获取DSL信息。
 
     ![get-dsl](../../images/mcp/cursor-get-dsl.png)
-    可以看到获取到的dsl信息是一棵json树，描述了设计稿转换信息，ai将会根据这些描述来生成代码。
+   可以看到获取到的 DSL 信息是一棵 JSON 树，它描述了设计稿的转换信息，AI 将根据这些描述来生成代码。
     
     ![chat-design](../../images/mcp/cursor-chat-design.png)
-    完整的执行工具如图展示。
-4) 多轮调用受限
-   在使用多轮生成后需要手动授权。
+   完整的工具执行过程如图所示。
 
-    ![generate-auth](../../images/mcp/cursor-generate-auth.png)
-    点击图中出现的 `resume the conversation`，然后会继续构建页面代码。
-
-> 现在的大模型上下文限制比较大，应该不太会出现这个情况了。
-
-### 四、apifox-mcp对接接口
+### 四、AI 对接后端接口
 
 #### 1.配置
 
-系统环境：
+**系统环境**：
 - 已安装 Node.js 环境（版本号 >= 18，推荐最新的 LTS 版本）；
 - 任意一个支持 MCP 的 IDE，如cursor、codebuddy、ClaudeCode等；
 
-使用场景：
+**使用场景**：
 - 通过Mcp使用Apifox项目内的API文档；
 - 通过Mcp使用公开发布的API文档；
 - 通过Mcp使用OpenAPI/Swagger文档；
 
-windows系统mcp配置：
+**windows系统mcp配置**：
 ```json
 {
   "mcpServers": {
@@ -107,17 +96,17 @@ windows系统mcp配置：
 }
 ```
 
-> 为了项目隔离，我推荐在项目根目录下新建一个mcp.json文件。比如使用cursor开发就在根目录.cursor文件夹下新建一个mcp.json文件。
+> 为了项目隔离，我推荐在项目根目录下新建一个mcp.json文件。比如使用Cursor开发就在根目录.cursor文件夹下新建一个mcp.json文件。
 
-swagger文档路径获取：
-直接使用api-doc的地址，如果给到你的是一个文档网站，可在network找到。
+**Swagger文档路径获取**：
+直接使用 api-doc 的地址，如果提供的是一个文档网站，可在 Network 面板中找到该地址。
 ![swagger-api-docs](../../images/end-loop/swagger-api-docs.png)
 
 #### 2.使用步骤
 
 1) 生成本地请求函数
 
-   直接输入prompt要求agent调用此mcp服务，如：`@rule:mcp_apifox 根据我的配置，读取swagger的api文档及接口数量`
+   直接输入 Prompt 要求 Agent 调用此 MCP 服务，如：`@rule:mcp_apifox 根据我的配置，读取swagger的api文档及接口数量`
 
     agent会读取文档并汇总结果：
     ![apifox-get-api](../../images/apifox/apifox-get-api.png)
@@ -128,35 +117,39 @@ swagger文档路径获取：
 
 2) 页面对接接口
 
-   i. 页面对接新接口
+   i. **页面对接新接口**
 
-   直接通过prompt指令触发编辑器agent执行接口对接，将页面和之前定义的规则加入上下文，如图：
+   直接通过 Prompt 指令触发编辑器 Agent 执行接口对接，将页面和之前定义的规则加入上下文，如图所示：
 
    ![ide-prompt](../../images/apifox/ide-prompt.png)
-    
-    通过对比接口文档，发现大部分字段正常赋值。
+
+   通过对比接口文档，可以发现大部分字段都已被正确赋值。
     ![swagger-demo-list](../../images/apifox/swagger-demo-list.png)
     ![ide-api-field](../../images/apifox/ide-api-field.png)
     
-    ii. 文档更新刷新代码
-    更新已有的接口，对齐新文档：
+    ii. **文档更新刷新代码**
+   更新已有的接口，对齐新文档，如图所示：
     ![swagger-api-update](../../images/apifox/swagger-api-update.png)
     ![ide-api-update](../../images/apifox/ide-api-update.png)
 
-### 五、ai代码评审
+### 五、AI 代码评审
 
-代码评审也是开发工作中会遇到的环节，而且某些场景下是非常重要的，尤其是对于安全方面。在谈论code review时我觉得应该分2个视角来看：一个视角是开发的角度，利用ai工具帮我们快速review，有问题直接就解决，极大降低人力成本，提升开发者的效能；另一个视角是从团队管理者或者说是资产所有者的角度，不信任任何未经平台审核的代码，即使开发使用了团队的规范也存在篡改的可能，因此应该要有一个平台性质的工具来做最终的code review。
+代码评审也是开发工作中的重要环节，在某些场景下（尤其是安全方面）至关重要。在谈论 Code Review 时，我觉得应该分两个视角来看：
+
+1. **开发者视角**：利用 AI 工具帮助我们快速 Review，发现问题并即时解决，极大降低人力成本，提升开发效能。
+
+2. **团队管理者/资产所有者视角**：不信任任何未经平台审核的代码，即使开发遵循了团队规范，代码仍有被篡改的可能。因此，需要一个平台级的工具来做最终的 Code Review 把关。
 
 #### 1.code-reviewer
 
-这是一个skill([code-reviewer-skill](https://skillsmp.com/skills/google-gemini-gemini-cli-gemini-skills-code-reviewer-skill-md))，由 Google Gemini 团队推出，支持审查本地已暂存/未暂存的改动，也支持直接审查远程 PR（只需提供 PR 编号或 URL）。它会分析代码的正确性、可维护性、性能等，并给出明确结论（如批准合并或要求修改）。
+这是一个Skill([code-reviewer-skill](https://skillsmp.com/skills/google-gemini-gemini-cli-gemini-skills-code-reviewer-skill-md))，由 Google Gemini 团队推出，支持审查本地已暂存/未暂存的改动，也支持直接审查远程 PR（只需提供 PR 编号或 URL）。它会分析代码的正确性、可维护性、性能等，并给出明确结论（如批准合并或要求修改）。
 
-使用方式： `pnpm dlx skills add google-gemini/gemini-cli`
-> 我个人推荐将其下载到本地项目下使用，这样可以针对自己的个人习惯或团队要求定制化更改。
+**使用方式**： `pnpm dlx skills add google-gemini/gemini-cli`
+> 我个人推荐将其下载到本地项目下使用，这样可以针对个人的编码习惯或团队要求进行定制化修改。
 
 #### 2.ai-codereview-gitlab
 
-这是一个开源的aicr工具，[AI-Codereview-Gitlab](https://github.com/sunmh207/AI-Codereview-Gitlab) 是一个基于大模型的自动化代码审查工具，帮助开发团队在代码合并或提交时，快速进行智能化的审查(Code Review)，提升代码质量和开发效率。
+这是一个开源的AICR工具，[AI-Codereview-Gitlab](https://github.com/sunmh207/AI-Codereview-Gitlab) 是一个基于大模型的自动化代码审查工具，帮助开发团队在代码合并或提交时，快速进行智能化的审查(Code Review)，提升代码质量和开发效率。
 
 ##### 1. 私有化部署
 
@@ -221,67 +214,65 @@ swagger文档路径获取：
 
 ![Test](../../images/aicr/gitlab-push.png)
 
-在配置好webhook后可以点击测试按钮 `Test`看下网络是否畅通。
+在配置好Webhook后可以点击测试按钮 `Test`看下网络是否畅通。
 
 ##### 4. 查看审查报告
 
 ![审查报告](../../images/aicr/gitlab-code-review-report.png)
 
-代码push后会在提交note下增加审查报告。
+代码push后会在提交Note下增加审查报告。
 
 ##### 5. 查看审查日志
 
 ![审查日志](../../images/end-loop/aicr-log.png)
 
-这个集合了日志和面板统计，也可以进行简单的筛选。从score列查看评分，针对性对代码进行优化。
+这里集合了日志和面板统计功能，也可以进行简单的筛选。从 Score 列查看评分，可针对性地对代码进行优化。
 
 > 消息通知可以配置钉钉、飞书和企业微信，具体流程可参考官方文档。
-> 局限性：现在对项目整个仓库的评审没有前端页面的配置项，暂且只能用作者给出的指令: python -m biz.cmd.review
 
-#### 3.vscode插件
+**局限性**：现在对项目整个仓库的评审没有前端页面的配置项，只能用作者给出的指令: python -m biz.cmd.review
 
-使用vscode编辑器的开发者也可以安装`DeepSeek R1`和 `腾讯云代码助手 CodeBuddy`。
+#### 3.VSCode 插件
 
-在添加并启用插件后，在相应的页面或组件直接右键可以看到相关的评审功能。
+使用 VSCode 编辑器的开发者也可以安装`DeepSeek R1`和 `腾讯云代码助手 CodeBuddy`。在添加并启用插件后，在相应的页面或组件上直接右键，可以看到相关的评审功能。
+
 ![DeepSeek R1](../../images/aicr/vscode-deepseek.png)
 ![腾讯云代码助手 CodeBuddy](../../images/aicr/vscode-codebuddy.png)
 
-腾讯的代码助手可以在函数顶部添加相关功能按钮，可快速使用。
-
-为方便使用，可以参考cursor的布局，将这2个插件移动到右侧。
-![vscode-pugin-use](../../images/aicr/vscode-pugin-use.png)
+腾讯的代码助手可以在函数顶部添加相关功能按钮，方便快速使用。
 
 ### 六、项目实战
 
 #### 1.项目预设
 
-我们预设项目的环境是中后台业务系统，增删改查列表页面，这个列表页面上面有表单查询和新建功能按钮，下面是表格。点击新建和操作列的编辑可以唤起表单modal组件。
+我们预设一个中后台业务系统的开发场景：实现一个增删改查的列表页面。该页面顶部包含表单查询区域和“新建”功能按钮，下方是数据表格。点击“新建”或操作列的“编辑”按钮，可以唤起一个表单 Modal 组件。
+为了更细致地展示整个开发流程，我将各个环节做了拆分，下面进行分步展示。
 
 > 可以做一个项目通用的列表设计，后续可以直接截图给大模型，只改表格的字段就行。甚至可以更进一步，将业务系统列表页面的重复性工作标准化，封装成skill。
 
 为了更细致展示整个开发流程，我将各个环节做了拆分，下面将各个环节分步展示。
 
-#### 2.设计
+#### 2.原型设计
 
-在masterGo的设计文件里点击上方的ai快搭标志开启窗口并输入prompt。
+在 masterGo 的设计文件中，点击上方的 AI 快搭标志开启窗口并输入 Prompt。
 ![new-page](../../images/end-loop/aikuaida-new-page.png)
 
-然后点击开始创作，会得到初步的设计稿。
+然后点击`开始创作`，会得到初步的设计稿。
 ![design-first](../../images/end-loop/aikuaida-design-first.png)
 
-针对其进行校正，将细节补充，得到最终的设计稿。
+针对初步设计稿进行校正，补充细节，得到最终的设计稿。
 ![design-finaly](../../images/end-loop/aikuaida-design-finaly.png)
 
-点击下方的插入到画布就是最终的设计稿了。
+点击下方的`插入到画布`，即完成了最终的设计稿。
 
 > 使用其他设计工具如figma的需要会员请自购，使用mcp需要token验证。
 
-#### 3.生成UI
+#### 3.生成前端 UI
 
-在设计稿选择这个页面可以复制容器链接，获取后用于生成ui代码。
+在设计稿中选中这个页面，复制容器链接，用于生成 UI 代码。
 ![design-ui-url](../../images/end-loop/design-ui-url.png)
 
-打开你的ai编辑器，输入指令生成ui。我的指令是：
+打开你的 AI 编辑器，输入指令生成 UI。我的指令是：
 
 ```text
 https://mastergo.com/goto/RCmBpTWJ?page_id=M&layer_id=68:1854&file=65624275281607 根据链接在项目新增消息队列模块。
@@ -289,42 +280,42 @@ https://mastergo.com/goto/RCmBpTWJ?page_id=M&layer_id=68:1854&file=6562427528160
 生成代码运行效果：
 ![mastergo-mcp-ui](../../images/end-loop/mastergo-mcp-ui.png)
 
-看到和设计还是有差别的，尤其是上方的表单搜索，我们可以在设计稿拷贝form的容器链接继续优化。
+发现和设计稿有差距，尤其是上方的表单搜索区域。我们可以在设计稿中拷贝 Form 的容器链接继续优化。
 ![design-ui-form](../../images/end-loop/design-ui-form.png)
 
-继续给指令要求优化上方的form区块：
+继续给指令要求优化上方的 Form 区块：
 ```text
 
 index.vue:2-36[这里我把生成的页面添加到了对话上下文]
 https://mastergo.com/goto/RCotiGtR?page_id=M&layer_id=68:2584&file=65624275281607 根据链接将表单搜索区块重写。
 ```
 
-优化后的效果：
+优化后的效果如下：
 ![](../../images/end-loop/mastergo-mcp-fix.png)
 
 > 如果你使用了figma作为设计工具，请在你使用的编辑器mcp市场自行搜索figma添加，也可以手动添加[Figma-Context-MCP](https://github.com/GLips/Figma-Context-MCP)。
 
-#### 4.对接接口
+#### 4.对接后端接口
 
-在对接接口前记得先添加apifox-mcp-server并配置你的swagger地址。[通过 MCP 使用 OpenAPI/Swagger 文档](https://docs.apifox.com/6327891m0)
+在对接接口前，记得先添加 apifox-mcp-server 并配置你的 Swagger 地址。[通过 MCP 使用 OpenAPI/Swagger 文档](https://docs.apifox.com/6327891m0)
 
 直接通过指令要求获取你需要的模块或某个指定的接口。我的指令是：
 ```text
 根据我配置的swagger地址，将消息队列资源接口模块封装成请求函数，如果本地已有就覆盖重写。
 ```
-封装的请求函数部分截图：
+封装的请求函数部分截图如下：
 ![apifox-fetch-func](../../images/end-loop/apifox-fetch-func.png)
 
-然后再对应的页面对接接口。
+然后在对应的页面对接接口。
 ```text
 index.vue[生成的UI页面]
 将消息队列资源接口模块的分页查询虚拟主机列表接口对接。
 ```
 
-前端显示效果：
+前端显示效果如下：
 ![apifox-fetch-list](../../images/end-loop/apifox-fetch-list.png)
 
-因为我们是将环节拆分，所以各阶段是各自生成的。此时看到虽然获取到了，但是字段没和swagger响应体字段对齐，我们可以再次下指令让其使用获取的字段更新即可。
+因为我将环节拆分，所以各阶段是各自生成的。此时虽然数据已获取，但字段没有和 Swagger 响应体字段对齐。我们可以再次下指令，让其使用获取的字段进行更新。
 ```text
 columns.ts[这里我将表格列字段的文件添加到对话上下文]
 将表格列的字段和swagger文档POST /cloud//v1/mq/resource/list/search 接口的响应体字段对应
@@ -334,27 +325,26 @@ columns.ts[这里我将表格列字段的文件添加到对话上下文]
 #### 5.其他
 
 ##### 1.生成指令
-为了展示各环节的过程，所以我将生成过程给拆分。实际上可以一口气从零生成代码的，一个简单的prompt指令模板如下：
+为了展示各环节的过程，我将生成过程拆分了。实际上，可以一气呵成地从零生成代码。一个简单的 Prompt 指令模板如下：
 ```text
-根据我给出的规则和项目结构依次执行下列任务，完成前端项目的开发。
-先根据这个链接(https://mastergo.com.goto/xxx?xx)生成前端UI页面和组件；
-然后根据apifox-mcp-server服务我配置的swagger地址来获取文档，并将整个文档的模块分别封装请求函数；
-最后在生成前端页面将对应的接口对接，如果表格的columns和文档接口响应体字段不一致请按照文档更新字段。
+根据我给出的规则和项目结构，依次执行下列任务，完成前端项目的开发。
+1. 先根据这个链接(https://mastergo.com.goto/xxx?xx)生成前端UI页面和组件；
+2. 然后根据 apifox-mcp-server 服务中我配置的 Swagger 地址来获取文档，并将整个文档的模块分别封装请求函数;
+3. 最后在生成的前端页面中将对应的接口对接，如果表格的 columns 和文档接口响应体字段不一致，请按照文档更新字段。
 ```
 
 > 根据url生成前端页面ui我演示的是一张页面的，整站生成参考官网 [官网全站生成教程](https://mastergo.com/file/155675508499265?page_id=8740:3698)。
-> 为了准确我建议页面UI的生成还是一张一张来，这样速度快而且发生错误及时更正，后续代码或者任务回退影响最小。
+> 为了准确性，我建议页面 UI 的生成还是一张一张来，这样速度快，且发生错误时能及时更正，后续代码或任务回退的影响最小。
 
 ##### 2.模型选择
 
-经过我多次的尝试，国外的模型claude、gemeni都可以执行，国内的deepseek也可以完成我的任务计划。其他模型我花费几天时间没有成功。
-如果想用国外优质模型的可以使用codebuddy国际版和trae国际版，直接购买会员省心不少（也可自行购买第三方聚合中转apiKey）。codebuddy的中国版也有deekseek-v3.2模型可供大家使用。
+经过我多次尝试，国外的模型如 Claude、Gemini 都可以执行，国内的 DeepSeek 也可以完成我的任务计划。其他模型我花费了几天时间未能成功。如果想用国外优质模型，可以使用 CodeBuddy 国际版和 Trae 国际版，直接购买会员省心不少（也可自行购买第三方聚合中转 API Key）。CodeBuddy 的中国版也有 DeepSeek-v3.2 模型可供使用。
 
 ##### 3.规则和技能
 
-为了更高效的使用ai的能力，对于ai模型的约束和引导是必须的。目前我个人使用的多的是规则rules和技能skills。由于篇幅所限我不深入细聊细节，总之宗旨是尽可能明确、细颗粒度、对不想要的后果命令禁止，最好给出示例。
+为了更高效地使用 AI 的能力，对 AI 模型进行约束和引导是必须的。目前我个人使用较多的是规则（Rules）和技能（Skills）。由于篇幅所限，我不深入细聊细节。总之，宗旨是：尽可能明确、细颗粒度、对不想要的后果命令禁止，最好给出示例。
 
-分享下我使用mastergo-mcp生成列表场景UI代码的rule：
+分享下我使用mastergo-mcp生成列表场景UI代码的Rule：
 ````text
 # 列表场景开发最佳实践
 
