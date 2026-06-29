@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head prefix="og: http://ogp.me/ns#">
+  <meta charset="utf-8">
+  <title>基于AI的前端UI自动化测试 | 个人博客</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://zuojiangtao.github.io/ecology/ai_coding/aiTest.html">
+  <!-- Alternative links -->
+  
+    
+      <link rel="alternative" hreflang="zh-cn" href="https://zuojiangtao.github.io/ecology/ai_coding/aiTest">
+    
+      <link rel="alternative" hreflang="en" href="https://zuojiangtao.github.io/en/ecology/ai_coding/aiTest">
+    
+  
+  <!-- Icon -->
+  <link rel="apple-touch-icon" sizes="57x57" href="/icon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/icon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/icon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/icon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/icon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/icon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/icon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/icon/apple-touch-icon-152x152.png">
+  <link rel="icon" type="image/png" href="/icon/favicon-196x196.png" sizes="196x196">
+  <link rel="icon" type="image/png" href="/icon/favicon-160x160.png" sizes="160x160">
+  <link rel="icon" type="image/png" href="/icon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/icon/favicon-16x16.png" sizes="16x16">
+  <link rel="icon" type="image/png" href="/icon/favicon-32x32.png" sizes="32x32">
+  <meta name="msapplication-TileColor" content="#2f83cd">
+  <meta name="msapplication-TileImage" content="/icon/mstile-144x144.png">
+  <!-- CSS -->
+  <!-- build:css build/css/navy.css -->
+  
+<link rel="stylesheet" href="/css/navy.css">
+
+  <!-- endbuild -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css">
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+  <div id="container">
+    <header id="header" class="wrapper">
+  <div id="header-inner" class="inner">
+    <h1 id="logo-wrap">
+      <a href="/" id="logo">H3C</a>
+    </h1>
+    <nav id="main-nav">
+      <a href="/standard/" class="main-nav-link">开发规范</a><a href="/design/" class="main-nav-link">开发指南</a><a href="/ecology/" class="main-nav-link">工具套组</a>
+    </nav>
+    <div id="github-icon-link">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="icon" target="_blank"><i class="fa-brands fa-github"></i></a>
+    </div>
+    <a id="mobile-nav-toggle">
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+      <span class="mobile-nav-toggle-bar"></span>
+    </a>
+  </div>
+</header>
+
+    <div id="content-wrap">
+  <div id="content" class="wrapper">
+    <div id="content-inner">
+      <article class="article-container" itemscope itemtype="http://schema.org/Article">
+        <div class="article-inner">
+          <div class="article">
+            <div class="inner">
+              <header class="article-header">
+                <h1 class="article-title" itemprop="name">基于AI的前端UI自动化测试</h1>
+                <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Zuojiangtao/Zuojiangtao.github.io/tree/master/source/ecology/ai_coding/aiTest.md" class="article-edit-link" title="改进本文"><i class="fa fa-pencil"></i></a>
+              </header>
+              <div class="article-content" itemprop="articleBody">
+                <html><head></head><body><h3 id="一、前言" class="article-heading"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言<a class="article-anchor" href="#一、前言" aria-hidden="true"></a></h3><p>前端应用开发后希望能够借助AI的能力来高效测试，但是在边界条件和异常情况的处理相对麻烦。尤其是现在代码中AI开发的比例越来越大，人工编写测试案例的成本很高，所以我期望能够借助AI生成对应的测试案例并自动进行测试。通过一段时间的调研，我决定采用<strong>SDD规范约束项目的前端UI自动化测试方案</strong>。</p>
+<p>SDD（Specification-Driven Development，规范驱动开发）通过规范来约束测试案例，并抽象项目的样式规范作为基准。它把 <code>src/style/</code> 下沉淀的 Ant Design Vue 样式规范提取成可执行的测试契约，再通过组件级测试、OpenAPI/Spec 驱动的 E2E 场景和 CI 门禁组成闭环。换句话说，测试不只是验证“页面能不能点”，而是验证“页面是否按规范长出来、按业务路径运行、并且能在持续迭代中守住一致性”。</p>
+<h3 id="二、方案详解" class="article-heading"><a href="#二、方案详解" class="headerlink" title="二、方案详解"></a>二、方案详解<a class="article-anchor" href="#二、方案详解" aria-hidden="true"></a></h3><h4 id="1-核心目标" class="article-heading"><a href="#1-核心目标" class="headerlink" title="1. 核心目标"></a>1. 核心目标<a class="article-anchor" href="#1-核心目标" aria-hidden="true"></a></h4><table>
+<thead>
+<tr>
+<th>能力</th>
+<th>选型</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>UI 自动化执行</td>
+<td><code>@midscene/web</code></td>
+<td>本地通过 Chrome Bridge 驱动浏览器，执行 AI 操作与断言</td>
+</tr>
+<tr>
+<td>精确样式断言</td>
+<td><code>page.evaluate</code> + <code>getComputedStyle</code></td>
+<td>校验颜色、字号、边框、圆角、间距等 CSS 计算值</td>
+</tr>
+<tr>
+<td>场景生成</td>
+<td>OpenAPI Spec + OpenSpec AC</td>
+<td>从接口和验收条件生成结构化 E2E 场景</td>
+</tr>
+<tr>
+<td>脚本运行</td>
+<td><code>tsx</code></td>
+<td>直接运行 TypeScript 测试文件</td>
+</tr>
+<tr>
+<td>报告沉淀</td>
+<td>自定义 Logger / Reporter</td>
+<td>输出控制台日志、截图和 HTML 报告</td>
+</tr>
+<tr>
+<td>CI 门禁</td>
+<td>Puppeteer headless</td>
+<td>在无桌面环境下执行精确断言，默认跳过 AI 视觉断言</td>
+</tr>
+</tbody></table>
+<p>这套方案的重点不是引入某个单点工具，而是把“规范、场景、执行、报告、门禁”拆成清晰的工程层次。</p>
+<h4 id="2-方案架构" class="article-heading"><a href="#2-方案架构" class="headerlink" title="2. 方案架构"></a>2. 方案架构<a class="article-anchor" href="#2-方案架构" aria-hidden="true"></a></h4><p>采用四层架构：规范定义层 → AI测试生成层 → 测试执行层 → 报告层</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">规范来源层                       AI测试生成层               测试执行层             报告层</span><br><span class="line"></span><br><span class="line">┌──────────────────────┐    ┌────────────────────┐    ┌────────────────┐    ┌───────────────┐</span><br><span class="line">│ SDD规范(样式)         │    │ AI Test Generator  │    │ Midscene Agent │    │ 综合测试报告   │</span><br><span class="line">│  - 颜色/字体/间距     │    │                    │    │ (ChromeBridge) │    │  - E2E通过率   │</span><br><span class="line">│  - 组件状态样式       │───&gt;│ ①解析OpenAPI/Spec  │───&gt;│                │───&gt;│  - SDD规范符合  │</span><br><span class="line">│  - 布局规范           │    │ ②AI映射 API → UI   │    │ navigate →     │    │  - 失败截图     │</span><br><span class="line">│                      │    │ ③生成E2E测试场景    │    │ interact →     │    │  - 覆盖分析     │</span><br><span class="line">│ OpenAPI Spec         │    │ ④注入SDD断言       │    │ assert         │    └───────────────┘</span><br><span class="line">│  (Apifox MCP)        │    └────────────────────┘    └────────────────┘</span><br><span class="line">│  - API端点           │              │                       │</span><br><span class="line">│  - 请求/响应Schema   │              ▼                       ▼</span><br><span class="line">│  - 业务描述          │    ┌────────────────────┐    ┌────────────────┐</span><br><span class="line">└──────────────────────┘    │ 测试案例(结构化)    │    │ Chrome浏览器    │</span><br><span class="line">                            │  - 业务流步骤       │    │ (pnpm dev)     │</span><br><span class="line">                            │  - 预期断言         │    └────────────────┘</span><br><span class="line">                            │  - SDD验证点       │</span><br><span class="line">                            └────────────────────┘</span><br></pre></td></tr></tbody></table></figure>
+
+<p>规范来源层有三类输入：</p>
+<ul>
+<li><code>src/style/</code>：项目内 30+ 个组件的样式规范，是颜色、边框、圆角、间距等 UI 契约的事实来源。</li>
+<li><code>openspec/specs/spec.md</code>：以 AC 编号维护验收条件，例如 <code>AC-S001</code>、<code>AC-U001</code>，方便做覆盖率和文档同步校验。</li>
+<li><code>tests/fixtures/openapi.json</code>：由 Apifox MCP 预获取的 OpenAPI Spec 缓存，用于推理接口对应的业务页面和操作路径。</li>
+</ul>
+<p>执行层则分两种模式：本地开发使用 Chrome Bridge 连接真实 Chrome，适合 AI 视觉和交互调试；CI 使用 Puppeteer headless，聚焦可重复、可量化的 CSS 精确断言。</p>
+<h4 id="3-规范先行" class="article-heading"><a href="#3-规范先行" class="headerlink" title="3. 规范先行"></a>3. 规范先行<a class="article-anchor" href="#3-规范先行" aria-hidden="true"></a></h4><p>SDD 的第一步，是把视觉规范从“文档描述”变成“程序能判断的断言”。项目在 <code>tests/specs/index.ts</code> 中维护 <code>SDDSpec</code>，统一定义组件选择器、状态和期望样式值。例如按钮、表格、弹窗、表单、菜单等核心组件都被抽象成结构化规范：</p>
+<figure class="highlight ts"><table><tbody><tr><td class="code"><pre><span class="line"><span class="attr">buttonPrimary</span>: {</span><br><span class="line">  <span class="attr">selector</span>: <span class="string">'.ant-btn-primary'</span>,</span><br><span class="line">  <span class="attr">description</span>: <span class="string">'主按钮'</span>,</span><br><span class="line">  <span class="attr">states</span>: {</span><br><span class="line">    <span class="attr">normal</span>: [</span><br><span class="line">      { <span class="attr">property</span>: <span class="string">'color'</span>, <span class="attr">value</span>: <span class="variable constant_">COLORS</span>.<span class="property">white</span>, <span class="attr">description</span>: <span class="string">'文字颜色'</span> },</span><br><span class="line">      { <span class="attr">property</span>: <span class="string">'background-color'</span>, <span class="attr">value</span>: <span class="variable constant_">COLORS</span>.<span class="property">primary</span>, <span class="attr">description</span>: <span class="string">'背景色'</span> },</span><br><span class="line">      { <span class="attr">property</span>: <span class="string">'border-color'</span>, <span class="attr">value</span>: <span class="variable constant_">COLORS</span>.<span class="property">primary</span>, <span class="attr">description</span>: <span class="string">'边框色'</span> },</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">hover</span>: [</span><br><span class="line">      { <span class="attr">property</span>: <span class="string">'background-color'</span>, <span class="attr">value</span>: <span class="variable constant_">COLORS</span>.<span class="property">primaryHover</span>, <span class="attr">description</span>: <span class="string">'Hover背景色'</span> },</span><br><span class="line">    ],</span><br><span class="line">  },</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>这样做有几个直接收益：</p>
+<ol>
+<li>样式规范集中维护，避免每个测试文件散落一堆 selector 和 expected value。</li>
+<li>规范变更时优先修改契约，再由测试暴露影响范围。</li>
+<li>测试报告能按组件和状态聚合失败项，而不是只给出“页面截图不一致”。</li>
+</ol>
+<p>比如我的一个项目可能核心指标包括主色 <code>#2a50d7</code>、边框色 <code>#cccccc</code>、文字色 <code>rgba(0,0,0,0.9)</code>、表头背景 <code>#eaeae9</code>、基础字号 <code>14px</code>、Card 圆角 <code>6px</code>、Table 圆角 <code>0</code>、按钮间距 <code>8px</code>、表单项间距 <code>12px</code>、输入框高度 <code>32px</code> 等。</p>
+<h4 id="4-双模式断言" class="article-heading"><a href="#4-双模式断言" class="headerlink" title="4. 双模式断言"></a>4. 双模式断言<a class="article-anchor" href="#4-双模式断言" aria-hidden="true"></a></h4><p>UI 自动化测试最容易踩的坑，是把所有视觉判断都交给截图或 AI。我没有这么做，而是采用“精确 CSS 断言 70%，AI 视觉断言 30%”的策略。</p>
+<p>对颜色、字号、边框、圆角、间距这类可量化属性，测试通过 <code>window.getComputedStyle()</code> 获取真实计算值，并做颜色归一化、零值归一化和视口单位兼容。例如 <code>#2a50d7</code> 会被归一化为 <code>rgb(42,80,215)</code> 后比较，避免浏览器返回格式差异导致误报。</p>
+<p>对布局感知、元素存在、操作路径、按钮排列是否合理这类难以稳定量化的内容，才交给 Midscene 的 <code>aiAssert</code>、<code>aiAction</code> 和 <code>aiQuery</code>。这样既保留 AI 对页面语义和交互的理解能力，也让关键视觉契约具备可重复的门禁价值。</p>
+<p>交互态也被单独处理。对于 hover、focus、active 等状态，测试不会静态读取伪类，而是通过浏览器事件触发后再采集计算样式，确保“用户真实操作后的样式变化”也能被验证。</p>
+<h4 id="5-组件级验证" class="article-heading"><a href="#5-组件级验证" class="headerlink" title="5. 组件级验证"></a>5. 组件级验证<a class="article-anchor" href="#5-组件级验证" aria-hidden="true"></a></h4><p>组件测试位于 <code>tests/components/</code>，覆盖 Button、Table、Modal、Form、Menu 五类高频基础组件。组件级验证的价值在于把问题尽早拦在最小单元：如果主按钮 hover 色错了，不需要跑完整用户新增流程才发现。</p>
+<p>当前覆盖重点包括：</p>
+<table>
+<thead>
+<tr>
+<th>组件</th>
+<th>覆盖内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Button</td>
+<td>default / primary / dashed / link / ghost，多状态样式验证</td>
+</tr>
+<tr>
+<td>Table</td>
+<td>表头背景、边框颜色、无圆角、行 hover 背景</td>
+</tr>
+<tr>
+<td>Modal</td>
+<td>标题字重、body 内边距、footer 布局</td>
+</tr>
+<tr>
+<td>Form</td>
+<td>表单项间距、label 对齐、控件行高</td>
+</tr>
+<tr>
+<td>Menu</td>
+<td>选中态、hover 态、子菜单展开、折叠宽度</td>
+</tr>
+</tbody></table>
+<p>本地全量入口 <code>tests/run-all.ts</code> 会先并发执行这些组件测试，并发度由 <code>TEST_CONCURRENCY</code> 控制，默认值为 3。组件测试通过后，再进入 E2E 场景执行。</p>
+<h4 id="6-E2E案例" class="article-heading"><a href="#6-E2E案例" class="headerlink" title="6. E2E案例"></a>6. E2E案例<a class="article-anchor" href="#6-E2E案例" aria-hidden="true"></a></h4><p>传统 E2E 常见的问题是测试脚本写死，一旦接口或页面变动，维护成本会迅速升高。本项目把场景来源拆成两条线：</p>
+<p><strong>第一条线来自 OpenAPI</strong>。<code>tests/e2e-generator/openapi-parser.ts</code> 解析接口路径、方法、参数、响应和实体模型，<code>scenario-generator.ts</code> 再把接口映射到页面和业务动作。例如：</p>
+<ul>
+<li><code>GET /api/users</code> 对应用户管理页面的表格加载。</li>
+<li><code>POST /api/users</code> 对应点击“新增”、填写表单、提交并断言成功提示。</li>
+<li><code>PUT /api/users/{id}</code> 对应编辑弹窗、数据回填和保存。</li>
+<li><code>DELETE /api/users/{id}</code> 对应删除确认和列表刷新。</li>
+</ul>
+<p><strong>第二条线来自 OpenSpec AC</strong>。<code>openspec/specs/spec.md</code> 维护规范化的验收条件，<code>spec-parser.ts</code> 可以解析 AC 条目并与场景快照比对，输出覆盖率。<code>spec-to-scenario.ts</code> 则支持从 AC 生成或合并 E2E 场景。</p>
+<p>生成后的场景会缓存到 <code>tests/e2e-generator/__snapshots__/</code>，支持人工审查和二次调整。执行时，<code>e2e-runner.ts</code> 逐个加载场景，驱动 Midscene Agent 完成导航、点击、填表、断言，同时在关键步骤注入 SDD 样式验证。</p>
+<h4 id="7-测试隔离与认证" class="article-heading"><a href="#7-测试隔离与认证" class="headerlink" title="7. 测试隔离与认证"></a>7. 测试隔离与认证<a class="article-anchor" href="#7-测试隔离与认证" aria-hidden="true"></a></h4><p>这套方案还处理了后台系统测试中两个实际问题。</p>
+<p>第一个是登录。项目存在 SSO 路由守卫，测试不能每次依赖真实登录页面。因此 <code>tests/fixtures/credentials.ts</code> 和 <code>tests/utils/midscene-helper.ts</code> 提供认证绕过能力：本地模式优先复用已有 session，必要时注入 localStorage；CI 模式则通过请求拦截和 localStorage 注入完成认证准备。</p>
+<p>第二个是隔离。E2E 场景之间容易残留弹窗、Toast、表单状态或路由状态，因此执行器在场景前后进行页面状态清理，降低串行执行时的上下文污染。</p>
+<p>这些处理让测试不再只是“在我机器上能跑的脚本”，而是可以进入团队工作流的工程资产。</p>
+<h4 id="8-三种运行形态" class="article-heading"><a href="#8-三种运行形态" class="headerlink" title="8. 三种运行形态"></a>8. 三种运行形态<a class="article-anchor" href="#8-三种运行形态" aria-hidden="true"></a></h4><p>项目把不同阶段的运行诉求拆成了三类命令。</p>
+<p><strong>本地开发阶段</strong>，开发者可以单独验证某个组件，也可以运行完整链路：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">pnpm <span class="built_in">test</span>:button</span><br><span class="line">pnpm <span class="built_in">test</span>:table</span><br><span class="line">pnpm <span class="built_in">test</span>:e2e:generate</span><br><span class="line">pnpm <span class="built_in">test</span>:e2e:run</span><br><span class="line">pnpm <span class="built_in">test</span>:all</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>CI 阶段</strong>，脚本默认设置 <code>TEST_MODE=ci</code> 和 <code>SKIP_AI=true</code>，使用 Puppeteer headless 执行精确 CSS 断言，避免 AI 视觉判断带来的不稳定性：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">pnpm <span class="built_in">test</span>:ci</span><br></pre></td></tr></tbody></table></figure>
+
+<p><strong>变更验证阶段</strong>，<code>tests/run-changed.ts</code> 会基于 <code>git diff</code> 推断受影响测试。例如 <code>src/style/</code> 变化会触发组件测试，权限或系统页面变化会触发 E2E 执行，路由变化也会进入 E2E 校验：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">pnpm <span class="built_in">test</span>:changed</span><br></pre></td></tr></tbody></table></figure>
+
+<p>此外，项目还提供规范同步和覆盖分析命令：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">pnpm <span class="built_in">test</span>:spec:<span class="built_in">sync</span></span><br><span class="line">pnpm <span class="built_in">test</span>:spec:coverage</span><br><span class="line">pnpm <span class="built_in">test</span>:spec:lint</span><br><span class="line">pnpm <span class="built_in">test</span>:baseline:capture</span><br><span class="line">pnpm <span class="built_in">test</span>:baseline:assert</span><br><span class="line">pnpm <span class="built_in">test</span>:baseline:update</span><br></pre></td></tr></tbody></table></figure>
+
+<p>这几类命令共同形成了从开发调试、提交前自检到 CI 门禁的分层测试策略。</p>
+<h4 id="9-报告与反馈闭环" class="article-heading"><a href="#9-报告与反馈闭环" class="headerlink" title="9. 报告与反馈闭环"></a>9. 报告与反馈闭环<a class="article-anchor" href="#9-报告与反馈闭环" aria-hidden="true"></a></h4><p>测试执行结果会通过自定义 Logger 和 Reporter 汇总，输出到 <code>midscene_run/report/</code>。报告关注几类信息：</p>
+<ul>
+<li>哪些组件规范通过或失败。</li>
+<li>失败项的实际值和期望值。</li>
+<li>E2E 场景执行步骤和失败上下文。</li>
+<li>规范覆盖率和场景覆盖关系。</li>
+<li>必要时记录截图，辅助定位视觉或交互问题。</li>
+</ul>
+<p>这种报告结构比单纯的截图对比更适合团队排障。比如当表格头部背景失败时，报告可以直接指出实际 <code>background-color</code> 与期望 <code>rgb(234,234,233)</code> 不一致，而不是让开发者在截图里猜问题。</p>
+<h3 id="三、项目配置" class="article-heading"><a href="#三、项目配置" class="headerlink" title="三、项目配置"></a>三、项目配置<a class="article-anchor" href="#三、项目配置" aria-hidden="true"></a></h3><h4 id="1-安装依赖" class="article-heading"><a href="#1-安装依赖" class="headerlink" title="1. 安装依赖"></a>1. 安装依赖<a class="article-anchor" href="#1-安装依赖" aria-hidden="true"></a></h4><p>方案使用了<a target="_blank" rel="noopener external nofollow noreferrer" href="https://midscenejs.com/">Midscene AI</a>作为前端视觉测试插件，我们采用Chrome桥接模式，通过本地项目脚本来控制桌面版Chrome。这种方式能复用本地浏览器的 cookies、插件和页面状态，与自动化脚本协作完成任务。</p>
+<ol>
+<li><p>浏览器安装<a target="_blank" rel="noopener external nofollow noreferrer" href="https://chromewebstore.google.com/detail/midscenejs/gbldofcpkknbggpkmbdaefngejllnief">Midscene.js</a>；</p>
+</li>
+<li><p>项目安装依赖；</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">pnpm install -D @midscene/web dotenv puppeteer</span><br></pre></td></tr></tbody></table></figure>
+
+<ol start="3">
+<li>配置AI模型<br>在项目<code>.env</code>文件中配置模型；</li>
+</ol>
+<figure class="highlight text"><table><tbody><tr><td class="code"><pre><span class="line">MIDSCENE_MODEL_BASE_URL="https://替换为你的模型服务地址/v1"</span><br><span class="line">MIDSCENE_MODEL_API_KEY="替换为你的 API Key"</span><br><span class="line">MIDSCENE_MODEL_NAME="替换为你的模型名称"</span><br><span class="line">MIDSCENE_MODEL_FAMILY="替换为你的模型系列"</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="2-目录结构" class="article-heading"><a href="#2-目录结构" class="headerlink" title="2. 目录结构"></a>2. 目录结构<a class="article-anchor" href="#2-目录结构" aria-hidden="true"></a></h4><figure class="highlight plaintext"><table><tbody><tr><td class="code"><pre><span class="line">..\your-project\tests\</span><br><span class="line">├── specs/</span><br><span class="line">│   └── index.ts                    # SDD规范定义文件。从src/style/提取</span><br><span class="line">├── utils/</span><br><span class="line">│   ├── midscene-helper.ts         # Midscene工具封装（Agent管理+导航+登录绕过）</span><br><span class="line">│   ├── reporter.ts                # 测试报告生成工具（HTML报告）</span><br><span class="line">│   ├── logger.ts                  # 日志工具（步骤记录 + 截图管理）</span><br><span class="line">│   ├── style-assert.ts           # 精确样式断言（page.evaluate计算样式）</span><br><span class="line">│   └── style-baseline.ts         # 样式基线管理（capture/assert/update三模式）</span><br><span class="line">├── components/</span><br><span class="line">│   ├── button.test.ts             # 按钮组件规范验证（5类型×4状态）</span><br><span class="line">│   ├── table.test.ts              # 表格组件规范验证（表头/行hover/bordered）</span><br><span class="line">│   ├── modal.test.ts              # 模态框规范验证</span><br><span class="line">│   ├── form.test.ts               # 表单组件规范验证</span><br><span class="line">│   └── menu.test.ts               # 菜单组件规范验证</span><br><span class="line">├── e2e-generator/                 # E2E测试生成器（核心创新）</span><br><span class="line">│   ├── openapi-parser.ts          # OpenAPI Spec解析器</span><br><span class="line">│   │                               # - 解析 tests/fixtures/openapi.json</span><br><span class="line">│   │                               # - 提取 API endpoints、methods、params、responses</span><br><span class="line">│   │                               # - 识别 entity 类型（User/Role/Menu/Dictionary等）</span><br><span class="line">│   ├── scenario-generator.ts      # AI测试场景生成器</span><br><span class="line">│   │                               # - 接收 OpenAPI 解析结果</span><br><span class="line">│   │                               # - AI推理 API→UI 映射关系</span><br><span class="line">│   │                               # - 输出结构化测试场景数组</span><br><span class="line">│   │                               # - 自动注入对应的 SDD 断言规则</span><br><span class="line">│   ├── e2e-runner.ts              # E2E场景执行器</span><br><span class="line">│   │                               # - 遍历生成的测试场景</span><br><span class="line">│   │                               # - 驱动 Midscene Agent 执行每一步</span><br><span class="line">│   │                               # - 每一步同步执行 SDD 规范验证</span><br><span class="line">│   │                               # - 失败自动重试 + 截图</span><br><span class="line">│   │                               # - 返回详细执行报告</span><br><span class="line">│   ├── spec-parser.ts             # OpenSpec规范解析器（解析openspec/specs/目录）</span><br><span class="line">│   ├── spec-to-scenario.ts        # 规范到场景转换器（从spec.md生成E2E场景）</span><br><span class="line">│   └── __snapshots__/             # 自动生成的测试案例快照（可手动调整）</span><br><span class="line">│       └── scenarios.json           # AI生成的场景缓存，减少重复生成</span><br><span class="line">├── fixtures/</span><br><span class="line">│   ├── credentials.ts             # 测试登录凭据配置（Token绕过SSO）</span><br><span class="line">│   └── openapi.json               # MCP预获取的OpenAPI Spec缓存</span><br><span class="line">├── run-all.ts                     # 全量执行入口（组件→E2E→报告）</span><br><span class="line">├── README.md                      # 测试方案说明书</span><br><span class="line">└── tsconfig.json                  # 测试专用TypeScript配置（继承项目tsconfig）</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="3-脚本命令" class="article-heading"><a href="#3-脚本命令" class="headerlink" title="3. 脚本命令"></a>3. 脚本命令<a class="article-anchor" href="#3-脚本命令" aria-hidden="true"></a></h4><figure class="highlight json"><table><tbody><tr><td class="code"><pre><span class="line"><span class="punctuation">{</span></span><br><span class="line">  <span class="attr">"script"</span><span class="punctuation">:</span> <span class="punctuation">{</span></span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="attr">"ui-test"</span><span class="punctuation">:</span> <span class="string">"npx tsx ./build/demo-new-tab.ts"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"test:button"</span><span class="punctuation">:</span> <span class="string">"npx tsx ./tests/components/button.test.ts"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"test:table"</span><span class="punctuation">:</span> <span class="string">"npx tsx ./tests/components/table.test.ts"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"test:modal"</span><span class="punctuation">:</span> <span class="string">"npx tsx ./tests/components/modal.test.ts"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"test:form"</span><span class="punctuation">:</span> <span class="string">"npx tsx ./tests/components/form.test.ts"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"test:menu"</span><span class="punctuation">:</span> <span class="string">"npx tsx ./tests/components/menu.test.ts"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"test:spec:coverage"</span><span class="punctuation">:</span> <span class="string">"npx tsx ./tests/e2e-generator/spec-parser.ts"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"test:spec:lint"</span><span class="punctuation">:</span> <span class="string">"npx tsx ./scripts/extract-pui-specs.ts"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"test:spec:sync"</span><span class="punctuation">:</span> <span class="string">"npx tsx ./scripts/spec-sync-validator.ts"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"test:e2e:generate"</span><span class="punctuation">:</span> <span class="string">"npx tsx ./tests/e2e-generator/scenario-generator.ts"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"test:e2e:run"</span><span class="punctuation">:</span> <span class="string">"npx tsx ./tests/e2e-generator/e2e-runner.ts"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"test:e2e:generate:from-spec"</span><span class="punctuation">:</span> <span class="string">"npx tsx ./tests/e2e-generator/spec-to-scenario.ts spec"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"test:e2e:generate:merge"</span><span class="punctuation">:</span> <span class="string">"npx tsx ./tests/e2e-generator/spec-to-scenario.ts merge"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"test:baseline:capture"</span><span class="punctuation">:</span> <span class="string">"npx tsx ./tests/utils/style-baseline.ts capture"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"test:baseline:assert"</span><span class="punctuation">:</span> <span class="string">"npx tsx ./tests/utils/style-baseline.ts assert"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"test:baseline:update"</span><span class="punctuation">:</span> <span class="string">"npx tsx ./tests/utils/style-baseline.ts update"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"test:changed"</span><span class="punctuation">:</span> <span class="string">"npx tsx ./tests/run-changed.ts"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"test:all"</span><span class="punctuation">:</span> <span class="string">"npx tsx ./tests/run-all.ts"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"test:ci"</span><span class="punctuation">:</span> <span class="string">"cross-env TEST_MODE=ci SKIP_AI=true npx tsx ./tests/run-ci.ts"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"test:full"</span><span class="punctuation">:</span> <span class="string">"cross-env TEST_MODE=local SKIP_AI=false npx tsx ./tests/run-all.ts"</span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">"test:trend"</span><span class="punctuation">:</span> <span class="string">"npx tsx ./tests/utils/trend.ts"</span></span><br><span class="line">  <span class="punctuation">}</span></span><br><span class="line"><span class="punctuation">}</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>单组件验证</li>
+</ul>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">pnpm <span class="built_in">test</span>:button         <span class="comment"># 按钮组件</span></span><br><span class="line">pnpm <span class="built_in">test</span>:table          <span class="comment"># 表格组件</span></span><br><span class="line">pnpm <span class="built_in">test</span>:modal          <span class="comment"># 模态框</span></span><br><span class="line">pnpm <span class="built_in">test</span>:form           <span class="comment"># 表单</span></span><br><span class="line">pnpm <span class="built_in">test</span>:menu           <span class="comment"># 菜单</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>Spec 校验与覆盖</li>
+</ul>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">pnpm <span class="built_in">test</span>:spec:<span class="built_in">sync</span>            <span class="comment"># ⚡ 校验 AC 格式 + 总览同步 + 映射表完整性（不通过则阻断）</span></span><br><span class="line">pnpm <span class="built_in">test</span>:spec:coverage        <span class="comment"># 查看 AC 覆盖率报告（比对 spec 与 scenario）</span></span><br><span class="line">pnpm <span class="built_in">test</span>:spec:lint            <span class="comment"># 校验 SDD 规范定义与实际样式一致性</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>E2E 生成与执行</li>
+</ul>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">pnpm <span class="built_in">test</span>:e2e:generate              <span class="comment"># 读取 OpenAPI → 生成 E2E 场景 → 缓存</span></span><br><span class="line">pnpm <span class="built_in">test</span>:e2e:generate:from-spec    <span class="comment"># 从 AC 条目自动生成测试场景</span></span><br><span class="line">pnpm <span class="built_in">test</span>:e2e:generate:merge        <span class="comment"># 合并新增场景到已有快照</span></span><br><span class="line">pnpm <span class="built_in">test</span>:e2e:run                   <span class="comment"># 加载缓存 → 执行 E2E → SDD 断言</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>样式基线</li>
+</ul>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">pnpm <span class="built_in">test</span>:baseline:capture    <span class="comment"># 捕获当前页面样式快照</span></span><br><span class="line">pnpm <span class="built_in">test</span>:baseline:assert     <span class="comment"># 断言样式无回归</span></span><br><span class="line">pnpm <span class="built_in">test</span>:baseline:update     <span class="comment"># 更新样式基线</span></span><br></pre></td></tr></tbody></table></figure>
+
+<ul>
+<li>全量执行</li>
+</ul>
+<figure class="highlight bash"><table><tbody><tr><td class="code"><pre><span class="line">pnpm <span class="built_in">test</span>:all            <span class="comment"># 组件 → 页面 → E2E → 报告</span></span><br><span class="line">pnpm <span class="built_in">test</span>:full           <span class="comment"># 本地完整执行（含 AI 视觉断言）</span></span><br><span class="line">pnpm <span class="built_in">test</span>:ci             <span class="comment"># CI 模式执行（跳过 AI 断言）</span></span><br><span class="line">pnpm <span class="built_in">test</span>:changed        <span class="comment"># 仅执行变更相关的测试</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="4-spec使用" class="article-heading"><a href="#4-spec使用" class="headerlink" title="4. spec使用"></a>4. spec使用<a class="article-anchor" href="#4-spec使用" aria-hidden="true"></a></h4><p>在项目根目录运行相关命令OpenSpec/SpecKit初始化项目，便于后续的spec使用。具体可以参考官方使用文档。</p>
+<blockquote>
+<p>spec 的生成可以将需求prd使用ai直接转换成md格式，也可以利用mcp将设计稿的url输入解析生成。但是spec与实际需求还需要人工对比。</p>
+</blockquote>
+<h3 id="四、项目测试" class="article-heading"><a href="#四、项目测试" class="headerlink" title="四、项目测试"></a>四、项目测试<a class="article-anchor" href="#四、项目测试" aria-hidden="true"></a></h3><h4 id="1-使用流程" class="article-heading"><a href="#1-使用流程" class="headerlink" title="1. 使用流程"></a>1. 使用流程<a class="article-anchor" href="#1-使用流程" aria-hidden="true"></a></h4><ol>
+<li><code>pnpm dev</code> – 启动开发服务器</li>
+<li>打开 Chrome 浏览器（需安装 Midscene 扩展）</li>
+<li>独立验证模式：</li>
+</ol>
+<ul>
+<li><code>pnpm test:button</code> – 单独验证按钮组件（适合开发调试）</li>
+</ul>
+<ol start="4">
+<li>E2E生成执行模式（核心流程）：</li>
+</ol>
+<ul>
+<li><code>pnpm test:e2e:generate</code> – 读取 OpenAPI Spec → AI生成E2E测试场景 → 缓存到快照</li>
+<li><code>pnpm test:e2e:run</code> – 加载快照 → Midscene逐一步骤执行 → 同步SDD断言 → 记录结果</li>
+</ul>
+<ol start="5">
+<li>全量执行：</li>
+</ol>
+<ul>
+<li><code>pnpm test:all</code> – 并发执行组件级 SDD 验证 → 串行执行 E2E 场景 → 生成报告</li>
+</ul>
+<ol start="6">
+<li>查看报告：控制台输出 + <code>midscene_run/report/</code> 下的HTML报告</li>
+</ol>
+<h4 id="2-测试效果" class="article-heading"><a href="#2-测试效果" class="headerlink" title="2. 测试效果"></a>2. 测试效果<a class="article-anchor" href="#2-测试效果" aria-hidden="true"></a></h4><ul>
+<li><p>ci测试<br><img src="/../../images/aitest/ci.png" alt="ci"></p>
+</li>
+<li><p>e2e测试（chrome bridge模式）<br>给浏览器授权：<br><img src="/../../images/aitest/e2e.png" alt="e2e"><br>ai模型驱动Midscene插件进行测试：<br><img src="/../../images/aitest/chrome-bridge.png" alt="chrome-bridge"></p>
+</li>
+<li><p>测试报告<br><img src="/../../images/aitest/report.png" alt="report"></p>
+</li>
+</ul>
+<h4 id="3-关键工程取舍" class="article-heading"><a href="#3-关键工程取舍" class="headerlink" title="3. 关键工程取舍"></a>3. 关键工程取舍<a class="article-anchor" href="#3-关键工程取舍" aria-hidden="true"></a></h4><p>这套方案有几个值得复用的取舍。</p>
+<p>第一，MCP 预获取优于运行时依赖 MCP。<code>tsx</code> 脚本无法直接调用 IDE 进程中的 MCP 工具，因此项目把 Apifox OpenAPI Spec 预获取到 <code>tests/fixtures/openapi.json</code>。这样测试生成器可以离线运行，也方便把接口规范变更纳入版本管理。</p>
+<p>第二，测试契约要使用编译后的选择器。我的项目Ant Design 前缀由环境变量控制，测试规范中通过 <code>VITE_ANT_PREFIXCLS</code> 适配实际 CSS 类名前缀，避免源码变量和浏览器 DOM 不一致。</p>
+<p>第三，AI 不进入强门禁的核心判断。AI 擅长理解页面语义和操作路径，但颜色、字号、边框这类门禁项更适合精确断言。项目把 AI 放在它更擅长的位置，稳定性会好很多。</p>
+<p>第四，场景生成要可缓存、可审查。完全动态生成 E2E 场景虽然很酷，但团队协作需要可解释和可追溯。快照缓存让 AI 生成结果可以被人工校正，也让后续执行更稳定。</p>
+<h4 id="4-落地收益" class="article-heading"><a href="#4-落地收益" class="headerlink" title="4. 落地收益"></a>4. 落地收益<a class="article-anchor" href="#4-落地收益" aria-hidden="true"></a></h4><p>这套 SDD UI 自动化测试方案带来的收益主要体现在四个方面：</p>
+<ol>
+<li>规范不再停留在文档里，而是变成可以执行、可以失败、可以阻断的测试契约。</li>
+<li>UI 回归更早暴露，组件级测试能快速定位基础样式偏差。</li>
+<li>E2E 不再完全依赖手写脚本，可以从 OpenAPI 和 AC 条目推导业务场景。</li>
+<li>本地、CI、增量测试有各自边界，既能保持反馈速度，也能覆盖关键风险。</li>
+</ol>
+<p>对于一个持续演进的管理后台来说，这种测试体系的价值不只是“自动化覆盖率更高”，而是把设计规范、接口契约、业务验收和工程门禁接到同一个反馈回路里。随着页面和组件增多，规范越早被程序化，后续维护成本就越可控。</p>
+<h3 id="五、结语" class="article-heading"><a href="#五、结语" class="headerlink" title="五、结语"></a>五、结语<a class="article-anchor" href="#五、结语" aria-hidden="true"></a></h3><p>当前方案已经覆盖组件规范、页面场景、OpenAPI 场景生成、OpenSpec 覆盖率、CI 精确断言和增量测试。极大提效UI测试，但是相当一部分时间花费在了前期spec的生成与矫正上。</p>
+<p>参考资料：</p>
+<ul>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://midscenejs.com/zh/introduction.html">Midscene</a> </li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/Fission-AI/OpenSpec">OpenSpec</a></li>
+<li><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/github/spec-kit">SpecKit</a></li>
+</ul>
+</body></html>
+              </div>
+              <footer class="article-footer">
+                <time class="article-footer-updated" datetime="2026-06-29T06:36:44.064Z" itemprop="dateModified">上次更新：2026-06-29</time>
+                <a href="index.html" class="article-footer-next" title="概述"><span>下一页</span><i class="fa fa-chevron-right"></i></a>
+              </footer>
+            </div>
+          </div>
+          <aside id="article-toc" role="navigation">
+            <div id="article-toc-inner">
+              <strong class="sidebar-title">目录</strong>
+              <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%89%8D%E8%A8%80"><span class="toc-text">一、前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%96%B9%E6%A1%88%E8%AF%A6%E8%A7%A3"><span class="toc-text">二、方案详解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E6%A0%B8%E5%BF%83%E7%9B%AE%E6%A0%87"><span class="toc-text">1. 核心目标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%96%B9%E6%A1%88%E6%9E%B6%E6%9E%84"><span class="toc-text">2. 方案架构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E8%A7%84%E8%8C%83%E5%85%88%E8%A1%8C"><span class="toc-text">3. 规范先行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E5%8F%8C%E6%A8%A1%E5%BC%8F%E6%96%AD%E8%A8%80"><span class="toc-text">4. 双模式断言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E7%BB%84%E4%BB%B6%E7%BA%A7%E9%AA%8C%E8%AF%81"><span class="toc-text">5. 组件级验证</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-E2E%E6%A1%88%E4%BE%8B"><span class="toc-text">6. E2E案例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-%E6%B5%8B%E8%AF%95%E9%9A%94%E7%A6%BB%E4%B8%8E%E8%AE%A4%E8%AF%81"><span class="toc-text">7. 测试隔离与认证</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#8-%E4%B8%89%E7%A7%8D%E8%BF%90%E8%A1%8C%E5%BD%A2%E6%80%81"><span class="toc-text">8. 三种运行形态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#9-%E6%8A%A5%E5%91%8A%E4%B8%8E%E5%8F%8D%E9%A6%88%E9%97%AD%E7%8E%AF"><span class="toc-text">9. 报告与反馈闭环</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E9%A1%B9%E7%9B%AE%E9%85%8D%E7%BD%AE"><span class="toc-text">三、项目配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96"><span class="toc-text">1. 安装依赖</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="toc-text">2. 目录结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E8%84%9A%E6%9C%AC%E5%91%BD%E4%BB%A4"><span class="toc-text">3. 脚本命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-spec%E4%BD%BF%E7%94%A8"><span class="toc-text">4. spec使用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E9%A1%B9%E7%9B%AE%E6%B5%8B%E8%AF%95"><span class="toc-text">四、项目测试</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%BD%BF%E7%94%A8%E6%B5%81%E7%A8%8B"><span class="toc-text">1. 使用流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E6%B5%8B%E8%AF%95%E6%95%88%E6%9E%9C"><span class="toc-text">2. 测试效果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%85%B3%E9%94%AE%E5%B7%A5%E7%A8%8B%E5%8F%96%E8%88%8D"><span class="toc-text">3. 关键工程取舍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E8%90%BD%E5%9C%B0%E6%94%B6%E7%9B%8A"><span class="toc-text">4. 落地收益</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E7%BB%93%E8%AF%AD"><span class="toc-text">五、结语</span></a></li></ol>
+              <a href="#" id="article-toc-top">回到顶部</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+      <aside id="sidebar" role="navigation">
+  <div class="inner">
+    <strong class="sidebar-title">开始使用</strong><a href="/ecology/index.html" class="sidebar-link">概述</a><strong class="sidebar-title">开发工具</strong><a href="/ecology/utils/qiankun_guide.html" class="sidebar-link">qiankun使用指南</a><a href="/ecology/utils/qiankun_questions.html" class="sidebar-link">qiankun问题汇总</a><a href="/ecology/utils/vite_guide.html" class="sidebar-link">vite使用指南</a><a href="/ecology/utils/vite_plugin_summary.html" class="sidebar-link">vite插件汇总</a><a href="/ecology/utils/webpack_plugin.html" class="sidebar-link">webpack插件开发实践</a><a href="/ecology/utils/yapi.html" class="sidebar-link">YApi使用指南</a><a href="/ecology/utils/sentry_guide.html" class="sidebar-link">Sentry使用指南</a><a href="/ecology/utils/vue2toRsbuild.html" class="sidebar-link">vue/cli项目迁移到RSBuild</a><a href="/ecology/utils/nrm.html" class="sidebar-link">npm镜像源配置</a><strong class="sidebar-title">ai代码开发</strong><a href="/ecology/ai_coding/mastergoAiDesign.html" class="sidebar-link">AI驱动原型设计</a><a href="/ecology/ai_coding/cursorMasterGoMcp.html" class="sidebar-link">AI设计稿生成UI</a><a href="/ecology/ai_coding/apifox.html" class="sidebar-link">AI对接接口文档</a><a href="/ecology/ai_coding/aicr.html" class="sidebar-link">AI代码评审方案</a><a href="/ecology/ai_coding/frontEndLoop.html" class="sidebar-link">AI前端全链路开发</a><a href="/ecology/ai_coding/aiTest.html" class="sidebar-link current">AI前端UI自动化测试</a>
+  </div>
+</aside>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="wrapper">
+  <div class="inner">
+    <div id="footer-copyright">
+      &copy; 2026 <a href="https://github.com/hexojs/hexo/graphs/contributors" rel="external nofollow noreferrer" target="_blank">zuojt2022@gmail.com/ZuoJiangtao</a><br>
+      Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>.
+    </div>
+    <div id="footer-links">
+      <a href="https://github.com/Zuojiangtao" rel="external nofollow noreferrer" class="footer-link" target="_blank"><i class="fa-brands fa-github"></i></a>
+    </div>
+  </div>
+</footer>
+
+  </div>
+  <div id="mobile-nav-dimmer"></div>
+  <nav id="mobile-nav">
+  <div id="mobile-nav-inner">
+    <ul id="mobile-nav-list">
+      <a href="/standard/" class="mobile-nav-link">开发规范</a><a href="/design/" class="mobile-nav-link">开发指南</a><a href="/ecology/" class="mobile-nav-link">工具套组</a>
+      <li class="mobile-nav-item">
+        <a href="https://github.com/https://github.com/Zuojiangtao" class="mobile-nav-link" rel="external" target="_blank">GitHub</a>
+      </li>
+    </ul>
+    
+      <strong class="mobile-nav-title">开始使用</strong><a href="/ecology/index.html" class="mobile-nav-link">概述</a><strong class="mobile-nav-title">开发工具</strong><a href="/ecology/utils/qiankun_guide.html" class="mobile-nav-link">qiankun使用指南</a><a href="/ecology/utils/qiankun_questions.html" class="mobile-nav-link">qiankun问题汇总</a><a href="/ecology/utils/vite_guide.html" class="mobile-nav-link">vite使用指南</a><a href="/ecology/utils/vite_plugin_summary.html" class="mobile-nav-link">vite插件汇总</a><a href="/ecology/utils/webpack_plugin.html" class="mobile-nav-link">webpack插件开发实践</a><a href="/ecology/utils/yapi.html" class="mobile-nav-link">YApi使用指南</a><a href="/ecology/utils/sentry_guide.html" class="mobile-nav-link">Sentry使用指南</a><a href="/ecology/utils/vue2toRsbuild.html" class="mobile-nav-link">vue/cli项目迁移到RSBuild</a><a href="/ecology/utils/nrm.html" class="mobile-nav-link">npm镜像源配置</a><strong class="mobile-nav-title">ai代码开发</strong><a href="/ecology/ai_coding/mastergoAiDesign.html" class="mobile-nav-link">AI驱动原型设计</a><a href="/ecology/ai_coding/cursorMasterGoMcp.html" class="mobile-nav-link">AI设计稿生成UI</a><a href="/ecology/ai_coding/apifox.html" class="mobile-nav-link">AI对接接口文档</a><a href="/ecology/ai_coding/aicr.html" class="mobile-nav-link">AI代码评审方案</a><a href="/ecology/ai_coding/frontEndLoop.html" class="mobile-nav-link">AI前端全链路开发</a><a href="/ecology/ai_coding/aiTest.html" class="mobile-nav-link current">AI前端UI自动化测试</a>
+    
+  </div>
+  <div id="mobile-lang-select-wrap">
+    <span id="mobile-lang-select-label"><i class="fa fa-globe"></i><span>简体中文</span></span>
+    <select id="mobile-lang-select" data-canonical="">
+      
+        <option value="zh-cn" selected>简体中文</option>
+      
+        <option value="en">English</option>
+      
+    </select>
+  </div>
+</nav>
+</body>
+</html>
